@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dev Portfolio | Retro Style</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      @theme {
+        --color-retro-bg: #f8f3ed;
+        --color-retro-text: #321e18;
+        --color-retro-orange: #ffbb33;
+        --color-retro-orange-darker: #b74906;
+        --color-retro-red: #ff5533;
+        --color-retro-magenta: #e83a63;
+        --color-retro-purple: #8a2be2;
+
+        --color-dark-bg: #0f0f17;
+        --color-dark-text: #f0ece0;
+        --color-dark-orange: #ffcc55;
+        --color-dark-red: #ff7755;
+        --color-dark-magenta: #f04a73;
+        --color-dark-purple: #9b3cf3;
+
+        --font-mono: "IBM Plex Mono", "monospace";
+      }
+
+      .tracking-line {
+        height: 5px;
+        background: rgba(255, 255, 255, 0.3);
+        position: absolute;
+        width: 100%;
+        top: 30%;
+        animation: tracking 4s linear infinite;
+      }
+
+      @keyframes tracking {
+        0% {
+          transform: translateY(-100px);
+        }
+        100% {
+          transform: translateY(1000px);
+        }
+      }
+
+      .drop-shadow-glow {
+        text-shadow: 0 0 5px currentColor;
+      }
+
+      .vhs-cover:hover .tracking-line {
+        animation-duration: 2s;
+      }
+    </style>
+    <link rel="stylesheet" href="/globals.css" />
+  </head>
+  <body
+    class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text font-mono leading-relaxed"
+  >
+    <!-- Header with dark mode border -->
+    <header
+      class="border-retro-text dark:border-dark-text mx-auto flex max-w-4xl items-center justify-between border-b-2 px-4 pt-12 pb-4 md:px-0"
+    >
+      <div
+        class="flex items-center gap-2 text-2xl font-bold tracking-wider uppercase"
+      >
+        <svg
+          viewBox="0 0 1024 548"
+          class="h-6"
+          version="1.1"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlns:xlink="http://www.w3.org/1999/xlink"
+          xml:space="preserve"
+          xmlns:serif="http://www.serif.com/"
+        >
+          <g transform="matrix(1,0,0,1,-0.172846,0.00578078)">
+            <g transform="matrix(1,0,0,1,0,-67.8564)">
+              <path
+                d="M1024,68L1024,205.026L758.73,205.045L635.406,478.676L1024,478.676L1024,615.232L418.737,615.232L673.221,67.856"
+                fill="currentColor"
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,0,-67.8564)">
+              <path d="M671.535,68.789L956,68.789" fill="none" />
+            </g>
+            <g transform="matrix(1,0,0,1,-0.659396,-67.8564)">
+              <path
+                d="M1.005,68.303L1.005,169.312L559.162,169.312L605.357,68.303L1.005,68.303Z"
+                fill="#fb3"
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,0,-67.8564)">
+              <path
+                d="M535.782,218.531L489.561,317.932L0.346,317.932L0.346,218.531L535.782,218.531Z"
+                fill="#f53"
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,-0.605362,-67.8564)">
+              <path
+                d="M466.951,366.217L420.712,466.028L0.951,466.028L0.951,366.217L466.951,366.217Z"
+                fill="#e83a63"
+              />
+            </g>
+            <g transform="matrix(1,0,0,1,-0.805464,-67.8564)">
+              <path
+                d="M1.151,514.197L1.151,615.333L351.56,615.845L398.254,514.197L1.151,514.197Z"
+                fill="#8a2be2"
+              />
+            </g>
+          </g>
+        </svg>
+
+        <span class="text-retro-red dark:text-dark-red align-super text-sm"
+          >portfolio</span
+        >
+      </div>
+      <div class="flex items-center gap-4">
+        <div class="relative" id="themeDropdownContainer">
+          <button
+            id="themeToggle"
+            class="theme-transition flex h-8 w-8 items-center justify-center rounded-full focus:outline-none"
+            aria-label="Theme options"
+          >
+            <!-- Moon icon (shows in light mode) -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="hidden h-5 w-5 dark:block"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- Sun icon (shows in dark mode) -->
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="block h-5 w-5 dark:hidden"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <circle cx="12" cy="12" r="5"></circle>
+              <path
+                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
+              ></path>
+            </svg>
+          </button>
+
+          <!-- Dropdown menu -->
+          <div
+            id="themeDropdown"
+            class="bg-retro-bg dark:bg-dark-bg border-retro-text dark:border-dark-text absolute right-0 z-50 mt-2 hidden w-36 rounded border-2 py-1 shadow-lg"
+          >
+            <button
+              class="theme-option hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg w-full px-4 py-2 text-left"
+              data-theme="light"
+            >
+              Light
+            </button>
+            <button
+              class="theme-option hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg w-full px-4 py-2 text-left"
+              data-theme="dark"
+            >
+              Dark
+            </button>
+            <button
+              class="theme-option hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg w-full px-4 py-2 text-left"
+              data-theme="system"
+            >
+              System
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section
+      class="relative mx-auto max-w-4xl overflow-hidden px-4 pt-16 pb-24 md:px-0"
+    >
+      <p class="text-lg font-semibold">Full Stack Developer</p>
+      <h1
+        class="mb-4 flex flex-col text-6xl leading-none font-semibold uppercase"
+      >
+        <span>Alex</span> <span>Coder</span>
+      </h1>
+      <p class="max-w-lg text-lg">
+        Building scalable web applications with modern JavaScript
+      </p>
+      <img
+        src="/static/sun.svg"
+        class="absolute top-0 -z-50 w-full animate-spin opacity-40"
+        style="animation-duration: 15s"
+      />
+    </section>
+
+    <!-- Rainbow bars with dark mode colors -->
+
+    <div class="flex flex-col gap-2">
+      <div class="bg-retro-orange h-2"></div>
+      <div class="bg-retro-red h-4"></div>
+      <div class="bg-retro-magenta h-6"></div>
+      <div class="bg-retro-purple h-8"></div>
+    </div>
+
+    <section class="mx-auto my-16 max-w-4xl px-4 md:px-0">
+      <h2
+        class="border-retro-orange dark:border-dark-orange mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase"
+      >
+        About Me
+      </h2>
+      <p class="mb-4">
+        I'm a full-stack developer with 5+ years of experience crafting web
+        applications using Node.js and modern JavaScript frameworks. I
+        specialize in building performant backend services and responsive
+        frontend interfaces that provide exceptional user experiences.
+      </p>
+      <p class="mb-6">
+        When I'm not coding, you can find me exploring new technologies,
+        contributing to open-source projects, and sharing knowledge with the
+        developer community.
+      </p>
+
+      <!-- Terminal-style resume link -->
+      <div
+        class="border-retro-text dark:border-dark-text overflow-hidden rounded border-2 font-mono"
+      >
+        <div
+          class="bg-retro-text dark:bg-dark-text text-retro-bg dark:text-dark-bg flex items-center justify-between px-3 py-1"
+        >
+          <span class="flex gap-2">
+            <span
+              class="bg-retro-purple dark:bg-dark-purple inline-block h-2 w-2 rounded-full"
+            ></span>
+            <span
+              class="bg-retro-red dark:bg-dark-red inline-block h-2 w-2 rounded-full"
+            ></span>
+            <span
+              class="bg-retro-magenta dark:bg-dark-magenta inline-block h-2 w-2 rounded-full"
+            ></span>
+          </span>
+          <span>terminal</span>
+        </div>
+        <div class="bg-retro-text/10 dark:bg-dark-text/10 p-4">
+          <div class="mb-2 flex items-center gap-2">
+            <span class="text-retro-magenta dark:text-dark-magenta">$</span>
+            <span class="typing-animation">cat resume.pdf</span>
+          </div>
+          <a
+            href="/resume"
+            class="bg-retro-text dark:bg-dark-text text-retro-bg dark:text-dark-bg hover:bg-retro-magenta dark:hover:bg-dark-magenta mt-2 inline-flex items-center px-4 py-2 transition-colors"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="mr-2 h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+              />
+            </svg>
+            View Full Resume
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto my-16 max-w-4xl px-4 md:px-0">
+      <h2
+        class="border-retro-red dark:border-dark-red mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase"
+      >
+        Technical Expertise
+      </h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div>
+          <div class="mb-4">
+            <div class="mb-1 flex justify-between">
+              <span>React</span>
+              <span class="text-xs">Advanced</span>
+            </div>
+            <div
+              class="border-retro-text dark:border-dark-text flex w-full items-center rounded-sm border-1 bg-gray-200 p-1 dark:bg-gray-700"
+            >
+              <div
+                class="bg-retro-red dark:bg-dark-red h-5 rounded-xs"
+                style="width: 90%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="mb-1 flex justify-between">
+              <span>Vue.js</span>
+              <span class="text-xs">Intermediate</span>
+            </div>
+            <div
+              class="border-retro-text dark:border-dark-text flex w-full items-center rounded-sm border-1 bg-gray-200 p-1 dark:bg-gray-700"
+            >
+              <div
+                class="bg-retro-orange h-5 rounded-xs"
+                style="width: 75%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="mb-1 flex justify-between">
+              <span>JavaScript/TypeScript</span>
+              <span class="text-xs">Expert</span>
+            </div>
+            <div
+              class="border-retro-text dark:border-dark-text flex w-full items-center rounded-sm border-1 bg-gray-200 p-1 dark:bg-gray-700"
+            >
+              <div
+                class="bg-retro-purple h-5 rounded-xs"
+                style="width: 95%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="mb-1 flex justify-between">
+              <span>CSS/SASS</span>
+              <span class="text-xs">Advanced</span>
+            </div>
+            <div
+              class="border-retro-text dark:border-dark-text flex w-full items-center rounded-sm border-1 bg-gray-200 p-1 dark:bg-gray-700"
+            >
+              <div
+                class="bg-retro-magenta h-5 rounded-xs"
+                style="width: 85%"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-4">
+            <div class="mb-1 flex justify-between">
+              <span>Node.js</span>
+              <span class="text-xs">Expert</span>
+            </div>
+            <div
+              class="border-retro-text dark:border-dark-text flex w-full items-center rounded-sm border-1 bg-gray-200 p-1 dark:bg-gray-700"
+            >
+              <div
+                class="bg-retro-purple h-5 rounded-xs"
+                style="width: 95%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="mb-1 flex justify-between">
+              <span>Express.js</span>
+              <span class="text-xs">Expert</span>
+            </div>
+            <div
+              class="border-retro-text dark:border-dark-text flex w-full items-center rounded-sm border-1 bg-gray-200 p-1 dark:bg-gray-700"
+            >
+              <div
+                class="bg-retro-magenta h-5 rounded-xs"
+                style="width: 90%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="mb-1 flex justify-between">
+              <span>RESTful APIs</span>
+              <span class="text-xs">Expert</span>
+            </div>
+            <div
+              class="border-retro-text dark:border-dark-text flex w-full items-center rounded-sm border-1 bg-gray-200 p-1 dark:bg-gray-700"
+            >
+              <div class="bg-retro-red h-5 rounded-xs" style="width: 95%"></div>
+            </div>
+          </div>
+
+          <div class="mb-4">
+            <div class="mb-1 flex justify-between">
+              <span>GraphQL</span>
+              <span class="text-xs">Advanced</span>
+            </div>
+            <div
+              class="border-retro-text dark:border-dark-text flex w-full items-center rounded-sm border-1 bg-gray-200 p-1 dark:bg-gray-700"
+            >
+              <div
+                class="bg-retro-orange h-5 rounded-xs"
+                style="width: 85%"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto my-16 max-w-4xl px-4 md:px-0">
+      <h2
+        class="border-retro-magenta dark:border-dark-magenta mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase"
+      >
+        Featured Projects
+      </h2>
+
+      <!-- VHS-style project showcase -->
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Project 1: E-Commerce Platform -->
+        <div class="vhs-cover group relative overflow-hidden">
+          <!-- VHS box -->
+          <div class="border-retro-text dark:border-dark-text border-4 relative aspect-[3/5] overflow-hidden">
+            <!-- Tracking line effect -->
+            <div class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+              <div class="tracking-line"></div>
+            </div>
+
+            <!-- Colorful gradient background -->
+            <div class="absolute inset-0 bg-gradient-to-br from-retro-magenta via-retro-purple to-retro-red opacity-90"></div>
+
+            <!-- Geometric pattern overlay -->
+            <div class="absolute inset-0 bg-[url('/static/grid.svg')] opacity-30"></div>
+
+            <!-- Content -->
+            <div class="absolute inset-0 p-4 flex flex-col">
+              <!-- VHS label -->
+              <div class="bg-retro-text dark:bg-dark-text text-retro-bg dark:text-dark-bg text-center py-1 px-2 mb-4 text-xs transform -rotate-2">
+                <span class="tracking-widest">© 2024-03</span>
+              </div>
+
+              <!-- Title -->
+              <h3 class="text-4xl font-bold text-retro-bg dark:text-dark-bg uppercase tracking-tighter mb-2 drop-shadow-glow">
+                E-COMMERCE
+              </h3>
+              <h4 class="text-2xl font-bold text-retro-bg dark:text-dark-bg uppercase tracking-tighter mb-4">
+                PLATFORM
+              </h4>
+
+              <!-- Description -->
+              <p class="text-retro-bg dark:text-dark-bg mb-4 text-sm">
+                Full-stack e-commerce solution with inventory management and payment processing
+              </p>
+
+              <!-- Tech stack -->
+              <div class="mt-auto">
+                <div class="flex flex-wrap gap-1 mb-2">
+                  <span class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text px-2 py-0.5 text-xs">React</span>
+                  <span class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text px-2 py-0.5 text-xs">Node.js</span>
+                  <span class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text px-2 py-0.5 text-xs">MongoDB</span>
+                </div>
+
+                <!-- Play button -->
+                <div class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-bg flex items-center justify-center gap-2 py-1">
+                  <span class="text-xs">VIEW PROJECT</span>
+                  <span>►</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Analytics Dashboard -->
+        <div class="vhs-cover group relative overflow-hidden">
+          <div class="border-retro-text dark:border-dark-text border-4 relative aspect-[3/5] overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+              <div class="tracking-line"></div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-br from-retro-orange via-retro-red to-retro-magenta opacity-90"></div>
+            <div class="absolute inset-0 bg-[url('/static/grid.svg')] opacity-30"></div>
+            <div class="absolute inset-0 p-4 flex flex-col">
+              <div class="bg-retro-text dark:bg-dark-text text-retro-bg dark:text-dark-bg text-center py-1 px-2 mb-4 text-xs transform -rotate-2">
+                <span class="tracking-widest">© 2023-11</span>
+              </div>
+              <h3 class="text-4xl font-bold text-retro-bg dark:text-dark-bg uppercase tracking-tighter mb-2 drop-shadow-glow">
+                ANALYTICS
+              </h3>
+              <h4 class="text-2xl font-bold text-retro-bg dark:text-dark-bg uppercase tracking-tighter mb-4">
+                DASHBOARD
+              </h4>
+              <p class="text-retro-bg dark:text-dark-bg mb-4 text-sm">
+                Real-time data visualization platform with customizable widgets and integrations
+              </p>
+              <div class="mt-auto">
+                <div class="flex flex-wrap gap-1 mb-2">
+                  <span class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text px-2 py-0.5 text-xs">Vue.js</span>
+                  <span class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text px-2 py-0.5 text-xs">D3.js</span>
+                  <span class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text px-2 py-0.5 text-xs">Firebase</span>
+                </div>
+                <div class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-bg flex items-center justify-center gap-2 py-1">
+                  <span class="text-xs">VIEW PROJECT</span>
+                  <span>►</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: DevOps Toolkit -->
+        <div class="vhs-cover group relative overflow-hidden">
+          <div class="border-retro-text dark:border-dark-text border-4 relative aspect-[3/5] overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+              <div class="tracking-line"></div>
+            </div>
+            <div class="absolute inset-0 bg-gradient-to-br from-retro-purple via-retro-blue to-retro-magenta opacity-90"></div>
+            <div class="absolute inset-0 bg-[url('/static/grid.svg')] opacity-30"></div>
+            <div class="absolute inset-0 p-4 flex flex-col">
+              <div class="bg-retro-text dark:bg-dark-text text-retro-bg dark:text-dark-bg text-center py-1 px-2 mb-4 text-xs transform -rotate-2">
+                <span class="tracking-widest">© 2023-09</span>
+              </div>
+              <h3 class="text-4xl font-bold text-retro-bg dark:text-dark-bg uppercase tracking-tighter mb-2 drop-shadow-glow">
+                DEVOPS
+              </h3>
+              <h4 class="text-2xl font-bold text-retro-bg dark:text-dark-bg uppercase tracking-tighter mb-4">
+                TOOLKIT
+              </h4>
+              <p class="text-retro-bg dark:text-dark-bg mb-4 text-sm">
+                CLI tool suite for automating deployment processes and monitoring servers
+              </p>
+              <div class="mt-auto">
+                <div class="flex flex-wrap gap-1 mb-2">
+                  <span class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text px-2 py-0.5 text-xs">Node.js</span>
+                  <span class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text px-2 py-0.5 text-xs">Docker</span>
+                  <span class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text px-2 py-0.5 text-xs">AWS</span>
+                </div>
+                <div class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-bg flex items-center justify-center gap-2 py-1">
+                  <span class="text-xs">VIEW PROJECT</span>
+                  <span>►</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mx-auto my-16 max-w-4xl px-4 md:px-0">
+      <h2
+        class="border-retro-purple dark:border-dark-purple mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase"
+      >
+        GitHub Showcase
+      </h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div>
+          <div class="mb-4 text-2xl font-bold">API Gateway</div>
+          <div class="mb-4">
+            A high-performance Node.js API gateway with authentication, rate
+            limiting, and request transformations.
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >Node.js</span
+            >
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >Express</span
+            >
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >JWT</span
+            >
+          </div>
+        </div>
+
+        <div class="p-2">
+          <div class="mb-4 text-2xl font-bold">DocumentDB</div>
+          <div class="mb-4">
+            A lightweight document database built with Node.js. Designed for
+            ease of use in small to medium projects and rapid prototyping.
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >Node.js</span
+            >
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >JavaScript</span
+            >
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >CLI</span
+            >
+          </div>
+        </div>
+
+        <div>
+          <div class="mb-4 text-2xl font-bold">Weather Dashboard</div>
+          <div class="mb-4">
+            A real-time weather monitoring application with customizable alerts
+            and data visualization.
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >Node.js</span
+            >
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >React</span
+            >
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >OpenWeather API</span
+            >
+          </div>
+        </div>
+
+        <div class="p-2">
+          <div class="mb-4 text-2xl font-bold">TaskRunner</div>
+          <div class="mb-4">
+            A distributed task queue system for handling background jobs across
+            multiple servers with monitoring tools.
+          </div>
+          <div class="mt-4 flex flex-wrap gap-2">
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >Node.js</span
+            >
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >Redis</span
+            >
+            <span
+              class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
+              >WebSockets</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="my-8 flex flex-col gap-2">
+      <div class="bg-retro-orange h-2"></div>
+      <div class="bg-retro-red h-4"></div>
+      <div class="bg-retro-magenta h-6"></div>
+      <div class="bg-retro-purple h-8"></div>
+    </div>
+
+    <!-- Footer with dark mode border -->
+    <footer
+      class="border-retro-text dark:border-dark-text mx-auto mt-16 flex max-w-4xl justify-between border-t-2 px-4 py-8 text-sm md:px-0"
+    >
+      <div>
+        <p>
+          <a
+            href="mailto:me@alexcoder.com"
+            class="border-retro-red dark:border-dark-red hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg border-b-2"
+            >me@alexcoder.com</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://github.com/alexcoder"
+            target="_blank"
+            class="border-retro-red dark:border-dark-red hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg border-b-2"
+            >github.com/alexcoder</a
+          >
+        </p>
+      </div>
+      <div class="text-right">
+        <p>Made with ♥</p>
+        <p>© 2025</p>
+      </div>
+    </footer>
+
+    <script src="/main.js"></script>
+  </body>
+</html>

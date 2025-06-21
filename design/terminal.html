@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Terminal Portfolio</title>
+    <script src="https://cdn.tailwindcss.com?v=4.1.0"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              mono: ["VT323", "Source Code Pro", "Courier New", "monospace"],
+            },
+            animation: {
+              "cursor-blink": "blink 1s step-end infinite",
+              scanline: "scanline 10s linear infinite",
+              typing: "typing 3.5s steps(40, end)",
+              "blink-caret": "blink-caret .75s step-end infinite",
+              flicker: "flicker 0.15s infinite",
+              "power-on": "power-on 2s ease-in-out",
+            },
+            keyframes: {
+              blink: {
+                "0%, 100%": { opacity: "1" },
+                "50%": { opacity: "0" },
+              },
+              scanline: {
+                "0%": { transform: "translateY(0)" },
+                "100%": { transform: "translateY(100%)" },
+              },
+              typing: {
+                from: { width: "0" },
+                to: { width: "100%" },
+              },
+              "blink-caret": {
+                "from, to": { borderColor: "transparent" },
+                "50%": { borderColor: "#ff8800" },
+              },
+              flicker: {
+                "0%": { opacity: "0.27861" },
+                "5%": { opacity: "0.34769" },
+                "10%": { opacity: "0.23604" },
+                "15%": { opacity: "0.90626" },
+                "20%": { opacity: "0.18128" },
+                "25%": { opacity: "0.83891" },
+                "30%": { opacity: "0.65583" },
+                "35%": { opacity: "0.67807" },
+                "40%": { opacity: "0.26559" },
+                "45%": { opacity: "0.84693" },
+                "50%": { opacity: "0.96019" },
+                "55%": { opacity: "0.08594" },
+                "60%": { opacity: "0.20313" },
+                "65%": { opacity: "0.71988" },
+                "70%": { opacity: "0.53455" },
+                "75%": { opacity: "0.37288" },
+                "80%": { opacity: "0.71428" },
+                "85%": { opacity: "0.70419" },
+                "90%": { opacity: "0.7003" },
+                "95%": { opacity: "0.36108" },
+                "100%": { opacity: "0.24387" },
+              },
+              "power-on": {
+                "0%": {
+                  opacity: "0",
+                  transform: "scale(0.8)",
+                  filter: "brightness(0.3)",
+                },
+                "10%": {
+                  opacity: "0.3",
+                  filter: "brightness(0.5)",
+                },
+                "30%": {
+                  opacity: "0.7",
+                  filter: "brightness(0.7)",
+                },
+                "60%": {
+                  opacity: "0.8",
+                  filter: "brightness(0.85)",
+                },
+                "100%": {
+                  opacity: "1",
+                  transform: "scale(1)",
+                  filter: "brightness(1)",
+                },
+              },
+            },
+            textShadow: {
+              crt: "0 0 5px rgba(255, 136, 0, 0.7)",
+            },
+            screens: {
+              xs: "480px",
+            },
+          },
+        },
+        plugins: [
+          ({ addUtilities }) => {
+            addUtilities({
+              ".text-glow": {
+                "text-shadow": "0 0 5px rgba(255, 136, 0, 0.7)",
+              },
+              ".crt-before": {
+                position: "relative",
+                "&::before": {
+                  content: '""',
+                  display: "block",
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  bottom: "0",
+                  right: "0",
+                  background:
+                    "linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%)",
+                  "background-size": "100% 4px",
+                  "z-index": "2",
+                  "pointer-events": "none",
+                },
+              },
+              ".crt-after": {
+                position: "relative",
+                "&::after": {
+                  content: '""',
+                  display: "block",
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  bottom: "0",
+                  right: "0",
+                  background: "rgba(18, 16, 16, 0.1)",
+                  opacity: "0",
+                  "z-index": "2",
+                  "pointer-events": "none",
+                  animation: "flicker 0.15s infinite",
+                },
+              },
+              ".text-glow": {
+                "text-shadow": "0 0 5px rgba(255, 136, 0, 0.7)",
+              },
+              ".crt-noise": {
+                "background-image":
+                  "linear-gradient(to bottom, rgba(255,255,255,.05), rgba(255,255,255,0))",
+                "background-size": "100% 100%",
+                position: "absolute",
+                inset: "0",
+                "pointer-events": "none",
+                "z-index": "10",
+                opacity: "0.05",
+              },
+            });
+          },
+        ],
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
+
+      /* CRT effects */
+      .crt::before {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: linear-gradient(
+          rgba(18, 16, 16, 0) 50%,
+          rgba(0, 0, 0, 0.25) 50%
+        );
+        background-size: 100% 4px;
+        z-index: 2;
+        pointer-events: none;
+      }
+
+      .crt::after {
+        content: " ";
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(18, 16, 16, 0.1);
+        opacity: 0;
+        z-index: 2;
+        pointer-events: none;
+        animation: flicker 0.15s infinite;
+      }
+
+      .scanline {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background: rgba(255, 136, 0, 0.1);
+        z-index: 3;
+        animation: scanline 10s linear infinite;
+      }
+
+      /* Content fade in */
+      .typed-content {
+        overflow: hidden;
+        border-right: 0.15em solid #ff8800;
+        white-space: nowrap;
+        margin: 0;
+        letter-spacing: 0.15em;
+        animation:
+          typing 3.5s steps(40, end),
+          blink-caret 0.75s step-end infinite;
+      }
+
+      /* Terminal screen curvature */
+      .crt-screen {
+        position: relative;
+        border-radius: 20px;
+        box-shadow:
+          0 0 15px rgba(255, 136, 0, 0.2),
+          inset 0 0 15px rgba(0, 0, 0, 0.5);
+        animation: power-on 1.5s ease-in-out;
+      }
+
+      /* For v4.1 enhanced scrollbar */
+      .terminal-content::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .terminal-content::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 4px;
+      }
+
+      .terminal-content::-webkit-scrollbar-thumb {
+        background: rgba(255, 136, 0, 0.5);
+        border-radius: 4px;
+      }
+
+      .terminal-content::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 136, 0, 0.7);
+      }
+
+      @supports (scrollbar-color: orange black) {
+        .terminal-content {
+          scrollbar-color: rgba(255, 136, 0, 0.5) rgba(0, 0, 0, 0.3);
+          scrollbar-width: thin;
+        }
+      }
+
+      /* Custom styles */
+      .terminal-content {
+        font-size: 1.125rem; /* Equivalent to text-lg */
+      }
+    </style>
+  </head>
+  <body
+    class="flex min-h-screen items-center justify-center bg-black p-4 font-mono text-orange-400"
+  >
+    <div
+      class="crt-screen relative h-[85vh] w-full max-w-4xl overflow-hidden border-4 border-gray-700 bg-black p-2"
+    >
+      <div class="crt pointer-events-none absolute inset-0"></div>
+      <div class="scanline"></div>
+      <div class="crt-noise"></div>
+      <div class="terminal-content h-full space-y-6 overflow-y-auto p-4">
+        <!-- Terminal Header -->
+        <div class="terminal-header">
+          <p class="text-base opacity-70">Terminal v1.0 - Portfolio OS</p>
+          <div class="my-2 border-b border-orange-500 opacity-30"></div>
+        </div>
+
+        <!-- Welcome Section -->
+        <div class="mb-8">
+          <pre
+            class="text-glow text-xl leading-tight text-orange-300 md:text-2xl"
+          >
+ _______  _______  ______    _______  _______  _______  ___      ___   _______ 
+|       ||       ||    _ |  |       ||       ||       ||   |    |   | |       |
+|    _  ||   _   ||   | ||  |_     _||    ___||   _   ||   |    |   | |   _   |
+|   |_| ||  | |  ||   |_||_   |   |  |   |___ |  | |  ||   |    |   | |  | |  |
+|    ___||  |_|  ||    __  |  |   |  |    ___||  |_|  ||   |___ |   | |  |_|  |
+|   |    |       ||   |  | |  |   |  |   |___ |       ||       ||   | |       |
+|___|    |_______||___|  |_|  |___|  |_______||_______||_______||___| |_______|
+                </pre
+          >
+          <p class="typed-content mt-4 text-lg">
+            Hi, I'm <span class="text-yellow-300">Your Name</span>. Welcome to
+            my terminal portfolio.
+          </p>
+          <p class="mt-4 text-base">
+            Type <span class="rounded bg-orange-900 px-1">help</span> to see
+            available commands.
+          </p>
+        </div>
+
+        <!-- About Section -->
+        <div class="section" id="about">
+          <div class="flex items-center">
+            <span class="text-yellow-300">visitor@portfolio</span>
+            <span class="text-white">:</span>
+            <span class="text-blue-400">~</span>
+            <span class="text-white">$</span>
+            <span class="ml-2">cat about.txt</span>
+          </div>
+          <div class="mt-2 border-l-2 border-orange-800 pl-4">
+            <h2 class="text-glow text-xl text-orange-300">ABOUT ME</h2>
+            <p class="mt-2">
+              I'm a passionate developer specializing in web development with a
+              focus on creating intuitive and efficient user interfaces. With
+              extensive experience in modern frameworks and a keen eye for
+              design, I bring both technical expertise and creativity to my
+              projects.
+            </p>
+            <p class="mt-2">
+              Outside of coding, I enjoy [your hobbies/interests] and am
+              constantly learning new technologies to expand my skillset.
+            </p>
+          </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section" id="skills">
+          <div class="flex items-center">
+            <span class="text-yellow-300">visitor@portfolio</span>
+            <span class="text-white">:</span>
+            <span class="text-blue-400">~</span>
+            <span class="text-white">$</span>
+            <span class="ml-2">ls -la skills/</span>
+          </div>
+          <div class="mt-2 border-l-2 border-orange-800 pl-4">
+            <h2 class="text-glow text-xl text-orange-300">SKILLS</h2>
+            <div class="mt-2 grid grid-cols-2 gap-2 md:grid-cols-3">
+              <div class="skill-item group">
+                <span
+                  class="text-yellow-300 transition-colors group-hover:text-orange-300"
+                  >[+]</span
+                >
+                HTML/CSS
+              </div>
+              <div class="skill-item group">
+                <span
+                  class="text-yellow-300 transition-colors group-hover:text-orange-300"
+                  >[+]</span
+                >
+                JavaScript
+              </div>
+              <div class="skill-item group">
+                <span
+                  class="text-yellow-300 transition-colors group-hover:text-orange-300"
+                  >[+]</span
+                >
+                React
+              </div>
+              <div class="skill-item group">
+                <span
+                  class="text-yellow-300 transition-colors group-hover:text-orange-300"
+                  >[+]</span
+                >
+                Tailwind CSS
+              </div>
+              <div class="skill-item group">
+                <span
+                  class="text-yellow-300 transition-colors group-hover:text-orange-300"
+                  >[+]</span
+                >
+                Node.js
+              </div>
+              <div class="skill-item group">
+                <span
+                  class="text-yellow-300 transition-colors group-hover:text-orange-300"
+                  >[+]</span
+                >
+                Git
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section" id="projects">
+          <div class="flex items-center">
+            <span class="text-yellow-300">visitor@portfolio</span>
+            <span class="text-white">:</span>
+            <span class="text-blue-400">~</span>
+            <span class="text-white">$</span>
+            <span class="ml-2">find ./projects -type f | sort</span>
+          </div>
+          <div class="mt-2 border-l-2 border-orange-800 pl-4">
+            <h2 class="text-glow text-xl text-orange-300">PROJECTS</h2>
+
+            <div
+              class="project mt-4 rounded p-2 transition-colors hover:bg-orange-900/20"
+            >
+              <h3 class="text-yellow-300">./projects/project1.exe</h3>
+              <p class="text-base opacity-80">
+                A web application that [project description]
+              </p>
+              <div class="mt-1 flex flex-wrap gap-2 text-xs">
+                <span class="rounded bg-orange-900 px-1">React</span>
+                <span class="rounded bg-orange-900 px-1">Node.js</span>
+                <span class="rounded bg-orange-900 px-1">MongoDB</span>
+              </div>
+              <div class="mt-2 flex flex-wrap gap-4">
+                <a
+                  href="#"
+                  class="hover:text-glow text-blue-400 transition hover:underline"
+                  >View Project</a
+                >
+                <a
+                  href="#"
+                  class="hover:text-glow text-blue-400 transition hover:underline"
+                  >Source Code</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="project mt-4 rounded p-2 transition-colors hover:bg-orange-900/20"
+            >
+              <h3 class="text-yellow-300">./projects/project2.exe</h3>
+              <p class="text-base opacity-80">
+                A mobile app that [project description]
+              </p>
+              <div class="mt-1 flex flex-wrap gap-2 text-xs">
+                <span class="rounded bg-orange-900 px-1">React Native</span>
+                <span class="rounded bg-orange-900 px-1">Firebase</span>
+              </div>
+              <div class="mt-2 flex flex-wrap gap-4">
+                <a
+                  href="#"
+                  class="hover:text-glow text-blue-400 transition hover:underline"
+                  >View Project</a
+                >
+                <a
+                  href="#"
+                  class="hover:text-glow text-blue-400 transition hover:underline"
+                  >Source Code</a
+                >
+              </div>
+            </div>
+
+            <div
+              class="project mt-4 rounded p-2 transition-colors hover:bg-orange-900/20"
+            >
+              <h3 class="text-yellow-300">./projects/project3.exe</h3>
+              <p class="text-base opacity-80">
+                A CLI tool that [project description]
+              </p>
+              <div class="mt-1 flex flex-wrap gap-2 text-xs">
+                <span class="rounded bg-orange-900 px-1">Python</span>
+                <span class="rounded bg-orange-900 px-1">Docker</span>
+              </div>
+              <div class="mt-2 flex flex-wrap gap-4">
+                <a
+                  href="#"
+                  class="hover:text-glow text-blue-400 transition hover:underline"
+                  >View Project</a
+                >
+                <a
+                  href="#"
+                  class="hover:text-glow text-blue-400 transition hover:underline"
+                  >Source Code</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="section" id="contact">
+          <div class="flex items-center">
+            <span class="text-yellow-300">visitor@portfolio</span>
+            <span class="text-white">:</span>
+            <span class="text-blue-400">~</span>
+            <span class="text-white">$</span>
+            <span class="ml-2">echo $CONTACT_INFO</span>
+          </div>
+          <div class="mt-2 border-l-2 border-orange-800 pl-4">
+            <h2 class="text-glow text-xl text-orange-300">CONTACT</h2>
+            <div class="contact-links mt-2 space-y-1">
+              <p>
+                <span class="text-yellow-300">[EMAIL]:</span>
+                your.email@example.com
+              </p>
+              <p>
+                <span class="text-yellow-300">[GITHUB]:</span>
+                <a
+                  href="#"
+                  class="hover:text-glow text-blue-400 transition hover:underline"
+                  >github.com/yourusername</a
+                >
+              </p>
+              <p>
+                <span class="text-yellow-300">[LINKEDIN]:</span>
+                <a
+                  href="#"
+                  class="hover:text-glow text-blue-400 transition hover:underline"
+                  >linkedin.com/in/yourusername</a
+                >
+              </p>
+              <p>
+                <span class="text-yellow-300">[TWITTER]:</span>
+                <a
+                  href="#"
+                  class="hover:text-glow text-blue-400 transition hover:underline"
+                  >@yourusername</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

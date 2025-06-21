@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RETRO//FUTURE Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        retro: ['"Press Start 2P"', 'cursive'],
+                        terminal: ['"VT323"', 'monospace'],
+                    },
+                    colors: {
+                        neon: {
+                            pink: '#ff00ff',
+                            blue: '#00ffff',
+                            purple: '#9900ff',
+                            green: '#00ff00',
+                        },
+                    },
+                    animation: {
+                        'glitch': 'glitch 1s infinite',
+                        'scanline': 'scanline 6s linear infinite',
+                        'blink': 'blink 1.5s infinite',
+                    },
+                    keyframes: {
+                        glitch: {
+                            '0%, 100%': { transform: 'translate(0)' },
+                            '33%': { transform: 'translate(5px, 0)' },
+                            '66%': { transform: 'translate(-5px, 0)' },
+                        },
+                        scanline: {
+                            '0%': { transform: 'translateY(0)' },
+                            '100%': { transform: 'translateY(100vh)' },
+                        },
+                        blink: {
+                            '0%, 49%': { opacity: 1 },
+                            '50%, 100%': { opacity: 0 },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0c0c1d;
+            background-image: 
+                linear-gradient(0deg, rgba(9, 9, 26, 0.8) 50%, transparent 50%),
+                radial-gradient(farthest-side at 50% 50%, rgba(73, 0, 128, 0.3), transparent);
+            background-size: 4px 4px, 100% 100%;
+        }
+        .scanline::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 50;
+            animation: scanline 6s linear infinite;
+            pointer-events: none;
+        }
+        .cassette {
+            background: 
+                linear-gradient(135deg, #222 25%, transparent 25%) -10px 0,
+                linear-gradient(225deg, #222 25%, transparent 25%) -10px 0,
+                linear-gradient(315deg, #222 25%, transparent 25%),
+                linear-gradient(45deg, #222 25%, transparent 25%);
+            background-size: 20px 20px;
+            background-color: #333;
+        }
+        .tape-wheel {
+            box-shadow: inset 0 0 10px #00ffff, 0 0 5px #00ffff;
+        }
+        .crt-effect {
+            position: relative;
+        }
+        .crt-effect::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px;
+            z-index: 10;
+            pointer-events: none;
+        }
+        .glitch-text {
+            text-shadow: 
+                0.05em 0 0 rgba(255, 0, 255, 0.75),
+                -0.05em -0.025em 0 rgba(0, 255, 255, 0.75),
+                0.025em 0.05em 0 rgba(0, 255, 0, 0.75);
+            animation: glitch 1s infinite;
+        }
+    </style>
+</head>
+<body class="text-white font-terminal scanline">
+    <!-- Navbar -->
+    <nav class="fixed w-full bg-black/70 backdrop-blur-sm z-40 border-b border-neon-blue/30">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="text-neon-pink font-retro text-xl tracking-wider">DEV<span class="animate-blink">_</span></div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#hero" class="hover:text-neon-blue transition-colors duration-300">HOME</a>
+                <a href="#projects" class="hover:text-neon-pink transition-colors duration-300">PROJECTS</a>
+                <a href="#skills" class="hover:text-neon-green transition-colors duration-300">SKILLS</a>
+                <a href="#about" class="hover:text-neon-purple transition-colors duration-300">ABOUT</a>
+                <a href="#contact" class="hover:text-neon-blue transition-colors duration-300">CONTACT</a>
+            </div>
+            <button class="md:hidden text-xl">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen pt-20 flex items-center relative overflow-hidden crt-effect">
+        <div class="absolute inset-0 -z-50">
+            <div class="absolute inset-0 bg-gradient-to-br from-black via-indigo-900/30 to-black"></div>
+            <div class="grid grid-cols-12 grid-rows-6 gap-1 h-full w-full opacity-20">
+                <div class="col-span-12 row-span-6 border border-neon-blue"></div>
+                <div class="col-span-1 row-span-6 border border-neon-pink absolute right-0 top-0 h-full"></div>
+                <div class="col-span-1 row-span-6 border border-neon-purple absolute left-0 top-0 h-full"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 space-y-6">
+                    <p class="text-neon-blue uppercase tracking-wider">> initialize_portfolio.exe</p>
+                    <h1 class="text-5xl md:text-7xl font-retro leading-tight glitch-text">
+                        JOHN<br>DEVELOPER
+                    </h1>
+                    <div class="h-1 w-24 bg-gradient-to-r from-neon-pink to-neon-blue"></div>
+                    <p class="text-xl md:text-2xl max-w-md">
+                        <span class="text-neon-green">FRONTEND DEVELOPER</span> | 
+                        <span class="text-neon-pink">DESIGNER</span> | 
+                        <span class="text-neon-purple">RETRO ENTHUSIAST</span>
+                    </p>
+                    <div class="pt-6">
+                        <a href="#contact" class="inline-block border-2 border-neon-pink bg-black/50 px-8 py-3 text-neon-pink hover:bg-neon-pink hover:text-black transition-all duration-300">
+                            MAKE CONTACT_
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 mt-12 md:mt-0">
+                    <div class="cassette max-w-md mx-auto rounded-md p-4 border-2 border-gray-600 relative shadow-lg shadow-neon-purple/20">
+                        <div class="bg-black/80 rounded p-3 flex justify-between items-center mb-4">
+                            <div class="text-neon-blue font-retro text-sm">PORTFOLIO.WAV</div>
+                            <div class="text-neon-pink">90:00</div>
+                        </div>
+                        <div class="flex justify-between my-4">
+                            <div class="tape-wheel w-16 h-16 bg-black/60 rounded-full border-4 border-gray-700 flex items-center justify-center">
+                                <div class="w-4 h-4 bg-gray-700 rounded-full"></div>
+                            </div>
+                            <div class="tape-wheel w-16 h-16 bg-black/60 rounded-full border-4 border-gray-700 flex items-center justify-center">
+                                <div class="w-4 h-4 bg-gray-700 rounded-full"></div>
+                            </div>
+                        </div>
+                        <div class="text-center text-sm text-neon-green font-retro py-2">
+                            PLAY ME_
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 relative bg-black/40">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-4xl font-retro mb-4 text-neon-blue">PROJECTS<span class="animate-blink">_</span></h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-neon-blue to-neon-pink mx-auto"></div>
+                <p class="mt-4 text-xl max-w-2xl mx-auto">Select a project from the archive to view details</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Project 1 -->
+                <div class="border-2 border-neon-pink group hover:border-neon-blue hover:shadow-lg hover:shadow-neon-blue/20 transition-all duration-500 bg-black/50 overflow-hidden">
+                    <div class="h-52 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-50"></div>
+                        <img src="https://source.unsplash.com/random/600x400/?cyberpunk" alt="Project 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-retro text-xl mb-3 text-neon-green">NEON DASHBOARD</h3>
+                        <p class="mb-4">A futuristic analytics platform with retro aesthetics and modern functionality</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs py-1 px-2 bg-neon-purple/20 border border-neon-purple/50 rounded">React</span>
+                            <span class="text-xs py-1 px-2 bg-neon-blue/20 border border-neon-blue/50 rounded">Tailwind</span>
+                            <span class="text-xs py-1 px-2 bg-neon-pink/20 border border-neon-pink/50 rounded">D3.js</span>
+                        </div>
+                        <a href="#" class="inline-block border border-neon-pink text-neon-pink px-4 py-2 hover:bg-neon-pink hover:text-black transition-all duration-300">
+                            VIEW PROJECT
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="border-2 border-neon-blue group hover:border-neon-pink hover:shadow-lg hover:shadow-neon-pink/20 transition-all duration-500 bg-black/50 overflow-hidden">
+                    <div class="h-52 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-50"></div>
+                        <img src="https://source.unsplash.com/random/600x400/?vaporwave" alt="Project 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-retro text-xl mb-3 text-neon-blue">RETROWAVE PLAYER</h3>
+                        <p class="mb-4">A synthwave music player with cassette tape UI and visualizer effects</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs py-1 px-2 bg-neon-purple/20 border border-neon-purple/50 rounded">JavaScript</span>
+                            <span class="text-xs py-1 px-2 bg-neon-blue/20 border border-neon-blue/50 rounded">Web Audio API</span>
+                            <span class="text-xs py-1 px-2 bg-neon-pink/20 border border-neon-pink/50 rounded">Canvas</span>
+                        </div>
+                        <a href="#" class="inline-block border border-neon-blue text-neon-blue px-4 py-2 hover:bg-neon-blue hover:text-black transition-all duration-300">
+                            VIEW PROJECT
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="border-2 border-neon-purple group hover:border-neon-green hover:shadow-lg hover:shadow-neon-green/20 transition-all duration-500 bg-black/50 overflow-hidden">
+                    <div class="h-52 overflow-hidden relative">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent z-50"></div>
+                        <img src="https://source.unsplash.com/random/600x400/?retro-computer" alt="Project 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-retro text-xl mb-3 text-neon-purple">CYBER TERMINAL</h3>
+                        <p class="mb-4">Command-line portfolio with ASCII art and retro terminal effects</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="text-xs py-1 px-2 bg-neon-purple/20 border border-neon-purple/50 rounded">Vue.js</span>
+                            <span class="text-xs py-1 px-2 bg-neon-blue/20 border border-neon-blue/50 rounded">TypeScript</span>
+                            <span class="text-xs py-1 px-2 bg-neon-pink/20 border border-neon-pink/50 rounded">GSAP</span>
+                        </div>
+                        <a href="#" class="inline-block border border-neon-purple text-neon-purple px-4 py-2 hover:bg-neon-purple hover:text-black transition-all duration-300">
+                            VIEW PROJECT
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-24 relative">
+        <div class="absolute inset-0 -z-50 bg-gradient-to-b from-black/80 to-indigo-900/20"></div>
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-4xl font-retro mb-4 text-neon-green">SKILLS<span class="animate-blink">_</span></h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-neon-green to-neon-blue mx-auto"></div>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+                <div class="border border-neon-blue/50 bg-black/40 p-6 text-center hover:bg-neon-blue/10 transition-all duration-300 group">
+                    <div class="text-4xl mb-3 text-neon-blue">&#9881;</div>
+                    <h3 class="font-retro text-lg mb-2 text-neon-blue">FRONTEND</h3>
+                    <p class="opacity-80">React, Vue, JavaScript, HTML/CSS</p>
+                </div>
+                
+                <div class="border border-neon-pink/50 bg-black/40 p-6 text-center hover:bg-neon-pink/10 transition-all duration-300 group">
+                    <div class="text-4xl mb-3 text-neon-pink">&#9783;</div>
+                    <h3 class="font-retro text-lg mb-2 text-neon-pink">BACKEND</h3>
+                    <p class="opacity-80">Node.js, Express, MongoDB, Firebase</p>
+                </div>
+                
+                <div class="border border-neon-purple/50 bg-black/40 p-6 text-center hover:bg-neon-purple/10 transition-all duration-300 group">
+                    <div class="text-4xl mb-3 text-neon-purple">&#9775;</div>
+                    <h3 class="font-retro text-lg mb-2 text-neon-purple">DESIGN</h3>
+                    <p class="opacity-80">Figma, Photoshop, Adobe XD, UI/UX</p>
+                </div>
+                
+                <div class="border border-neon-green/50 bg-black/40 p-6 text-center hover:bg-neon-green/10 transition-all duration-300 group">
+                    <div class="text-4xl mb-3 text-neon-green">&#9781;</div>
+                    <h3 class="font-retro text-lg mb-2 text-neon-green">TOOLS</h3>
+                    <p class="opacity-80">Git, Webpack, Docker, CI/CD</p>
+                </div>
+            </div>
+            
+            <div class="mt-16 max-w-4xl mx-auto">
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-retro text-neon-blue">FRONTEND</span>
+                        <span class="text-neon-blue">95%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 h-4">
+                        <div class="bg-gradient-to-r from-neon-pink to-neon-blue h-full" style="width: 95%"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-retro text-neon-pink">BACKEND</span>
+                        <span class="text-neon-pink">80%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 h-4">
+                        <div class="bg-gradient-to-r from-neon-purple to-neon-pink h-full" style="width: 80%"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-retro text-neon-purple">DESIGN</span>
+                        <span class="text-neon-purple">90%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 h-4">
+                        <div class="bg-gradient-to-r from-neon-blue to-neon-purple h-full" style="width: 90%"></div>
+                    </div>
+                </div>
+                
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2">
+                        <span class="font-retro text-neon-green">DEVOPS</span>
+                        <span class="text-neon-green">75%</span>
+                    </div>
+                    <div class="w-full bg-gray-800 h-4">
+                        <div class="bg-gradient-to-r from-neon-green to-neon-blue h-full" style="width: 75%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-black/60 relative">
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-4xl font-retro mb-4 text-neon-purple">ABOUT<span class="animate-blink">_</span></h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-neon-purple to-neon-pink mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center max-w-5xl mx-auto">
+                <div class="md:w-1/3 mb-8 md:mb-0">
+                    <div class="border-4 border-neon-purple cassette p-2 mx-auto max-w-xs">
+                        <img src="https://source.unsplash.com/random/400x500/?cyberpunk-portrait" alt="Profile" class="w-full h-auto">
+                    </div>
+                </div>
+                <div class="md:w-2/3 md:pl-12">
+                    <div class="bg-black/70 border border-neon-pink/30 p-6 mb-8">
+                        <div class="flex items-center mb-4">
+                            <span class="text-neon-green mr-2">></span>
+                            <span class="text-neon-blue font-retro">ABOUT.ME</span>
+                        </div>
+                        <p class="mb-4">
+                            I am a frontend developer with a passion for creating nostalgic yet futuristic interfaces. My work combines the aesthetics of 80s and 90s technology with modern development practices.
+                        </p>
+                        <p>
+                            With 7+ years of experience building web applications, I specialize in creating memorable user experiences that stand out from the standard corporate design templates.
+                        </p>
+                    </div>
+                    
+                    <h3 class="font-retro text-2xl mb-4 text-neon-pink">EXPERIENCE_</h3>
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-neon-blue pl-4">
+                            <div class="text-neon-blue font-retro">SENIOR FRONTEND DEVELOPER</div>
+                            <div class="text-neon-pink mb-1">RetroTech Inc. / 2020-Present</div>
+                            <p class="opacity-80">Leading UI development for interactive data visualization dashboards with retro-inspired interfaces</p>
+                        </div>
+                        
+                        <div class="border-l-2 border-neon-purple pl-4">
+                            <div class="text-neon-purple font-retro">UI/UX DESIGNER</div>
+                            <div class="text-neon-pink mb-1">NeonWave Studios / 2018-2020</div>
+                            <p class="opacity-80">Designed user interfaces for web and mobile applications with a focus on nostalgic aesthetics</p>
+                        </div>
+                        
+                        <div class="border-l-2 border-neon-green pl-4">
+                            <div class="text-neon-green font-retro">WEB DEVELOPER</div>
+                            <div class="text-neon-pink mb-1">Digital Horizons / 2016-2018</div>
+                            <p class="opacity-80">Built responsive websites and web applications for various clients using modern frameworks</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 relative">
+        <div class="absolute inset-0 -z-50">
+            <div class="absolute inset-0 bg-gradient-to-tr from-black via-indigo-900/30 to-black"></div>
+            <div class="grid grid-cols-12 grid-rows-6 gap-1 h-full w-full opacity-20">
+                <div class="col-span-12 row-span-6 border border-neon-blue"></div>
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-4">
+            <div class="mb-12 text-center">
+                <h2 class="text-4xl font-retro mb-4 text-neon-blue">CONTACT<span class="animate-blink">_</span></h2>
+                <div class="h-1 w-24 bg-gradient-to-r from-neon-blue to-neon-green mx-auto"></div>
+                <p class="mt-4 text-xl max-w-2xl mx-auto">Initiate communication sequence</p>
+            </div>
+            
+            <div class="max-w-3xl mx-auto cassette p-6 border-2 border-neon-blue/50 bg-black/50 crt-effect">
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-neon-green font-retro mb-2">NAME_</label>
+                        <input type="text" class="w-full bg-black/70 border-2 border-neon-blue p-3 text-white focus:border-neon-pink focus:outline-none transition-colors duration-300">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-neon-green font-retro mb-2">EMAIL_</label>
+                        <input type="email" class="w-full bg-black/70 border-2 border-neon-blue p-3 text-white focus:border-neon-pink focus:outline-none transition-colors duration-300">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-neon-green font-retro mb-2">MESSAGE_</label>
+                        <textarea rows="5" class="w-full bg-black/70 border-2 border-neon-blue p-3 text-white focus:border-neon-pink focus:outline-none transition-colors duration-300"></textarea>
+                    </div>
+                    
+                    <div class="text-center">
+                        <button type="submit" class="border-2 border-neon-green bg-black px-10 py-3 text-neon-green hover:bg-neon-green hover:text-black transition-all duration-300 font-retro">
+                            TRANSMIT
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="mt-16 flex flex-wrap justify-center gap-6">
+                <a href="#" class="border border-neon-blue p-3 text-neon-blue hover:bg-neon-blue hover:text-black transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                
+                <a href="#" class="border border-neon-purple p-3 text-neon-purple hover:bg-neon-purple hover:text-black transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm6.605 4.61a8.502 8.502 0 011.93 5.314c-.281-.054-3.101-.629-5.943-.271-.065-.141-.12-.293-.184-.445a25.416 25.416 0 00-.564-1.236c3.145-1.28 4.577-3.124 4.761-3.362zM12 3.475c2.17 0 4.154.813 5.662 2.148-.152.216-1.443 1.941-4.48 3.08-1.399-2.57-2.95-4.675-3.189-5A8.687 8.687 0 0112 3.475zm-3.633.803a53.896 53.896 0 013.167 4.935c-3.992 1.063-7.517 1.04-7.896 1.04a8.581 8.581 0 014.729-5.975zM3.453 12.01v-.26c.37.01 4.512.065 8.775-1.215.25.477.477.965.694 1.453-.109.033-.228.065-.336.098-4.404 1.42-6.747 5.303-6.942 5.629a8.522 8.522 0 01-2.19-5.705zM12 20.547a8.482 8.482 0 01-5.239-1.8c.152-.315 1.888-3.656 6.703-5.337.022-.01.033-.01.054-.022a35.318 35.318 0 011.823 6.475 8.4 8.4 0 01-3.341.684zm4.761-1.465c-.086-.52-.542-3.015-1.659-6.084 2.679-.423 5.022.271 5.314.369a8.468 8.468 0 01-3.655 5.715z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+                
+                <a href="#" class="border border-neon-pink p-3 text-neon-pink hover:bg-neon-pink hover:text-black transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                    </svg>
+                </a>
+                
+                <a href="#" class="border border-neon-green p-3 text-neon-green hover:bg-neon-green hover:text-black transition-all duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill-rule="evenodd" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10c5.51 0 10-4.48 10-10S17.51 2 12 2zm-1.41 7.08c.84-1.18 3.04-1.54 3.22 0 .13 1.12-1.09 1.62-2.01 2.07v2.05c1.44-.15 2.98-.59 3.2-1.8.24-1.25-.88-2.32-1.67-2.73 1.42-.35 1.64-1.72 1.41-2.87-.36-1.75-2.33-2.3-4.15-2.3-1.35 0-4.29.45-4.29 2.51s3.3 1.91 3.3 1.91v-2.15c1.05-.05 2.05.52 2.32 1.31.73 2.12-1.73 2.61-2.55 2.64V14c-3.3-.18-4.12-2.24-4.12-3.89 0-2.58 2.73-3.21 4.01-3.81 1.31-.61 1.02-1.52-.09-1.76-1.08-.24-3.3.62-3.3.62V4c4.2-.31 6.72 1.19 6.72 3.72 0 1.24-.81 1.76-1.17 2.12-.84.83-1.36 1.15-1.36 1.24z" clip-rule="evenodd" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-8 bg-black text-center border-t border-neon-blue/30">
+        <div class="container mx-auto px-4">
+            <div class="text-neon-blue font-retro text-xl mb-4">JOHN DEVELOPER</div>
+            <p class="opacity-70 mb-6">Crafting digital experiences with a retro-future aesthetic</p>
+            <div class="h-1 w-12 bg-gradient-to-r from-neon-pink to-neon-blue mx-auto mb-6"></div>
+            <p class="text-sm opacity-50">© 2025 · Made with <span class="text-neon-pink">♥</span> and cassette futurism</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple scroll handling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

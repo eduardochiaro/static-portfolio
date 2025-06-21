@@ -1,6 +1,3 @@
-@import "tailwindcss";
-
-@custom-variant dark (&:where(.dark, .dark *));
 @theme {
   --color-retro-bg: #f8f3ed;
   --color-retro-text: #321e18;
@@ -17,8 +14,4 @@
   --color-dark-purple: #9b3cf3;
 
   --font-mono: "IBM Plex Mono", "monospace";
-}
-
-body {
-  @apply relative bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text font-mono leading-relaxed;
 }
