@@ -40,6 +40,45 @@ const images = [
 
 export default function Gallery() {
   const [, setOverlayVisible] = useState('');
+
+  const expandImage = (src: string, event: React.MouseEvent<HTMLDivElement>) => {
+    // Get the bounding rectangle of the clicked element
+    const target = event.currentTarget.getBoundingClientRect();
+
+    // Create the overlay container
+    const expandedImage = document.createElement('div');
+    expandedImage.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/75';
+    expandedImage.style.cursor = 'pointer';
+    expandedImage.onclick = () => {
+      document.body.removeChild(expandedImage);
+    };
+
+    const divContainer = document.createElement('div');
+    divContainer.className = 'rounded-lg shadow-lg bg-red-500 bg-cover bg-center';
+    divContainer.style.position = 'absolute';
+    divContainer.style.transition = 'all 0.7s ease-in-out';
+    divContainer.style.objectFit = 'contain';
+    divContainer.style.width = `${target.width}px`;
+    divContainer.style.height = `${target.height}px`;
+    divContainer.style.top = `${target.top}px`;
+    divContainer.style.left = `${target.left}px`;
+    divContainer.style.transform = 'none'; // No scaling initially
+    divContainer.style.backgroundImage = `url(${src})`;
+
+    // Append the image to the overlay
+    expandedImage.appendChild(divContainer);
+    document.body.appendChild(expandedImage);
+
+    // Wait for the next frame to apply the full-size transformation
+    requestAnimationFrame(() => {
+      divContainer.style.width = '500px'; // Reset width to auto for full size
+      divContainer.style.height = '500px'; // Set height to fit the screen
+      divContainer.style.top = '50%';
+      divContainer.style.left = '50%';
+      divContainer.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+  };
+
   return (
     <>
       <section className="z-50 mx-auto my-16 max-w-4xl px-4 md:px-0">
@@ -52,13 +91,16 @@ export default function Gallery() {
               <div className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 {img.title}
               </div>
-              <div className="h-80 w-10 transform rounded bg-cover bg-center shadow transition-transform duration-300 group-hover:-translate-y-8">
+              <div
+                className="relative h-96 w-10 transform rounded bg-cover bg-center shadow transition-transform duration-300 group-hover:-translate-y-8"
+                onClick={(event) => expandImage(img.src, event)}
+              >
                 <Image
                   src={img.src}
                   alt={`Gallery image ${idx + 1}`}
-                  layout="fill"
-                  objectFit="cover"
-                  className="border-retro-text dark:border-dark-text rounded-lg border-1"
+                  fill={true}
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                  className="h-80 w-full rounded-lg object-cover object-center"
                 />
               </div>
               <div className="border-retro-text dark:border-dark-text absolute bottom-0 left-2 size-6 rounded-full border-2 opacity-0 transition-opacity duration-300 group-hover:opacity-70"></div>

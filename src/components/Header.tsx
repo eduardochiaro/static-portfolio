@@ -2,15 +2,39 @@
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { ChevronLeftIcon, MoonIcon, SunIcon } from 'lucide-react';
-import { useTheme } from 'next-themes';
 import Logo from './Logo';
 import Link from 'next/link';
+import useUI from '@austinserb/react-zero-ui';
+import { useLocalStorage } from '@uidotdev/usehooks';
+import { useEffect } from 'react';
 
 export default function Header({ name, goBack }: { name?: string; goBack?: string }) {
-  const { setTheme } = useTheme() as { systemTheme: string; theme: string; setTheme: (theme: string) => void };
+  const [currentTheme, setCurrentTheme] = useLocalStorage<'light' | 'dark' | 'system'>('theme', 'light'); // Ensure the theme is stored in local storage
+  const [, setValue] = useUI<'light' | 'dark' | 'system'>('theme', 'light');
+  const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
+  const isDarkMode = darkThemeMq.matches;
 
-  const setColorTheme = (themeName: string) => {
-    setTheme(themeName);
+  useEffect(() => {
+    const setTheme = (theme: 'light' | 'dark' | 'system') => {
+      if (theme === 'system') {
+        setValue(isDarkMode ? 'dark' : 'light');
+      } else {
+        setValue(theme);
+      }
+    };
+    // Set the initial theme based on local storage
+    if (currentTheme) {
+      setTheme(currentTheme);
+    }
+  }, [currentTheme, isDarkMode, setValue]);
+
+  const setColorTheme = (themeName: 'light' | 'dark' | 'system') => {
+    setCurrentTheme(themeName);
+    if (themeName === 'system') {
+      setValue(isDarkMode ? 'dark' : 'light');
+    } else {
+      setValue(themeName);
+    }
   };
 
   return (

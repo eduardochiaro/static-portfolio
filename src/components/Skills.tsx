@@ -22,7 +22,6 @@ export default function Skills({ skills }: SkillProps) {
     color: colorList[index % colorList.length],
     darkColor: darkColorList[index % darkColorList.length],
   }));
-  console.log(skills);
 
   const half = Math.ceil(skills.length / 2);
   const leftColumn = skills.slice(0, half);

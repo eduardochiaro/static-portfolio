@@ -1,7 +1,7 @@
+import { bodyAttributes } from '@zero-ui/attributes';
 import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
 import { Suspense } from 'react';
-import Providers from '@/providers';
 import './globals.css';
 
 const ibmPlexMono = IBM_Plex_Mono({
@@ -18,8 +18,14 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#f8f3ed' },
-    { media: '(prefers-color-scheme: dark)', color: '#0f0f17' },
+    {
+      media: '(prefers-color-scheme: light)',
+      color: '#f8f3ed',
+    },
+    {
+      media: '(prefers-color-scheme: dark)',
+      color: '#0f0f17',
+    },
   ],
 };
 
@@ -33,10 +39,8 @@ export default function RootLayout({
       <head>
         <meta name="apple-mobile-web-app-title" content="Eduardo Chiaro" />
       </head>
-      <body>
-        <Providers>
-          <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
-        </Providers>
+      <body {...bodyAttributes}>
+        <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
       </body>
     </html>
   );
