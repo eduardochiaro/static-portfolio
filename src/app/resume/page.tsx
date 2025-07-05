@@ -1,14 +1,14 @@
 'use client';
 
-import Awards from "@/components/Awards";
-import Experience from "@/components/Experience";
+import Awards from '@/components/Awards';
+import Experience from '@/components/Experience';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import Languages from "@/components/Languages";
+import Languages from '@/components/Languages';
 import Lines from '@/components/Lines';
 import Loading from '@/components/Loading';
-import SkillsSidebar from "@/components/SkillsSidebar";
-import { Award } from "lucide-react";
+import SkillsSidebar from '@/components/SkillsSidebar';
+import { Award } from 'lucide-react';
 import moment from 'moment';
 import { useState } from 'react';
 
@@ -65,7 +65,7 @@ export default function Remote() {
       tags: string[];
     }[]
   >([]);
-  const [languages, setLanguages] = useState< { name: string; level: string }[]>([]);
+  const [languages, setLanguages] = useState<{ name: string; level: string }[]>([]);
   const [awards, setAwards] = useState<{ title: string; date: string }[]>([]);
   // Load data asynchronously
   loadData().then((response: ResumeType) => {
@@ -113,10 +113,10 @@ export default function Remote() {
             <div className="md:w-2/3">
               <Experience experience={experience} />
             </div>
-    <div className="mt-16 md:mt-0 md:w-1/3">
-            <SkillsSidebar skills={skills} />
-            <Awards awards={awards} />
-            <Languages languages={languages} />
+            <div className="mt-16 md:mt-0 md:w-1/3">
+              <SkillsSidebar skills={skills} />
+              <Awards awards={awards} />
+              <Languages languages={languages} />
             </div>
           </div>
           <Footer />

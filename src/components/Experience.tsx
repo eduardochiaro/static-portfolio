@@ -1,33 +1,37 @@
-import moment from "moment";
+import moment from 'moment';
 
 const colorBorderList = [
   'border-retro-purple dark:border-dark-purple',
   'border-retro-magenta dark:border-dark-magenta',
   'border-retro-red dark:border-dark-red',
   'border-retro-orange dark:border-dark-orange',
-]
+];
 
 const colorTextList = [
   'text-retro-purple dark:text-dark-purple',
   'text-retro-magenta dark:text-dark-magenta',
   'text-retro-red dark:text-dark-red',
   'text-retro-orange dark:text-dark-orange',
-]
+];
 
-export default function Experience({ experience }: { experience: {
-  company: string;
-  position: string;
-  location: string;
-  startDate: string;
-  endDate: string;
-  description: string;
-  responsibilities: string[];
-  tags: string[];
-}[] }) {
+export default function Experience({
+  experience,
+}: {
+  experience: {
+    company: string;
+    position: string;
+    location: string;
+    startDate: string;
+    endDate: string;
+    description: string;
+    responsibilities: string[];
+    tags: string[];
+  }[];
+}) {
   return (
-      <section className="z-50 mx-auto mb-16 px-4 md:px-0">
-        <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase">Experience</h2>
-        <div className="relative space-y-16">
+    <section className="z-50 mx-auto mb-16 px-4 md:px-0">
+      <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase">Experience</h2>
+      <div className="relative space-y-16">
         {experience.map((exp, index) => (
           <div key={index} className="relative">
             <div className="flex flex-col gap-2">
