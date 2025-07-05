@@ -8,8 +8,6 @@ import Languages from '@/components/Languages';
 import Lines from '@/components/Lines';
 import Loading from '@/components/Loading';
 import SkillsSidebar from '@/components/SkillsSidebar';
-import { Award } from 'lucide-react';
-import moment from 'moment';
 import { useState } from 'react';
 
 type ResumeType = {
