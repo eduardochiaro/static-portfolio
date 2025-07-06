@@ -11,7 +11,7 @@ const colorTextList = [
   'text-retro-purple dark:text-dark-purple',
   'text-retro-magenta dark:text-dark-magenta',
   'text-retro-red dark:text-dark-red',
-  'text-retro-orange dark:text-dark-orange',
+  'text-retro-text dark:text-dark-orange',
 ];
 
 export default function Experience({

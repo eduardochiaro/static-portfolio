@@ -5,9 +5,9 @@ const colorLevel = (level: string) => {
     case 'Fluent':
       return 'text-retro-magenta dark:text-dark-magenta';
     case 'Intermediate':
-      return 'text-retro-red dark:text-dark-red opacity-80';
+      return 'text-retro-red dark:text-dark-red';
     case 'Basic':
-      return 'text-retro-orange dark:text-dark-orange opacity-60';
+      return 'text-retro-text dark:text-dark-orange';
     default:
       return '';
   }

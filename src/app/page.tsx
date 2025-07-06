@@ -2,11 +2,11 @@
 
 import Bio from '@/components/Bio';
 import Footer from '@/components/Footer';
-import Gallery from '@/components/Gallery';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Lines from '@/components/Lines';
 import Loading from '@/components/Loading';
+import Projects from '@/components/Projects';
 import SideScroll from '@/components/SideScroll';
 //import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
@@ -33,7 +33,7 @@ export default function Home() {
           <Lines />
           <Bio />
           <Skills skills={skills} />
-          <Gallery />
+          <Projects />
           <SideScroll />
           <Lines />
           <Footer />

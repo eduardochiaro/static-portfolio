@@ -1,3 +1,4 @@
+import { GithubIcon } from 'lucide-react';
 import ProjectCard from './ProjectCard';
 
 const projects = [
@@ -5,7 +6,11 @@ const projects = [
     title: "It's Nothing",
     description: 'Pebble Watchface',
     imageUrl: 'https://picsum.photos/seed/nothing/200/300',
-    buttonText: 'Check it on GitHub',
+    buttonText: (
+      <>
+        Look on <GithubIcon className="size-4" /> GitHub
+      </>
+    ),
     buttonUrl: 'https://project-url.com',
     isDownload: false,
   },
@@ -13,7 +18,11 @@ const projects = [
     title: 'Impact (v2.0.0)',
     description: 'Ghost blog theme using TailwindCSS',
     imageUrl: 'https://picsum.photos/seed/impact/200/300',
-    buttonText: 'Check it on GitHub',
+    buttonText: (
+      <>
+        Look on <GithubIcon className="size-4" /> GitHub
+      </>
+    ),
     buttonUrl: '/path/to/resume.pdf',
     isDownload: true,
   },
@@ -21,7 +30,11 @@ const projects = [
     title: 'CompactLine',
     description: 'Oh My Zsh theme',
     imageUrl: 'https://picsum.photos/seed/compact/200/300',
-    buttonText: 'Check it on GitHub',
+    buttonText: (
+      <>
+        Look on <GithubIcon className="size-4" /> GitHub
+      </>
+    ),
     buttonUrl: '/path/to/resume.pdf',
     isDownload: true,
   },

@@ -5,7 +5,7 @@ const colorLevel = (level: string) => {
     case 'Proficient':
       return 'text-retro-magenta dark:text-dark-magenta';
     case 'Familiar':
-      return 'text-retro-red dark:text-dark-red opacity-80';
+      return 'text-retro-red dark:text-dark-red';
     default:
       return '';
   }

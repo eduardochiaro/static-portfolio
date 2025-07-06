@@ -7,8 +7,9 @@ import Header from '@/components/Header';
 import Languages from '@/components/Languages';
 import Lines from '@/components/Lines';
 import Loading from '@/components/Loading';
+import SideScroll from '@/components/SideScroll';
 import SkillsSidebar from '@/components/SkillsSidebar';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type ResumeType = {
   personalInfo: {
@@ -66,14 +67,16 @@ export default function Remote() {
   const [languages, setLanguages] = useState<{ name: string; level: string }[]>([]);
   const [awards, setAwards] = useState<{ title: string; date: string }[]>([]);
   // Load data asynchronously
-  loadData().then((response: ResumeType) => {
-    setPersonalInfo(response.personalInfo);
-    setSkills(response.skills);
-    setSummary(response.summary);
-    setExperience(response.experience);
-    setLanguages(response.languages);
-    setAwards(response.awards);
-    setIsLoading(false);
+  useEffect(() => {
+    loadData().then((response: ResumeType) => {
+      setPersonalInfo(response.personalInfo);
+      setSkills(response.skills);
+      setSummary(response.summary);
+      setExperience(response.experience);
+      setLanguages(response.languages);
+      setAwards(response.awards);
+      setIsLoading(false);
+    });
   });
   return (
     <>
@@ -117,6 +120,8 @@ export default function Remote() {
               <Languages languages={languages} />
             </div>
           </div>
+          <SideScroll />
+          <Lines />
           <Footer />
         </>
       )}

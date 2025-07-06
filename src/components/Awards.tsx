@@ -4,7 +4,7 @@ const colorTextList = [
   'text-retro-purple dark:text-dark-purple',
   'text-retro-magenta dark:text-dark-magenta',
   'text-retro-red dark:text-dark-red',
-  'text-retro-orange dark:text-dark-orange',
+  'text-retro-text dark:text-dark-orange',
 ];
 
 export default function Awards({ awards }: { awards: { title: string; date: string }[] }) {
@@ -17,7 +17,7 @@ export default function Awards({ awards }: { awards: { title: string; date: stri
           {awards.map((award, index) => (
             <li key={index} className="flex justify-between gap-4">
               <span>{award.title}</span>
-              <span className={`${colorTextList[index % colorTextList.length]}`}>{moment(award.date).format('MMM YYYY')}</span>
+              <span className={`${colorTextList[index % colorTextList.length]} text-right`}>{moment(award.date).format('MMM YYYY')}</span>
             </li>
           ))}
         </ul>
