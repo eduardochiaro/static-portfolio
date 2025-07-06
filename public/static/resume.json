@@ -61,6 +61,34 @@
         "Optimized application performance and scalability."
       ],
       "tags": ["web development", "performance optimization", "collaboration"]
+    },
+    {
+      "company": "Code Factory",
+      "position": "Junior Developer",
+      "location": "Los Angeles, CA",
+      "startDate": "2016-01-01",
+      "endDate": "2018-05-31",
+      "description": "Assisted in the development of web applications and learned best practices in software development.",
+      "responsibilities": [
+        "Assisted in the development of web applications using JavaScript and CSS.",
+        "Learned and applied best practices in software development.",
+        "Participated in code reviews and team meetings." 
+      ],
+      "tags": ["web development", "learning", "teamwork"]
+    },
+    {
+      "company": "Retro Tech",
+      "position": "Intern",
+      "location": "San Francisco, CA",
+      "startDate": "2015-06-01",
+      "endDate": "2015-12-31",
+      "description": "Gained experience in web development and retro computing technologies.",
+      "responsibilities": [
+        "Assisted in the development of retro-themed web applications.",
+        "Learned about retro computing technologies and their applications.",
+        "Contributed to open-source projects related to retro computing."
+      ],
+      "tags": ["retro computing", "web development", "open source"]
     }
   ],
   "languages": [
