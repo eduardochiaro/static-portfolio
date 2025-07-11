@@ -6,10 +6,7 @@
     <title>Resume | Alex Coder</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     <style type="text/tailwindcss">
       @custom-variant dark (&:where(.dark, .dark *));
@@ -29,21 +26,15 @@
         --color-dark-magenta: #f04a73;
         --color-dark-purple: #9b3cf3;
 
-        --font-mono: "IBM Plex Mono", "monospace";
+        --font-mono: 'IBM Plex Mono', 'monospace';
       }
     </style>
     <link rel="stylesheet" href="/globals.css" />
   </head>
-  <body
-    class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text font-mono leading-relaxed"
-  >
+  <body class="bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text font-mono leading-relaxed">
     <!-- Header with dark mode dropdown - matches index.html -->
-    <header
-      class="border-retro-text dark:border-dark-text mx-auto flex max-w-4xl items-center justify-between border-b-2 px-4 pt-12 pb-4 md:px-0"
-    >
-      <div
-        class="flex items-center gap-2 text-2xl font-bold tracking-wider uppercase"
-      >
+    <header class="border-retro-text dark:border-dark-text mx-auto flex max-w-4xl items-center justify-between border-b-2 px-4 pt-12 pb-4 md:px-0">
+      <div class="flex items-center gap-2 text-2xl font-bold tracking-wider uppercase">
         <a href="/">
           <svg
             viewBox="0 0 1091 606"
@@ -55,30 +46,14 @@
             fill="currentColor"
           >
             <path fill="none" d="M-675.676-435.135h2388v1668h-2388z" />
-            <path
-              d="M1061.847 33.989h-380.27L457.429 572.441h604.418v-144.77h-386.15l106.14-249.393h280.01z"
-            />
-            <path
-              stroke="#E83963"
-              fill="#E83963"
-              d="M390.628 572.437H29.153V426.052h423.155z"
-            />
-            <path
-              stroke="#FFA800"
-              fill="#FFA800"
-              d="m555.088 179.948-523.547-.29L29.153 33.56l586.505.429z"
-            />
-            <path
-              stroke="#FF5635"
-              fill="#FF5635"
-              d="m473.148 375.686-443.995-.44v-145.08h504.835z"
-            />
+            <path d="M1061.847 33.989h-380.27L457.429 572.441h604.418v-144.77h-386.15l106.14-249.393h280.01z" />
+            <path stroke="#E83963" fill="#E83963" d="M390.628 572.437H29.153V426.052h423.155z" />
+            <path stroke="#FFA800" fill="#FFA800" d="m555.088 179.948-523.547-.29L29.153 33.56l586.505.429z" />
+            <path stroke="#FF5635" fill="#FF5635" d="m473.148 375.686-443.995-.44v-145.08h504.835z" />
           </svg>
         </a>
 
-        <span class="text-retro-red dark:text-dark-red align-super text-sm"
-          >resume</span
-        >
+        <span class="text-retro-red dark:text-dark-red align-super text-sm">resume</span>
       </div>
       <div class="flex items-center gap-4">
         <nav class="flex items-center gap-4">
@@ -87,42 +62,18 @@
             class="border-retro-red dark:border-dark-red hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg mx-1 border-b-2 hover:mx-0 hover:px-1"
             >Lab</a
           >
-          <a
-            href="/"
-            class="bg-retro-red text-retro-bg dark:bg-dark-red dark:text-dark-bg border-b-2 px-1"
-            >Resume</a
-          >
+          <a href="/" class="bg-retro-red text-retro-bg dark:bg-dark-red dark:text-dark-bg border-b-2 px-1">Resume</a>
         </nav>
         <div class="relative" id="themeDropdownContainer">
-          <button
-            id="themeToggle"
-            class="theme-transition flex h-8 w-8 items-center justify-center rounded-full focus:outline-none"
-            aria-label="Theme options"
-          >
+          <button id="themeToggle" class="theme-transition flex h-8 w-8 items-center justify-center rounded-full focus:outline-none" aria-label="Theme options">
             <!-- Moon icon (shows in light mode) -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="hidden h-5 w-5 dark:block"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="hidden h-5 w-5 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
             </svg>
             <!-- Sun icon (shows in dark mode) -->
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="block h-5 w-5 dark:hidden"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-            >
+            <svg xmlns="http://www.w3.org/2000/svg" class="block h-5 w-5 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <circle cx="12" cy="12" r="5"></circle>
-              <path
-                d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"
-              ></path>
+              <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
             </svg>
           </button>
 
@@ -156,11 +107,7 @@
 
     <section class="mx-auto max-w-4xl px-4 py-16 md:px-0">
       <p class="text-lg font-semibold">Full Stack Developer</p>
-      <h1
-        class="mb-4 flex flex-col text-6xl leading-none font-semibold uppercase"
-      >
-        <span>Alex</span> <span>Coder</span>
-      </h1>
+      <h1 class="mb-4 flex flex-col text-6xl leading-none font-semibold uppercase"><span>Alex</span> <span>Coder</span></h1>
       <div class="flex flex-col gap-4 md:flex-row">
         <p><span class="opacity-60">Email:</span> alex@example.com</p>
         <p><span class="opacity-60">Location:</span> San Francisco, CA</p>
@@ -182,11 +129,8 @@
       <section class="mb-16">
         <h2 class="mb-6 text-xl font-bold uppercase">Professional Summary</h2>
         <p class="mb-4 text-sm">
-          Full stack developer with 5+ years of experience building web
-          applications with modern JavaScript frameworks. Passionate about clean
-          code, user experience, and retro computing aesthetics. Proven track
-          record of delivering complex projects on time and mentoring junior
-          developers.
+          Full stack developer with 5+ years of experience building web applications with modern JavaScript frameworks. Passionate about clean code, user
+          experience, and retro computing aesthetics. Proven track record of delivering complex projects on time and mentoring junior developers.
         </p>
       </section>
       <!-- Two-column container -->
@@ -195,84 +139,43 @@
         <div class="md:w-2/3">
           <!-- Professional Experience -->
           <section>
-            <h2 class="mb-6 text-xl font-bold uppercase">
-              Professional Experience
-            </h2>
+            <h2 class="mb-6 text-xl font-bold uppercase">Professional Experience</h2>
 
             <div class="relative space-y-16">
               <!-- Senior Frontend Developer -->
               <div class="relative">
                 <div class="flex flex-col gap-2">
-                  <div
-                    class="flex flex-col md:flex-row md:items-center md:justify-between"
-                  >
+                  <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
-                      <h3 class="text-xl font-bold">
-                        Senior Frontend Developer
-                      </h3>
+                      <h3 class="text-xl font-bold">Senior Frontend Developer</h3>
                       <div class="flex flex-col text-sm md:flex-row md:gap-3">
                         <span class="font-semibold">TechVision Inc.</span>
                         <span class="opacity-75">San Francisco, CA</span>
                       </div>
                     </div>
-                    <div
-                      class="text-retro-purple dark:text-dark-purple text-sm font-medium"
-                    >
-                      Jan 2022 - Present
-                    </div>
+                    <div class="text-retro-purple dark:text-dark-purple text-sm font-medium">Jan 2022 - Present</div>
                   </div>
 
-                  <p
-                    class="border-retro-purple dark:border-dark-purple mb-3 border-l-2 pl-3 text-sm italic"
-                  >
-                    Led frontend architecture and development for enterprise
-                    SaaS applications serving 50,000+ users.
+                  <p class="border-retro-purple dark:border-dark-purple mb-3 border-l-2 pl-3 text-sm italic">
+                    Led frontend architecture and development for enterprise SaaS applications serving 50,000+ users.
                   </p>
 
                   <ul class="list-disc space-y-3 pl-5">
                     <li>
-                      Spearheaded migration from legacy JavaScript to a modern
-                      React/TypeScript architecture, resulting in 40%
-                      performance improvement and 30% reduction in bugs.
+                      Spearheaded migration from legacy JavaScript to a modern React/TypeScript architecture, resulting in 40% performance improvement and 30%
+                      reduction in bugs.
                     </li>
-                    <li>
-                      Designed and implemented CI/CD pipeline with automated
-                      testing, reducing deployment time from 3 hours to 45
-                      minutes.
-                    </li>
-                    <li>
-                      Established coding standards and review processes,
-                      mentored 5 junior developers, and conducted biweekly
-                      knowledge-sharing sessions.
-                    </li>
-                    <li>
-                      Collaborated with product and design teams to implement
-                      responsive UI components that improved user engagement
-                      metrics by 25%.
-                    </li>
+                    <li>Designed and implemented CI/CD pipeline with automated testing, reducing deployment time from 3 hours to 45 minutes.</li>
+                    <li>Established coding standards and review processes, mentored 5 junior developers, and conducted biweekly knowledge-sharing sessions.</li>
+                    <li>Collaborated with product and design teams to implement responsive UI components that improved user engagement metrics by 25%.</li>
                   </ul>
 
                   <div class="flex flex-wrap gap-2 pt-3">
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >React</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >TypeScript</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >GraphQL</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >AWS</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >Jest</span
-                    >
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">React</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">TypeScript</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">GraphQL</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">AWS</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">Jest</span>
                   </div>
                 </div>
               </div>
@@ -280,9 +183,7 @@
               <!-- Full Stack Developer -->
               <div class="relative">
                 <div class="flex flex-col gap-2">
-                  <div
-                    class="flex flex-col md:flex-row md:items-center md:justify-between"
-                  >
+                  <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
                       <h3 class="text-xl font-bold">Full Stack Developer</h3>
                       <div class="flex flex-col text-sm md:flex-row md:gap-3">
@@ -290,64 +191,28 @@
                         <span class="opacity-75">Seattle, WA</span>
                       </div>
                     </div>
-                    <div
-                      class="text-retro-magenta dark:text-dark-magenta text-sm font-medium"
-                    >
-                      Mar 2019 - Dec 2021
-                    </div>
+                    <div class="text-retro-magenta dark:text-dark-magenta text-sm font-medium">Mar 2019 - Dec 2021</div>
                   </div>
 
-                  <p
-                    class="border-retro-magenta dark:border-dark-magenta mb-3 border-l-2 pl-3 text-sm italic"
-                  >
-                    Developed end-to-end solutions for enterprise clients across
-                    healthcare and finance sectors.
+                  <p class="border-retro-magenta dark:border-dark-magenta mb-3 border-l-2 pl-3 text-sm italic">
+                    Developed end-to-end solutions for enterprise clients across healthcare and finance sectors.
                   </p>
 
                   <ul class="list-disc space-y-3 pl-5">
+                    <li>Architected and developed 6 client web applications using Vue.js, Node.js, and MongoDB, serving over 10,000 daily users.</li>
+                    <li>Designed RESTful and GraphQL APIs that processed 2M+ daily requests with 99.9% uptime, supporting both web and mobile clients.</li>
                     <li>
-                      Architected and developed 6 client web applications using
-                      Vue.js, Node.js, and MongoDB, serving over 10,000 daily
-                      users.
+                      Implemented comprehensive automated testing strategy that increased code coverage from 40% to 85%, reducing production incidents by 60%.
                     </li>
-                    <li>
-                      Designed RESTful and GraphQL APIs that processed 2M+ daily
-                      requests with 99.9% uptime, supporting both web and mobile
-                      clients.
-                    </li>
-                    <li>
-                      Implemented comprehensive automated testing strategy that
-                      increased code coverage from 40% to 85%, reducing
-                      production incidents by 60%.
-                    </li>
-                    <li>
-                      Served as technical lead for 3-person team in an agile
-                      environment, managing sprints and facilitating client
-                      technical discussions.
-                    </li>
+                    <li>Served as technical lead for 3-person team in an agile environment, managing sprints and facilitating client technical discussions.</li>
                   </ul>
 
                   <div class="flex flex-wrap gap-2 pt-3">
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >Vue.js</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >Node.js</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >MongoDB</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >Docker</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >Express</span
-                    >
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">Vue.js</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">Node.js</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">MongoDB</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">Docker</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">Express</span>
                   </div>
                 </div>
               </div>
@@ -355,9 +220,7 @@
               <!-- Junior Web Developer -->
               <div class="relative">
                 <div class="flex flex-col gap-2">
-                  <div
-                    class="flex flex-col md:flex-row md:items-center md:justify-between"
-                  >
+                  <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                     <div>
                       <h3 class="text-xl font-bold">Junior Web Developer</h3>
                       <div class="flex flex-col text-sm md:flex-row md:gap-3">
@@ -365,54 +228,26 @@
                         <span class="opacity-75">Portland, OR</span>
                       </div>
                     </div>
-                    <div
-                      class="text-retro-red dark:text-dark-red text-sm font-medium"
-                    >
-                      Jun 2018 - Feb 2019
-                    </div>
+                    <div class="text-retro-red dark:text-dark-red text-sm font-medium">Jun 2018 - Feb 2019</div>
                   </div>
 
-                  <p
-                    class="border-retro-red dark:border-dark-red mb-3 border-l-2 pl-3 text-sm italic"
-                  >
-                    Developed responsive websites and e-commerce solutions for
-                    small to medium businesses.
+                  <p class="border-retro-red dark:border-dark-red mb-3 border-l-2 pl-3 text-sm italic">
+                    Developed responsive websites and e-commerce solutions for small to medium businesses.
                   </p>
 
                   <ul class="list-disc space-y-3 pl-5">
+                    <li>Designed and built 12+ responsive websites for local businesses, resulting in an average 35% increase in mobile engagement.</li>
                     <li>
-                      Designed and built 12+ responsive websites for local
-                      businesses, resulting in an average 35% increase in mobile
-                      engagement.
+                      Optimized website performance through code refactoring, image optimization, and caching strategies, improving page load speeds by 40-60%.
                     </li>
-                    <li>
-                      Optimized website performance through code refactoring,
-                      image optimization, and caching strategies, improving page
-                      load speeds by 40-60%.
-                    </li>
-                    <li>
-                      Collaborated with UI/UX designers to implement accessible
-                      user interfaces following WCAG 2.1 guidelines.
-                    </li>
+                    <li>Collaborated with UI/UX designers to implement accessible user interfaces following WCAG 2.1 guidelines.</li>
                   </ul>
 
                   <div class="flex flex-wrap gap-2 pt-3">
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >JavaScript</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >HTML/CSS</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >WordPress</span
-                    >
-                    <span
-                      class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm"
-                      >SASS</span
-                    >
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">JavaScript</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">HTML/CSS</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">WordPress</span>
+                    <span class="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">SASS</span>
                   </div>
                 </div>
               </div>
@@ -432,61 +267,43 @@
                 <!-- Expert skills -->
                 <li class="flex justify-between gap-4">
                   <span>JavaScript</span>
-                  <span class="text-retro-purple dark:text-dark-purple"
-                    >Expert</span
-                  >
+                  <span class="text-retro-purple dark:text-dark-purple">Expert</span>
                 </li>
                 <li class="flex justify-between gap-4">
                   <span>React</span>
-                  <span class="text-retro-purple dark:text-dark-purple"
-                    >Expert</span
-                  >
+                  <span class="text-retro-purple dark:text-dark-purple">Expert</span>
                 </li>
                 <li class="flex justify-between gap-4">
                   <span>Node.js</span>
-                  <span class="text-retro-purple dark:text-dark-purple"
-                    >Expert</span
-                  >
+                  <span class="text-retro-purple dark:text-dark-purple">Expert</span>
                 </li>
 
                 <!-- Proficient skills -->
                 <li class="flex justify-between gap-4">
                   <span>TypeScript</span>
-                  <span class="text-retro-magenta dark:text-dark-magenta"
-                    >Proficient</span
-                  >
+                  <span class="text-retro-magenta dark:text-dark-magenta">Proficient</span>
                 </li>
                 <li class="flex justify-between gap-4">
                   <span>Vue.js</span>
-                  <span class="text-retro-magenta dark:text-dark-magenta"
-                    >Proficient</span
-                  >
+                  <span class="text-retro-magenta dark:text-dark-magenta">Proficient</span>
                 </li>
                 <li class="flex justify-between gap-4">
                   <span>Tailwind CSS</span>
-                  <span class="text-retro-magenta dark:text-dark-magenta"
-                    >Proficient</span
-                  >
+                  <span class="text-retro-magenta dark:text-dark-magenta">Proficient</span>
                 </li>
 
                 <!-- Familiar skills -->
                 <li class="flex justify-between gap-4">
                   <span>Python</span>
-                  <span class="text-retro-red dark:text-dark-red opacity-80"
-                    >Familiar</span
-                  >
+                  <span class="text-retro-red dark:text-dark-red opacity-80">Familiar</span>
                 </li>
                 <li class="flex justify-between gap-4">
                   <span>HTML/CSS</span>
-                  <span class="text-retro-red dark:text-dark-red opacity-80"
-                    >Familiar</span
-                  >
+                  <span class="text-retro-red dark:text-dark-red opacity-80">Familiar</span>
                 </li>
                 <li class="flex justify-between gap-4">
                   <span>SASS</span>
-                  <span class="text-retro-red dark:text-dark-red opacity-80"
-                    >Familiar</span
-                  >
+                  <span class="text-retro-red dark:text-dark-red opacity-80">Familiar</span>
                 </li>
               </ul>
             </div>
@@ -499,13 +316,8 @@
             <div class="mb-8 text-sm">
               <ul class="space-y-2">
                 <li class="flex justify-between gap-4">
-                  <span
-                    >Best Advance in Unique HR or Workforce Management
-                    Technology</span
-                  >
-                  <span class="text-retro-purple dark:text-dark-purple"
-                    >Dec 2018</span
-                  >
+                  <span>Best Advance in Unique HR or Workforce Management Technology</span>
+                  <span class="text-retro-purple dark:text-dark-purple">Dec 2018</span>
                 </li>
               </ul>
             </div>
@@ -520,15 +332,11 @@
               <ul class="space-y-2">
                 <li class="flex justify-between gap-4">
                   <span>English</span>
-                  <span class="text-retro-purple dark:text-dark-purple"
-                    >Native</span
-                  >
+                  <span class="text-retro-purple dark:text-dark-purple">Native</span>
                 </li>
                 <li class="flex justify-between gap-4">
                   <span>Spanish</span>
-                  <span class="text-retro-magenta dark:text-dark-magenta"
-                    >Fluent</span
-                  >
+                  <span class="text-retro-magenta dark:text-dark-magenta">Fluent</span>
                 </li>
                 <li class="flex justify-between gap-4">
                   <span>French</span>
@@ -550,9 +358,7 @@
     </div>
 
     <!-- Footer with dark mode border -->
-    <footer
-      class="border-retro-text dark:border-dark-text mx-auto mt-16 flex max-w-4xl justify-between border-t-2 px-4 py-8 text-sm md:px-0"
-    >
+    <footer class="border-retro-text dark:border-dark-text mx-auto mt-16 flex max-w-4xl justify-between border-t-2 px-4 py-8 text-sm md:px-0">
       <div>
         <p class="flex flex-col md:flex-row">
           <span>Download full resume:</span>

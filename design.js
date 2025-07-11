@@ -4,17 +4,28 @@ const path = require('path');
 const WebSocket = require('ws');
 const chokidar = require('chokidar');
 
-const PORT = 3000;
-const WEBSOCKET_PORT = 3001;
+const PORT = 3001;
+const WEBSOCKET_PORT = 3002;
+
+const pageList = [
+  { url: '/', file: 'index.html' },
+  { url: '/index.html', file: 'index.html' },
+  { url: '/resume', file: 'resume.html' },
+  { url: '/terminal', file: 'terminal.html' },
+  { url: '/daily', file: 'daily.html' },
+  { url: '/cassette', file: 'cassette.html' }
+];
 
 // Create HTTP server
 const server = http.createServer((req, res) => {
-  if (req.url === '/' || req.url === '/index.html') {
-    const filePath = path.join(__dirname, 'design/index.html');
+  // loop through the pageList to find a match
+  const page = pageList.find(p => p.url === req.url);
+  if (page) {
+    const filePath = path.join(__dirname, 'design', page.file);
     fs.readFile(filePath, (err, data) => {
       if (err) {
         res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('index.html not found');
+        res.end(`${page.file} not found`);
       } else {
         res.writeHead(200, { 'Content-Type': 'text/html' });
         // Inject live reload script before sending the HTML
@@ -22,46 +33,9 @@ const server = http.createServer((req, res) => {
         res.end(injectedHTML);
       }
     });
-  } else if (req.url === '/resume') {
-    const resumePath = path.join(__dirname, 'design/resume.html');
-    fs.readFile(resumePath, (err, data) => {
-      if (err) {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('resume.html not found');
-      } else {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        // Inject live reload script before sending the HTML
-        const injectedHTML = injectLiveReloadScript(data.toString());
-        res.end(injectedHTML);
-      }
-    });
-  } else if (req.url === '/terminal') {
-    // Add handler for lab URL
-    const labPath = path.join(__dirname, 'design/terminal.html');
-    fs.readFile(labPath, (err, data) => {
-      if (err) {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('terminal.html not found');
-      } else {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        const injectedHTML = injectLiveReloadScript(data.toString());
-        res.end(injectedHTML);
-      }
-    });
-  } else if (req.url === '/daily') {
-    // Add handler for lab URL
-    const labPath = path.join(__dirname, 'design/daily.html');
-    fs.readFile(labPath, (err, data) => {
-      if (err) {
-        res.writeHead(404, { 'Content-Type': 'text/plain' });
-        res.end('daily.html not found');
-      } else {
-        res.writeHead(200, { 'Content-Type': 'text/html' });
-        const injectedHTML = injectLiveReloadScript(data.toString());
-        res.end(injectedHTML);
-      }
-    });
-  } else if (req.url.endsWith('.css')) {
+    return; // Exit early if a page is found
+  }
+  if (req.url.endsWith('.css')) {
     // Serve CSS files
     const cssPath = path.join(__dirname, 'design', req.url);
     fs.readFile(cssPath, (err, data) => {
@@ -86,8 +60,7 @@ const server = http.createServer((req, res) => {
       }
     });
   // Serve other static files (images, etc.)
-  }
-  else if (req.url.startsWith('/static/')) {
+  } else if (req.url.startsWith('/static/')) {
     const staticPath = path.join(__dirname, req.url);
     fs.readFile(staticPath, (err, data) => {
       if (err) {
