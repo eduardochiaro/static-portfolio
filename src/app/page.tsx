@@ -1,14 +1,15 @@
 'use client';
 
 import Bio from '@/components/Bio';
+import ClickSpark from '@/components/ClickSpark';
 import Footer from '@/components/Footer';
+import GitHub from '@/components/GitHub';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Lines from '@/components/Lines';
 import Loading from '@/components/Loading';
 import Projects from '@/components/Projects';
 import SideScroll from '@/components/SideScroll';
-//import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import { useState, useEffect } from 'react';
 
@@ -27,17 +28,18 @@ export default function Home() {
       {isLoading ? (
         <Loading />
       ) : (
-        <>
+        <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
           <Header name="" />
           <Hero />
           <Lines />
           <Bio />
           <Skills skills={skills} />
           <Projects />
+          <GitHub />
           <SideScroll />
           <Lines />
           <Footer />
-        </>
+        </ClickSpark>
       )}
     </>
   );

@@ -27,7 +27,7 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
         <p className="mb-6 min-h-24 flex-grow text-gray-600">{description}</p>
         <a
           href={buttonUrl}
-          className="button flex items-center gap-2"
+          className="button text-center"
           download={isDownload}
           target={!isDownload ? '_blank' : undefined}
           rel={!isDownload ? 'noopener noreferrer' : undefined}

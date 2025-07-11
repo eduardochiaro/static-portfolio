@@ -3,19 +3,16 @@ import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
 import { Suspense } from 'react';
 import './globals.css';
-
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
   variable: '--font-ibm-plex-mono',
   subsets: ['latin'],
 });
-
 export const metadata: Metadata = {
   title: 'Eduardo Chiaro',
   description: 'Eduardo Chiaro - Software Engineer',
 };
-
 export const viewport: Viewport = {
   themeColor: [
     {
@@ -28,7 +25,6 @@ export const viewport: Viewport = {
     },
   ],
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

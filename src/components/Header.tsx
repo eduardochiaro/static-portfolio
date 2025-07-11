@@ -8,8 +8,10 @@ import useUI from '@austinserb/react-zero-ui';
 import { useLocalStorage } from '@uidotdev/usehooks';
 import { useEffect } from 'react';
 
+const themeUuid = process.env.NEXT_PUBLIC_THEME_UUID || 'default-theme-uuid'; // Fallback to a default UUID if not set
+
 export default function Header({ name, goBack }: { name?: string; goBack?: string }) {
-  const [currentTheme, setCurrentTheme] = useLocalStorage<'light' | 'dark' | 'system'>('theme', 'light'); // Ensure the theme is stored in local storage
+  const [currentTheme, setCurrentTheme] = useLocalStorage<'light' | 'dark' | 'system'>(themeUuid, 'light'); // Ensure the theme is stored in local storage
   const [, setValue] = useUI<'light' | 'dark' | 'system'>('theme', 'light');
   const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
   const isDarkMode = darkThemeMq.matches;
@@ -48,14 +50,14 @@ export default function Header({ name, goBack }: { name?: string; goBack?: strin
           <Link
             href={goBack}
             prefetch={false}
-            className="text-retro-text dark:text-dark-text hover:text-retro-red dark:hover:text-dark-red flex items-center gap-1 text-lg font-bold"
+            className="text-retro-text dark:text-dark-text hover:text-retro-red dark:hover:text-dark-red flex items-center gap-1 text-sm font-bold"
           >
-            <ChevronLeftIcon className="size-6" />
+            <ChevronLeftIcon className="size-4 stroke-3" />
             Back
           </Link>
         )}
         <Menu>
-          <MenuButton className="flex items-center justify-center rounded-full focus:outline-none">
+          <MenuButton className="flex cursor-pointer items-center justify-center rounded-full focus:outline-none">
             <SunIcon className="block h-5 w-5 dark:hidden" />
             <MoonIcon className="hidden h-5 w-5 dark:block" />
           </MenuButton>
@@ -66,7 +68,7 @@ export default function Header({ name, goBack }: { name?: string; goBack?: strin
           >
             <MenuItem>
               <button
-                className="theme-option hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg w-full px-4 py-2 text-left"
+                className="theme-option hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg w-full cursor-pointer px-4 py-2 text-left"
                 data-theme="light"
                 onClick={() => {
                   setColorTheme('light');
@@ -77,7 +79,7 @@ export default function Header({ name, goBack }: { name?: string; goBack?: strin
             </MenuItem>
             <MenuItem>
               <button
-                className="theme-option hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg w-full px-4 py-2 text-left"
+                className="theme-option hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg w-full cursor-pointer px-4 py-2 text-left"
                 data-theme="dark"
                 onClick={() => {
                   setColorTheme('dark');
@@ -88,7 +90,7 @@ export default function Header({ name, goBack }: { name?: string; goBack?: strin
             </MenuItem>
             <MenuItem>
               <button
-                className="theme-option hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg w-full px-4 py-2 text-left"
+                className="theme-option hover:bg-retro-red hover:text-retro-bg dark:hover:bg-dark-red dark:hover:text-dark-bg w-full cursor-pointer px-4 py-2 text-left"
                 data-theme="system"
                 onClick={() => {
                   setColorTheme('system');

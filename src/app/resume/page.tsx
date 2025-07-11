@@ -1,6 +1,7 @@
 'use client';
 
 import Awards from '@/components/Awards';
+import ClickSpark from '@/components/ClickSpark';
 import Experience from '@/components/Experience';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -83,7 +84,7 @@ export default function Remote() {
       {isLoading ? (
         <Loading />
       ) : (
-        <>
+        <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
           <Header name="Resume" goBack="/" />
           <section className="mx-auto max-w-4xl px-4 py-16 md:px-0">
             <p className="text-lg font-semibold">{personalInfo.role}</p>
@@ -123,7 +124,7 @@ export default function Remote() {
           <SideScroll />
           <Lines />
           <Footer />
-        </>
+        </ClickSpark>
       )}
     </>
   );
