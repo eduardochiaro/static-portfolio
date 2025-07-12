@@ -28,11 +28,6 @@
         --color-blue-border: #33384b;
       }
     </style>
-    <style>
-      .pixel-art {
-        image-rendering: pixelated;
-      }
-    </style>
   </head>
   <body class="bg-app-bg relative">
     <!-- Header section -->
@@ -118,7 +113,7 @@
       <img
         src="https://c10.patreonusercontent.com/4/patreon-media/p/post/34089930/64cc6ab8ba884eb1a2b9e4a094f500c8/eyJ3IjoxMDgwfQ%3D%3D/1.gif?token-hash=nwQi10-1dfx74jUH6k1DZtc-MadFDwCK0YimLWxcO6Q%3D&token-time=1753488000"
         alt="Pixel art city landscape"
-        class="pixel-art h-full w-full object-cover object-[0_65%]"
+        class="h-full w-full object-cover object-[0_65%]"
       />
       <div class="from-app-bg absolute inset-0 bg-linear-to-t from-10% to-transparent"></div>
     </div>
@@ -175,29 +170,29 @@
 
         <div class="py-4">
           <!-- Table header -->
-          <div class="border-app-border mb-2 grid grid-cols-3 border-b-3 px-2 pb-1 text-xs font-semibold text-white">
+          <div class="border-app-border mb-2 grid grid-cols-3 border-b-3 px-2 pb-1 text-xs font-semibold text-app-muted">
             <div>Note (3)</div>
             <div>Folder</div>
             <div>Last Modified</div>
           </div>
 
           <!-- Table rows -->
-          <div class="border-app-border grid grid-cols-3 border-b px-2 py-1 text-xs">
+          <div class="grid grid-cols-3 px-2 py-1 text-xs">
             <div class="text-green-text">Daily Backlinks</div>
-            <div class="text-gray-400">Templates</div>
-            <div class="text-gray-400">8:02 PM - April 08, 2023</div>
+            <div class="text-app-text">Templates</div>
+            <div class="text-app-text">8:02 PM - April 08, 2023</div>
           </div>
 
-          <div class="border-app-border grid grid-cols-3 border-b px-2 py-1 text-xs">
+          <div class="grid grid-cols-3 px-2 py-1 text-xs">
             <div class="text-green-text">Task Ideas</div>
-            <div class="text-gray-400">Notes</div>
-            <div class="text-gray-400">8:00 PM - April 08, 2023</div>
+            <div class="text-app-text">Notes</div>
+            <div class="text-app-text">8:00 PM - April 08, 2023</div>
           </div>
 
           <div class="grid grid-cols-3 px-2 py-1 text-xs">
             <div class="text-green-text">Readwise Syncs</div>
-            <div class="text-gray-400">Readwise</div>
-            <div class="text-gray-400">4:04 PM - April 08, 2023</div>
+            <div class="text-app-text">Readwise</div>
+            <div class="text-app-text">4:04 PM - April 08, 2023</div>
           </div>
         </div>
       </div>
@@ -267,32 +262,43 @@
 
         <!-- Task Ideas -->
         <div class="py-3">
-          <div class="bg-app-bg border-app-border rounded-md border">
-            <div class="flex items-center justify-between px-4 py-2">
+          <div class="bg-app-darker border-app-border rounded-md border">
+            <div class="border-app-border flex items-center justify-between border-b px-4 py-2">
               <div class="flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-                  <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z" />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-chevron-down-icon lucide-chevron-down"
+                >
+                  <path d="m6 9 6 6 6-6" />
                 </svg>
                 <span>Task Ideas</span>
               </div>
               <span class="text-app-muted text-xs">3</span>
             </div>
 
-            <div class="border-app-border border-t px-6 py-2">
-              <div class="flex items-start gap-2 py-1.5">
-                <input type="checkbox" class="mt-1" />
+            <div class="bg-app-bg border-app-border divide-app-border my-4 mx-2 divide-y rounded-sm border">
+              <div class="flex items-center gap-2.5 px-6 py-3">
+                <input type="checkbox" class="size-4" />
                 <span class="text-green-text bg-green-bg rounded-full px-2 py-0.5 text-xs">#task</span>
                 <span class="text-sm">Write a blog post about Daily Notes!</span>
               </div>
 
-              <div class="flex items-start gap-2 py-1.5">
-                <input type="checkbox" class="mt-1" />
+              <div class="flex items-center gap-2 px-6 py-3">
+                <input type="checkbox" class="size-4" />
                 <span class="text-green-text bg-green-bg rounded-full px-2 py-0.5 text-xs">#task</span>
                 <span class="text-sm">Obsess about irrelevant details!</span>
               </div>
 
-              <div class="flex items-start gap-2 py-1.5">
-                <input type="checkbox" class="mt-1" />
+              <div class="flex items-center gap-2 px-6 py-3">
+                <input type="checkbox" class="size-4" />
                 <span class="text-green-text bg-green-bg rounded-full px-2 py-0.5 text-xs">#task</span>
                 <span class="text-sm">Code.</span>
               </div>

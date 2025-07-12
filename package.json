@@ -9,7 +9,7 @@
     "exort": "next export",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "prettier": "prettier --write \"src/**/*.{ts,tsx,js,json,graphql}\"",
+    "prettier": "prettier --write \"{src,design}/**/*.{ts,tsx,js,json,graphql,css,html}\"",
     "cleanup": "npm run prettier && npm run lint:fix",
     "design": "node design.js"
   },
