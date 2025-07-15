@@ -4,7 +4,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
   return (
     <footer className="border-retro-text dark:border-dark-text z-50 mx-auto mt-16 flex max-w-4xl justify-between border-t-2 px-4 py-8 text-sm md:px-0">
-      <div>
+      <div className="flex flex-col gap-3">
         <p>
           <Link
             href="mailto:me@eduardochiaro.com"
@@ -23,7 +23,7 @@ export default function Footer() {
           </Link>
         </p>
       </div>
-      <div className="text-right">
+      <div className="flex flex-col gap-3 text-right">
         <p>Made with ♥</p>
         <p>&copy; {currentYear}</p>
       </div>

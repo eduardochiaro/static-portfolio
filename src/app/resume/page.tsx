@@ -45,11 +45,11 @@ export default function Remote() {
     github: string;
     role: string;
   }>({
-    name: 'Alex Coder',
+    name: '',
     email: '',
-    location: 'San Francisco, CA',
-    github: 'github.com/alexcoder',
-    role: 'Full Stack Developer',
+    location: '',
+    github: '',
+    role: '',
   });
   const [skills, setSkills] = useState<{ name: string; level: string }[]>([]);
   const [summary, setSummary] = useState<string>('');
@@ -132,7 +132,7 @@ export default function Remote() {
 
 const loadData = async (): Promise<ResumeType> => {
   // load data from an API or perform any asynchronous operation
-  const response = await fetch('/static/resume.json');
+  const response = await fetch('../static/resume.json', { next: { revalidate: 3600 } });
   const data = await response.json();
 
   // Assume the JSON has the correct structure for ResumeType

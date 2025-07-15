@@ -9,6 +9,7 @@ export default function Hero() {
       </h1>
       <p className="max-w-lg text-lg">Building scalable web applications with modern tools and technologies.</p>
       <Image
+        fetchPriority="high"
         src="static/sun.svg"
         alt="sun"
         width="400"

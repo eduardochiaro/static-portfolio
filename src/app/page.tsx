@@ -47,7 +47,7 @@ export default function Home() {
 
 const loadData = async () => {
   // load data from an API or perform any asynchronous operation
-  const response = await fetch('static/skills.json');
+  const response = await fetch('static/skills.json', { next: { revalidate: 3600 } });
   const skills = await response.json();
 
   return { skills };
