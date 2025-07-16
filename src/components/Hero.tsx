@@ -30,7 +30,16 @@ export default function Hero({ title = '', name = '', slogan = '' }: HeroProps) 
         alt="sun"
         width="400"
         height="400"
-        className="absolute top-0 -z-50 hidden w-full animate-spin opacity-40 md:block"
+        className="absolute top-0 -z-50 hidden w-full animate-spin opacity-40 md:block dark:hidden"
+        style={{ animationDuration: '15s' }}
+      />
+      <Image
+        fetchPriority="high"
+        src="static/moon.svg"
+        alt="moon"
+        width="400"
+        height="400"
+        className="absolute top-1/2 left-1/2 -z-50 mx-auto hidden w-1/2 -translate-x-1/2 animate-spin opacity-40 dark:md:block"
         style={{ animationDuration: '15s' }}
       />
     </section>

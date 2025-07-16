@@ -2,7 +2,7 @@
   "hero": {
     "name": "Alex Coder",
     "title": "Full Stack Developer",
-    "slogan": "Building efficient and scalable web applications"
+    "slogan": "Building scalable web applications with modern tools and technologies."
   },
   "bio": [ 
     "Hi, I'm Full Stack Developer who loves building things that work well and make life easier. I've spent years turning ideas into reliable, thoughtful software, always with a focus on clean code, clear goals, and real-world impact. I enjoy working on projects where I can simplify complexity and bring a calm, practical mindset to solving tough problems.",
@@ -13,7 +13,7 @@
       "title": "It's Nothing",
       "description": "Pebble Watchface",
       "imageUrl": "https://picsum.photos/seed/nothing/200/300",
-      "buttonText": "View project",
+      "buttonText": "Get it on Pebble",
       "buttonUrl": "https://project-url.com",
       "isDownload": false
     },
@@ -21,7 +21,7 @@
       "title": "Impact (v2.0.0)",
       "description": "Ghost blog theme using TailwindCSS",
       "imageUrl": "https://picsum.photos/seed/impact/200/300",
-      "buttonText":"View project",
+      "buttonText":"View on GitHub",
       "buttonUrl": "https://project-url.com",
       "isDownload": false
     },
@@ -29,7 +29,7 @@
       "title": "CompactLine",
       "description": "Oh My Zsh theme",
       "imageUrl": "https://picsum.photos/seed/compact/200/300",
-      "buttonText":"Download project",
+      "buttonText":"View on GitHub",
       "buttonUrl": "/path/to/resume.pdf",
       "isDownload": true
     }
@@ -76,5 +76,25 @@
       "text": "github.com/alexcoder",
       "url": "https://github.com/alexcoder"
     }]
-  }
+  },
+  "github": [
+    {
+      "name": "API Gateway",
+      "link": "https://github.com/randomuser/api-gateway",
+      "description": "A high-performance Node.js API gateway with authentication, rate limiting, and request transformations.",
+      "tags": ["Node.js", "Express", "JWT"]
+    },
+    {
+      "name": "GraphQL API",
+      "link": "https://github.com/randomuser/graphql-api",
+      "description": "A GraphQL API built with Apollo Server, providing a flexible and efficient data fetching layer.",
+      "tags": ["GraphQL", "Apollo Server", "Node.js"]
+    },
+    {
+      "name": "Real-time Chat App",
+      "link": "https://github.com/randomuser/real-time-chat",
+      "description": "A real-time chat application using WebSockets for instant messaging and notifications.",
+      "tags": ["WebSockets", "Node.js", "React"]
+    }
+  ]
 }

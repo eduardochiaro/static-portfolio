@@ -3,7 +3,7 @@
 import Bio from '@/components/Bio';
 import ClickSpark from '@/components/ClickSpark';
 import Footer, { FooterProps } from '@/components/Footer';
-import GitHub from '@/components/GitHub';
+import GitHub, { GitHubType } from '@/components/GitHub';
 import Header from '@/components/Header';
 import Hero, { HeroProps } from '@/components/Hero';
 import Lines from '@/components/Lines';
@@ -18,6 +18,7 @@ type HomeType = {
   bio: string[];
   skills: SkillType[];
   projects: ProjectType[];
+  github: GitHubType[];
   footer: FooterProps;
 };
 
@@ -27,14 +28,16 @@ export default function Home() {
   const [projects, setProjects] = useState<HomeType['projects']>([]);
   const [hero, setHero] = useState<HomeType['hero']>({ title: '', name: '', slogan: '' });
   const [bio, setBio] = useState<HomeType['bio']>([]);
+  const [github, setGithub] = useState<HomeType['github']>([]);
   const [footer, setFooter] = useState<HomeType['footer']>({ text: '', links: [] });
   // Load data asynchronously
   useEffect(() => {
     loadData().then((data) => {
-      setSkills(data.skills);
-      setProjects(data.projects);
       setHero(data.hero);
       setBio(data.bio);
+      setSkills(data.skills);
+      setProjects(data.projects);
+      setGithub(data.github);
       setFooter(data.footer);
       setIsLoading(false);
     });
@@ -51,7 +54,7 @@ export default function Home() {
           <Bio bio={bio} />
           <Skills skills={skills} />
           <Projects projects={projects} />
-          <GitHub />
+          <GitHub repos={github} />
           <SideScroll />
           <Lines />
           <Footer text={footer.text} links={footer.links} />
