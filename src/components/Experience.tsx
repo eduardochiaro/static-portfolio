@@ -14,23 +14,21 @@ const colorTextList = [
   'text-retro-text dark:text-dark-orange',
 ];
 
-export default function Experience({
-  experience,
-}: {
-  experience: {
-    company: string;
-    position: string;
-    location: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-    responsibilities: string[];
-    tags: string[];
-  }[];
-}) {
+export type ExperienceType = {
+  company: string;
+  position: string;
+  location: string;
+  startDate: string;
+  endDate: string;
+  description: string;
+  responsibilities: string[];
+  tags: string[];
+};
+
+export default function Experience({ experience }: { experience: ExperienceType[] }) {
   return (
     <section className="z-50 mx-auto mb-16 px-4 md:px-0">
-      <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase">Experience</h2>
+      <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Experience</h2>
       <div className="relative space-y-16">
         {experience.map((exp, index) => (
           <div key={index} className="relative">

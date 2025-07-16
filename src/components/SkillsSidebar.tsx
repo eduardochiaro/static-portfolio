@@ -1,3 +1,5 @@
+import { SkillType } from './Skills';
+
 const colorLevel = (level: string) => {
   switch (level) {
     case 'Expert':
@@ -11,10 +13,10 @@ const colorLevel = (level: string) => {
   }
 };
 
-export default function SkillsSidebar({ skills }: { skills: { name: string; level: string }[] }) {
+export default function SkillsSidebar({ skills }: { skills: SkillType[] }) {
   return (
-    <section className="mb-16">
-      <h2 className="border-retro-purple dark:border-dark-purple mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase">Skills</h2>
+    <section className="mb-16 px-4 md:px-0">
+      <h2 className="border-retro-purple dark:border-dark-purple mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Skills</h2>
       <div className="mb-8 text-sm">
         <ul className="space-y-2">
           {skills.map((skill, index) => (

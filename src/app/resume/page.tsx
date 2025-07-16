@@ -1,14 +1,15 @@
 'use client';
 
-import Awards from '@/components/Awards';
+import Awards, { AwardsType } from '@/components/Awards';
 import ClickSpark from '@/components/ClickSpark';
-import Experience from '@/components/Experience';
-import Footer from '@/components/Footer';
+import Experience, { ExperienceType } from '@/components/Experience';
+import Footer, { FooterProps } from '@/components/Footer';
 import Header from '@/components/Header';
-import Languages from '@/components/Languages';
+import Languages, { LanguageType } from '@/components/Languages';
 import Lines from '@/components/Lines';
 import Loading from '@/components/Loading';
 import SideScroll from '@/components/SideScroll';
+import { SkillType } from '@/components/Skills';
 import SkillsSidebar from '@/components/SkillsSidebar';
 import { useEffect, useState } from 'react';
 
@@ -20,53 +21,29 @@ type ResumeType = {
     github: string;
     role: string;
   };
-  skills: { name: string; level: string }[];
+  skills: SkillType[];
   summary: string;
-  experience: {
-    company: string;
-    position: string;
-    location: string;
-    startDate: string;
-    endDate: string;
-    description: string;
-    responsibilities: string[];
-    tags: string[];
-  }[];
-  languages: { name: string; level: string }[];
-  awards: { title: string; date: string }[];
+  experience: ExperienceType[];
+  languages: LanguageType[];
+  awards: AwardsType[];
+  footer: FooterProps;
 };
 
 export default function Remote() {
   const [isLoading, setIsLoading] = useState(true);
-  const [personalInfo, setPersonalInfo] = useState<{
-    name: string;
-    email: string;
-    location: string;
-    github: string;
-    role: string;
-  }>({
+  const [personalInfo, setPersonalInfo] = useState<ResumeType['personalInfo']>({
     name: '',
     email: '',
     location: '',
     github: '',
     role: '',
   });
-  const [skills, setSkills] = useState<{ name: string; level: string }[]>([]);
+  const [skills, setSkills] = useState<ResumeType['skills']>([]);
   const [summary, setSummary] = useState<string>('');
-  const [experience, setExperience] = useState<
-    {
-      company: string;
-      position: string;
-      location: string;
-      startDate: string;
-      endDate: string;
-      description: string;
-      responsibilities: string[];
-      tags: string[];
-    }[]
-  >([]);
-  const [languages, setLanguages] = useState<{ name: string; level: string }[]>([]);
-  const [awards, setAwards] = useState<{ title: string; date: string }[]>([]);
+  const [experience, setExperience] = useState<ResumeType['experience']>([]);
+  const [languages, setLanguages] = useState<ResumeType['languages']>([]);
+  const [awards, setAwards] = useState<ResumeType['awards']>([]);
+  const [footer, setFooter] = useState<ResumeType['footer']>({ text: '', links: [] });
   // Load data asynchronously
   useEffect(() => {
     loadData().then((response: ResumeType) => {
@@ -76,6 +53,7 @@ export default function Remote() {
       setExperience(response.experience);
       setLanguages(response.languages);
       setAwards(response.awards);
+      setFooter(response.footer);
       setIsLoading(false);
     });
   });
@@ -85,7 +63,7 @@ export default function Remote() {
         <Loading />
       ) : (
         <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
-          <Header name="Resume" goBack="/" />
+          <Header name={`${personalInfo.name}'s Resume`} goBack="/" />
           <section className="mx-auto max-w-4xl px-4 py-16 md:px-0">
             <p className="text-lg font-semibold">{personalInfo.role}</p>
             <h1 className="mb-4 flex flex-col text-6xl leading-none font-semibold uppercase">
@@ -107,7 +85,7 @@ export default function Remote() {
           </section>
           <Lines />
           <section className="z-50 mx-auto my-16 max-w-4xl px-4 md:px-0">
-            <h2 className="border-retro-orange dark:border-dark-orange mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase">Summary</h2>
+            <h2 className="border-retro-orange dark:border-dark-orange mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Summary</h2>
             <p className="mb-4">{summary}</p>
           </section>
 
@@ -123,7 +101,7 @@ export default function Remote() {
           </div>
           <SideScroll />
           <Lines />
-          <Footer />
+          <Footer text={footer.text} links={footer.links} />
         </ClickSpark>
       )}
     </>
@@ -131,10 +109,8 @@ export default function Remote() {
 }
 
 const loadData = async (): Promise<ResumeType> => {
-  // load data from an API or perform any asynchronous operation
   const response = await fetch('../static/resume.json', { next: { revalidate: 3600 } });
   const data = await response.json();
 
-  // Assume the JSON has the correct structure for ResumeType
   return data as ResumeType;
 };

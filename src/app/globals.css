@@ -25,6 +25,6 @@ body {
 }
 
 .button {
-  @apply border-retro-text dark:border-dark-text bg-retro-text dark:bg-dark-text text-retro-bg dark:text-dark-bg cursor-pointer rounded border px-6 py-2 font-semibold transition duration-200;
+  @apply border-retro-text dark:border-dark-text bg-retro-text dark:bg-dark-text text-retro-bg dark:text-dark-bg cursor-pointer rounded border font-semibold transition duration-200;
   @apply hover:bg-retro-magenta dark:hover:bg-dark-magenta hover:text-retro-bg hover:-translate-1 hover:shadow-[0.25rem_0.25rem_rgb(0,0,0)] hover:dark:shadow-[0.25rem_0.25rem_rgb(255,255,255)];
 }

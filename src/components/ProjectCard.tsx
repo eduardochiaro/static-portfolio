@@ -12,8 +12,8 @@ type Props = {
 
 const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDownload }: Props) => {
   return (
-    <div className="flex h-full flex-col md:flex-row">
-      <div className="border-retro-text dark:border-dark-text bg-retro-text dark:bg-dark-text group relative w-full overflow-hidden rounded-lg border-4 shadow transition-transform duration-500 ease-in-out md:w-2/5">
+    <div className="flex h-full flex-col gap-2 md:flex-row md:gap-0">
+      <div className="border-retro-text dark:border-dark-text bg-retro-text dark:bg-dark-text group relative h-32 w-full overflow-hidden rounded-lg border-4 shadow transition-transform duration-500 ease-in-out md:h-auto md:w-2/5">
         <Image
           src={imageUrl}
           alt={title}
@@ -22,12 +22,12 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
           className="w-full rounded object-cover transition-transform duration-500 ease-in-out group-hover:scale-125 md:h-full"
         />
       </div>
-      <div className="flex w-full flex-col px-6 md:w-3/5">
-        <h3 className="mb-3 text-xl font-semibold text-gray-800 dark:text-gray-400">{title}</h3>
-        <p className="mb-6 min-h-24 flex-grow text-gray-600">{description}</p>
+      <div className="flex w-full flex-col md:w-3/5 md:px-6">
+        <h3 className="mb-3 text-xl font-semibold text-gray-800 dark:text-gray-200">{title}</h3>
+        <p className="mb-6 h-auto flex-grow text-gray-600 md:min-h-24 dark:text-gray-400">{description}</p>
         <a
           href={buttonUrl}
-          className="button text-center"
+          className="button px-6 py-2 text-center"
           download={isDownload}
           target={!isDownload ? '_blank' : undefined}
           rel={!isDownload ? 'noopener noreferrer' : undefined}

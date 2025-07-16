@@ -1,0 +1,80 @@
+{
+  "hero": {
+    "name": "Alex Coder",
+    "title": "Full Stack Developer",
+    "slogan": "Building efficient and scalable web applications"
+  },
+  "bio": [ 
+    "Hi, I'm Full Stack Developer who loves building things that work well and make life easier. I've spent years turning ideas into reliable, thoughtful software, always with a focus on clean code, clear goals, and real-world impact. I enjoy working on projects where I can simplify complexity and bring a calm, practical mindset to solving tough problems.",
+    "I'm most at home working across the stack with tools like Node.js, TypeScript, React, and PHP, often in cloud environments like AWS. Beyond the code, I care about good communication, collaboration, and keeping things human—even in tech. Whether I'm refining a backend system or improving a user experience, I aim to build software that's not just functional, but genuinely useful."
+  ],
+  "projects": [
+    {
+      "title": "It's Nothing",
+      "description": "Pebble Watchface",
+      "imageUrl": "https://picsum.photos/seed/nothing/200/300",
+      "buttonText": "View project",
+      "buttonUrl": "https://project-url.com",
+      "isDownload": false
+    },
+    {
+      "title": "Impact (v2.0.0)",
+      "description": "Ghost blog theme using TailwindCSS",
+      "imageUrl": "https://picsum.photos/seed/impact/200/300",
+      "buttonText":"View project",
+      "buttonUrl": "https://project-url.com",
+      "isDownload": false
+    },
+    {
+      "title": "CompactLine",
+      "description": "Oh My Zsh theme",
+      "imageUrl": "https://picsum.photos/seed/compact/200/300",
+      "buttonText":"Download project",
+      "buttonUrl": "/path/to/resume.pdf",
+      "isDownload": true
+    }
+  ],
+  "skills": [
+    {
+      "name": "React",
+      "level" : "Advanced",
+      "percentage" : 85
+    },
+    {
+      "name": "Node.js",
+      "level" : "Intermediate",
+      "percentage" : 70
+    },
+    {
+      "name": "Python",
+      "level" : "Advanced",
+      "percentage" : 90
+    },
+    {
+      "name": "JavaScript",
+      "level" : "Advanced",
+      "percentage" : 80
+    },
+    {
+      "name": "CSS",
+      "level" : "Intermediate",
+      "percentage" : 75
+    },
+    {
+      "name": "HTML",
+      "level" : "Advanced",
+      "percentage" : 95
+    }
+  ],
+  "footer": {
+    "text": "Made with ♥",
+    "links": [{
+      "text": "me@alexcoder.com",
+      "url": "mailto:me@alexcoder.com"
+    },
+    {
+      "text": "github.com/alexcoder",
+      "url": "https://github.com/alexcoder"
+    }]
+  }
+}

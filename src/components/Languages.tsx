@@ -13,10 +13,15 @@ const colorLevel = (level: string) => {
   }
 };
 
-export default function Languages({ languages }: { languages: { name: string; level: string }[] }) {
+export type LanguageType = {
+  name: string;
+  level: string;
+};
+
+export default function Languages({ languages }: { languages: LanguageType[] }) {
   return (
-    <section className="mb-16">
-      <h2 className="border-retro-orange dark:border-dark-orange mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase">Languages</h2>
+    <section className="mb-16 px-4 md:px-0">
+      <h2 className="border-retro-orange dark:border-dark-orange mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Languages</h2>
       <div className="mb-8 text-sm">
         <ul className="space-y-2">
           {languages.map((language, index) => (

@@ -7,10 +7,15 @@ const colorTextList = [
   'text-retro-text dark:text-dark-orange',
 ];
 
-export default function Awards({ awards }: { awards: { title: string; date: string }[] }) {
+export type AwardsType = {
+  title: string;
+  date: string;
+};
+
+export default function Awards({ awards }: { awards: AwardsType[] }) {
   return (
-    <section className="mb-16">
-      <h2 className="border-retro-red dark:border-dark-red mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase">Awards</h2>
+    <section className="mb-16 px-4 md:px-0">
+      <h2 className="border-retro-red dark:border-dark-red mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Awards</h2>
 
       <div className="mb-8 text-sm">
         <ul className="space-y-2">

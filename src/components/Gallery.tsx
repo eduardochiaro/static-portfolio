@@ -107,7 +107,7 @@ export default function Gallery() {
   return (
     <>
       <section className="z-50 mx-auto my-16 max-w-4xl px-4 md:px-0">
-        <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 -ml-6 border-l-4 pl-4 text-xl font-bold uppercase">Featured Projects</h2>
+        <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Featured Projects</h2>
 
         <div className="flex justify-center space-x-6 pt-10 pb-4">
           {images.map((img, idx) => (

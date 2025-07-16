@@ -118,5 +118,16 @@
       "title": "Innovation Award",
       "date": "2019-05-01"
     }
-  ]
+  ],
+  "footer": {
+    "text": "Made with ♥",
+    "links": [{
+      "text": "me@alexcoder.com",
+      "url": "mailto:me@alexcoder.com"
+    },
+    {
+      "text": "github.com/alexcoder",
+      "url": "https://github.com/alexcoder"
+    }]
+  }
 }
