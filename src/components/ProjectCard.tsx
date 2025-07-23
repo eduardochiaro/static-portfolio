@@ -13,7 +13,7 @@ type Props = {
 const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDownload }: Props) => {
   return (
     <div className="flex h-full flex-col gap-2 md:flex-row md:gap-0">
-      <div className="border-retro-text dark:border-dark-text bg-retro-text dark:bg-dark-text group relative h-32 w-full overflow-hidden rounded-lg border-4 shadow transition-transform duration-500 ease-in-out md:h-auto md:w-2/5">
+      <div className="border-retro-text group relative h-32 overflow-hidden rounded-lg border-4 transition-transform duration-500 ease-in-out md:h-auto md:w-2/5">
         <Image
           src={imageUrl}
           alt={title}

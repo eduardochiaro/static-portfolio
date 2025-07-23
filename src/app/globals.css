@@ -28,3 +28,9 @@ body {
   @apply border-retro-text dark:border-dark-text bg-retro-text dark:bg-dark-text text-retro-bg dark:text-dark-bg cursor-pointer rounded border font-semibold transition duration-200;
   @apply hover:bg-retro-magenta dark:hover:bg-dark-magenta hover:text-retro-bg hover:-translate-1 hover:shadow-[0.25rem_0.25rem_rgb(0,0,0)] hover:dark:shadow-[0.25rem_0.25rem_rgb(255,255,255)];
 }
+
+.slanted {
+  --s: 90px; /* slant size */
+
+  clip-path: shape(from 0 0, line to calc(100% - var(--s)) 0, line to 100% 100%, line to 0 100%);
+}

@@ -1,7 +1,7 @@
 'use client';
 
 import Image from 'next/image';
-import React from 'react';
+import React, { useState } from 'react';
 
 //const delay = (ms: number | undefined) => new Promise((res) => setTimeout(res, ms));
 
@@ -9,127 +9,74 @@ const images = [
   {
     src: 'https://picsum.photos/seed/rand1/800/600',
     title: 'Mountain View',
+    description: 'A breathtaking view of mountains rising above the clouds at sunset.',
   },
   {
     src: 'https://picsum.photos/seed/rand2/800/600',
     title: 'City Lights',
+    description: "Urban skyline illuminated at night, showcasing the city's vibrant energy.",
   },
   {
     src: 'https://picsum.photos/seed/rand3/800/600',
     title: 'Forest Path',
+    description: 'A serene path through an ancient forest, dappled with soft sunlight.',
   },
   {
     src: 'https://picsum.photos/seed/rand4/800/600',
     title: 'Desert Dunes',
+    description: 'Golden sand dunes stretching to the horizon under a clear blue sky.',
   },
   {
     src: 'https://picsum.photos/seed/rand5/800/600',
     title: 'Ocean Breeze',
+    description: 'Waves crashing on a pristine beach with palm trees swaying in the wind.',
   },
   {
     src: 'https://picsum.photos/seed/rand6/800/600',
     title: 'Snowy Peaks',
+    description: 'Majestic mountains capped with pristine snow reflecting the morning light.',
   },
   {
     src: 'https://picsum.photos/seed/rand7/800/600',
     title: 'Urban Jungle',
+    description: 'A modern cityscape with skyscrapers reaching toward the clouds.',
   },
   {
     src: 'https://picsum.photos/seed/rand8/800/600',
     title: 'Sunset Glow',
+    description: 'A stunning sunset painting the sky with vibrant shades of orange and purple.',
   },
 ];
 
-const expandImage = async (src: string, event: React.MouseEvent<HTMLDivElement>) => {
-  // Get the bounding rectangle of the clicked element
-  const target = event.currentTarget.getBoundingClientRect();
-
-  // Create the overlay container
-  const expandedImage = document.createElement('div');
-  expandedImage.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black/75';
-  expandedImage.style.cursor = 'pointer';
-  expandedImage.onclick = () => {
-    document.body.removeChild(expandedImage);
-  };
-
-  const divContainer = document.createElement('div');
-  divContainer.className = 'rounded-lg shadow-lg bg-red-500 bg-cover bg-center';
-  divContainer.style.position = 'absolute';
-  divContainer.style.transition = 'all 0.7s ease-out';
-  divContainer.style.objectFit = 'contain';
-  divContainer.style.width = `${target.width}px`;
-  divContainer.style.height = `${target.height}px`;
-  divContainer.style.top = `${target.top}px`;
-  divContainer.style.left = `${target.left}px`;
-  divContainer.style.transform = 'none'; // No scaling initially
-  divContainer.style.backgroundImage = `url(${src})`;
-
-  // Append the image to the overlay
-  expandedImage.appendChild(divContainer);
-  document.body.appendChild(expandedImage);
-
-  //get rel image size
-  const img = new window.Image();
-  img.src = src;
-  await new Promise((resolve) => {
-    img.onload = resolve;
-  });
-  const aspectRatio = img.width / img.height;
-  const isLandscape = aspectRatio > 1;
-
-  /*
-  // Wait for the next frame to apply the full-size transformation
-  requestAnimationFrame(() => {
-    divContainer.style.width = '500px'; // Reset width to auto for full size
-    divContainer.style.height = '500px'; // Set height to fit the screen
-    divContainer.style.top = '50%';
-    divContainer.style.left = '50%';
-    divContainer.style.transform = 'translate(-50%, -50%) scale(1)';
-  });
-  await delay(3000);
-  */
-  requestAnimationFrame(() => {
-    // get hight from aspect ratio with size 800px
-    if (isLandscape) {
-      divContainer.style.width = '800px'; // Set width to fit the screen
-      divContainer.style.height = `${800 / aspectRatio}px`; // Set height based on aspect ratio
-    } else {
-      divContainer.style.height = '800px'; // Set height to fit the screen
-      divContainer.style.width = `${800 * aspectRatio}px`; // Set width based on aspect rati
-    }
-    divContainer.style.top = '50%';
-    divContainer.style.left = '50%';
-    divContainer.style.transform = 'translate(-50%, -50%) scale(1)';
-  });
-};
-
 export default function Gallery() {
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const handleImageClick = (idx: number) => {
+    setSelectedIndex(selectedIndex === idx ? null : idx);
+  };
   return (
     <>
       <section className="z-50 mx-auto my-16 max-w-4xl px-4 md:px-0">
         <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Featured Projects</h2>
 
-        <div className="flex justify-center space-x-6 pt-10 pb-4">
+        <div className="flex justify-center -space-x-9 overflow-auto rounded-lg">
           {images.map((img, idx) => (
-            <div key={idx} className="group relative">
-              {/* Title appears above on hover */}
-              <div className="pointer-events-none absolute -top-16 left-1/2 -translate-x-1/2 whitespace-nowrap opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                {img.title}
-              </div>
-              <div
-                className="relative h-96 w-10 transform rounded bg-cover bg-center shadow transition-transform duration-300 group-hover:-translate-y-8"
-                onClick={(event) => expandImage(img.src, event)}
-              >
+            <React.Fragment key={idx}>
+              <div className="group parallelogram relative bg-red-600">
                 <Image
                   src={img.src}
-                  alt={`Gallery image ${idx + 1}`}
-                  fill={true}
-                  sizes="(max-width: 768px) 100vw, 33vw"
-                  className="h-80 w-full rounded-lg object-cover object-center"
+                  alt={img.title}
+                  width={800}
+                  height={600}
+                  className="h-48 w-72 object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                  onClick={() => handleImageClick(idx)}
                 />
               </div>
-              <div className="border-retro-text dark:border-dark-text absolute bottom-0 left-2 size-6 rounded-full border-2 opacity-0 transition-opacity duration-300 group-hover:opacity-50"></div>
-            </div>
+              <div className={`group parallelogram-desc relative w-[600px] ${selectedIndex === idx ? 'block' : 'hidden'} bg-dark-bg`}>
+                <h3 className="pt-4 pr-12 text-right text-base font-semibold">{img.title}</h3>
+                <p className="mt-2 px-12 text-right text-sm">{img.description}</p>
+              </div>
+            </React.Fragment>
           ))}
         </div>
       </section>

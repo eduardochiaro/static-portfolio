@@ -58,8 +58,8 @@ export default function Header({ name, goBack }: { name?: string; goBack?: strin
         )}
         <Menu>
           <MenuButton className="flex cursor-pointer items-center justify-center rounded-full focus:outline-none" aria-label="Toggle theme">
-            <SunIcon className="block size-7 dark:hidden" />
-            <MoonIcon className="hidden size-7 dark:block" />
+            <SunIcon className="hover:fill-retro-text dark:hover:fill-dark-text block size-7 dark:hidden" />
+            <MoonIcon className="hover:fill-retro-text dark:hover:fill-dark-text hidden size-7 dark:block" />
           </MenuButton>
 
           <MenuItems

@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
 import { Suspense } from 'react';
 import './globals.css';
+import homeData from '../../public/static/metadata.json';
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
@@ -12,8 +13,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Eduardo Chiaro',
-  description: 'Eduardo Chiaro - Software Engineer',
+  title: homeData.home.title,
+  description: homeData.home.description,
 };
 
 export const viewport: Viewport = {
