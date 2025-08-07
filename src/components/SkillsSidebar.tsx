@@ -1,3 +1,4 @@
+import SideModule from './SideModule';
 import { SkillType } from './Skills';
 
 const colorLevel = (level: string) => {
@@ -15,18 +16,14 @@ const colorLevel = (level: string) => {
 
 export default function SkillsSidebar({ skills }: { skills: SkillType[] }) {
   return (
-    <section className="mb-16 px-4 md:px-0">
-      <h2 className="border-retro-purple dark:border-dark-purple mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Skills</h2>
-      <div className="mb-8 text-sm">
-        <ul className="space-y-2">
-          {skills.map((skill, index) => (
-            <li key={index} className="flex justify-between gap-4">
-              <span>{skill.name}</span>
-              <span className={colorLevel(skill.level)}>{skill.level}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
+    <SideModule
+      title="Skills"
+      list={skills.map((skill) => ({
+        title: skill.name,
+        value: skill.level,
+        color: colorLevel(skill.level), // Use the colorLevel function to determine the text color
+      }))}
+      titleColor="border-retro-purple dark:border-dark-purple"
+    />
   );
 }

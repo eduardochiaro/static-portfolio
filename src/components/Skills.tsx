@@ -37,8 +37,8 @@ export default function Skills({ skills }: { skills: SkillType[] }) {
                   <span>{skill.name}</span>
                   <span className="text-xs">{skill.level}</span>
                 </div>
-                <div className="border-retro-text dark:border-dark-text flex w-full items-center rounded-sm border-1 bg-gray-200 p-1 dark:bg-gray-700">
-                  <div className={`${skill.color} dark:${skill.darkColor} h-5 rounded-xs`} style={{ width: `${skill.percentage}%` }}></div>
+                <div className="flex w-full items-center rounded-xs bg-gray-300 dark:bg-gray-700">
+                  <div className={`${skill.color} dark:${skill.darkColor} h-2 rounded-xs`} style={{ width: `${skill.percentage}%` }}></div>
                 </div>
               </div>
             ))}
