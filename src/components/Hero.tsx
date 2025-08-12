@@ -1,4 +1,4 @@
-import Image from 'next/image';
+// Removed unused Image import
 
 export type HeroProps = {
   title?: string;

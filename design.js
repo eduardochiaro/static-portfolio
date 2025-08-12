@@ -13,7 +13,8 @@ const pageList = [
   { url: '/resume', file: 'resume.html' },
   { url: '/terminal', file: 'terminal.html' },
   { url: '/daily', file: 'daily.html' },
-  { url: '/cassette', file: 'cassette.html' }
+  { url: '/cassette', file: 'cassette.html' },
+  { url: '/collage', file: 'collage.html' }
 ];
 
 // Create HTTP server

@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "prebuild": "zero-icons",
     "build": "next build",
     "start": "next start",
     "exort": "next export",
@@ -14,8 +15,9 @@
     "design": "node design.js"
   },
   "dependencies": {
-    "@austinserb/react-zero-ui": "^1.0.21",
     "@headlessui/react": "^2.2.7",
+    "@react-zero-ui/core": "^0.3.4",
+    "@react-zero-ui/icon-sprite": "^0.1.6",
     "@uidotdev/usehooks": "^2.4.1",
     "lucide-react": "^0.537.0",
     "moment": "^2.30.1",

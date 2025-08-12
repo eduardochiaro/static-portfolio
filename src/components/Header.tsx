@@ -4,9 +4,9 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { ChevronLeftIcon, MoonIcon, SunIcon } from 'lucide-react';
 import Logo from './Logo';
 import Link from 'next/link';
-import useUI from '@austinserb/react-zero-ui';
 import { useLocalStorage } from '@uidotdev/usehooks';
 import { useEffect } from 'react';
+import { useUI } from '@react-zero-ui/core';
 
 const themeUuid = process.env.NEXT_PUBLIC_THEME_UUID || 'default-theme-uuid'; // Fallback to a default UUID if not set
 

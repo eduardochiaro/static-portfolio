@@ -1,4 +1,8 @@
 /* AUTO-GENERATED - DO NOT EDIT */
 export declare const bodyAttributes: {
-  "data-theme": "dark" | "light" | "system";
+  "data-theme": string;
+};
+
+export declare const variantKeyMap: {
+  [key: string]: true | string[] | '*';
 };

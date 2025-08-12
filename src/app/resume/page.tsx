@@ -11,6 +11,7 @@ import Loading from '@/components/Loading';
 import SideScroll from '@/components/SideScroll';
 import { SkillType } from '@/components/Skills';
 import SkillsSidebar from '@/components/SkillsSidebar';
+import { GithubIcon, MailIcon, MapPinHouse } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 type ResumeType = {
@@ -66,20 +67,23 @@ export default function Remote() {
           <Header name={`${personalInfo.name}'s Resume`} goBack="/" />
           <section className="mx-auto max-w-4xl px-4 py-16 md:px-0">
             <p className="text-lg font-semibold">{personalInfo.role}</p>
-            <h1 className="mb-4 flex flex-col text-6xl leading-none font-semibold uppercase">
+            <h1 className="mb-4 flex flex-col text-8xl leading-none font-semibold uppercase">
               {personalInfo.name.split(' ').map((word, idx) => (
                 <span key={idx}>{word}</span>
               ))}
             </h1>
-            <div className="flex flex-col gap-4 md:flex-row">
-              <p>
-                <span className="opacity-60">Email:</span> {personalInfo.email}
+            <div className="flex flex-col gap-14 md:flex-row">
+              <p className="flex items-center gap-2">
+                <MailIcon className="text-retro-magenta dark:text-dark-magenta inline-block size-6" />
+                {personalInfo.email}
               </p>
-              <p>
-                <span className="opacity-60">Location:</span> {personalInfo.location}
+              <p className="flex items-center gap-2">
+                <MapPinHouse className="text-retro-purple dark:text-dark-purple inline-block size-6" />
+                {personalInfo.location}
               </p>
-              <p>
-                <span className="opacity-60">GitHub:</span> {personalInfo.github}
+              <p className="flex items-center gap-2">
+                <GithubIcon className="text-retro-red dark:text-dark-red inline-block size-6" />
+                {personalInfo.github}
               </p>
             </div>
           </section>
