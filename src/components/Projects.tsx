@@ -31,7 +31,7 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
 
   return (
     <div
-      className={`group relative overflow-hidden rounded border-4 ${borderAccent} bg-retro-bg dark:bg-dark-bg hover:dark:shadow-[0.5rem_0.5rem_rgb(255,255,255) transition duration-200 hover:-translate-2 hover:shadow-[0.5rem_0.5rem_rgb(0,0,0)]`}
+      className={`group relative overflow-hidden rounded border-4 ${borderAccent} bg-retro-bg dark:bg-dark-bg transition duration-200 hover:-translate-2 hover:shadow-[0.5rem_0.5rem_rgb(0,0,0)] hover:dark:shadow-[0.5rem_0.5rem_rgb(255,255,255)]`}
     >
       {/* Accent gradient bar on the left */}
       <div className="pointer-events-none absolute top-0 left-0 h-full w-1" />
@@ -58,7 +58,7 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
         {/* Content */}
         <div className="flex w-full flex-col gap-3 px-4 py-4 md:w-3/5 md:px-6 md:py-6">
           <h3 className={`text-xl font-bold tracking-wide uppercase ${textAccent}`}>{title}</h3>
-          <p className="min-h-20 flex-grow text-sm opacity-90 md:min-h-24">{description}</p>
+          <p className="min-h-20 flex-grow text-sm opacity-90 md:min-h-12">{description}</p>
           <div className="pt-2">
             <a
               href={buttonUrl}

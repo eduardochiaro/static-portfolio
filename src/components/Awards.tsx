@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { formatMonthYear } from '@/lib/date';
 import SideModule from './SideModule';
 
 const colorTextList = [
@@ -19,7 +19,7 @@ export default function Awards({ awards }: { awards: AwardsType[] }) {
       title="Awards"
       list={awards.map((award, index) => ({
         title: award.title,
-        value: moment(award.date).format('MMM YYYY'),
+        value: formatMonthYear(award.date),
         color: colorTextList[index % colorTextList.length], // cycle through colors based on month
       }))}
       titleColor="border-retro-red dark:border-dark-red"

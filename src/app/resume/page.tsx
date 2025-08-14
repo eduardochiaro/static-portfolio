@@ -47,7 +47,9 @@ export default function Remote() {
   const [footer, setFooter] = useState<ResumeType['footer']>({ text: '', links: [] });
   // Load data asynchronously
   useEffect(() => {
+    let mounted = true;
     loadData().then((response: ResumeType) => {
+      if (!mounted) return;
       setPersonalInfo(response.personalInfo);
       setSkills(response.skills);
       setSummary(response.summary);
@@ -57,7 +59,10 @@ export default function Remote() {
       setFooter(response.footer);
       setIsLoading(false);
     });
-  });
+    return () => {
+      mounted = false;
+    };
+  }, []);
   return (
     <>
       {isLoading ? (

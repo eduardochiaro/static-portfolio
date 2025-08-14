@@ -1,4 +1,4 @@
-import moment from 'moment';
+import { formatMonthYear } from '@/lib/date';
 
 const colorBorderList = [
   'border-retro-purple dark:border-dark-purple',
@@ -42,7 +42,7 @@ export default function Experience({ experience }: { experience: ExperienceType[
                   </div>
                 </div>
                 <div className={`${colorTextList[index % colorTextList.length]} text-sm font-medium`}>
-                  {moment(exp.startDate).format('MMM YYYY')} - {exp.endDate ? moment(exp.endDate).format('MMM YYYY') : 'Present'}
+                  {formatMonthYear(exp.startDate)} - {exp.endDate ? formatMonthYear(exp.endDate) : 'Present'}
                 </div>
               </div>
 

@@ -1,0 +1,343 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Panel</title>
+    <!-- Tailwind CSS v4 browser build -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme {
+        --color-bg: #f5f5f5;
+        --color-sidebar: #ffffff;
+        --color-card: #ffffff;
+        --color-border: #e5e5e5;
+        --color-text: #111315;
+        --color-text-dim: #5a5f63;
+        --color-primary: #111315;
+        --color-primary-hover: #1f2428;
+        --color-accent-green: #0fa958;
+        --color-accent-blue: #1a56db;
+        --color-accent-red: #dc2626;
+        --color-accent-yellow: #f59e0b;
+      }
+      @layer base {
+        body {
+          font-feature-settings: 'ss01';
+        }
+      }
+      @layer utilities {
+        .scrollbar-thin {
+          scrollbar-width: thin;
+        }
+        .scrollbar-thin::-webkit-scrollbar {
+          width: 8px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-track {
+          background: transparent;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb {
+          background: #d4d4d8;
+          border-radius: 4px;
+        }
+        .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+          background: #a1a1aa;
+        }
+      }
+    </style>
+  </head>
+  <body class="text-text bg-white antialiased">
+    <div class="flex min-h-screen">
+      <!-- Sidebar -->
+      <aside class="border-border bg-sidebar hidden shrink-0 border-r p-4 md:flex md:w-64 md:flex-col">
+        <div class="flex items-center gap-2 px-2 py-1 text-lg font-semibold">
+          <span class="bg-primary inline-block size-2 rounded-full"></span>
+          Arrange
+        </div>
+        <!-- Nav -->
+        <nav class="mt-6 flex flex-col gap-1 text-sm font-medium">
+          <a href="#" class="text-text hover:bg-bg flex items-center gap-2 rounded-md px-3 py-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="m3 12 2 0 17 0" />
+              <path d="m19 12-7-9-7 9v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z" />
+            </svg>
+            Home
+          </a>
+          <a href="#" class="text-text hover:bg-bg flex items-center gap-2 rounded-md px-3 py-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <rect x="3" y="4" width="7" height="7" rx="1" />
+              <rect x="14" y="4" width="7" height="7" rx="1" />
+              <rect x="14" y="13" width="7" height="7" rx="1" />
+              <rect x="3" y="13" width="7" height="7" rx="1" />
+            </svg>
+            Tasks
+          </a>
+          <a href="#" class="flex items-center gap-2 rounded-md bg-black/90 px-3 py-2 text-white shadow-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M3 7h18" />
+              <path d="M3 12h18" />
+              <path d="M3 17h18" />
+            </svg>
+            Projects
+          </a>
+          <a href="#" class="text-text hover:bg-bg flex items-center gap-2 rounded-md px-3 py-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path d="M8 2v4" />
+              <path d="M16 2v4" />
+              <rect x="3" y="6" width="18" height="14" rx="2" />
+              <path d="M3 10h18" />
+            </svg>
+            Upcoming
+          </a>
+          <a href="#" class="text-text hover:bg-bg flex items-center gap-2 rounded-md px-3 py-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="8" r="5" />
+              <path d="M20 21a8 8 0 0 0-16 0" />
+            </svg>
+            Users
+          </a>
+        </nav>
+        <!-- Projects mini list -->
+        <div class="mt-10 flex flex-col gap-4">
+          <div class="text-text-dim flex items-center justify-between px-2 text-xs font-semibold tracking-wide uppercase">
+            Projects <button class="border-border rounded border px-1 py-0.5 leading-none">+</button>
+          </div>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2 px-2"><span class="bg-accent-blue size-2 rounded-full"></span> User Experience Design</li>
+            <li class="flex items-center gap-2 px-2"><span class="bg-accent-green size-2 rounded-full"></span> Design Systems</li>
+            <li class="flex items-center gap-2 px-2"><span class="bg-accent-yellow size-2 rounded-full"></span> Icon Pack Update</li>
+            <li class="flex items-center gap-2 px-2"><span class="bg-accent-green size-2 rounded-full"></span> Website Redesign</li>
+          </ul>
+        </div>
+        <div class="mt-auto">
+          <button class="bg-primary hover:bg-primary-hover mt-6 w-full rounded-md px-3 py-2 text-sm font-medium text-white">+ Add New Task</button>
+          <div class="mt-6 flex items-center gap-3 rounded-md px-2 py-3 text-sm">
+            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-gray-200 to-gray-300"></div>
+            <div>
+              <p class="leading-tight font-medium">Mike Cruggs</p>
+              <p class="text-text-dim text-xs">mcwaqern@gmail.com</p>
+            </div>
+            <button class="text-text-dim ml-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="1" />
+                <circle cx="19" cy="12" r="1" />
+                <circle cx="5" cy="12" r="1" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="flex max-w-4/6 flex-1 flex-col overflow-hidden p-6">
+        <!-- Top Bar -->
+        <div class="mb-8 flex flex-wrap items-center justify-between gap-4">
+          <h1 class="text-2xl font-semibold tracking-tight">Welcome back, Mide!</h1>
+          <div class="flex items-center gap-3">
+            <button class="border-border rounded-md border bg-white px-3 py-2 text-sm font-medium hover:bg-gray-50">+ New Task</button>
+            <div class="border-border flex items-center gap-2 rounded-md border bg-white px-3 py-2 text-sm">
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M8 2v4" />
+                <path d="M16 2v4" />
+                <rect x="4" y="6" width="16" height="14" rx="2" />
+                <path d="M4 10h16" />
+              </svg>
+              January
+              <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="m6 9 6 6 6-6" />
+              </svg>
+            </div>
+          </div>
+        </div>
+        <!-- Tabs -->
+        <div class="flex items-center justify-between">
+          <div class="mb-8 flex text-sm font-medium">
+            <button class="rounded-l-md bg-black px-4 py-2 text-white">All Tasks</button>
+            <button class="ring-border bg-white px-4 py-2 shadow-sm ring-1 hover:bg-gray-50">Completed</button>
+            <button class="ring-border bg-white px-4 py-2 shadow-sm ring-1 hover:bg-gray-50">In-Progress</button>
+            <button class="ring-border rounded-r-md bg-white px-4 py-2 shadow-sm ring-1 hover:bg-gray-50">Pending</button>
+          </div>
+          <button class="text-text-dim flex items-center gap-2 rounded-md p-2 text-sm hover:bg-white" title="Filters">
+            <svg xmlns="http://www.w3.org/2000/svg" class="size-4" fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+              <path d="M3 5h18" />
+              <path d="M6 12h12" />
+              <path d="M10 19h4" />
+            </svg>
+            Filters
+          </button>
+        </div>
+        <!-- Content Grid -->
+        <div class="grid flex-1 grid-cols-1 gap-8 lg:grid-cols-12">
+          <!-- Task Cards -->
+          <section class="space-y-6 lg:col-span-8">
+            <div class="grid gap-6 md:grid-cols-2">
+              <!-- Card template -->
+              <article class="border-border bg-card relative flex flex-col gap-4 rounded-lg border p-5 shadow-sm">
+                <div class="absolute top-4 right-4">
+                  <div class="relative size-5">
+                    <svg class="size-full -rotate-90" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Progress Circle -->
+                      <circle
+                        cx="18"
+                        cy="18"
+                        r="16"
+                        fill="none"
+                        class="text-accent-green dark:text-accent-green stroke-current"
+                        stroke-width="4"
+                        stroke-dasharray="100"
+                        stroke-dashoffset="0"
+                        stroke-linecap="round"
+                      ></circle>
+                    </svg>
+
+                    <div class="bg-accent-green absolute start-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 transform rounded-full"></div>
+                  </div>
+                </div>
+                <header>
+                  <h2 class="mb-1 text-lg leading-tight font-semibold">User Research</h2>
+                </header>
+                <div>
+                  <p class="text-text-dim text-xs font-medium tracking-wide uppercase">Task #1</p>
+                  <p class="text-text-dim text-sm leading-relaxed">
+                    Gathering resourceful information from and for products and trying to deduce and look out for user problems needing solution.
+                  </p>
+                </div>
+                <button class="mt-auto flex items-center gap-1 rounded-md bg-black px-1.5 py-1.5 text-left text-sm font-medium text-white">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="size-5"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide lucide-square-check-icon lucide-square-check"
+                  >
+                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                  Completed
+                </button>
+              </article>
+              <article class="border-border bg-card relative flex flex-col gap-4 rounded-lg border p-5 shadow-sm">
+                <div class="bg-accent-blue absolute top-4 right-4 h-3 w-3 rounded-full"></div>
+                <header>
+                  <h2 class="mb-1 text-lg leading-tight font-semibold">Conduct User Interviews</h2>
+                  <p class="text-text-dim text-xs font-medium tracking-wide uppercase">Task #2</p>
+                </header>
+                <p class="text-text-dim text-sm leading-relaxed">
+                  Using the necessary information gathered to conduct user interviews with users to get or deduce the user problems.
+                </p>
+                <button class="border-border mt-auto rounded-md border bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50">Mark as Completed</button>
+              </article>
+              <article class="border-border bg-card relative flex flex-col gap-4 rounded-lg border p-5 shadow-sm">
+                <div class="bg-accent-blue absolute top-4 right-4 h-3 w-3 rounded-full"></div>
+                <header>
+                  <h2 class="mb-1 text-lg leading-tight font-semibold">Drawing Wireframes</h2>
+                  <p class="text-text-dim text-xs font-medium tracking-wide uppercase">Task #3</p>
+                </header>
+                <p class="text-text-dim text-sm leading-relaxed">
+                  Connecting information architecture to visual design, creating blueprints to establish structure and flow of possible design solutions.
+                </p>
+                <button class="border-border mt-auto rounded-md border bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50">Mark as Completed</button>
+              </article>
+              <article class="border-border bg-card relative flex flex-col gap-4 rounded-lg border p-5 shadow-sm">
+                <div class="absolute top-4 right-4">
+                  <div class="relative size-5">
+                    <svg class="size-full -rotate-90" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                      <!-- Progress Circle -->
+                      <circle
+                        cx="18"
+                        cy="18"
+                        r="16"
+                        fill="none"
+                        class="text-accent-red dark:text-accent-red stroke-current"
+                        stroke-width="4"
+                        stroke-dasharray="100"
+                        stroke-dashoffset="65"
+                        stroke-linecap="round"
+                      ></circle>
+                    </svg>
+
+                    <div class="bg-accent-red absolute start-1/2 top-1/2 size-2.5 -translate-x-1/2 -translate-y-1/2 transform rounded-full"></div>
+                  </div>
+                </div>
+                <header>
+                  <h2 class="mb-1 text-lg leading-tight font-semibold">Information Architecture</h2>
+                  <p class="text-text-dim text-xs font-medium tracking-wide uppercase">Task #4</p>
+                </header>
+                <p class="text-text-dim text-sm leading-relaxed">
+                  Using the necessary information gathered to conduct user interviews with users to get or deduce the user problems.
+                </p>
+                <button class="border-border mt-auto rounded-md border bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50">Mark as Completed</button>
+              </article>
+              <article class="border-border bg-card relative flex flex-col gap-4 rounded-lg border p-5 shadow-sm">
+                <div class="bg-accent-yellow absolute top-4 right-4 h-3 w-3 rounded-full"></div>
+                <header>
+                  <h2 class="mb-1 text-lg leading-tight font-semibold">Creating High Fidelity Design</h2>
+                  <p class="text-text-dim text-xs font-medium tracking-wide uppercase">Task #5</p>
+                </header>
+                <p class="text-text-dim text-sm leading-relaxed">
+                  Using the necessary information gathered to conduct user interviews with users to get or deduce the user problems.
+                </p>
+                <button class="border-border mt-auto rounded-md border bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50">Mark as Completed</button>
+              </article>
+              <article class="border-border bg-card relative flex flex-col gap-4 rounded-lg border p-5 shadow-sm">
+                <div class="bg-accent-blue absolute top-4 right-4 h-3 w-3 rounded-full"></div>
+                <header>
+                  <h2 class="mb-1 text-lg leading-tight font-semibold">Documenting Design Process</h2>
+                  <p class="text-text-dim text-xs font-medium tracking-wide uppercase">Task #6</p>
+                </header>
+                <p class="text-text-dim text-sm leading-relaxed">
+                  Using the necessary information gathered to conduct user interviews with users to get or deduce the user problems.
+                </p>
+                <button class="border-border mt-auto rounded-md border bg-white px-4 py-2 text-sm font-medium hover:bg-gray-50">Mark as Completed</button>
+              </article>
+            </div>
+          </section>
+          <!-- Right Column -->
+          <aside class="flex flex-col gap-6 lg:col-span-4">
+            <!-- Upcoming -->
+            <div class="border-border bg-card rounded-lg border p-5 shadow-sm">
+              <div class="mb-4 flex items-center justify-between">
+                <h3 class="text-sm font-semibold tracking-wide">Upcoming</h3>
+                <button class="text-text-dim hover:text-text text-xs font-medium">View all</button>
+              </div>
+              <ul class="space-y-4 text-sm">
+                <li class="flex items-center justify-between">
+                  <div class="flex items-center gap-2"><span class="size-2 rounded-full border border-current"></span> Portfolio Review</div>
+                  <span class="text-text-dim text-xs">15:00</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <div class="flex items-center gap-2"><span class="size-4">👥</span> Meeting with friends</div>
+                  <span class="text-text-dim text-xs">20:00</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <div class="flex items-center gap-2"><span class="size-4">🧙‍♂️</span> Druids Alpha Class</div>
+                  <span class="text-text-dim text-xs">22:00</span>
+                </li>
+                <li class="flex items-center justify-between">
+                  <div class="flex items-center gap-2"><span class="size-4">🎨</span> Illustration Design</div>
+                  <span class="text-text-dim text-xs">00:00</span>
+                </li>
+              </ul>
+            </div>
+            <!-- Documentation -->
+            <div class="border-border bg-card rounded-lg border p-5 shadow-sm">
+              <h3 class="mb-4 text-sm font-semibold tracking-wide">Documentation</h3>
+              <p class="text-text-dim mb-4 text-sm">Click here to start creating notes and documenting your journey</p>
+              <div class="border-border flex aspect-square w-full items-center justify-center rounded-lg border border-dashed bg-gray-50/60">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-text-dim size-12" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                  <path d="M8 2h8a2 2 0 0 1 2 2v16l-6-3-6 3V4a2 2 0 0 1 2-2Z" />
+                </svg>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

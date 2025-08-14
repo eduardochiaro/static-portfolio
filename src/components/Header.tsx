@@ -5,7 +5,7 @@ import { ChevronLeftIcon, MoonIcon, SunIcon } from 'lucide-react';
 import Logo from './Logo';
 import Link from 'next/link';
 import { useLocalStorage } from '@uidotdev/usehooks';
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useUI } from '@react-zero-ui/core';
 
 const themeUuid = process.env.NEXT_PUBLIC_THEME_UUID || 'default-theme-uuid'; // Fallback to a default UUID if not set
@@ -13,8 +13,10 @@ const themeUuid = process.env.NEXT_PUBLIC_THEME_UUID || 'default-theme-uuid'; //
 export default function Header({ name, goBack }: { name?: string; goBack?: string }) {
   const [currentTheme, setCurrentTheme] = useLocalStorage<'light' | 'dark' | 'system'>(themeUuid, 'light'); // Ensure the theme is stored in local storage
   const [, setValue] = useUI<'light' | 'dark' | 'system'>('theme', 'light');
-  const darkThemeMq = window.matchMedia('(prefers-color-scheme: dark)');
-  const isDarkMode = darkThemeMq.matches;
+  const isDarkMode = useMemo(() => {
+    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return false;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  }, []);
 
   useEffect(() => {
     const setTheme = (theme: 'light' | 'dark' | 'system') => {
@@ -24,7 +26,6 @@ export default function Header({ name, goBack }: { name?: string; goBack?: strin
         setValue(theme);
       }
     };
-    // Set the initial theme based on local storage
     if (currentTheme) {
       setTheme(currentTheme);
     }
