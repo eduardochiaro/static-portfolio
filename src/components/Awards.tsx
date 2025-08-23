@@ -2,10 +2,10 @@ import { formatMonthYear } from '@/lib/date';
 import SideModule from './SideModule';
 
 const colorTextList = [
-  'text-retro-purple dark:text-dark-purple',
-  'text-retro-magenta dark:text-dark-magenta',
-  'text-retro-red dark:text-dark-red',
-  'text-retro-text dark:text-dark-orange',
+  'text-accent-four dark:text-dark-accent-four',
+  'text-accent-three dark:text-dark-accent-three',
+  'text-accent-two dark:text-dark-accent-two',
+  'text-dark-main dark:text-dark-accent-one',
 ];
 
 export type AwardsType = {
@@ -22,7 +22,7 @@ export default function Awards({ awards }: { awards: AwardsType[] }) {
         value: formatMonthYear(award.date),
         color: colorTextList[index % colorTextList.length], // cycle through colors based on month
       }))}
-      titleColor="border-retro-red dark:border-dark-red"
+      titleColor="border-accent-two dark:border-dark-accent-two"
     />
   );
 }

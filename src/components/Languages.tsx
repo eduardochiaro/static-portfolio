@@ -3,13 +3,13 @@ import SideModule from './SideModule';
 const colorLevel = (level: string) => {
   switch (level) {
     case 'Native':
-      return 'text-retro-purple dark:text-dark-purple';
+      return 'text-accent-four dark:text-dark-accent-four';
     case 'Fluent':
-      return 'text-retro-magenta dark:text-dark-magenta';
+      return 'text-accent-three dark:text-dark-accent-three';
     case 'Intermediate':
-      return 'text-retro-red dark:text-dark-red';
+      return 'text-accent-two dark:text-dark-accent-two';
     case 'Basic':
-      return 'text-retro-text dark:text-dark-orange';
+      return 'text-dark-main dark:text-dark-accent-one';
     default:
       return '';
   }
@@ -29,7 +29,7 @@ export default function Languages({ languages }: { languages: LanguageType[] }) 
         value: language.level,
         color: colorLevel(language.level), // Use the colorLevel function to determine the text color
       }))}
-      titleColor="border-retro-orange dark:border-dark-orange"
+      titleColor="border-accent-one dark:border-dark-accent-one"
     />
   );
 }

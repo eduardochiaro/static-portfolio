@@ -4,11 +4,11 @@ import { SkillType } from './Skills';
 const colorLevel = (level: string) => {
   switch (level) {
     case 'Expert':
-      return 'text-retro-purple dark:text-dark-purple';
+      return 'text-accent-four dark:text-dark-accent-four';
     case 'Proficient':
-      return 'text-retro-magenta dark:text-dark-magenta';
+      return 'text-accent-three dark:text-dark-accent-three';
     case 'Familiar':
-      return 'text-retro-red dark:text-dark-red';
+      return 'text-accent-two dark:text-dark-accent-two';
     default:
       return '';
   }
@@ -23,7 +23,7 @@ export default function SkillsSidebar({ skills }: { skills: SkillType[] }) {
         value: skill.level,
         color: colorLevel(skill.level), // Use the colorLevel function to determine the text color
       }))}
-      titleColor="border-retro-purple dark:border-dark-purple"
+      titleColor="border-accent-four dark:border-dark-accent-four"
     />
   );
 }

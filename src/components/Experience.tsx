@@ -1,17 +1,17 @@
 import { formatMonthYear } from '@/lib/date';
 
 const colorBorderList = [
-  'border-retro-purple dark:border-dark-purple',
-  'border-retro-magenta dark:border-dark-magenta',
-  'border-retro-red dark:border-dark-red',
-  'border-retro-orange dark:border-dark-orange',
+  'border-accent-four dark:border-dark-accent-four',
+  'border-accent-three dark:border-dark-accent-three',
+  'border-accent-two dark:border-dark-accent-two',
+  'border-accent-one dark:border-dark-accent-one',
 ];
 
 const colorTextList = [
-  'text-retro-purple dark:text-dark-purple',
-  'text-retro-magenta dark:text-dark-magenta',
-  'text-retro-red dark:text-dark-red',
-  'text-retro-text dark:text-dark-orange',
+  'text-accent-four dark:text-dark-accent-four',
+  'text-accent-three dark:text-dark-accent-three',
+  'text-accent-two dark:text-dark-accent-two',
+  'text-dark-main dark:text-dark-accent-one',
 ];
 
 export type ExperienceType = {
@@ -28,7 +28,7 @@ export type ExperienceType = {
 export default function Experience({ experience }: { experience: ExperienceType[] }) {
   return (
     <section className="z-50 mx-auto mb-16 px-4 md:px-0">
-      <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Experience</h2>
+      <h2 className="border-accent-three dark:border-dark-accent-three mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Experience</h2>
       <div className="relative space-y-16">
         {experience.map((exp, index) => (
           <div key={index} className="relative">
@@ -56,7 +56,7 @@ export default function Experience({ experience }: { experience: ExperienceType[
 
               <div className="flex flex-wrap gap-2 pt-3">
                 {exp.tags.map((tag, tagIndex) => (
-                  <span key={tagIndex} className="bg-retro-text text-retro-bg dark:bg-dark-text dark:text-dark-bg px-2 py-1 text-sm">
+                  <span key={tagIndex} className="bg-dark-main text-main dark:bg-main dark:text-dark-main px-2 py-1 text-sm">
                     {tag}
                   </span>
                 ))}

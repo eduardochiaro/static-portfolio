@@ -1,6 +1,6 @@
 /* AUTO-GENERATED - DO NOT EDIT */
 export const bodyAttributes = {
-  "data-theme": "light"
+  "data-theme": "dark"
 };
 export const variantKeyMap = {
   "data-theme": true

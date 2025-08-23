@@ -79,22 +79,22 @@ export default function Remote() {
             </h1>
             <div className="flex flex-col gap-14 md:flex-row">
               <p className="flex items-center gap-2">
-                <MailIcon className="text-retro-magenta dark:text-dark-magenta inline-block size-6" />
+                <MailIcon className="text-accent-three dark:text-dark-accent-three inline-block size-6" />
                 {personalInfo.email}
               </p>
               <p className="flex items-center gap-2">
-                <MapPinHouse className="text-retro-purple dark:text-dark-purple inline-block size-6" />
+                <MapPinHouse className="text-accent-four dark:text-dark-accent-four inline-block size-6" />
                 {personalInfo.location}
               </p>
               <p className="flex items-center gap-2">
-                <GithubIcon className="text-retro-red dark:text-dark-red inline-block size-6" />
+                <GithubIcon className="text-accent-two dark:text-dark-accent-two inline-block size-6" />
                 {personalInfo.github}
               </p>
             </div>
           </section>
           <Lines />
           <section className="z-50 mx-auto my-16 max-w-4xl px-4 md:px-0">
-            <h2 className="border-retro-orange dark:border-dark-orange mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Summary</h2>
+            <h2 className="border-accent-one dark:border-dark-accent-one mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Summary</h2>
             <p className="mb-4">{summary}</p>
           </section>
 

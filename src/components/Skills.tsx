@@ -6,8 +6,8 @@ export type SkillType = {
   darkColor?: string; // optional dark color property for styling
 };
 
-const colorList = ['bg-retro-red', 'bg-retro-orange', 'bg-retro-purple', 'bg-retro-magenta'];
-const darkColorList = ['bg-dark-red', 'bg-dark-orange', 'bg-dark-purple', 'bg-dark-magenta'];
+const colorList = ['bg-accent-two', 'bg-accent-one', 'bg-accent-four', 'bg-accent-three'];
+const darkColorList = ['bg-dark-accent-two', 'bg-dark-accent-one', 'bg-dark-accent-four', 'bg-dark-accent-three'];
 
 export default function Skills({ skills }: { skills: SkillType[] }) {
   // split skills into two columns
@@ -27,7 +27,7 @@ export default function Skills({ skills }: { skills: SkillType[] }) {
 
   return (
     <section className="mx-auto my-16 max-w-4xl px-4 md:px-0">
-      <h2 className="border-retro-red dark:border-dark-red mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Technical Expertise</h2>
+      <h2 className="border-accent-two dark:border-dark-accent-two mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Technical Expertise</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 md:gap-8">
         {[leftColumn, rightColumn].map((column, index) => (
           <div key={index}>

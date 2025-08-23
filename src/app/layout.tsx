@@ -8,7 +8,7 @@ import homeData from '../../public/static/metadata.json';
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-ibm-plex-mono',
+  variable: '--font-mono',
   subsets: ['latin'],
 });
 
@@ -21,11 +21,11 @@ export const viewport: Viewport = {
   themeColor: [
     {
       media: '(prefers-color-scheme: light)',
-      color: '#f8f3ed',
+      color: '#F9FBEF',
     },
     {
       media: '(prefers-color-scheme: dark)',
-      color: '#0f0f17',
+      color: '#1C2826',
     },
   ],
 };

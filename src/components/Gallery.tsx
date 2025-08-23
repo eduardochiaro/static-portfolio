@@ -57,12 +57,12 @@ export default function Gallery() {
   return (
     <>
       <section className="z-50 mx-auto my-16 max-w-4xl px-4 md:px-0">
-        <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Featured Projects</h2>
+        <h2 className="border-accent-three dark:border-dark-accent-three mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Featured Projects</h2>
 
         <div className="flex justify-center -space-x-9 overflow-auto rounded-lg">
           {images.map((img, idx) => (
             <React.Fragment key={idx}>
-              <div className="group parallelogram relative bg-red-600">
+              <div className="group parallelogram bg-accent-two-600 relative">
                 <Image
                   src={img.src}
                   alt={img.title}
@@ -72,7 +72,7 @@ export default function Gallery() {
                   onClick={() => handleImageClick(idx)}
                 />
               </div>
-              <div className={`group parallelogram-desc relative w-[600px] ${selectedIndex === idx ? 'block' : 'hidden'} bg-dark-bg`}>
+              <div className={`group parallelogram-desc relative w-[600px] ${selectedIndex === idx ? 'block' : 'hidden'} bg-dark-main`}>
                 <h3 className="pt-4 pr-12 text-right text-base font-semibold">{img.title}</h3>
                 <p className="mt-2 px-12 text-right text-sm">{img.description}</p>
               </div>

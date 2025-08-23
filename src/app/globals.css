@@ -3,30 +3,29 @@
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
 @theme {
-  --color-retro-bg: #f8f3ed;
-  --color-retro-text: #321e18;
-  --color-retro-orange: #ffbb33;
-  --color-retro-red: #ff5533;
-  --color-retro-magenta: #e83a63;
-  --color-retro-purple: #8a2be2;
+  --color-main: #f9fbef; /* beige */
+  --color-dark-main: #1c2826; /* gunmetal */
 
-  --color-dark-bg: #0f0f17;
-  --color-dark-text: #f0ece0;
-  --color-dark-orange: #ffcc55;
-  --color-dark-red: #ff7755;
-  --color-dark-magenta: #f04a73;
-  --color-dark-purple: #9b3cf3;
+  --color-accent-one: #ffbb33;
+  --color-accent-two: #ff5533;
+  --color-accent-three: #e83a63;
+  --color-accent-four: #8a2be2;
+
+  --color-dark-accent-one: #ffcc55;
+  --color-dark-accent-two: #ff7755;
+  --color-dark-accent-three: #f04a73;
+  --color-dark-accent-four: #9b3cf3;
 
   --font-mono: 'IBM Plex Mono', 'monospace';
 }
 
 body {
-  @apply bg-retro-bg dark:bg-dark-bg text-retro-text dark:text-dark-text relative font-mono leading-relaxed;
+  @apply bg-main dark:bg-dark-main text-dark-main dark:text-main relative font-mono leading-relaxed;
 }
 
 .button {
-  @apply border-retro-text dark:border-dark-text bg-retro-text dark:bg-dark-text text-retro-bg dark:text-dark-bg cursor-pointer rounded border font-semibold transition duration-200;
-  @apply hover:bg-retro-magenta dark:hover:bg-dark-magenta hover:text-retro-bg hover:-translate-1 hover:shadow-[0.25rem_0.25rem_rgb(0,0,0)] hover:dark:shadow-[0.25rem_0.25rem_rgb(255,255,255)];
+  @apply border-dark-main dark:border-main bg-dark-main dark:bg-main text-main dark:text-dark-main cursor-pointer rounded border font-semibold transition duration-200;
+  @apply hover:bg-accent-three dark:hover:bg-dark-accent-three hover:text-main hover:-translate-1 hover:shadow-[0.25rem_0.25rem_rgb(0,0,0)] hover:dark:shadow-[0.25rem_0.25rem_rgb(255,255,255)];
 }
 
 .slanted {

@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React from 'react';
 
 type ProjectCardProps = {
@@ -12,17 +13,17 @@ type ProjectCardProps = {
 };
 
 const accentBorderList = [
-  'border-retro-purple dark:border-dark-purple',
-  'border-retro-magenta dark:border-dark-magenta',
-  'border-retro-red dark:border-dark-red',
-  'border-retro-orange dark:border-dark-orange',
+  'border-accent-four dark:border-dark-accent-four',
+  'border-accent-three dark:border-dark-accent-three',
+  'border-accent-two dark:border-dark-accent-two',
+  'border-accent-one dark:border-dark-accent-one',
 ];
 
 const accentTextList = [
-  'text-retro-purple dark:text-dark-purple',
-  'text-retro-magenta dark:text-dark-magenta',
-  'text-retro-red dark:text-dark-red',
-  'text-retro-orange dark:text-dark-orange',
+  'text-accent-four dark:text-dark-accent-four',
+  'text-accent-three dark:text-dark-accent-three',
+  'text-accent-two dark:text-dark-accent-two',
+  'text-accent-one dark:text-dark-accent-one',
 ];
 
 const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDownload, index }: ProjectCardProps) => {
@@ -30,9 +31,7 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
   const textAccent = accentTextList[index % accentTextList.length];
 
   return (
-    <div
-      className={`group relative overflow-hidden rounded border-4 ${borderAccent} bg-retro-bg dark:bg-dark-bg transition duration-200 hover:-translate-2 hover:shadow-[0.5rem_0.5rem_rgb(0,0,0)] hover:dark:shadow-[0.5rem_0.5rem_rgb(255,255,255)]`}
-    >
+    <div className={`group relative overflow-hidden rounded border-4 ${borderAccent} bg-main dark:bg-dark-main transition duration-200`}>
       {/* Accent gradient bar on the left */}
       <div className="pointer-events-none absolute top-0 left-0 h-full w-1" />
 
@@ -52,7 +51,7 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
             />
           </div>
           {/* Neon ring on hover */}
-          <div className="ring-retro-magenta dark:ring-dark-magenta ring-offset-retro-bg dark:ring-offset-dark-bg pointer-events-none absolute inset-0 ring-0 ring-offset-2 transition-[box-shadow,ring-width] duration-300 group-hover:ring-4" />
+          <div className="ring-accent-three dark:ring-dark-accent-three ring-offset-main dark:ring-offset-dark-main pointer-events-none absolute inset-0 ring-0 ring-offset-2 transition-[box-shadow,ring-width] duration-300 group-hover:ring-4" />
         </div>
 
         {/* Content */}
@@ -60,7 +59,7 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
           <h3 className={`text-xl font-bold tracking-wide uppercase ${textAccent}`}>{title}</h3>
           <p className="min-h-20 flex-grow text-sm opacity-90 md:min-h-12">{description}</p>
           <div className="pt-2">
-            <a
+            <Link
               href={buttonUrl}
               className="button inline-block px-6 py-2 text-center"
               download={isDownload}
@@ -68,7 +67,7 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
               rel={!isDownload ? 'noopener noreferrer' : undefined}
             >
               {buttonText}
-            </a>
+            </Link>
           </div>
         </div>
       </div>
@@ -88,7 +87,7 @@ export type ProjectType = {
 export default function Projects({ projects }: { projects: ProjectType[] }) {
   return (
     <section className="relative mx-auto my-16 max-w-4xl px-4 md:px-0">
-      <h2 className="border-retro-magenta dark:border-dark-magenta mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Featured Projects</h2>
+      <h2 className="border-accent-three dark:border-dark-accent-three mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Featured Projects</h2>
 
       {/* Background grid accents */}
       <div className="pointer-events-none absolute inset-0 -z-10 [background-size:24px_24px] opacity-10 [background:linear-gradient(90deg,rgba(50,30,24,.08)_1px,transparent_1px),linear-gradient(rgba(50,30,24,.08)_1px,transparent_1px)] dark:[background:linear-gradient(90deg,rgba(240,236,224,.08)_1px,transparent_1px),linear-gradient(rgba(240,236,224,.08)_1px,transparent_1px)]" />
