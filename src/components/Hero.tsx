@@ -9,7 +9,7 @@ export type HeroProps = {
 export default function Hero({ title = '', name = '', slogan = '' }: HeroProps) {
   return (
     <section className="relative z-50 mx-auto max-w-4xl overflow-hidden px-4 pt-16 pb-24 md:px-0">
-      <p className="text-lg font-semibold">{title}</p>
+      <h2 className="text-lg font-semibold">{title}</h2>
       <h1 className="mb-4 flex flex-col text-8xl leading-none font-semibold uppercase">
         {(() => {
           const [first, ...rest] = name.trim().split(' ');

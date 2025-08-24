@@ -1,17 +1,18 @@
 'use client';
 
-import Awards, { AwardsType } from '@/components/Awards';
+import Awards, { AwardsType } from '@/components/resume/Awards';
 import ClickSpark from '@/components/ClickSpark';
 import Experience, { ExperienceType } from '@/components/Experience';
 import Footer, { FooterProps } from '@/components/Footer';
 import Header from '@/components/Header';
-import Languages, { LanguageType } from '@/components/Languages';
+import GithubIcon from '@/components/icons/Github';
+import Languages, { LanguageType } from '@/components/resume/Languages';
 import Lines from '@/components/Lines';
 import Loading from '@/components/Loading';
-import SideScroll from '@/components/SideScroll';
+import SideScroll from '@/components/resume/SideScroll';
 import { SkillType } from '@/components/Skills';
-import SkillsSidebar from '@/components/SkillsSidebar';
-import { GithubIcon, MailIcon, MapPinHouse } from 'lucide-react';
+import SkillsSidebar from '@/components/resume/SkillsSidebar';
+import { MailIcon, MapPinHouse } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 type ResumeType = {

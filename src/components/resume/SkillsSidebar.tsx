@@ -1,5 +1,5 @@
 import SideModule from './SideModule';
-import { SkillType } from './Skills';
+import { SkillType } from '../Skills';
 
 const colorLevel = (level: string) => {
   switch (level) {

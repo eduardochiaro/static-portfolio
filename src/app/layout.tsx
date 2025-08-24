@@ -38,7 +38,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning lang="en" className={`${ibmPlexMono.variable} antialiased`}>
       <head>
-        <meta name="apple-mobile-web-app-title" content="Eduardo Chiaro" />
+        <meta name="apple-mobile-web-app-title" content={homeData.home.title} />
       </head>
       <body {...bodyAttributes}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>

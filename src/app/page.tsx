@@ -9,7 +9,7 @@ import Hero, { HeroProps } from '@/components/Hero';
 import Lines from '@/components/Lines';
 import Loading from '@/components/Loading';
 import Projects, { ProjectType } from '@/components/Projects';
-import SideScroll from '@/components/SideScroll';
+import SideScroll from '@/components/resume/SideScroll';
 import Skills, { SkillType } from '@/components/Skills';
 import { useState, useEffect } from 'react';
 
