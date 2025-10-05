@@ -11,7 +11,7 @@ export type FooterProps = {
 export default function Footer({ text, links }: FooterProps) {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="border-dark-main dark:border-main z-50 mx-auto mt-16 flex max-w-4xl justify-between border-t-2 px-4 py-8 text-sm md:px-0">
+    <footer className="border-dark-main dark:border-main z-50 mx-auto mt-16 flex max-w-4xl justify-between border-t-2 px-4 py-8 text-sm md:px-0 md:text-xs">
       <div className="flex flex-col gap-3">
         {links.map((link, index) => (
           <p key={index}>

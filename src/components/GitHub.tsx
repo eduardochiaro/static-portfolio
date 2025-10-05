@@ -17,15 +17,15 @@ export default function GitHub({ repos }: { repos: GitHubType[] }) {
         {repos.map((item, index) => (
           <div key={index}>
             <div className="mb-4 flex flex-col justify-between gap-2 md:flex-row md:items-center">
-              <h3 className="text-xl font-bold">{item.name}</h3>
+              <h3 className="text-xl font-bold md:text-base">{item.name}</h3>
               <Link href={item.link} className="text-accent-four dark:text-dark-accent-four hover:underline md:text-xs">
                 View on GitHub
               </Link>
             </div>
-            <div className="mb-4 text-sm">{item.description}</div>
+            <div className="mb-4 text-sm md:text-xs">{item.description}</div>
             <div className="mt-4 flex flex-wrap gap-2">
               {item.tags.map((tag, tagIndex) => (
-                <span key={tagIndex} className="bg-dark-main text-main dark:bg-main dark:text-dark-main px-2 py-1 text-sm">
+                <span key={tagIndex} className="bg-dark-main text-main dark:bg-main dark:text-dark-main px-2 py-1 text-sm md:text-xs">
                   {tag}
                 </span>
               ))}

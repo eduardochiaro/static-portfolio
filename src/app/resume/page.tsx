@@ -95,7 +95,7 @@ export default function Remote() {
           </section>
           <Lines />
           <section className="z-50 mx-auto my-16 max-w-4xl px-4 md:px-0">
-            <h2 className="border-accent-one dark:border-dark-accent-one mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Summary</h2>
+            <h2 className="border-accent-one dark:border-dark-accent-one mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6 md:text-base">Summary</h2>
             <p className="mb-4">{summary}</p>
           </section>
 

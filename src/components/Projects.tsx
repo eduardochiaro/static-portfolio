@@ -31,7 +31,7 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
   const textAccent = accentTextList[index % accentTextList.length];
 
   return (
-    <div className={`group relative overflow-hidden rounded border-4 ${borderAccent} bg-main dark:bg-dark-main transition duration-200`}>
+    <div className={`group relative overflow-hidden rounded border-4 ${borderAccent} bg-main dark:bg-dark-main transition duration-300`}>
       {/* Accent gradient bar on the left */}
       <div className="pointer-events-none absolute top-0 left-0 h-full w-1" />
 
@@ -56,12 +56,12 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
 
         {/* Content */}
         <div className="flex w-full flex-col gap-3 px-4 py-4 md:w-3/5 md:px-6 md:py-6">
-          <h3 className={`text-xl font-bold tracking-wide uppercase ${textAccent}`}>{title}</h3>
-          <p className="min-h-20 flex-grow text-sm opacity-90 md:min-h-12">{description}</p>
+          <h3 className={`text-xl font-bold tracking-wide uppercase md:text-base ${textAccent}`}>{title}</h3>
+          <p className="min-h-20 flex-grow text-sm opacity-90 md:min-h-12 md:text-xs">{description}</p>
           <div className="pt-2">
             <Link
               href={buttonUrl}
-              className="button inline-block px-6 py-2 text-center"
+              className="button inline-block px-6 py-2 text-center text-base md:text-sm"
               download={isDownload}
               target={!isDownload ? '_blank' : undefined}
               rel={!isDownload ? 'noopener noreferrer' : undefined}

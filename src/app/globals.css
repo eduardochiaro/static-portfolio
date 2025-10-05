@@ -20,11 +20,11 @@
 }
 
 body {
-  @apply bg-main dark:bg-dark-main text-dark-main dark:text-main relative font-mono leading-relaxed;
+  @apply bg-main dark:bg-dark-main text-dark-main dark:text-main relative font-mono text-base leading-relaxed md:text-sm;
 }
 
 .button {
-  @apply border-dark-main dark:border-main bg-dark-main dark:bg-main text-main dark:text-dark-main cursor-pointer rounded border font-semibold transition duration-200;
+  @apply border-dark-main dark:border-main bg-dark-main dark:bg-main text-main dark:text-dark-main cursor-pointer rounded border font-semibold transition duration-300;
   @apply hover:bg-accent-three dark:hover:bg-dark-accent-three hover:text-main hover:-translate-1 hover:shadow-[0.25rem_0.25rem_rgb(0,0,0)] hover:dark:shadow-[0.25rem_0.25rem_rgb(255,255,255)];
 }
 
