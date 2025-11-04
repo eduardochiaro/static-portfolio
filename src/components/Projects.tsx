@@ -19,13 +19,6 @@ const accentBorderList = [
   'border-accent-one dark:border-dark-accent-one',
 ];
 
-const accentTextList = [
-  'text-accent-four dark:text-dark-accent-four',
-  'text-accent-three dark:text-dark-accent-three',
-  'text-accent-two dark:text-dark-accent-two',
-  'text-accent-one dark:text-dark-accent-one',
-];
-
 const backgroundAccentList = [
   'bg-accent-four dark:bg-dark-accent-four',
   'bg-accent-three dark:bg-dark-accent-three',
@@ -35,7 +28,6 @@ const backgroundAccentList = [
 
 const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDownload, index }: ProjectCardProps) => {
   const borderAccent = accentBorderList[index % accentBorderList.length];
-  const textAccent = accentTextList[index % accentTextList.length];
   const backgroundAccent = backgroundAccentList[index % backgroundAccentList.length];
 
   return (
