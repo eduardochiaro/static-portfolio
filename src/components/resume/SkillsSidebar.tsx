@@ -4,11 +4,11 @@ import { SkillType } from '../Skills';
 const colorLevel = (level: string) => {
   switch (level) {
     case 'Expert':
-      return 'text-accent-four dark:text-dark-accent-four';
+      return 'decoration-accent-four dark:decoration-dark-accent-four';
     case 'Proficient':
-      return 'text-accent-three dark:text-dark-accent-three';
+      return 'decoration-accent-three dark:decoration-dark-accent-three';
     case 'Familiar':
-      return 'text-accent-two dark:text-dark-accent-two';
+      return 'decoration-accent-two dark:decoration-dark-accent-two';
     default:
       return '';
   }

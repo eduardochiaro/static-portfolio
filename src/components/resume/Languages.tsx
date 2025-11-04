@@ -3,13 +3,13 @@ import SideModule from './SideModule';
 const colorLevel = (level: string) => {
   switch (level) {
     case 'Native':
-      return 'text-accent-four dark:text-dark-accent-four';
+      return 'decoration-accent-four dark:decoration-dark-accent-four';
     case 'Fluent':
-      return 'text-accent-three dark:text-dark-accent-three';
+      return 'decoration-accent-three dark:decoration-dark-accent-three';
     case 'Intermediate':
-      return 'text-accent-two dark:text-dark-accent-two';
+      return 'decoration-accent-two dark:decoration-dark-accent-two';
     case 'Basic':
-      return 'text-dark-main dark:text-dark-accent-one';
+      return 'decoration-dark-main dark:decoration-dark-accent-one';
     default:
       return '';
   }

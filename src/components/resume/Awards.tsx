@@ -2,10 +2,10 @@ import { formatMonthYear } from '@/lib/date';
 import SideModule from './SideModule';
 
 const colorTextList = [
-  'text-accent-four dark:text-dark-accent-four',
-  'text-accent-three dark:text-dark-accent-three',
-  'text-accent-two dark:text-dark-accent-two',
-  'text-dark-main dark:text-dark-accent-one',
+  'decoration-accent-four dark:decoration-dark-accent-four',
+  'decoration-accent-three dark:decoration-dark-accent-three',
+  'decoration-accent-two dark:decoration-dark-accent-two',
+  'decoration-dark-main dark:decoration-dark-accent-one',
 ];
 
 export type AwardsType = {

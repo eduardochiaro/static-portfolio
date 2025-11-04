@@ -26,12 +26,20 @@ const accentTextList = [
   'text-accent-one dark:text-dark-accent-one',
 ];
 
+const backgroundAccentList = [
+  'bg-accent-four dark:bg-dark-accent-four',
+  'bg-accent-three dark:bg-dark-accent-three',
+  'bg-accent-two dark:bg-dark-accent-two',
+  'bg-accent-one dark:bg-dark-accent-one',
+];
+
 const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDownload, index }: ProjectCardProps) => {
   const borderAccent = accentBorderList[index % accentBorderList.length];
   const textAccent = accentTextList[index % accentTextList.length];
+  const backgroundAccent = backgroundAccentList[index % backgroundAccentList.length];
 
   return (
-    <div className={`group relative overflow-hidden rounded border-4 ${borderAccent} bg-main dark:bg-dark-main transition duration-300`}>
+    <div className={`group relative overflow-hidden rounded-xl border-6 ${borderAccent} ${backgroundAccent} transition duration-300`}>
       {/* Accent gradient bar on the left */}
       <div className="pointer-events-none absolute top-0 left-0 h-full w-1" />
 
@@ -40,8 +48,8 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
 
       <div className="relative z-10 flex h-full flex-col md:flex-row">
         {/* Angled image panel */}
-        <div className="relative -ml-6 h-40 overflow-hidden [clip-path:polygon(0%_0%,85%_0%,100%_100%,0%_100%)] md:h-auto md:w-2/5">
-          <div className="absolute inset-0 origin-bottom-left -skew-x-6">
+        <div className="bg-main dark:bg-dark-main relative -ml-6 h-40 overflow-hidden md:h-auto md:w-2/5 md:[clip-path:polygon(0%_0%,85%_0%,100%_100%,0%_100%)]">
+          <div className="absolute inset-0 z-20 origin-bottom-left -skew-x-6">
             <Image
               src={imageUrl}
               alt={title}
@@ -56,8 +64,8 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
 
         {/* Content */}
         <div className="flex w-full flex-col gap-3 px-4 py-4 md:w-3/5 md:px-6 md:py-6">
-          <h3 className={`text-xl font-bold tracking-wide uppercase md:text-base ${textAccent}`}>{title}</h3>
-          <p className="min-h-20 flex-grow text-sm opacity-90 md:min-h-12 md:text-xs">{description}</p>
+          <h3 className={`text-main text-xl font-bold tracking-wide uppercase md:text-lg`}>{title}</h3>
+          <p className="text-main min-h-20 flex-grow text-sm opacity-90 md:min-h-12 md:text-xs">{description}</p>
           <div className="pt-2">
             <Link
               href={buttonUrl}
