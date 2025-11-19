@@ -13,7 +13,7 @@ export type AwardsType = {
   date: string;
 };
 
-export default function Awards({ awards }: { awards: AwardsType[] }) {
+export default function Awards({ awards }: { awards: readonly AwardsType[] }) {
   return (
     <SideModule
       title="Awards"

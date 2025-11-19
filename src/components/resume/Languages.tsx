@@ -20,7 +20,7 @@ export type LanguageType = {
   level: string;
 };
 
-export default function Languages({ languages }: { languages: LanguageType[] }) {
+export default function Languages({ languages }: { languages: readonly LanguageType[] }) {
   return (
     <SideModule
       title="Languages"

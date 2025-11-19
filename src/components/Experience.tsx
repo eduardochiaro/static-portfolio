@@ -21,11 +21,11 @@ export type ExperienceType = {
   startDate: string;
   endDate: string;
   description: string;
-  responsibilities: string[];
-  tags: string[];
+  responsibilities: readonly string[];
+  tags: readonly string[];
 };
 
-export default function Experience({ experience }: { experience: ExperienceType[] }) {
+export default function Experience({ experience }: { experience: readonly ExperienceType[] }) {
   return (
     <section className="z-50 mx-auto mb-16 px-4 md:px-0">
       <h2 className="border-accent-three dark:border-dark-accent-three mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6 md:text-base">Experience</h2>

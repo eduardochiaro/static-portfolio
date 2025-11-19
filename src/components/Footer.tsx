@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 export type FooterProps = {
   text: string;
-  links: {
-    text: string;
-    url: string;
+  links: readonly {
+    readonly text: string;
+    readonly url: string;
   }[];
 };
 

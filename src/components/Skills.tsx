@@ -1,7 +1,7 @@
 export type SkillType = {
   name: string;
   level: string;
-  percentage: number;
+  percentage?: number;
   color?: string; // optional color property for styling
   darkColor?: string; // optional dark color property for styling
 };
@@ -9,7 +9,7 @@ export type SkillType = {
 const colorList = ['bg-accent-two', 'bg-accent-one', 'bg-accent-four', 'bg-accent-three'];
 const darkColorList = ['bg-dark-accent-two', 'bg-dark-accent-one', 'bg-dark-accent-four', 'bg-dark-accent-three'];
 
-export default function Skills({ skills }: { skills: SkillType[] }) {
+export default function Skills({ skills }: { skills: readonly SkillType[] }) {
   // split skills into two columns
   if (!skills || skills.length === 0) {
     return null; // or return a placeholder if no skills are provided

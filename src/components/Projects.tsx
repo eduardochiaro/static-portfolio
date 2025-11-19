@@ -84,7 +84,7 @@ export type ProjectType = {
   isDownload: boolean;
 };
 
-export default function Projects({ projects }: { projects: ProjectType[] }) {
+export default function Projects({ projects }: { projects: readonly ProjectType[] }) {
   return (
     <section className="relative mx-auto my-16 max-w-4xl px-4 md:px-0">
       <h2 className="border-accent-three dark:border-dark-accent-three mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">Featured Projects</h2>

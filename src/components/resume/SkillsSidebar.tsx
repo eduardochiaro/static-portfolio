@@ -14,7 +14,7 @@ const colorLevel = (level: string) => {
   }
 };
 
-export default function SkillsSidebar({ skills }: { skills: SkillType[] }) {
+export default function SkillsSidebar({ skills }: { skills: readonly SkillType[] }) {
   return (
     <SideModule
       title="Skills"

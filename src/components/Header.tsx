@@ -4,7 +4,7 @@ import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 import { ChevronLeftIcon, MoonIcon, SunIcon } from 'lucide-react';
 import Logo from './Logo';
 import Link from 'next/link';
-import { useLocalStorage } from '@uidotdev/usehooks';
+import { useLocalStorage } from 'usehooks-ts';
 import { useEffect, useMemo } from 'react';
 import { useUI } from '@react-zero-ui/core';
 
