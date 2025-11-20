@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MonoFlow - Developer Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+      @theme {
+        --color-mono-bg: #fafafa;
+        --color-mono-card: #f0f0f0;
+        --color-mono-text: #1a1a1a;
+        --color-mono-text-muted: #666666;
+        --color-mono-border: #e0e0e0;
+        --color-mono-accent: #0a0a0a;
+
+        --color-dark-mono-bg: #141414;
+        --color-dark-mono-card: #202020;
+        --color-dark-mono-text: #e8e8e8;
+        --color-dark-mono-text-muted: #888888;
+        --color-dark-mono-border: #292929;
+        --color-dark-mono-accent: #f0f0f0;
+
+        --font-mono: 'IBM Plex Mono', 'Courier New', monospace;
+      }
+
+      .fade-in {
+        animation: fadeIn 0.6s ease-in;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .article-image {
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body class="bg-mono-bg dark:bg-dark-mono-bg text-mono-text dark:text-dark-mono-text font-mono antialiased">
+    <!-- Navigation -->
+    <nav class="border-mono-border dark:border-dark-mono-border fixed top-0 left-0 right-0 z-50 bg-mono-bg/50 dark:bg-dark-mono-bg/50 backdrop-blur-xs">
+      <div class="mx-auto flex items-center justify-between p-8">
+        <div class="flex items-center gap-4 text-mono-accent dark:text-dark-mono-accent text-sm font-normal tracking-wide">
+          <a href="#">Alex Coder</a>
+          <div class="opacity-60">/</div>
+          <div>Portfolio</div>
+        </div>
+        <div class="flex items-center gap-6 text-sm">
+          <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text transition uppercase">Portfolio</a>
+          <a href="#resume" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text transition uppercase">Resume</a>
+          
+          <!-- Theme Toggle -->
+          <div class="relative" id="themeDropdownContainer">
+            <button id="themeToggle" class="flex h-8 w-8 items-center justify-center transition" aria-label="Theme options">
+              <!-- Moon icon (shows in light mode) -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="hidden h-4 w-4 dark:block" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+              </svg>
+              <!-- Sun icon (shows in dark mode) -->
+              <svg xmlns="http://www.w3.org/2000/svg" class="block h-4 w-4 dark:hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="5"></circle>
+                <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+              </svg>
+            </button>
+
+            <!-- Dropdown menu -->
+            <div
+              id="themeDropdown"
+              class="bg-mono-bg dark:bg-dark-mono-bg border-mono-border dark:border-dark-mono-border absolute right-0 z-50 mt-2 hidden w-28 rounded border py-1 shadow-lg"
+            >
+              <button
+                class="theme-option hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
+                data-theme="light"
+              >
+                Light
+              </button>
+              <button
+                class="theme-option hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
+                data-theme="dark"
+              >
+                Dark
+              </button>
+              <button
+                class="theme-option hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
+                data-theme="system"
+              >
+                System
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
+      <div class="fade-in">
+        <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-2 text-sm uppercase tracking-widest">Full Stack Developer</p>
+        <h1 class="mb-6 flex flex-col text-6xl font-semibold leading-tight tracking-tight">
+          <span>Alex</span>
+          <span>Coder</span>
+        </h1>
+        <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-6 max-w-2xl text-base leading-relaxed">
+          Building scalable web applications with modern JavaScript
+        </p>
+      </div>
+    </section>
+
+    <!-- Divider -->
+    <div class="mx-auto max-w-5xl px-6">
+      <div class="border-mono-border dark:border-dark-mono-border border-t"></div>
+    </div>
+
+    <!-- About Section -->
+    <section class="mx-auto max-w-5xl px-6 py-16">
+      <h2 class="mb-6 text-lg font-medium uppercase tracking-widest">About Me</h2>
+      <div class="text-mono-text-muted dark:text-dark-mono-text-muted max-w-3xl space-y-4 text-base leading-relaxed">
+        <p>
+          I'm a full-stack developer with 5+ years of experience crafting web applications using Node.js and modern JavaScript frameworks. I specialize in
+          building performant backend services and responsive frontend interfaces that provide exceptional user experiences.
+        </p>
+        <p>
+          When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, and sharing knowledge with the developer
+          community.
+        </p>
+      </div>
+      <div class="mt-8 ">
+      <a href="#"
+        class="rounded border border-mono-border dark:border-dark-mono-border px-6 py-2 text-sm text-mono-text-muted dark:text-dark-mono-text-muted bg-mono-bg dark:bg-dark-mono-bg hover:bg-mono-card dark:hover:bg-dark-mono-card hover:text-mono-text dark:hover:text-dark-mono-text transition">
+        View Full Resume</a>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="mx-auto max-w-5xl px-6 py-16">
+      <h2 class="mb-8 text-lg font-medium uppercase tracking-widest">Technical Expertise</h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
+        <div class="space-y-6">
+          <div>
+            <div class="mb-2 flex justify-between text-sm">
+              <span>React</span>
+              <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Advanced</span>
+            </div>
+            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
+              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="mb-2 flex justify-between text-sm">
+              <span>Vue.js</span>
+              <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Intermediate</span>
+            </div>
+            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
+              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 75%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="mb-2 flex justify-between text-sm">
+              <span>JavaScript/TypeScript</span>
+              <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Expert</span>
+            </div>
+            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
+              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 95%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="mb-2 flex justify-between text-sm">
+              <span>CSS/SASS</span>
+              <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Advanced</span>
+            </div>
+            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
+              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <div class="mb-2 flex justify-between text-sm">
+              <span>Node.js</span>
+              <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Expert</span>
+            </div>
+            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
+              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 95%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="mb-2 flex justify-between text-sm">
+              <span>Express.js</span>
+              <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Expert</span>
+            </div>
+            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
+              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 90%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="mb-2 flex justify-between text-sm">
+              <span>RESTful APIs</span>
+              <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Expert</span>
+            </div>
+            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
+              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 95%"></div>
+            </div>
+          </div>
+          <div>
+            <div class="mb-2 flex justify-between text-sm">
+              <span>GraphQL</span>
+              <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Advanced</span>
+            </div>
+            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
+              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="mx-auto max-w-5xl px-6 py-16">
+      <h2 class="mb-8 text-lg font-medium uppercase tracking-widest">Featured Projects</h2>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        <!-- Project 1 -->
+        <article class="article-card group">
+          <a href="#" class="block">
+            <div class="mb-4 overflow-hidden rounded">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=450&fit=crop"
+                alt="E-Commerce Platform"
+                class="article-image w-full transition-transform duration-300"
+              />
+            </div>
+            <h3 class="group-hover:underline mb-2 text-xl font-semibold transition">E-Commerce Platform</h3>
+            <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm leading-relaxed">
+              Full-stack e-commerce solution with inventory management and payment processing
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">React</span>
+              <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Node.js</span>
+              <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">MongoDB</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="article-card group">
+          <a href="#" class="block">
+            <div class="mb-4 overflow-hidden rounded">
+              <img
+                src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop"
+                alt="Analytics Dashboard"
+                class="article-image w-full transition-transform duration-300"
+              />
+            </div>
+            <h3 class="group-hover:underline mb-2 text-xl font-semibold transition">Analytics Dashboard</h3>
+            <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm leading-relaxed">
+              Real-time data visualization platform with customizable widgets and integrations
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Vue.js</span>
+              <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">D3.js</span>
+              <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Firebase</span>
+            </div>
+          </a>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="article-card group">
+          <a href="#" class="block">
+            <div class="mb-4 overflow-hidden rounded">
+              <img
+                src="https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&h=450&fit=crop"
+                alt="DevOps Toolkit"
+                class="article-image w-full transition-transform duration-300"
+              />
+            </div>
+            <h3 class="group-hover:underline mb-2 text-xl font-semibold transition">DevOps Toolkit</h3>
+            <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm leading-relaxed">
+              CLI tool suite for automating deployment processes and monitoring servers
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Node.js</span>
+              <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Docker</span>
+              <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">AWS</span>
+            </div>
+          </a>
+        </article>
+      </div>
+    </section>
+
+    <!-- GitHub Section -->
+    <section class="mx-auto max-w-5xl px-6 py-16">
+      <h2 class="mb-8 text-lg font-medium uppercase tracking-widest">GitHub Showcase</h2>
+      <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
+        
+        <div class="border-mono-border dark:border-dark-mono-border rounded border p-6 relative">
+          <div class="mb-4 flex items-start justify-between gap-4">
+            <h3 class="text-lg font-semibold">API Gateway</h3>
+            <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text hover:underline whitespace-nowrap text-xs transition absolute top-3 right-3">View on GitHub</a>
+          </div>
+          <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">
+            A high-performance Node.js API gateway with authentication, rate limiting, and request transformations.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Node.js</span>
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Express</span>
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">JWT</span>
+          </div>
+        </div>
+
+        <div class="border-mono-border dark:border-dark-mono-border rounded border p-6 relative">
+          <div class="mb-4 flex items-start justify-between gap-4">
+            <h3 class="text-lg font-semibold">DocumentDB</h3>
+            <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text hover:underline whitespace-nowrap text-xs transition absolute top-3 right-3">View on GitHub</a>
+          </div>
+          <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">
+            A lightweight document database built with Node.js. Designed for ease of use in small to medium projects and rapid prototyping.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Node.js</span>
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">JavaScript</span>
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">CLI</span>
+          </div>
+        </div>
+
+        <div class="border-mono-border dark:border-dark-mono-border rounded border p-6 relative">
+          <div class="mb-4 flex items-start justify-between gap-4">
+            <h3 class="text-lg font-semibold">Weather Dashboard</h3>
+            <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text hover:underline whitespace-nowrap text-xs transition absolute top-3 right-3">View on GitHub</a>
+          </div>
+          <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">
+            A real-time weather monitoring application with customizable alerts and data visualization.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">React</span>
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Node.js</span>
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">API</span>
+          </div>
+        </div>
+
+        <div class="border-mono-border dark:border-dark-mono-border rounded border p-6 relative">
+          <div class="mb-4 flex items-start justify-between gap-4">
+            <h3 class="text-lg font-semibold w-2/3">TaskRunner</h3>
+            <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text hover:underline whitespace-nowrap text-xs transition absolute top-3 right-3">View on GitHub</a>
+          </div>
+          <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">
+            A distributed task queue system for handling background jobs across multiple servers with monitoring tools.
+          </p>
+          <div class="flex flex-wrap gap-2">
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Node.js</span>
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">Redis</span>
+            <span class="border-mono-border dark:border-dark-mono-border rounded border px-2 py-0.5 text-xs">WebSockets</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-24">
+      <div class="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 py-12 text-sm md:flex-row">
+        <div>
+          <p class="text-mono-text-muted dark:text-dark-mono-text-muted">
+            <a href="mailto:me@alexcoder.com" class="hover:text-mono-text dark:hover:text-dark-mono-text transition">me@alexcoder.com</a>
+          </p>
+          <p class="text-mono-text-muted dark:text-dark-mono-text-muted">
+            <a href="https://github.com/alexcoder" target="_blank" class="hover:text-mono-text dark:hover:text-dark-mono-text transition">github.com/alexcoder</a>
+          </p>
+        </div>
+        <div class="text-mono-text-muted dark:text-dark-mono-text-muted text-center md:text-right">
+          <p>Made with ♥</p>
+          <p>© 2025</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/main.js"></script>
+  </body>
+</html>

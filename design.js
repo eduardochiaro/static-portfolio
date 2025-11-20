@@ -15,7 +15,8 @@ const pageList = [
   { url: '/daily', file: 'daily.html' },
   { url: '/cassette', file: 'cassette.html' },
   { url: '/collage', file: 'collage.html' },
-  { url: '/admin', file: 'admin.html' }
+  { url: '/admin', file: 'admin.html' },
+  { url: '/mono', file: 'monoflow.html' }
 ];
 
 // Create HTTP server

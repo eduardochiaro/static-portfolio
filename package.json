@@ -17,7 +17,7 @@
     "@headlessui/react": "^2.2.9",
     "@react-zero-ui/core": "^0.3.4",
     "@react-zero-ui/icon-sprite": "^0.1.6",
-    "lucide-react": "^0.553.0",
+    "lucide-react": "^0.554.0",
     "next": "16.0.3",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.7.1",
@@ -29,7 +29,7 @@
     "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "^4.1.17",
     "@types/node": "^24",
-    "@types/react": "19.2.5",
+    "@types/react": "19.2.6",
     "@types/react-dom": "19.2.3",
     "chokidar": "^4.0.3",
     "eslint": "^9",
@@ -40,7 +40,7 @@
     "ws": "^8.18.3"
   },
   "overrides": {
-    "@types/react": "19.2.5",
+    "@types/react": "19.2.6",
     "@types/react-dom": "19.2.3"
   }
 }
