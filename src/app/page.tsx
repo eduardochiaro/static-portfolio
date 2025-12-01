@@ -10,7 +10,7 @@ import Lines from '@/components/Lines';
 import Projects from '@/components/Projects';
 import SideScroll from '@/components/resume/SideScroll';
 import Skills from '@/components/Skills';
-import { homeData } from '@/data/home';
+import homeData from '@/data/home.json';
 
 export default function Home() {
   const { hero, bio, skills, projects, github, footer } = homeData;

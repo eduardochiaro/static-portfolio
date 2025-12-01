@@ -11,7 +11,7 @@ import Lines from '@/components/Lines';
 import SideScroll from '@/components/resume/SideScroll';
 import SkillsSidebar from '@/components/resume/SkillsSidebar';
 import { MailIcon, MapPinHouse } from 'lucide-react';
-import { resumeData } from '@/data/resume';
+import resumeData from '@/data/resume.json';
 
 export default function Resume() {
   const { personalInfo, skills, summary, experience, languages, awards, footer } = resumeData;

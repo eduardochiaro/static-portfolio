@@ -1,0 +1,135 @@
+{
+  "personalInfo": {
+    "name": "Alex Coder",
+    "email": "alex@example.com",
+    "location": "San Francisco, CA",
+    "github": "github.com/alexcoder",
+    "role": "Full Stack Developer"
+  },
+  "summary": "Full stack developer with 5+ years of experience building web applications with modern JavaScript frameworks. Passionate about clean code, user experience, and retro computing aesthetics. Proven track record of delivering complex projects on time and mentoring junior developers.",
+  "skills": [
+    {
+      "name": "JavaScript",
+      "level": "Expert"
+    },
+    {
+      "name": "React",
+      "level": "Proficient"
+    },
+    {
+      "name": "Node.js",
+      "level": "Proficient"
+    },
+    {
+      "name": "CSS",
+      "level": "Expert"
+    },
+    {
+      "name": "HTML",
+      "level": "Expert"
+    },
+    {
+      "name": "Git",
+      "level": "Familiar"
+    }
+  ],
+  "experience": [
+    {
+      "company": "Tech Solutions Inc.",
+      "position": "Senior Full Stack Developer",
+      "location": "Remote",
+      "startDate": "2020-01-01",
+      "endDate": "",
+      "description": "Leading the development of scalable web applications and mentoring junior developers.",
+      "responsibilities": [
+        "Lead a team of developers to build scalable web applications.",
+        "Implemented RESTful APIs and integrated third-party services.",
+        "Mentored junior developers and conducted code reviews."
+      ],
+      "tags": ["leadership", "mentorship", "API development"]
+    },
+    {
+      "company": "Web Innovations LLC",
+      "position": "Full Stack Developer",
+      "location": "New York, NY",
+      "startDate": "2018-06-01",
+      "endDate": "2019-12-31",
+      "description": "Developed and maintained web applications with a focus on user experience and performance.",
+      "responsibilities": [
+        "Developed responsive web applications using React and Node.js.",
+        "Collaborated with designers to enhance user experience.",
+        "Optimized application performance and scalability."
+      ],
+      "tags": ["web development", "performance optimization", "collaboration"]
+    },
+    {
+      "company": "Code Factory",
+      "position": "Junior Developer",
+      "location": "Los Angeles, CA",
+      "startDate": "2016-01-01",
+      "endDate": "2018-05-31",
+      "description": "Assisted in the development of web applications and learned best practices in software development.",
+      "responsibilities": [
+        "Assisted in the development of web applications using JavaScript and CSS.",
+        "Learned and applied best practices in software development.",
+        "Participated in code reviews and team meetings."
+      ],
+      "tags": ["web development", "learning", "teamwork"]
+    },
+    {
+      "company": "Retro Tech",
+      "position": "Intern",
+      "location": "San Francisco, CA",
+      "startDate": "2015-06-01",
+      "endDate": "2015-12-31",
+      "description": "Gained experience in web development and retro computing technologies.",
+      "responsibilities": [
+        "Assisted in the development of retro-themed web applications.",
+        "Learned about retro computing technologies and their applications.",
+        "Contributed to open-source projects related to retro computing."
+      ],
+      "tags": ["retro computing", "web development", "open source"]
+    }
+  ],
+  "languages": [
+    {
+      "name": "English",
+      "level": "Native"
+    },
+    {
+      "name": "Spanish",
+      "level": "Fluent"
+    },
+    {
+      "name": "German",
+      "level": "Intermediate"
+    },
+    {
+      "name": "French",
+      "level": "Basic"
+    }
+  ],
+  "awards": [
+    {
+      "title": "Best Developer of the Year",
+      "date": "2021-12-01"
+    },
+    {
+      "title": "Innovation Award",
+      "date": "2019-05-01"
+    }
+  ],
+  "footer": {
+    "text": "Made with ♥",
+    "links": [
+      {
+        "text": "me@alexcoder.com",
+        "url": "mailto:me@alexcoder.com"
+      },
+      {
+        "text": "github.com/alexcoder",
+        "url": "https://github.com/alexcoder"
+      }
+    ]
+  }
+}
