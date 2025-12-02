@@ -17,17 +17,19 @@ export default function Home() {
     <div className="min-h-screen">
       <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
         <Header name={hero.name} section="Portfolio" />
-        <Hero title={hero.title} name={hero.name} slogan={hero.slogan} />
+        <main role="main">
+          <Hero title={hero.title} name={hero.name} slogan={hero.slogan} />
 
-        {/* Divider */}
-        <div className="mx-auto max-w-5xl px-6">
-          <div className="border-mono-border dark:border-dark-mono-border border-t"></div>
-        </div>
+          {/* Divider */}
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="border-mono-border dark:border-dark-mono-border border-t"></div>
+          </div>
 
-        <Bio bio={bio} />
-        <Skills skills={skills} />
-        <Projects projects={projects} />
-        <GitHub repos={github} />
+          <Bio bio={bio} />
+          <Skills skills={skills} />
+          <Projects projects={projects} />
+          <GitHub repos={github} />
+        </main>
         <Footer text={footer.text} links={footer.links} />
       </ClickSpark>
     </div>

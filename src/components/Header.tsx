@@ -21,7 +21,10 @@ export default function Header({ name, section }: { name?: string; section?: str
   }, [theme]);
 
   return (
-    <header className="max-xl:bg-mono-bg/50 max-xl:dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs">
+    <header
+      role="navigation"
+      className="max-xl:bg-mono-bg/50 max-xl:dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs"
+    >
       <div className="mx-auto flex items-center justify-between p-8">
         <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide">
           <Link href="/">{name}</Link>
@@ -31,13 +34,13 @@ export default function Header({ name, section }: { name?: string; section?: str
         <div className="flex items-center gap-6 text-sm">
           <Link
             href="/"
-            className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition"
+            className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition max-sm:hidden"
           >
             Portfolio
           </Link>
           <Link
             href="/resume"
-            className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition"
+            className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition max-sm:hidden"
           >
             Resume
           </Link>
