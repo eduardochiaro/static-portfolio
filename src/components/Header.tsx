@@ -31,7 +31,7 @@ export default function Header({ name, section }: { name?: string; section?: str
   };
 
   return (
-    <header className="bg-mono-bg/50 dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 backdrop-blur-xs">
+    <header className="bg-transparent max-xl:bg-mono-bg/50 max-xl:dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 max-xl:backdrop-blur-xs">
       <div className="mx-auto flex items-center justify-between p-8">
         <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide">
           <Link href="/">{name}</Link>
