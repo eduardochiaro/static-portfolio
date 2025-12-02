@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import homeData from '../../../public/static/metadata.json';
+import homeData from '@/data/metadata.json';
 
 export const metadata: Metadata = {
   title: homeData.resume.title + ' - Resume',

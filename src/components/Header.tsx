@@ -6,32 +6,22 @@ import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
 export default function Header({ name, section }: { name?: string; section?: string }) {
-  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>('light');
+  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'light';
+    }
+    return 'light';
+  });
 
   useEffect(() => {
-    const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'light';
-    setTheme(savedTheme);
-  }, []);
+    const effectiveTheme = theme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
 
-  const applyTheme = (newTheme: 'light' | 'dark' | 'system') => {
-    setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-
-    if (newTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else if (newTheme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else if (newTheme === 'system') {
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
-    }
-  };
+    document.documentElement.className = effectiveTheme;
+    localStorage.setItem('theme', theme);
+  }, [theme]);
 
   return (
-    <header className="bg-transparent max-xl:bg-mono-bg/50 max-xl:dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 max-xl:backdrop-blur-xs">
+    <header className="max-xl:bg-mono-bg/50 max-xl:dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs">
       <div className="mx-auto flex items-center justify-between p-8">
         <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide">
           <Link href="/">{name}</Link>
@@ -65,7 +55,7 @@ export default function Header({ name, section }: { name?: string; section?: str
               <MenuItem>
                 <button
                   className="hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
-                  onClick={() => applyTheme('light')}
+                  onClick={() => setTheme('light')}
                 >
                   Light
                 </button>
@@ -73,7 +63,7 @@ export default function Header({ name, section }: { name?: string; section?: str
               <MenuItem>
                 <button
                   className="hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
-                  onClick={() => applyTheme('dark')}
+                  onClick={() => setTheme('dark')}
                 >
                   Dark
                 </button>
@@ -81,7 +71,7 @@ export default function Header({ name, section }: { name?: string; section?: str
               <MenuItem>
                 <button
                   className="hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
-                  onClick={() => applyTheme('system')}
+                  onClick={() => setTheme('system')}
                 >
                   System
                 </button>
