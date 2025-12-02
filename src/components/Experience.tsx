@@ -1,19 +1,5 @@
 import { formatMonthYear } from '@/lib/date';
 
-const colorBorderList = [
-  'border-accent-four dark:border-dark-accent-four',
-  'border-accent-three dark:border-dark-accent-three',
-  'border-accent-two dark:border-dark-accent-two',
-  'border-accent-one dark:border-dark-accent-one',
-];
-
-const colorTextList = [
-  'text-accent-four dark:text-dark-accent-four',
-  'text-accent-three dark:text-dark-accent-three',
-  'text-accent-two dark:text-dark-accent-two',
-  'text-dark-main dark:text-dark-accent-one',
-];
-
 export type ExperienceType = {
   company: string;
   position: string;
@@ -27,41 +13,40 @@ export type ExperienceType = {
 
 export default function Experience({ experience }: { experience: readonly ExperienceType[] }) {
   return (
-    <section className="z-50 mx-auto mb-16 px-4 md:px-0">
-      <h2 className="border-accent-three dark:border-dark-accent-three mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6 md:text-base">Experience</h2>
-      <div className="relative space-y-16">
+    <section className="mb-16">
+      <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">Experience</h2>
+      <div className="space-y-12">
         {experience.map((exp, index) => (
-          <div key={index} className="relative">
-            <div className="flex flex-col gap-4">
-              <div>
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold md:text-base">{exp.position}</h3>
-                  </div>
-                  <div className={`${colorTextList[index % colorTextList.length]} text-sm font-medium md:text-xs`}>
-                    {formatMonthYear(exp.startDate)} - {exp.endDate ? formatMonthYear(exp.endDate) : 'Present'}
+          <div key={index}>
+            <div className="mb-4">
+              <div className="flex flex-col md:flex-row md:items-start md:justify-between">
+                <div>
+                  <h3 className="text-lg font-semibold">{exp.position}</h3>
+                  <div className="text-mono-text-muted dark:text-dark-mono-text-muted text-sm">
+                    <span className="font-medium">{exp.company}</span>
+                    <span className="mx-2">•</span>
+                    <span>{exp.location}</span>
                   </div>
                 </div>
-                <div className="flex flex-col text-sm md:flex-row md:gap-3 md:text-xs">
-                  <span className="font-semibold">{exp.company}</span>
-                  <span className="opacity-75">{exp.location}</span>
+                <div className="text-mono-text-muted dark:text-dark-mono-text-muted mt-1 text-sm md:mt-0">
+                  {formatMonthYear(exp.startDate)} - {exp.endDate ? formatMonthYear(exp.endDate) : 'Present'}
                 </div>
               </div>
-              <p className={`${colorBorderList[index % colorBorderList.length]} mb-1 border-l-2 pl-3 text-sm italic md:text-xs`}>{exp.description}</p>
+            </div>
+            <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-3 text-sm italic">{exp.description}</p>
 
-              <ul className="list-disc space-y-3 pl-5 text-sm md:text-xs">
-                {exp.responsibilities.map((resp, respIndex) => (
-                  <li key={respIndex}>{resp}</li>
-                ))}
-              </ul>
+            <ul className="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 list-disc space-y-2 pl-5 text-sm">
+              {exp.responsibilities.map((resp, respIndex) => (
+                <li key={respIndex}>{resp}</li>
+              ))}
+            </ul>
 
-              <div className="flex flex-wrap gap-2 pt-3">
-                {exp.tags.map((tag, tagIndex) => (
-                  <span key={tagIndex} className="bg-dark-main text-main dark:bg-main dark:text-dark-main px-2 py-1 text-sm md:text-xs">
-                    {tag}
-                  </span>
-                ))}
-              </div>
+            <div className="flex flex-wrap gap-2">
+              {exp.tags.map((tag, tagIndex) => (
+                <span key={tagIndex} className="border-mono-border dark:border-dark-mono-border rounded-xs border px-2 py-0.5 text-xs">
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
         ))}

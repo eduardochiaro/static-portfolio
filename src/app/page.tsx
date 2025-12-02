@@ -6,9 +6,7 @@ import Footer from '@/components/Footer';
 import GitHub from '@/components/GitHub';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
-import Lines from '@/components/Lines';
 import Projects from '@/components/Projects';
-import SideScroll from '@/components/resume/SideScroll';
 import Skills from '@/components/Skills';
 import homeData from '@/data/home.json';
 
@@ -16,17 +14,22 @@ export default function Home() {
   const { hero, bio, skills, projects, github, footer } = homeData;
 
   return (
-    <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
-      <Header name={hero.name} />
-      <Hero title={hero.title} name={hero.name} slogan={hero.slogan} />
-      <Lines />
-      <Bio bio={bio} />
-      <Skills skills={skills} />
-      <Projects projects={projects} />
-      <GitHub repos={github} />
-      <SideScroll />
-      <Lines />
-      <Footer text={footer.text} links={footer.links} />
-    </ClickSpark>
+    <div className="min-h-screen">
+      <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+        <Header name={hero.name} section="Portfolio" />
+        <Hero title={hero.title} name={hero.name} slogan={hero.slogan} />
+
+        {/* Divider */}
+        <div className="mx-auto max-w-5xl px-6">
+          <div className="border-mono-border dark:border-dark-mono-border border-t"></div>
+        </div>
+
+        <Bio bio={bio} />
+        <Skills skills={skills} />
+        <Projects projects={projects} />
+        <GitHub repos={github} />
+        <Footer text={footer.text} links={footer.links} />
+      </ClickSpark>
+    </div>
   );
 }

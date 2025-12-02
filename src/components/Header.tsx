@@ -1,104 +1,94 @@
 'use client';
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { ChevronLeftIcon, MoonIcon, SunIcon } from 'lucide-react';
-import Logo from './Logo';
+import { MoonIcon, SunIcon } from 'lucide-react';
 import Link from 'next/link';
-import { useLocalStorage } from 'usehooks-ts';
-import { useEffect, useMemo } from 'react';
-import { useUI } from '@react-zero-ui/core';
+import { useEffect, useState } from 'react';
 
-const themeUuid = process.env.NEXT_PUBLIC_THEME_UUID || 'default-theme-uuid'; // Fallback to a default UUID if not set
-
-export default function Header({ name, goBack }: { name?: string; goBack?: string }) {
-  const [currentTheme, setCurrentTheme] = useLocalStorage<'light' | 'dark' | 'system'>(themeUuid, 'dark'); // Ensure the theme is stored in local storage
-  const [, setValue] = useUI<'light' | 'dark' | 'system'>('theme', 'dark');
-  const isDarkMode = useMemo(() => {
-    if (typeof window === 'undefined' || typeof window.matchMedia !== 'function') return false;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  }, []);
+export default function Header({ name, section }: { name?: string; section?: string }) {
+  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>('light');
 
   useEffect(() => {
-    const setTheme = (theme: 'light' | 'dark' | 'system') => {
-      if (theme === 'system') {
-        setValue(isDarkMode ? 'dark' : 'light');
-      } else {
-        setValue(theme);
-      }
-    };
-    if (currentTheme) {
-      setTheme(currentTheme);
-    }
-  }, [currentTheme, isDarkMode, setValue]);
+    const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'light';
+    setTheme(savedTheme);
+  }, []);
 
-  const setColorTheme = (themeName: 'light' | 'dark' | 'system') => {
-    setCurrentTheme(themeName);
-    if (themeName === 'system') {
-      setValue(isDarkMode ? 'dark' : 'light');
-    } else {
-      setValue(themeName);
+  const applyTheme = (newTheme: 'light' | 'dark' | 'system') => {
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme);
+
+    if (newTheme === 'dark') {
+      document.documentElement.classList.add('dark');
+    } else if (newTheme === 'light') {
+      document.documentElement.classList.remove('dark');
+    } else if (newTheme === 'system') {
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
   };
 
   return (
-    <header className="border-dark-main dark:border-main z-50 mx-auto flex max-w-4xl items-center justify-between border-b-2 px-4 pt-8 pb-4 md:px-0">
-      <div className="flex items-center gap-2 text-2xl font-bold tracking-wider uppercase">
-        <Logo className="h-6" />
-        <span className="text-accent-two dark:text-dark-accent-two align-super text-sm">{name}</span>
-      </div>
-      <div className="flex items-center gap-8">
-        {goBack && (
+    <header className="bg-mono-bg/50 dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 backdrop-blur-xs">
+      <div className="mx-auto flex items-center justify-between p-8">
+        <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide">
+          <Link href="/">{name}</Link>
+          <div className="opacity-60">/</div>
+          <div>{section}</div>
+        </div>
+        <div className="flex items-center gap-6 text-sm">
           <Link
-            href={goBack}
-            prefetch={false}
-            className="text-dark-main dark:text-main hover:text-accent-two dark:hover:text-dark-accent-two flex items-center gap-1 text-sm font-bold"
+            href="/"
+            className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition"
           >
-            <ChevronLeftIcon className="size-4 stroke-3" />
-            Back
+            Portfolio
           </Link>
-        )}
-        <Menu>
-          <MenuButton className="flex cursor-pointer items-center justify-center rounded-full focus:outline-none" aria-label="Toggle theme">
-            <SunIcon className="hover:fill-dark-main dark:hover:fill-main block size-7 dark:hidden" />
-            <MoonIcon className="hover:fill-dark-main dark:hover:fill-main hidden size-7 dark:block" />
-          </MenuButton>
+          <Link
+            href="/resume"
+            className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition"
+          >
+            Resume
+          </Link>
 
-          <MenuItems anchor="bottom end" className="bg-main dark:bg-dark-main border-dark-main dark:border-main z-60 mt-2 w-36 rounded border-2 py-1 shadow-lg">
-            <MenuItem>
-              <button
-                className="theme-option hover:bg-accent-two hover:text-main dark:hover:bg-dark-accent-two dark:hover:text-dark-main w-full cursor-pointer px-4 py-2 text-left"
-                data-theme="light"
-                onClick={() => {
-                  setColorTheme('light');
-                }}
-              >
-                Light
-              </button>
-            </MenuItem>
-            <MenuItem>
-              <button
-                className="theme-option hover:bg-accent-two hover:text-main dark:hover:bg-dark-accent-two dark:hover:text-dark-main w-full cursor-pointer px-4 py-2 text-left"
-                data-theme="dark"
-                onClick={() => {
-                  setColorTheme('dark');
-                }}
-              >
-                Dark
-              </button>
-            </MenuItem>
-            <MenuItem>
-              <button
-                className="theme-option hover:bg-accent-two hover:text-main dark:hover:bg-dark-accent-two dark:hover:text-dark-main w-full cursor-pointer px-4 py-2 text-left"
-                data-theme="system"
-                onClick={() => {
-                  setColorTheme('system');
-                }}
-              >
-                System
-              </button>
-            </MenuItem>
-          </MenuItems>
-        </Menu>
+          <Menu>
+            <MenuButton className="flex h-8 w-8 items-center justify-center transition" aria-label="Theme options">
+              <MoonIcon className="hidden h-4 w-4 dark:block" />
+              <SunIcon className="block h-4 w-4 dark:hidden" />
+            </MenuButton>
+
+            <MenuItems
+              anchor="bottom end"
+              className="bg-mono-bg dark:bg-dark-mono-bg border-mono-border dark:border-dark-mono-border z-50 mt-2 w-28 rounded border py-1 shadow-lg"
+            >
+              <MenuItem>
+                <button
+                  className="hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
+                  onClick={() => applyTheme('light')}
+                >
+                  Light
+                </button>
+              </MenuItem>
+              <MenuItem>
+                <button
+                  className="hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
+                  onClick={() => applyTheme('dark')}
+                >
+                  Dark
+                </button>
+              </MenuItem>
+              <MenuItem>
+                <button
+                  className="hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
+                  onClick={() => applyTheme('system')}
+                >
+                  System
+                </button>
+              </MenuItem>
+            </MenuItems>
+          </Menu>
+        </div>
       </div>
     </header>
   );

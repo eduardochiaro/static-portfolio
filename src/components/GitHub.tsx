@@ -11,21 +11,26 @@ export type GitHubType = {
 
 export default function GitHub({ repos }: { repos: readonly GitHubType[] }) {
   return (
-    <section className="z-50 mx-auto my-16 max-w-4xl px-4 md:px-0">
-      <h2 className="border-accent-four dark:border-dark-accent-four mb-6 border-l-4 pl-4 text-xl font-bold uppercase md:-ml-6">GitHub Showcase</h2>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
+    <section className="mx-auto max-w-5xl px-6 py-16">
+      <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">GitHub Showcase</h2>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {repos.map((item, index) => (
-          <div key={index}>
-            <div className="mb-4 flex flex-col justify-between gap-2 md:flex-row md:items-center">
-              <h3 className="text-xl font-bold md:text-base">{item.name}</h3>
-              <Link href={item.link} className="text-accent-four dark:text-dark-accent-four hover:underline md:text-xs">
+          <div key={index} className="border-mono-border dark:border-dark-mono-border relative rounded border p-6">
+            <div className="mb-4 flex items-start justify-between gap-4">
+              <h3 className="text-lg font-semibold">{item.name}</h3>
+              <Link
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text absolute top-3 right-3 text-xs whitespace-nowrap transition hover:underline"
+              >
                 View on GitHub
               </Link>
             </div>
-            <div className="mb-4 text-sm md:text-xs">{item.description}</div>
-            <div className="mt-4 flex flex-wrap gap-2">
+            <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">{item.description}</p>
+            <div className="flex flex-wrap gap-2">
               {item.tags.map((tag, tagIndex) => (
-                <span key={tagIndex} className="bg-dark-main text-main dark:bg-main dark:text-dark-main px-2 py-1 text-sm md:text-xs">
+                <span key={tagIndex} className="border-mono-border dark:border-dark-mono-border rounded-xs border px-2 py-0.5 text-xs">
                   {tag}
                 </span>
               ))}

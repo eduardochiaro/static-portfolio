@@ -21,11 +21,11 @@ export const viewport: Viewport = {
   themeColor: [
     {
       media: '(prefers-color-scheme: light)',
-      color: '#F9FBEF',
+      color: '#fafafa',
     },
     {
       media: '(prefers-color-scheme: dark)',
-      color: '#1C2826',
+      color: '#141414',
     },
   ],
 };
@@ -39,6 +39,18 @@ export default function RootLayout({
     <html suppressHydrationWarning lang="en" className={`${ibmPlexMono.variable} antialiased`}>
       <head>
         <meta name="apple-mobile-web-app-title" content={homeData.home.title} />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                const savedTheme = localStorage.getItem('theme') || 'light';
+                if (savedTheme === 'dark' || (savedTheme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                  document.documentElement.classList.add('dark');
+                }
+              })();
+            `,
+          }}
+        />
       </head>
       <body {...bodyAttributes}>
         <Suspense fallback={<div>Loading...</div>}>{children}</Suspense>
