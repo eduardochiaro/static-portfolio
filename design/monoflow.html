@@ -51,17 +51,21 @@
   </head>
   <body class="bg-mono-bg dark:bg-dark-mono-bg text-mono-text dark:text-dark-mono-text font-mono antialiased">
     <!-- Navigation -->
-    <nav class="border-mono-border dark:border-dark-mono-border fixed top-0 left-0 right-0 z-50 bg-mono-bg/50 dark:bg-dark-mono-bg/50 backdrop-blur-xs">
+    <nav class="border-mono-border dark:border-dark-mono-border bg-mono-bg/50 dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 backdrop-blur-xs">
       <div class="mx-auto flex items-center justify-between p-8">
-        <div class="flex items-center gap-4 text-mono-accent dark:text-dark-mono-accent text-sm font-normal tracking-wide">
+        <div class="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide">
           <a href="#">Alex Coder</a>
           <div class="opacity-60">/</div>
           <div>Portfolio</div>
         </div>
         <div class="flex items-center gap-6 text-sm">
-          <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text transition uppercase">Portfolio</a>
-          <a href="#resume" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text transition uppercase">Resume</a>
-          
+          <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition"
+            >Portfolio</a
+          >
+          <a href="#resume" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition"
+            >Resume</a
+          >
+
           <!-- Theme Toggle -->
           <div class="relative" id="themeDropdownContainer">
             <button id="themeToggle" class="flex h-8 w-8 items-center justify-center transition" aria-label="Theme options">
@@ -81,22 +85,13 @@
               id="themeDropdown"
               class="bg-mono-bg dark:bg-dark-mono-bg border-mono-border dark:border-dark-mono-border absolute right-0 z-50 mt-2 hidden w-28 rounded border py-1 shadow-lg"
             >
-              <button
-                class="theme-option hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
-                data-theme="light"
-              >
+              <button class="theme-option hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition" data-theme="light">
                 Light
               </button>
-              <button
-                class="theme-option hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
-                data-theme="dark"
-              >
+              <button class="theme-option hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition" data-theme="dark">
                 Dark
               </button>
-              <button
-                class="theme-option hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
-                data-theme="system"
-              >
+              <button class="theme-option hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition" data-theme="system">
                 System
               </button>
             </div>
@@ -108,8 +103,8 @@
     <!-- Hero Section -->
     <section class="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
       <div class="fade-in">
-        <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-2 text-sm uppercase tracking-widest">Full Stack Developer</p>
-        <h1 class="mb-6 flex flex-col text-6xl font-semibold leading-tight tracking-tight">
+        <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-2 text-sm tracking-widest uppercase">Full Stack Developer</p>
+        <h1 class="mb-6 flex flex-col text-6xl leading-tight font-semibold tracking-tight">
           <span>Alex</span>
           <span>Coder</span>
         </h1>
@@ -126,7 +121,7 @@
 
     <!-- About Section -->
     <section class="mx-auto max-w-5xl px-6 py-16">
-      <h2 class="mb-6 text-lg font-medium uppercase tracking-widest">About Me</h2>
+      <h2 class="mb-6 text-lg font-medium tracking-widest uppercase">About Me</h2>
       <div class="text-mono-text-muted dark:text-dark-mono-text-muted max-w-3xl space-y-4 text-base leading-relaxed">
         <p>
           I'm a full-stack developer with 5+ years of experience crafting web applications using Node.js and modern JavaScript frameworks. I specialize in
@@ -137,16 +132,19 @@
           community.
         </p>
       </div>
-      <div class="mt-8 ">
-      <a href="#"
-        class="rounded border border-mono-border dark:border-dark-mono-border px-6 py-2 text-sm text-mono-text-muted dark:text-dark-mono-text-muted bg-mono-bg dark:bg-dark-mono-bg hover:bg-mono-card dark:hover:bg-dark-mono-card hover:text-mono-text dark:hover:text-dark-mono-text transition">
-        View Full Resume</a>
+      <div class="mt-8">
+        <a
+          href="#"
+          class="border-mono-border dark:border-dark-mono-border text-mono-text-muted dark:text-dark-mono-text-muted bg-mono-bg dark:bg-dark-mono-bg hover:bg-mono-card dark:hover:bg-dark-mono-card hover:text-mono-text dark:hover:text-dark-mono-text rounded border px-6 py-2 text-sm transition"
+        >
+          View Full Resume</a
+        >
       </div>
     </section>
 
     <!-- Skills Section -->
     <section class="mx-auto max-w-5xl px-6 py-16">
-      <h2 class="mb-8 text-lg font-medium uppercase tracking-widest">Technical Expertise</h2>
+      <h2 class="mb-8 text-lg font-medium tracking-widest uppercase">Technical Expertise</h2>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div class="space-y-6">
           <div>
@@ -154,8 +152,8 @@
               <span>React</span>
               <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Advanced</span>
             </div>
-            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
-              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 90%"></div>
+            <div class="border-mono-card dark:border-dark-mono-border bg-mono-card dark:bg-dark-mono-card h-1.5 w-full overflow-hidden rounded-full border">
+              <div class="bg-mono-text dark:bg-dark-mono-text h-full rounded-full" style="width: 90%"></div>
             </div>
           </div>
           <div>
@@ -163,8 +161,8 @@
               <span>Vue.js</span>
               <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Intermediate</span>
             </div>
-            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
-              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 75%"></div>
+            <div class="border-mono-card dark:border-dark-mono-border bg-mono-card dark:bg-dark-mono-card h-1.5 w-full overflow-hidden rounded-full border">
+              <div class="bg-mono-text dark:bg-dark-mono-text h-full rounded-full" style="width: 75%"></div>
             </div>
           </div>
           <div>
@@ -172,8 +170,8 @@
               <span>JavaScript/TypeScript</span>
               <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Expert</span>
             </div>
-            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
-              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 95%"></div>
+            <div class="border-mono-card dark:border-dark-mono-border bg-mono-card dark:bg-dark-mono-card h-1.5 w-full overflow-hidden rounded-full border">
+              <div class="bg-mono-text dark:bg-dark-mono-text h-full rounded-full" style="width: 95%"></div>
             </div>
           </div>
           <div>
@@ -181,8 +179,8 @@
               <span>CSS/SASS</span>
               <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Advanced</span>
             </div>
-            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
-              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 85%"></div>
+            <div class="border-mono-card dark:border-dark-mono-border bg-mono-card dark:bg-dark-mono-card h-1.5 w-full overflow-hidden rounded-full border">
+              <div class="bg-mono-text dark:bg-dark-mono-text h-full rounded-full" style="width: 85%"></div>
             </div>
           </div>
         </div>
@@ -193,8 +191,8 @@
               <span>Node.js</span>
               <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Expert</span>
             </div>
-            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
-              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 95%"></div>
+            <div class="border-mono-card dark:border-dark-mono-border bg-mono-card dark:bg-dark-mono-card h-1.5 w-full overflow-hidden rounded-full border">
+              <div class="bg-mono-text dark:bg-dark-mono-text h-full rounded-full" style="width: 95%"></div>
             </div>
           </div>
           <div>
@@ -202,8 +200,8 @@
               <span>Express.js</span>
               <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Expert</span>
             </div>
-            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
-              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 90%"></div>
+            <div class="border-mono-card dark:border-dark-mono-border bg-mono-card dark:bg-dark-mono-card h-1.5 w-full overflow-hidden rounded-full border">
+              <div class="bg-mono-text dark:bg-dark-mono-text h-full rounded-full" style="width: 90%"></div>
             </div>
           </div>
           <div>
@@ -211,8 +209,8 @@
               <span>RESTful APIs</span>
               <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Expert</span>
             </div>
-            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
-              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 95%"></div>
+            <div class="border-mono-card dark:border-dark-mono-border bg-mono-card dark:bg-dark-mono-card h-1.5 w-full overflow-hidden rounded-full border">
+              <div class="bg-mono-text dark:bg-dark-mono-text h-full rounded-full" style="width: 95%"></div>
             </div>
           </div>
           <div>
@@ -220,8 +218,8 @@
               <span>GraphQL</span>
               <span class="text-mono-text-muted dark:text-dark-mono-text-muted">Advanced</span>
             </div>
-            <div class="border-mono-card dark:border-dark-mono-border h-1.5 w-full overflow-hidden rounded-full border bg-mono-card dark:bg-dark-mono-card">
-              <div class="h-full bg-mono-text dark:bg-dark-mono-text rounded-full" style="width: 85%"></div>
+            <div class="border-mono-card dark:border-dark-mono-border bg-mono-card dark:bg-dark-mono-card h-1.5 w-full overflow-hidden rounded-full border">
+              <div class="bg-mono-text dark:bg-dark-mono-text h-full rounded-full" style="width: 85%"></div>
             </div>
           </div>
         </div>
@@ -230,7 +228,7 @@
 
     <!-- Projects Section -->
     <section class="mx-auto max-w-5xl px-6 py-16">
-      <h2 class="mb-8 text-lg font-medium uppercase tracking-widest">Featured Projects</h2>
+      <h2 class="mb-8 text-lg font-medium tracking-widest uppercase">Featured Projects</h2>
       <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
         <!-- Project 1 -->
         <article class="article-card group">
@@ -242,7 +240,7 @@
                 class="article-image w-full transition-transform duration-300"
               />
             </div>
-            <h3 class="group-hover:underline mb-2 text-xl font-semibold transition">E-Commerce Platform</h3>
+            <h3 class="mb-2 text-xl font-semibold transition group-hover:underline">E-Commerce Platform</h3>
             <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm leading-relaxed">
               Full-stack e-commerce solution with inventory management and payment processing
             </p>
@@ -264,7 +262,7 @@
                 class="article-image w-full transition-transform duration-300"
               />
             </div>
-            <h3 class="group-hover:underline mb-2 text-xl font-semibold transition">Analytics Dashboard</h3>
+            <h3 class="mb-2 text-xl font-semibold transition group-hover:underline">Analytics Dashboard</h3>
             <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm leading-relaxed">
               Real-time data visualization platform with customizable widgets and integrations
             </p>
@@ -286,7 +284,7 @@
                 class="article-image w-full transition-transform duration-300"
               />
             </div>
-            <h3 class="group-hover:underline mb-2 text-xl font-semibold transition">DevOps Toolkit</h3>
+            <h3 class="mb-2 text-xl font-semibold transition group-hover:underline">DevOps Toolkit</h3>
             <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm leading-relaxed">
               CLI tool suite for automating deployment processes and monitoring servers
             </p>
@@ -302,13 +300,16 @@
 
     <!-- GitHub Section -->
     <section class="mx-auto max-w-5xl px-6 py-16">
-      <h2 class="mb-8 text-lg font-medium uppercase tracking-widest">GitHub Showcase</h2>
+      <h2 class="mb-8 text-lg font-medium tracking-widest uppercase">GitHub Showcase</h2>
       <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
-        
-        <div class="border-mono-border dark:border-dark-mono-border rounded border p-6 relative">
+        <div class="border-mono-border dark:border-dark-mono-border relative rounded border p-6">
           <div class="mb-4 flex items-start justify-between gap-4">
             <h3 class="text-lg font-semibold">API Gateway</h3>
-            <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text hover:underline whitespace-nowrap text-xs transition absolute top-3 right-3">View on GitHub</a>
+            <a
+              href="#"
+              class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text absolute top-3 right-3 text-xs whitespace-nowrap transition hover:underline"
+              >View on GitHub</a
+            >
           </div>
           <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">
             A high-performance Node.js API gateway with authentication, rate limiting, and request transformations.
@@ -320,10 +321,14 @@
           </div>
         </div>
 
-        <div class="border-mono-border dark:border-dark-mono-border rounded border p-6 relative">
+        <div class="border-mono-border dark:border-dark-mono-border relative rounded border p-6">
           <div class="mb-4 flex items-start justify-between gap-4">
             <h3 class="text-lg font-semibold">DocumentDB</h3>
-            <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text hover:underline whitespace-nowrap text-xs transition absolute top-3 right-3">View on GitHub</a>
+            <a
+              href="#"
+              class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text absolute top-3 right-3 text-xs whitespace-nowrap transition hover:underline"
+              >View on GitHub</a
+            >
           </div>
           <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">
             A lightweight document database built with Node.js. Designed for ease of use in small to medium projects and rapid prototyping.
@@ -335,10 +340,14 @@
           </div>
         </div>
 
-        <div class="border-mono-border dark:border-dark-mono-border rounded border p-6 relative">
+        <div class="border-mono-border dark:border-dark-mono-border relative rounded border p-6">
           <div class="mb-4 flex items-start justify-between gap-4">
             <h3 class="text-lg font-semibold">Weather Dashboard</h3>
-            <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text hover:underline whitespace-nowrap text-xs transition absolute top-3 right-3">View on GitHub</a>
+            <a
+              href="#"
+              class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text absolute top-3 right-3 text-xs whitespace-nowrap transition hover:underline"
+              >View on GitHub</a
+            >
           </div>
           <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">
             A real-time weather monitoring application with customizable alerts and data visualization.
@@ -350,10 +359,14 @@
           </div>
         </div>
 
-        <div class="border-mono-border dark:border-dark-mono-border rounded border p-6 relative">
+        <div class="border-mono-border dark:border-dark-mono-border relative rounded border p-6">
           <div class="mb-4 flex items-start justify-between gap-4">
-            <h3 class="text-lg font-semibold w-2/3">TaskRunner</h3>
-            <a href="#" class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text hover:underline whitespace-nowrap text-xs transition absolute top-3 right-3">View on GitHub</a>
+            <h3 class="w-2/3 text-lg font-semibold">TaskRunner</h3>
+            <a
+              href="#"
+              class="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text absolute top-3 right-3 text-xs whitespace-nowrap transition hover:underline"
+              >View on GitHub</a
+            >
           </div>
           <p class="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">
             A distributed task queue system for handling background jobs across multiple servers with monitoring tools.
@@ -375,7 +388,9 @@
             <a href="mailto:me@alexcoder.com" class="hover:text-mono-text dark:hover:text-dark-mono-text transition">me@alexcoder.com</a>
           </p>
           <p class="text-mono-text-muted dark:text-dark-mono-text-muted">
-            <a href="https://github.com/alexcoder" target="_blank" class="hover:text-mono-text dark:hover:text-dark-mono-text transition">github.com/alexcoder</a>
+            <a href="https://github.com/alexcoder" target="_blank" class="hover:text-mono-text dark:hover:text-dark-mono-text transition"
+              >github.com/alexcoder</a
+            >
           </p>
         </div>
         <div class="text-mono-text-muted dark:text-dark-mono-text-muted text-center md:text-right">
