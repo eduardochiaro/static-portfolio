@@ -1,3 +1,4 @@
+import { DownloadIcon, FileIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -28,14 +29,23 @@ const backgroundAccentList = [
 
 const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDownload }: ProjectCardProps) => {
   return (
-    <article className="group">
-      <Link href={buttonUrl} target={!isDownload ? '_blank' : undefined} rel={!isDownload ? 'noopener noreferrer' : undefined} className="block">
-        <div className="bg-dark-mono-accent dark:bg-mono-text mb-4 overflow-hidden rounded p-2">
-          <Image src={imageUrl} alt={title} width={800} height={450} className="aspect-video w-full object-cover transition-transform duration-300" />
-        </div>
-        <h3 className="mb-2 text-xl font-semibold transition group-hover:underline">{title}</h3>
-        <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm leading-relaxed">{description}</p>
-      </Link>
+    <article className="group flex flex-col">
+      <h3 className="mb-2 text-xl font-semibold transition">{title}</h3>
+      <div className="bg-dark-mono-accent dark:bg-mono-text mb-4 overflow-hidden rounded p-2">
+        <Image src={imageUrl} alt={title} width={800} height={450} className="aspect-video w-full object-scale-down transition-transform duration-300" />
+      </div>
+      <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 flex-1 text-sm leading-relaxed">{description}</p>
+      <div>
+        <Link
+          href={buttonUrl}
+          target={!isDownload ? '_blank' : undefined}
+          rel={!isDownload ? 'noopener noreferrer' : undefined}
+          className="border-mono-border dark:border-dark-mono-border text-mono-text-muted dark:text-dark-mono-text-muted bg-mono-bg dark:bg-dark-mono-bg hover:bg-mono-card dark:hover:bg-dark-mono-card hover:text-mono-text dark:hover:text-dark-mono-text inline-flex items-center gap-2 rounded border px-6 py-2 text-sm transition"
+        >
+          {buttonText}
+          {isDownload ? <DownloadIcon className="size-3" /> : null}
+        </Link>
+      </div>
     </article>
   );
 };

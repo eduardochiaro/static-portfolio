@@ -9,9 +9,11 @@ import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import homeData from '@/data/home.json';
+import resumeData from '@/data/resume.json';
 
 export default function Home() {
-  const { hero, bio, skills, projects, github, footer } = homeData;
+  const { hero, bio, projects, github, footer } = homeData;
+  const { skills } = resumeData;
 
   return (
     <div className="min-h-screen">
@@ -28,7 +30,6 @@ export default function Home() {
           <Bio bio={bio} />
           <Skills skills={skills} />
           <Projects projects={projects} />
-          <GitHub repos={github} />
         </main>
         <Footer text={footer.text} links={footer.links} />
       </ClickSpark>
