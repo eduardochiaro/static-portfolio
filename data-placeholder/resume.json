@@ -10,27 +10,33 @@
   "skills": [
     {
       "name": "JavaScript",
-      "level": "Expert"
+      "level": "Expert",
+      "percentage" : 90
     },
     {
       "name": "React",
-      "level": "Proficient"
+      "level": "Advanced",
+      "percentage" : 85
     },
     {
       "name": "Node.js",
-      "level": "Proficient"
+      "level": "Proficient",
+      "percentage" : 80
     },
     {
       "name": "CSS",
-      "level": "Expert"
+      "level": "Expert",
+      "percentage" : 90
     },
     {
       "name": "HTML",
-      "level": "Expert"
+      "level": "Expert",
+      "percentage" : 90
     },
     {
       "name": "Git",
-      "level": "Familiar"
+      "level": "Familiar",
+      "percentage" : 60
     }
   ],
   "experience": [
@@ -72,7 +78,7 @@
       "responsibilities": [
         "Assisted in the development of web applications using JavaScript and CSS.",
         "Learned and applied best practices in software development.",
-        "Participated in code reviews and team meetings." 
+        "Participated in code reviews and team meetings."
       ],
       "tags": ["web development", "learning", "teamwork"]
     },
@@ -121,13 +127,15 @@
   ],
   "footer": {
     "text": "Made with ♥",
-    "links": [{
-      "text": "me@alexcoder.com",
-      "url": "mailto:me@alexcoder.com"
-    },
-    {
-      "text": "github.com/alexcoder",
-      "url": "https://github.com/alexcoder"
-    }]
+    "links": [
+      {
+        "text": "me@alexcoder.com",
+        "url": "mailto:me@alexcoder.com"
+      },
+      {
+        "text": "github.com/alexcoder",
+        "url": "https://github.com/alexcoder"
+      }
+    ]
   }
 }

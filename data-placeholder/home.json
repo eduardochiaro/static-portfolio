@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "name": "Alex Coder",
+    "title": "Full Stack Developer",
+    "slogan": "Building scalable web applications with modern tools and technologies."
+  },
+  "bio": [
+    "Hi, I'm Full Stack Developer who loves building things that work well and make life easier. I've spent years turning ideas into reliable, thoughtful software, always with a focus on clean code, clear goals, and real-world impact. I enjoy working on projects where I can simplify complexity and bring a calm, practical mindset to solving tough problems.",
+    "I'm most at home working across the stack with tools like Node.js, TypeScript, React, and PHP, often in cloud environments like AWS. Beyond the code, I care about good communication, collaboration, and keeping things human—even in tech. Whether I'm refining a backend system or improving a user experience, I aim to build software that's not just functional, but genuinely useful."
+  ],
+  "projects": [
+    {
+      "title": "E-commerce Platform",
+      "description": "A modern e-commerce solution built with React and Node.js",
+      "imageUrl": "https://picsum.photos/seed/ecommerce/400/300",
+      "buttonText": "View Demo",
+      "buttonUrl": "https://demo-url.com",
+      "isDownload": false
+    },
+    {
+      "title": "Task Management App",
+      "description": "Full-stack productivity application with real-time collaboration",
+      "imageUrl": "https://picsum.photos/seed/taskapp/400/300",
+      "buttonText": "View on GitHub",
+      "buttonUrl": "https://github.com/username/project",
+      "isDownload": false
+    },
+    {
+      "title": "Resume Template",
+      "description": "Clean and professional resume template",
+      "imageUrl": "https://picsum.photos/seed/resume/400/300",
+      "buttonText": "Download PDF",
+      "buttonUrl": "/assets/resume-template.pdf",
+      "isDownload": true
+    }
+  ],
+  "footer": {
+    "text": "Made with ♥",
+    "links": [
+      {
+        "text": "me@alexcoder.com",
+        "url": "mailto:me@alexcoder.com"
+      },
+      {
+        "text": "github.com/alexcoder",
+        "url": "https://github.com/alexcoder"
+      }
+    ]
+  }
+}

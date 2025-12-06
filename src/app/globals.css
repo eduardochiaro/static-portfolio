@@ -1,35 +1,40 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-main: #f9fbef; /* beige */
-  --color-dark-main: #1c2826; /* gunmetal */
+  --color-mono-bg: #fafafa;
+  --color-mono-card: #f0f0f0;
+  --color-mono-text: #1a1a1a;
+  --color-mono-text-muted: #666666;
+  --color-mono-border: #e0e0e0;
+  --color-mono-accent: #0a0a0a;
 
-  --color-accent-one: #ffbb33;
-  --color-accent-two: #ff5533;
-  --color-accent-three: #e83a63;
-  --color-accent-four: #8a2be2;
+  --color-dark-mono-bg: #141414;
+  --color-dark-mono-card: #202020;
+  --color-dark-mono-text: #e8e8e8;
+  --color-dark-mono-text-muted: #888888;
+  --color-dark-mono-border: #292929;
+  --color-dark-mono-accent: #f0f0f0;
 
-  --color-dark-accent-one: #ffcc55;
-  --color-dark-accent-two: #ff7755;
-  --color-dark-accent-three: #f04a73;
-  --color-dark-accent-four: #9b3cf3;
-
-  --font-mono: 'IBM Plex Mono', 'monospace';
+  --font-mono: 'IBM Plex Mono', monospace;
 }
 
 body {
-  @apply bg-main dark:bg-dark-main text-dark-main dark:text-main relative font-mono text-base leading-relaxed md:text-sm;
+  @apply bg-mono-bg dark:bg-dark-mono-bg text-mono-text dark:text-dark-mono-text font-mono antialiased;
 }
 
-.button {
-  @apply border-dark-main dark:border-main bg-dark-main dark:bg-main text-main dark:text-dark-main cursor-pointer rounded border font-semibold transition duration-300;
-  @apply hover:bg-accent-three dark:hover:bg-dark-accent-three hover:text-main hover:-translate-1 hover:shadow-[0.25rem_0.25rem_rgb(0,0,0)] hover:dark:shadow-[0.25rem_0.25rem_rgb(255,255,255)];
+.fade-in {
+  animation: fadeIn 0.6s ease-in;
 }
 
-.slanted {
-  --s: 90px; /* slant size */
-
-  clip-path: shape(from 0 0, line to calc(100% - var(--s)) 0, line to 100% 100%, line to 0 100%);
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

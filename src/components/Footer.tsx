@@ -2,34 +2,36 @@ import Link from 'next/link';
 
 export type FooterProps = {
   text: string;
-  links: {
-    text: string;
-    url: string;
+  links: readonly {
+    readonly text: string;
+    readonly url: string;
   }[];
 };
 
 export default function Footer({ text, links }: FooterProps) {
   const currentYear = new Date().getFullYear();
   return (
-    <footer className="border-dark-main dark:border-main z-50 mx-auto mt-16 flex max-w-4xl justify-between border-t-2 px-4 py-8 text-sm md:px-0 md:text-xs">
-      <div className="flex flex-col gap-3">
-        {links.map((link, index) => (
-          <p key={index}>
-            <Link
-              href={link.url}
-              target="_blank"
-              prefetch={false}
-              rel="noopener noreferrer"
-              className="border-accent-two dark:border-dark-accent-two hover:bg-accent-two hover:text-main dark:hover:bg-dark-accent-two dark:hover:text-dark-main border-b-2"
-            >
-              {link.text}
-            </Link>
-          </p>
-        ))}
-      </div>
-      <div className="flex flex-col gap-3 text-right">
-        <p>{text}</p>
-        <p>&copy; {currentYear}</p>
+    <footer role="contentinfo" className="mt-24">
+      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 py-12 text-sm md:flex-row">
+        <div>
+          {links.map((link, index) => (
+            <p key={index} className="text-mono-text-muted dark:text-dark-mono-text-muted mb-2">
+              <Link
+                href={link.url}
+                target="_blank"
+                prefetch={false}
+                rel="noopener noreferrer"
+                className="hover:text-mono-text dark:hover:text-dark-mono-text transition"
+              >
+                {link.text}
+              </Link>
+            </p>
+          ))}
+        </div>
+        <div className="text-mono-text-muted dark:text-dark-mono-text-muted text-center md:text-right">
+          <p className="mb-2">{text}</p>
+          <p>&copy; {currentYear}</p>
+        </div>
       </div>
     </footer>
   );

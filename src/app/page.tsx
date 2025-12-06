@@ -2,71 +2,36 @@
 
 import Bio from '@/components/Bio';
 import ClickSpark from '@/components/ClickSpark';
-import Footer, { FooterProps } from '@/components/Footer';
-import GitHub, { GitHubType } from '@/components/GitHub';
+import Footer from '@/components/Footer';
 import Header from '@/components/Header';
-import Hero, { HeroProps } from '@/components/Hero';
-import Lines from '@/components/Lines';
-import Loading from '@/components/Loading';
-import Projects, { ProjectType } from '@/components/Projects';
-import SideScroll from '@/components/resume/SideScroll';
-import Skills, { SkillType } from '@/components/Skills';
-import { useState, useEffect } from 'react';
-
-type HomeType = {
-  hero: HeroProps;
-  bio: string[];
-  skills: SkillType[];
-  projects: ProjectType[];
-  github: GitHubType[];
-  footer: FooterProps;
-};
+import Hero from '@/components/Hero';
+import Projects from '@/components/Projects';
+import Skills from '@/components/Skills';
+import homeData from '@/data/home.json';
+import resumeData from '@/data/resume.json';
 
 export default function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [skills, setSkills] = useState<HomeType['skills']>([]);
-  const [projects, setProjects] = useState<HomeType['projects']>([]);
-  const [hero, setHero] = useState<HomeType['hero']>({ title: '', name: '', slogan: '' });
-  const [bio, setBio] = useState<HomeType['bio']>([]);
-  const [github, setGithub] = useState<HomeType['github']>([]);
-  const [footer, setFooter] = useState<HomeType['footer']>({ text: '', links: [] });
-  // Load data asynchronously
-  useEffect(() => {
-    loadData().then((data) => {
-      setHero(data.hero);
-      setBio(data.bio);
-      setSkills(data.skills);
-      setProjects(data.projects);
-      setGithub(data.github);
-      setFooter(data.footer);
-      setIsLoading(false);
-    });
-  }, []);
+  const { hero, bio, projects, footer } = homeData;
+  const { skills } = resumeData;
+
   return (
-    <>
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
-          <Header name={hero.name} />
+    <div className="min-h-screen">
+      <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+        <Header name={hero.name} section="Portfolio" />
+        <main role="main">
           <Hero title={hero.title} name={hero.name} slogan={hero.slogan} />
-          <Lines />
+
+          {/* Divider */}
+          <div className="mx-auto max-w-5xl px-6">
+            <div className="border-mono-border dark:border-dark-mono-border border-t"></div>
+          </div>
+
           <Bio bio={bio} />
           <Skills skills={skills} />
           <Projects projects={projects} />
-          <GitHub repos={github} />
-          <SideScroll />
-          <Lines />
-          <Footer text={footer.text} links={footer.links} />
-        </ClickSpark>
-      )}
-    </>
+        </main>
+        <Footer text={footer.text} links={footer.links} />
+      </ClickSpark>
+    </div>
   );
 }
-
-const loadData = async () => {
-  const response = await fetch('static/home.json', { next: { revalidate: 3600 } });
-  const data = await response.json();
-
-  return data as HomeType;
-};

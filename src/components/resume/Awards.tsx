@@ -1,28 +1,22 @@
 import { formatMonthYear } from '@/lib/date';
-import SideModule from './SideModule';
-
-const colorTextList = [
-  'decoration-accent-four dark:decoration-dark-accent-four',
-  'decoration-accent-three dark:decoration-dark-accent-three',
-  'decoration-accent-two dark:decoration-dark-accent-two',
-  'decoration-dark-main dark:decoration-dark-accent-one',
-];
 
 export type AwardsType = {
   title: string;
   date: string;
 };
 
-export default function Awards({ awards }: { awards: AwardsType[] }) {
+export default function Awards({ awards }: { awards: readonly AwardsType[] }) {
   return (
-    <SideModule
-      title="Awards"
-      list={awards.map((award, index) => ({
-        title: award.title,
-        value: formatMonthYear(award.date),
-        color: colorTextList[index % colorTextList.length], // cycle through colors based on month
-      }))}
-      titleColor="border-accent-two dark:border-dark-accent-two"
-    />
+    <section className="mb-12">
+      <h3 className="mb-4 text-base font-medium tracking-widest uppercase">Awards</h3>
+      <ul className="space-y-2 text-sm">
+        {awards.map((award, index) => (
+          <li key={index} className="flex justify-between gap-10">
+            <span>{award.title}</span>
+            <span className="text-mono-text-muted dark:text-dark-mono-text-muted flex-nowrap">{formatMonthYear(award.date)}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }

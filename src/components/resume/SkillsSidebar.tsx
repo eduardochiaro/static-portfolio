@@ -1,29 +1,17 @@
-import SideModule from './SideModule';
 import { SkillType } from '../Skills';
 
-const colorLevel = (level: string) => {
-  switch (level) {
-    case 'Expert':
-      return 'decoration-accent-four dark:decoration-dark-accent-four';
-    case 'Proficient':
-      return 'decoration-accent-three dark:decoration-dark-accent-three';
-    case 'Familiar':
-      return 'decoration-accent-two dark:decoration-dark-accent-two';
-    default:
-      return '';
-  }
-};
-
-export default function SkillsSidebar({ skills }: { skills: SkillType[] }) {
+export default function SkillsSidebar({ skills }: { skills: readonly SkillType[] }) {
   return (
-    <SideModule
-      title="Skills"
-      list={skills.map((skill) => ({
-        title: skill.name,
-        value: skill.level,
-        color: colorLevel(skill.level), // Use the colorLevel function to determine the text color
-      }))}
-      titleColor="border-accent-four dark:border-dark-accent-four"
-    />
+    <section className="mb-12">
+      <h3 className="mb-4 text-base font-medium tracking-widest uppercase">Skills</h3>
+      <ul className="space-y-2 text-sm">
+        {skills.map((skill, index) => (
+          <li key={index} className="flex justify-between">
+            <span>{skill.name}</span>
+            <span className="text-mono-text-muted dark:text-dark-mono-text-muted">{skill.level}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
