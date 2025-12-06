@@ -46,25 +46,5 @@
         "url": "https://github.com/alexcoder"
       }
     ]
-  },
-  "github": [
-    {
-      "name": "API Gateway",
-      "link": "https://github.com/randomuser/api-gateway",
-      "description": "A high-performance Node.js API gateway with authentication, rate limiting, and request transformations.",
-      "tags": ["Node.js", "Express", "JWT"]
-    },
-    {
-      "name": "GraphQL API",
-      "link": "https://github.com/randomuser/graphql-api",
-      "description": "A GraphQL API built with Apollo Server, providing a flexible and efficient data fetching layer.",
-      "tags": ["GraphQL", "Apollo Server", "Node.js"]
-    },
-    {
-      "name": "Real-time Chat App",
-      "link": "https://github.com/randomuser/real-time-chat",
-      "description": "A real-time chat application using WebSockets for instant messaging and notifications.",
-      "tags": ["WebSockets", "Node.js", "React"]
-    }
-  ]
+  }
 }

@@ -5,7 +5,7 @@ export type ExperienceType = {
   position: string;
   location: string;
   startDate: string;
-  endDate: string;
+  endDate?: string|null;
   description: string;
   responsibilities: readonly string[];
   tags: readonly string[];

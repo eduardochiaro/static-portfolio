@@ -3,7 +3,6 @@
 import Bio from '@/components/Bio';
 import ClickSpark from '@/components/ClickSpark';
 import Footer from '@/components/Footer';
-import GitHub from '@/components/GitHub';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
@@ -12,7 +11,7 @@ import homeData from '@/data/home.json';
 import resumeData from '@/data/resume.json';
 
 export default function Home() {
-  const { hero, bio, projects, github, footer } = homeData;
+  const { hero, bio, projects, footer } = homeData;
   const { skills } = resumeData;
 
   return (

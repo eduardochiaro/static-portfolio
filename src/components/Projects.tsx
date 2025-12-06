@@ -1,4 +1,4 @@
-import { DownloadIcon, FileIcon } from 'lucide-react';
+import { DownloadIcon } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -12,20 +12,6 @@ type ProjectCardProps = {
   isDownload?: boolean; // Optional prop to indicate if the button is for downloading
   index: number; // Used to cycle accent colors
 };
-
-const accentBorderList = [
-  'border-accent-four dark:border-dark-accent-four',
-  'border-accent-three dark:border-dark-accent-three',
-  'border-accent-two dark:border-dark-accent-two',
-  'border-accent-one dark:border-dark-accent-one',
-];
-
-const backgroundAccentList = [
-  'bg-accent-four dark:bg-dark-accent-four',
-  'bg-accent-three dark:bg-dark-accent-three',
-  'bg-accent-two dark:bg-dark-accent-two',
-  'bg-accent-one dark:bg-dark-accent-one',
-];
 
 const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDownload }: ProjectCardProps) => {
   return (
