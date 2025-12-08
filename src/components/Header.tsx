@@ -15,8 +15,9 @@ export default function Header({ name, section }: { name?: string; section?: str
 
   useEffect(() => {
     const effectiveTheme = theme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
-
-    document.documentElement.className = effectiveTheme;
+    // add class without removing old ones
+    document.documentElement.classList.remove('light', 'dark');
+    document.documentElement.classList.add(effectiveTheme);
     localStorage.setItem('theme', theme);
   }, [theme]);
 

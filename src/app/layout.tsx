@@ -8,7 +8,8 @@ import homeData from '@/data/metadata.json';
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ['100', '200', '300', '400', '500', '600', '700'],
   style: ['normal', 'italic'],
-  variable: '--font-mono',
+  display: 'swap',
+  variable: '--font-imbplex-mono',
   subsets: ['latin'],
 });
 
