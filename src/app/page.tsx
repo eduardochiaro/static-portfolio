@@ -2,6 +2,7 @@
 
 import Bio from '@/components/Bio';
 import ClickSpark from '@/components/ClickSpark';
+import FeaturedProject from '@/components/FeaturedProject';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
@@ -11,7 +12,7 @@ import homeData from '@/data/home.json';
 import resumeData from '@/data/resume.json';
 
 export default function Home() {
-  const { hero, bio, projects, footer } = homeData;
+  const { hero, bio, featuredProject, projects, footer } = homeData;
   const { skills } = resumeData;
 
   return (
@@ -28,6 +29,7 @@ export default function Home() {
 
           <Bio bio={bio} />
           <Skills skills={skills} />
+          <FeaturedProject sectionTitle={featuredProject.title} projects={featuredProject.projects} />
           <Projects projects={projects} />
         </main>
         <Footer text={footer.text} links={footer.links} />
