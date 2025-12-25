@@ -8,23 +8,28 @@
     "Hi, I'm Full Stack Developer who loves building things that work well and make life easier. I've spent years turning ideas into reliable, thoughtful software, always with a focus on clean code, clear goals, and real-world impact. I enjoy working on projects where I can simplify complexity and bring a calm, practical mindset to solving tough problems.",
     "I'm most at home working across the stack with tools like Node.js, TypeScript, React, and PHP, often in cloud environments like AWS. Beyond the code, I care about good communication, collaboration, and keeping things human—even in tech. Whether I'm refining a backend system or improving a user experience, I aim to build software that's not just functional, but genuinely useful."
   ],
+  "featuredProject": {
+    "title": "Featured Projects",
+    "projects": [
+      {
+        "title": "E-commerce Platform",
+        "description": "A modern e-commerce solution built with React and Node.js",
+        "imageUrl": "https://picsum.photos/seed/ecommerce/400/300",
+        "buttonText": "View Demo",
+        "buttonUrl": "https://demo-url.com",
+        "isDownload": false
+      },
+      {
+        "title": "Task Management App",
+        "description": "Full-stack productivity application with real-time collaboration",
+        "imageUrl": "https://picsum.photos/seed/taskapp/400/300",
+        "buttonText": "View on GitHub",
+        "buttonUrl": "https://github.com/username/project",
+        "isDownload": false
+      }
+    ]
+  },
   "projects": [
-    {
-      "title": "E-commerce Platform",
-      "description": "A modern e-commerce solution built with React and Node.js",
-      "imageUrl": "https://picsum.photos/seed/ecommerce/400/300",
-      "buttonText": "View Demo",
-      "buttonUrl": "https://demo-url.com",
-      "isDownload": false
-    },
-    {
-      "title": "Task Management App",
-      "description": "Full-stack productivity application with real-time collaboration",
-      "imageUrl": "https://picsum.photos/seed/taskapp/400/300",
-      "buttonText": "View on GitHub",
-      "buttonUrl": "https://github.com/username/project",
-      "isDownload": false
-    },
     {
       "title": "Resume Template",
       "description": "Clean and professional resume template",
