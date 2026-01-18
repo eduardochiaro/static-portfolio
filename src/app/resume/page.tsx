@@ -8,16 +8,18 @@ import GithubIcon from '@/components/icons/Github';
 import Languages from '@/components/resume/Languages';
 import SkillsSidebar from '@/components/resume/SkillsSidebar';
 import { MailIcon, MapPinHouse } from 'lucide-react';
-import resumeData from '@/data/resume.json';
 import ClickSpark from '@/components/ClickSpark';
+import metaData from '@/data/metadata.json';
+import resumeData from '@/data/resume.json';
 
 export default function Resume() {
-  const { personalInfo, skills, summary, experience, languages, awards, footer } = resumeData;
+  const { personalInfo, skills, summary, experience, languages, awards } = resumeData;
+  const { header, footer } = metaData;
 
   return (
-    <div className="min-h-screen">
-      <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
-        <Header name={personalInfo.name} section="Resume" />
+    <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+      <div className="min-h-screen">
+        <Header name={header.title} pages={header.pages} section="Resume" />
 
         <main role="main">
           <section className="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
@@ -67,7 +69,7 @@ export default function Resume() {
           </div>
         </main>
         <Footer text={footer.text} links={footer.links} />
-      </ClickSpark>
-    </div>
+      </div>
+    </ClickSpark>
   );
 }

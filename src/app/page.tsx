@@ -8,17 +8,19 @@ import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
+import metaData from '@/data/metadata.json';
 import homeData from '@/data/home.json';
 import resumeData from '@/data/resume.json';
 
 export default function Home() {
-  const { hero, bio, featuredProject, projects, footer } = homeData;
+  const { hero, bio, projects } = homeData;
   const { skills } = resumeData;
+  const { header, footer } = metaData;
 
   return (
-    <div className="min-h-screen">
-      <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
-        <Header name={hero.name} section="Portfolio" />
+    <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+      <div className="min-h-screen">
+        <Header name={header.title} pages={header.pages} section="Portfolio" />
         <main role="main">
           <Hero title={hero.title} name={hero.name} slogan={hero.slogan} />
 
@@ -29,11 +31,10 @@ export default function Home() {
 
           <Bio bio={bio} />
           <Skills skills={skills} />
-          <FeaturedProject sectionTitle={featuredProject.title} projects={featuredProject.projects} />
           <Projects projects={projects} />
         </main>
         <Footer text={footer.text} links={footer.links} />
-      </ClickSpark>
-    </div>
+      </div>
+    </ClickSpark>
   );
 }

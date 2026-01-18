@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import homeData from '@/data/metadata.json';
 
 export const metadata: Metadata = {
-  title: homeData.resume.title + ' - Resume',
+  title: homeData.resume.title,
   description: homeData.resume.description,
 };
 

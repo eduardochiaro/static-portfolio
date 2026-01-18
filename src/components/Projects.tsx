@@ -48,7 +48,7 @@ export type ProjectType = {
 export default function Projects({ projects }: { projects: readonly ProjectType[] }) {
   return (
     <section className="mx-auto max-w-5xl px-6 py-16">
-      <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">Featured Projects</h2>
+      <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">Projects</h2>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {projects.map((project, index) => (
           <ProjectCard

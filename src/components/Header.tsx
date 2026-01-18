@@ -5,7 +5,13 @@ import { MoonIcon, SunIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-export default function Header({ name, section }: { name?: string; section?: string }) {
+type HeaderProps = {
+  name?: string;
+  pages?: { name: string; path: string }[];
+  section?: string;
+};
+
+export default function Header({ name, pages, section }: HeaderProps) {
   const [theme, setTheme] = useState<'light' | 'dark' | 'system'>(() => {
     if (typeof window !== 'undefined') {
       return (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'light';
@@ -33,19 +39,15 @@ export default function Header({ name, section }: { name?: string; section?: str
           <div>{section}</div>
         </div>
         <div className="flex items-center gap-6 text-sm">
-          <Link
-            href="/"
-            className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition max-sm:hidden"
-          >
-            Portfolio
-          </Link>
-          <Link
-            href="/resume"
-            className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition max-sm:hidden"
-          >
-            Resume
-          </Link>
-
+          {pages?.map((page) => (
+            <Link
+              key={page.name}
+              href={page.path}
+              className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition max-sm:hidden"
+            >
+              {page.name}
+            </Link>
+          ))}
           <Menu>
             <MenuButton className="flex h-8 w-8 items-center justify-center transition" aria-label="Theme options">
               <MoonIcon className="hidden h-4 w-4 dark:block" />
