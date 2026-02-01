@@ -49,6 +49,7 @@ body {
       height: 350px;
       content: '';
       background-image: url('/images/pebble/assets/time-white.png');
+      background-repeat: no-repeat;
     }
   }
   &.chalk {
@@ -58,11 +59,12 @@ body {
       @apply rounded-full;
     }
     &::after {
-      @apply absolute top-[1px] left-0;
+      @apply absolute top-0 left-[1px];
       width: 251px;
       height: 350px;
       content: '';
       background-image: url('/images/pebble/assets/time-round-white.png');
+      background-repeat: no-repeat;
     }
   }
   &.emery {
