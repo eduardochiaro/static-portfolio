@@ -13,7 +13,7 @@ import homeData from '@/data/home.json';
 import resumeData from '@/data/resume.json';
 
 export default function Home() {
-  const { hero, bio, projects } = homeData;
+  const { hero, bio, projects, featuredProject } = homeData;
   const { skills } = resumeData;
   const { header, footer } = metaData;
 
@@ -31,6 +31,7 @@ export default function Home() {
 
           <Bio bio={bio} />
           <Skills skills={skills} />
+          <FeaturedProject {...featuredProject} />
           <Projects projects={projects} />
         </main>
         <Footer text={footer.text} links={footer.links} />

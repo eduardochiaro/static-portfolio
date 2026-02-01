@@ -10,24 +10,12 @@
   ],
   "featuredProject": {
     "title": "Featured Projects",
-    "projects": [
-      {
-        "title": "E-commerce Platform",
-        "description": "A modern e-commerce solution built with React and Node.js",
-        "imageUrl": "https://picsum.photos/seed/ecommerce/400/300",
-        "buttonText": "View Demo",
-        "buttonUrl": "https://demo-url.com",
-        "isDownload": false
-      },
-      {
-        "title": "Task Management App",
-        "description": "Full-stack productivity application with real-time collaboration",
-        "imageUrl": "https://picsum.photos/seed/taskapp/400/300",
-        "buttonText": "View on GitHub",
-        "buttonUrl": "https://github.com/username/project",
-        "isDownload": false
-      }
-    ]
+    "imageUrl": "https://picsum.photos/seed/featured/800/400",
+    "description": [
+      "Check out some of my highlighted projects that showcase my skills and experience in full stack development."
+    ],
+    "url": "/url",
+    "urlText": "View projects"
   },
   "projects": [
     {
