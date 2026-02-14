@@ -19,13 +19,13 @@ export default function FeaturedProject({ title, imageUrl, description, url, url
           <Image
             src={imageUrl}
             alt={title}
-            width={800}
+            width={600}
             height={450}
-            className="object-cover"
+            className="object-cover mx-auto"
           />
         </div>
       )}
-      <div className="text-mono-text-muted dark:text-dark-mono-text-muted max-w-3xl space-y-4 text-base leading-relaxed">
+      <div className="text-mono-text-muted dark:text-dark-mono-text-muted space-y-4 text-base leading-relaxed">
         {description.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>
         ))}

@@ -32,7 +32,7 @@ export default function Pebble() {
           <section className="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
             <div className="fade-in">
               <h1 className="mb-6 flex flex-col text-6xl leading-tight font-semibold tracking-tight">{hero.title}</h1>
-              <p className="text-mono-text-muted dark:text-dark-mono-text-muted max-w-3xl text-base leading-relaxed">{hero.description}</p>
+              <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{hero.description}</p>
             </div>
           </section>
 
@@ -44,7 +44,7 @@ export default function Pebble() {
           {sections.map((section, idx) => (
             <section className="mx-auto max-w-5xl px-6 py-16" key={idx}>
               <h2 className="mb-6 text-lg font-medium tracking-widest uppercase">{section.title}</h2>
-              <p className="text-mono-text-muted dark:text-dark-mono-text-muted max-w-3xl text-base leading-relaxed">{section.content}</p>
+              <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{section.content}</p>
               <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-10">
                 {section.watchfaces?.map((watchface, wIdx) => (
                   <div key={wIdx} className="flex flex-col items-center gap-4">

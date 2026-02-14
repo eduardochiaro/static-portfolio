@@ -30,7 +30,7 @@ export default function Header({ name, pages, section }: HeaderProps) {
   return (
     <header
       role="navigation"
-      className="max-xl:bg-mono-bg/50 max-xl:dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs"
+      className="max-2xl:bg-mono-bg/50 max-2xl:dark:bg-dark-mono-bg/50 fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs"
     >
       <div className="mx-auto flex items-center justify-between p-8">
         <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide">

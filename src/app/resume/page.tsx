@@ -54,7 +54,7 @@ export default function Resume() {
 
           <section className="mx-auto max-w-5xl px-6 py-16">
             <h2 className="mb-6 text-lg font-medium tracking-widest uppercase">Summary</h2>
-            <p className="text-mono-text-muted dark:text-dark-mono-text-muted max-w-3xl text-base leading-relaxed">{summary}</p>
+            <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{summary}</p>
           </section>
 
           <div className="mx-auto flex max-w-5xl flex-col gap-16 px-6 md:flex-row">
