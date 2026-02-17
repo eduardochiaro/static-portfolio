@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import React from 'react';
-import ButtonLink from "./ButtonLink";
+import ButtonLink from './ButtonLink';
 
 type FeaturedProjectProps = {
   title: string;
@@ -16,13 +16,7 @@ export default function FeaturedProject({ title, imageUrl, description, url, url
       <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">{title}</h2>
       {imageUrl && (
         <div className="mb-8">
-          <Image
-            src={imageUrl}
-            alt={title}
-            width={600}
-            height={450}
-            className="object-cover mx-auto"
-          />
+          <Image src={imageUrl} alt={title} width={600} height={450} className="mx-auto object-cover" />
         </div>
       )}
       <div className="text-mono-text-muted dark:text-dark-mono-text-muted space-y-4 text-base leading-relaxed">

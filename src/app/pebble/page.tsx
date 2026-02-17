@@ -45,7 +45,7 @@ export default function Pebble() {
             <section className="mx-auto max-w-5xl px-6 py-16" key={idx}>
               <h2 className="mb-6 text-lg font-medium tracking-widest uppercase">{section.title}</h2>
               <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{section.content}</p>
-              <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-10">
+              <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3">
                 {section.watchfaces?.map((watchface, wIdx) => (
                   <div key={wIdx} className="flex flex-col items-center gap-4">
                     <div className={`pebble ${watchface.type}`}>
