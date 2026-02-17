@@ -63,8 +63,8 @@ export default function Resume() {
             </div>
             <div className="md:w-1/3">
               <SkillsSidebar skills={skills} />
-              <Awards awards={awards} />
               <Languages languages={languages} />
+              <Awards awards={awards} />
             </div>
           </div>
         </main>

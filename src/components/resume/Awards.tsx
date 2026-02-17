@@ -11,9 +11,9 @@ export default function Awards({ awards }: { awards: readonly AwardsType[] }) {
       <h3 className="mb-4 text-base font-medium tracking-widest uppercase">Awards</h3>
       <ul className="space-y-2 text-sm">
         {awards.map((award, index) => (
-          <li key={index} className="flex justify-between gap-10">
+          <li key={index} className="flex flex-col justify-between gap-2">
             <span>{award.title}</span>
-            <span className="text-mono-text-muted dark:text-dark-mono-text-muted flex-nowrap">{formatMonthYear(award.date)}</span>
+            <span className="text-mono-text-muted dark:text-dark-mono-text-muted text-nowrap">{formatMonthYear(award.date)}</span>
           </li>
         ))}
       </ul>
