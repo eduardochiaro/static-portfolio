@@ -75,8 +75,8 @@ body {
     }
     &::after {
       @apply absolute top-0 -left-px;
-      width: 294px;
-      height: 432px;
+      width: 240px;
+      height: 350px;
       content: '';
       background-image: url('/images/pebble/assets/time-2-white.png');
       background-repeat: no-repeat;
