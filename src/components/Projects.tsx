@@ -7,10 +7,9 @@ type ProjectCardProps = {
   title: string;
   description: string;
   imageUrl: string;
-  buttonText: string | React.ReactNode; // Allow string or React node for button text
+  buttonText: string | React.ReactNode;
   buttonUrl: string;
-  isDownload?: boolean; // Optional prop to indicate if the button is for downloading
-  index: number; // Used to cycle accent colors
+  isDownload?: boolean;
 };
 
 const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDownload }: ProjectCardProps) => {
@@ -50,10 +49,9 @@ export default function Projects({ projects }: { projects: readonly ProjectType[
     <section className="mx-auto max-w-5xl px-6 py-16">
       <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">Projects</h2>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-        {projects.map((project, index) => (
+        {projects.map((project) => (
           <ProjectCard
-            key={index}
-            index={index}
+            key={project.title}
             title={project.title}
             description={project.description}
             imageUrl={project.imageUrl}

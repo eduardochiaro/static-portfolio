@@ -17,7 +17,7 @@
   --color-dark-mono-border: #292929;
   --color-dark-mono-accent: #f0f0f0;
 
-  --font-mono: var(--font-imbplex-mono), monospace;
+  --font-mono: var(--font-ibmplex-mono), monospace;
 }
 
 body {
@@ -44,7 +44,7 @@ body {
     width: 240px;
     height: 350px;
     &::after {
-      @apply absolute top-0 left-[-2px];
+      @apply absolute top-0 -left-0.5;
       width: 240px;
       height: 350px;
       content: '';
@@ -59,7 +59,7 @@ body {
       @apply rounded-full;
     }
     &::after {
-      @apply absolute top-0 left-[1px];
+      @apply absolute top-0 left-px;
       width: 251px;
       height: 350px;
       content: '';
@@ -74,7 +74,7 @@ body {
       @apply scale-[0.83];
     }
     &::after {
-      @apply absolute top-0 left-[-1px];
+      @apply absolute top-0 -left-px;
       width: 294px;
       height: 432px;
       content: '';

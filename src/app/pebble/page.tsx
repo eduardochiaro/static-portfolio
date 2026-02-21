@@ -9,7 +9,7 @@ import pebbleData from '@/data/pebble.json';
 import { ExternalLinkIcon } from 'lucide-react';
 import Image from 'next/image';
 
-const imageSizesBasedOnType = (type: string, returnValue: 'w' | 'h') => {
+const imageSizesBasedOnType = (type: string, returnValue: 'w' | 'h'): number => {
   switch (type) {
     case 'basalt':
       return returnValue === 'w' ? 144 : 168;
@@ -17,6 +17,8 @@ const imageSizesBasedOnType = (type: string, returnValue: 'w' | 'h') => {
       return returnValue === 'w' ? 180 : 180;
     case 'emery':
       return returnValue === 'w' ? 200 : 228;
+    default:
+      return returnValue === 'w' ? 144 : 168;
   }
 };
 
@@ -28,7 +30,7 @@ export default function Pebble() {
     <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
       <div className="min-h-screen">
         <Header name={header.title} pages={header.pages} section="Pebble" />
-        <main role="main">
+        <main id="main">
           <section className="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
             <div className="fade-in">
               <h1 className="mb-6 flex flex-col text-6xl leading-tight font-semibold tracking-tight">{hero.title}</h1>
@@ -41,13 +43,13 @@ export default function Pebble() {
             <div className="border-mono-border dark:border-dark-mono-border border-t"></div>
           </div>
 
-          {sections.map((section, idx) => (
-            <section className="mx-auto max-w-5xl px-6 py-16" key={idx}>
+          {sections.map((section) => (
+            <section className="mx-auto max-w-5xl px-6 py-16" key={section.title}>
               <h2 className="mb-6 text-lg font-medium tracking-widest uppercase">{section.title}</h2>
               <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{section.content}</p>
               <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3">
-                {section.watchfaces?.map((watchface, wIdx) => (
-                  <div key={wIdx} className="flex flex-col items-center gap-4">
+                {section.watchfaces?.map((watchface) => (
+                  <div key={watchface.title} className="flex flex-col items-center gap-4">
                     <div className={`pebble ${watchface.type}`}>
                       <Image
                         src={watchface.image}

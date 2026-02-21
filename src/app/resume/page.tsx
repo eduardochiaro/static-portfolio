@@ -21,19 +21,21 @@ export default function Resume() {
       <div className="min-h-screen">
         <Header name={header.title} pages={header.pages} section="Resume" />
 
-        <main role="main">
+        <main id="main">
           <section className="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
             <div className="fade-in">
               <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-2 text-sm tracking-widest uppercase">{personalInfo.role}</p>
               <h1 className="mb-6 flex flex-col text-6xl leading-tight font-semibold tracking-tight">
-                {personalInfo.name.split(' ').map((word, idx) => (
-                  <span key={idx}>{word}</span>
+                {personalInfo.name.split(' ').map((word) => (
+                  <span key={word}>{word}</span>
                 ))}
               </h1>
               <div className="text-mono-text-muted dark:text-dark-mono-text-muted flex flex-col gap-4 text-sm md:flex-row md:gap-8">
                 <p className="flex items-center gap-2">
                   <MailIcon className="inline-block h-4 w-4" />
-                  {personalInfo.email}
+                  <a href={`mailto:${personalInfo.email}`} className="hover:text-mono-text dark:hover:text-dark-mono-text transition">
+                    {personalInfo.email}
+                  </a>
                 </p>
                 <p className="flex items-center gap-2">
                   <MapPinHouse className="inline-block h-4 w-4" />

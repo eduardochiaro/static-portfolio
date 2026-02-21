@@ -11,7 +11,7 @@ export type FooterProps = {
 export default function Footer({ text, links }: FooterProps) {
   const currentYear = new Date().getFullYear();
   return (
-    <footer role="contentinfo" className="mt-24">
+    <footer className="mt-24">
       <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 py-12 text-sm md:flex-row">
         <div>
           {links.map((link, index) => (

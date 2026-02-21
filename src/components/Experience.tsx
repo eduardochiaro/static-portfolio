@@ -16,14 +16,18 @@ export default function Experience({ experience }: { experience: readonly Experi
     <section className="mb-16">
       <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">Experience</h2>
       <div>
-        {experience.map((exp, index) => (
-          <div key={index} className="group flex gap-x-3">
+        {experience.map((exp) => (
+          <div key={`${exp.company}-${exp.startDate}`} className="group flex gap-x-3">
+            <div className="text-mono-text-muted dark:text-dark-mono-text-muted -mt-1 text-right text-sm">
+              <div>{exp.endDate ? formatMonthYear(exp.endDate) : 'Now'}</div>
+              <div>{formatMonthYear(exp.startDate)}</div>
+            </div>
             <div className="after:border-line-2 relative after:absolute after:start-3.5 after:top-7 after:bottom-0 after:-translate-x-[0.5px] after:border-s group-last:after:hidden">
               <div className="relative z-10 flex size-7 items-center justify-center">
                 <div className="bg-mono-text dark:bg-dark-mono-text/50 size-2"></div>
               </div>
             </div>
-            <div className="mb-10 flex-1">
+            <div className="mb-20 flex-1">
               <div className="mb-4">
                 <div className="flex flex-col md:flex-row md:items-start md:justify-between">
                   <div>
@@ -33,9 +37,6 @@ export default function Experience({ experience }: { experience: readonly Experi
                       <span className="mx-2">•</span>
                       <span>{exp.location}</span>
                     </div>
-                  </div>
-                  <div className="text-mono-text-muted dark:text-dark-mono-text-muted mt-1 text-sm md:mt-0">
-                    {formatMonthYear(exp.startDate)} - {exp.endDate ? formatMonthYear(exp.endDate) : 'Present'}
                   </div>
                 </div>
               </div>
@@ -48,8 +49,8 @@ export default function Experience({ experience }: { experience: readonly Experi
               </ul>
 
               <div className="flex flex-wrap gap-2">
-                {exp.tags.map((tag, tagIndex) => (
-                  <span key={tagIndex} className="border-mono-border dark:border-dark-mono-border rounded-xs border px-2 py-0.5 text-xs">
+                {exp.tags.map((tag) => (
+                  <span key={tag} className="border-mono-border dark:border-dark-mono-border rounded-xs border px-2 py-0.5 text-xs">
                     {tag}
                   </span>
                 ))}

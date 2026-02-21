@@ -21,7 +21,7 @@ export default function Home() {
     <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
       <div className="min-h-screen">
         <Header name={header.title} pages={header.pages} section="Portfolio" />
-        <main role="main">
+        <main id="main">
           <Hero title={hero.title} name={hero.name} slogan={hero.slogan} />
 
           {/* Divider */}
