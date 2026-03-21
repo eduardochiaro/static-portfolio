@@ -46,18 +46,16 @@ export default function Header({ name, pages, section }: HeaderProps) {
       <div className="mx-auto flex items-center justify-between p-8">
         <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide">
           <Link href="/">{name}</Link>
-          <div className="opacity-60">/</div>
-          <div>{section}</div>
+          {section && (
+            <>
+              <div className="opacity-60 max-sm:hidden">/</div>
+              <div className="max-sm:hidden">{section}</div>
+            </>
+          )}
         </div>
         <nav aria-label="Main navigation" className="flex items-center gap-6 text-sm">
           {pages?.map((page) => (
-            <NavLink
-              key={page.name}
-              href={page.path}
-              label={page.name}
-              active={section?.toLowerCase() === page.name.toLowerCase()}
-              className="max-sm:hidden"
-            />
+            <NavLink key={page.name} href={page.path} label={page.name} active={section?.toLowerCase() === page.name.toLowerCase()} className="max-sm:hidden" />
           ))}
 
           {/* Mobile menu toggle */}

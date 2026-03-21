@@ -16,7 +16,7 @@ export default function FeaturedProject({ title, imageUrl, description, url, url
       <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">{title}</h2>
       {imageUrl && (
         <div className="mb-8">
-          <Image src={imageUrl} alt={title} width={600} height={450} className="mx-auto object-cover" />
+          <Image src={imageUrl} alt={title} width={600} height={450} loading="eager" className="mx-auto h-auto object-cover md:w-1/2" />
         </div>
       )}
       <div className="text-mono-text-muted dark:text-dark-mono-text-muted space-y-4 text-base leading-relaxed">

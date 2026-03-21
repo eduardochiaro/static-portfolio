@@ -15,7 +15,7 @@ export default function Home() {
   const { skills } = resumeData;
 
   return (
-    <PageLayout section="Portfolio">
+    <PageLayout>
       <Hero title={hero.title} name={hero.name} slogan={hero.slogan} />
       <Divider />
       <Bio bio={bio} />

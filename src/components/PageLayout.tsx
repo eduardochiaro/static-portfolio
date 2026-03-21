@@ -7,7 +7,7 @@ import metaData from '@/data/metadata.json';
 import type { ReactNode } from 'react';
 
 type PageLayoutProps = {
-  readonly section: string;
+  readonly section?: string;
   readonly children: ReactNode;
 };
 

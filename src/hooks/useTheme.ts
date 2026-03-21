@@ -1,43 +1,55 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useSyncExternalStore } from 'react';
 
 type ThemeValue = 'light' | 'dark' | 'system';
 
-export default function useTheme() {
-  const [theme, setThemeState] = useState<ThemeValue>('light');
-  const [mounted, setMounted] = useState(false);
+let listeners: (() => void)[] = [];
 
-  // Read localStorage only after mount to avoid hydration mismatch
-  useEffect(() => {
-    const stored = (localStorage.getItem('theme') as ThemeValue) || 'light';
-    setThemeState(stored);
-    setMounted(true);
-  }, []);
+function emitChange() {
+  for (const listener of listeners) {
+    listener();
+  }
+}
+
+function subscribe(callback: () => void): () => void {
+  listeners = [...listeners, callback];
+  return () => {
+    listeners = listeners.filter((l) => l !== callback);
+  };
+}
+
+function getSnapshot(): ThemeValue {
+  return (localStorage.getItem('theme') as ThemeValue) || 'light';
+}
+
+function getServerSnapshot(): ThemeValue {
+  return 'light';
+}
+
+export default function useTheme() {
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const setTheme = useCallback((newTheme: ThemeValue) => {
-    setThemeState(newTheme);
+    localStorage.setItem('theme', newTheme);
+    emitChange();
   }, []);
 
   useEffect(() => {
-    if (!mounted) return;
-
     const applyTheme = () => {
       const effectiveTheme = theme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
       document.documentElement.classList.remove('light', 'dark');
       document.documentElement.classList.add(effectiveTheme);
-      localStorage.setItem('theme', theme);
     };
 
     applyTheme();
 
     if (theme === 'system') {
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const handler = () => applyTheme();
-      mediaQuery.addEventListener('change', handler);
-      return () => mediaQuery.removeEventListener('change', handler);
+      mediaQuery.addEventListener('change', applyTheme);
+      return () => mediaQuery.removeEventListener('change', applyTheme);
     }
-  }, [theme, mounted]);
+  }, [theme]);
 
-  return { theme, setTheme, mounted } as const;
+  return { theme, setTheme } as const;
 }
