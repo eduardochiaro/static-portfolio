@@ -1,6 +1,5 @@
-'use client';
-
 import Link from 'next/link';
+import Tag from '@/components/Tag';
 
 export type GitHubType = {
   name: string;
@@ -29,10 +28,8 @@ export default function GitHub({ repos }: { repos: readonly GitHubType[] }) {
             </div>
             <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 text-sm">{item.description}</p>
             <div className="flex flex-wrap gap-2">
-              {item.tags.map((tag, tagIndex) => (
-                <span key={tagIndex} className="border-mono-border dark:border-dark-mono-border rounded-xs border px-2 py-0.5 text-xs">
-                  {tag}
-                </span>
+              {item.tags.map((tag) => (
+                <Tag key={tag}>{tag}</Tag>
               ))}
             </div>
           </div>

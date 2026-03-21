@@ -1,46 +1,48 @@
 'use client';
 
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { MenuIcon, MoonIcon, SunIcon, XIcon } from 'lucide-react';
+import { Menu as MenuIcon, X as XIcon } from '@react-zero-ui/icon-sprite';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import NavLink from '@/components/NavLink';
+import ThemeMenu from '@/components/ThemeMenu';
+import useTheme from '@/hooks/useTheme';
 
 type HeaderProps = {
-  name?: string;
-  pages?: readonly { name: string; path: string }[];
-  section?: string;
+  readonly name?: string;
+  readonly pages?: readonly { name: string; path: string }[];
+  readonly section?: string;
 };
 
-function getStoredTheme(): 'light' | 'dark' | 'system' {
-  if (typeof window === 'undefined') return 'light';
-  return (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'light';
-}
-
 export default function Header({ name, pages, section }: HeaderProps) {
-  const [theme, setTheme] = useState<'light' | 'dark' | 'system'>(getStoredTheme);
+  const { theme, setTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
+
+  // Close mobile menu on Escape key
   useEffect(() => {
-    const applyTheme = () => {
-      const effectiveTheme = theme === 'system' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme;
-      document.documentElement.classList.remove('light', 'dark');
-      document.documentElement.classList.add(effectiveTheme);
-      localStorage.setItem('theme', theme);
+    if (!mobileMenuOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') closeMobileMenu();
     };
 
-    applyTheme();
+    document.addEventListener('keydown', handleKeyDown);
+    return () => document.removeEventListener('keydown', handleKeyDown);
+  }, [mobileMenuOpen, closeMobileMenu]);
 
-    // Listen for OS theme changes when in system mode
-    if (theme === 'system') {
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
-      const handler = () => applyTheme();
-      mediaQuery.addEventListener('change', handler);
-      return () => mediaQuery.removeEventListener('change', handler);
-    }
-  }, [theme]);
+  // Close mobile menu when viewport crosses sm breakpoint
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(min-width: 640px)');
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) closeMobileMenu();
+    };
+    mediaQuery.addEventListener('change', handler);
+    return () => mediaQuery.removeEventListener('change', handler);
+  }, [closeMobileMenu]);
 
   return (
-    <header className="max-2xl:bg-mono-bg/50 max-2xl:dark:bg-dark-mono-bg/50 max-md:bg-dark-mono-bg fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs">
+    <header className="max-2xl:bg-mono-bg/50 max-2xl:dark:bg-dark-mono-bg/50 max-md:bg-mono-bg max-md:dark:bg-dark-mono-bg fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs">
       <div className="mx-auto flex items-center justify-between p-8">
         <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide">
           <Link href="/">{name}</Link>
@@ -49,77 +51,43 @@ export default function Header({ name, pages, section }: HeaderProps) {
         </div>
         <nav aria-label="Main navigation" className="flex items-center gap-6 text-sm">
           {pages?.map((page) => (
-            <Link
+            <NavLink
               key={page.name}
               href={page.path}
-              className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text uppercase transition max-sm:hidden"
-            >
-              {page.name}
-            </Link>
+              label={page.name}
+              active={section?.toLowerCase() === page.name.toLowerCase()}
+              className="max-sm:hidden"
+            />
           ))}
 
           {/* Mobile menu toggle */}
           <button
             className="flex h-8 w-8 items-center justify-center transition sm:hidden"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            onClick={() => setMobileMenuOpen((prev) => !prev)}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav"
           >
             {mobileMenuOpen ? <XIcon className="h-4 w-4" /> : <MenuIcon className="h-4 w-4" />}
           </button>
 
-          <Menu>
-            <MenuButton className="flex h-8 w-8 items-center justify-center transition" aria-label="Theme options">
-              <MoonIcon className="hidden h-4 w-4 dark:block" />
-              <SunIcon className="block h-4 w-4 dark:hidden" />
-            </MenuButton>
-
-            <MenuItems
-              anchor="bottom end"
-              className="bg-mono-bg dark:bg-dark-mono-bg border-mono-border dark:border-dark-mono-border z-50 mt-2 w-28 rounded border py-1 shadow-lg"
-            >
-              <MenuItem>
-                <button
-                  className="hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
-                  onClick={() => setTheme('light')}
-                >
-                  Light
-                </button>
-              </MenuItem>
-              <MenuItem>
-                <button
-                  className="hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
-                  onClick={() => setTheme('dark')}
-                >
-                  Dark
-                </button>
-              </MenuItem>
-              <MenuItem>
-                <button
-                  className="hover:bg-mono-card dark:hover:bg-dark-mono-card w-full px-3 py-2 text-left text-xs transition"
-                  onClick={() => setTheme('system')}
-                >
-                  System
-                </button>
-              </MenuItem>
-            </MenuItems>
-          </Menu>
+          <ThemeMenu theme={theme} onThemeChange={setTheme} />
         </nav>
       </div>
 
       {/* Mobile navigation menu */}
       {mobileMenuOpen && (
-        <nav aria-label="Mobile navigation" className="border-mono-border dark:border-dark-mono-border border-t sm:hidden">
+        <nav id="mobile-nav" aria-label="Mobile navigation" className="border-mono-border dark:border-dark-mono-border border-t sm:hidden">
           <div className="flex flex-col gap-2 p-6">
             {pages?.map((page) => (
-              <Link
+              <NavLink
                 key={page.name}
                 href={page.path}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text py-2 text-sm uppercase transition"
-              >
-                {page.name}
-              </Link>
+                label={page.name}
+                active={section?.toLowerCase() === page.name.toLowerCase()}
+                onClick={closeMobileMenu}
+                className="py-2"
+              />
             ))}
           </div>
         </nav>

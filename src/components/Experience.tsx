@@ -1,3 +1,4 @@
+import Tag from '@/components/Tag';
 import { formatMonthYear } from '@/lib/date';
 
 export type ExperienceType = {
@@ -50,9 +51,7 @@ export default function Experience({ experience }: { experience: readonly Experi
 
               <div className="flex flex-wrap gap-2">
                 {exp.tags.map((tag) => (
-                  <span key={tag} className="border-mono-border dark:border-dark-mono-border rounded-xs border px-2 py-0.5 text-xs">
-                    {tag}
-                  </span>
+                  <Tag key={tag}>{tag}</Tag>
                 ))}
               </div>
             </div>
