@@ -29,8 +29,7 @@
       "@zero-ui/attributes": [
         "./.zero-ui/attributes.js"
       ]
-    },
-    "baseUrl": "."
+    }
   },
   "include": [
     "next-env.d.ts",

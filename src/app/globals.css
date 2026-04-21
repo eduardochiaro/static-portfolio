@@ -83,4 +83,20 @@ body {
       background-size: 240px 350px;
     }
   }
+  &.gabbro {
+    width: 247px;
+    height: 350px;
+    img {
+      @apply -ml-0.5 scale-[0.80] rounded-full;
+    }
+    &::after {
+      @apply absolute top-0 -left-px;
+      width: 247px;
+      height: 350px;
+      content: '';
+      background-image: url('/images/pebble/assets/time-round-2-white.png');
+      background-repeat: no-repeat;
+      background-size: 247px 350px;
+    }
+  }
 }

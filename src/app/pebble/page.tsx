@@ -11,6 +11,7 @@ const PEBBLE_IMAGE_SIZES: Record<string, { w: number; h: number }> = {
   basalt: { w: 144, h: 168 },
   chalk: { w: 180, h: 180 },
   emery: { w: 200, h: 228 },
+  gabbro: { w: 260, h: 260 },
 };
 
 const DEFAULT_IMAGE_SIZE = { w: 144, h: 168 };
