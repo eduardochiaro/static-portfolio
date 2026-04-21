@@ -43,6 +43,9 @@ body {
   &.basalt {
     width: 240px;
     height: 350px;
+    img {
+      @apply w-auto;
+    }
     &::after {
       @apply absolute top-0 -left-0.5;
       width: 240px;
@@ -56,7 +59,7 @@ body {
     width: 251px;
     height: 350px;
     img {
-      @apply rounded-full;
+      @apply w-auto rounded-full;
     }
     &::after {
       @apply absolute top-0 left-px;
@@ -71,7 +74,7 @@ body {
     width: 240px;
     height: 350px;
     img {
-      @apply scale-[0.83];
+      @apply w-auto scale-[0.83];
     }
     &::after {
       @apply absolute top-0 -left-px;
@@ -87,7 +90,7 @@ body {
     width: 247px;
     height: 350px;
     img {
-      @apply -ml-0.5 scale-[0.80] rounded-full;
+      @apply -ml-0.5 w-auto scale-[0.80] rounded-full;
     }
     &::after {
       @apply absolute top-0 -left-px;
