@@ -14,7 +14,7 @@ const PEBBLE_IMAGE_SIZES: Record<string, { w: number; h: number }> = {
   gabbro: { w: 260, h: 260 },
 };
 
-const DEFAULT_IMAGE_SIZE = { w: 144, h: 168 };
+const DEFAULT_IMAGE_SIZE = PEBBLE_IMAGE_SIZES.basalt;
 
 export default function Pebble() {
   const { hero, sections } = pebbleData;
@@ -28,10 +28,18 @@ export default function Pebble() {
         </div>
       </section>
 
+      <menu className="flex justify-end mx-auto max-w-5xl px-6 py-4 flex-wrap gap-4">
+          {sections.map((section) => (
+            <ButtonLink key={section.title} href={`#${section.title.toLowerCase()}`} className="text-sm">
+              {section.title}
+            </ButtonLink>
+          ))}
+      </menu>
+
       <Divider />
 
       {sections.map((section) => (
-        <section className="mx-auto max-w-5xl px-6 py-16" key={section.title}>
+        <section className="mx-auto max-w-5xl px-6 py-16" key={section.title} id={section.title.toLowerCase()}>
           <h2 className="mb-6 text-lg font-medium tracking-widest uppercase">{section.title}</h2>
           <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{section.content}</p>
           <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3">
