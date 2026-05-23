@@ -1,6 +1,6 @@
 {
   "name": "static-portfolio",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,34 +14,35 @@
     "design": "node design.js"
   },
   "dependencies": {
-    "@headlessui/react": "^2.2.9",
-    "@react-zero-ui/core": "^0.3.4",
-    "@react-zero-ui/icon-sprite": "^0.3.0",
-    "lucide-react": "^1.7.0",
-    "next": "16.2.1",
-    "react": "19.2.4",
-    "react-dom": "19.2.4",
+    "@headlessui/react": "^2.2.10",
+    "@next/third-parties": "^16.2.6",
+    "@react-zero-ui/core": "^0.4.0",
+    "@react-zero-ui/icon-sprite": "^0.4.0",
+    "lucide-react": "^1.16.0",
+    "next": "^16.2.6",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "usehooks-ts": "^3.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.5",
-    "@tailwindcss/postcss": "^4.2.2",
+    "@tailwindcss/postcss": "^4.3.0",
     "@types/node": "^25",
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3",
-    "baseline-browser-mapping": "^2.10.11",
+    "baseline-browser-mapping": "^2.10.32",
     "chokidar": "^5.0.0",
-    "eslint": "^10.1.0",
-    "eslint-config-next": "^16.2.1",
-    "postcss": "^8.5.8",
-    "prettier": "^3.8.1",
-    "prettier-plugin-tailwindcss": "^0.7.2",
-    "tailwindcss": "^4.2.2",
+    "eslint": "^10.4.0",
+    "eslint-config-next": "^16.2.6",
+    "postcss": "^8.5.15",
+    "prettier": "^3.8.3",
+    "prettier-plugin-tailwindcss": "^0.8.0",
+    "tailwindcss": "^4.3.0",
     "typescript": "^6",
-    "ws": "^8.20.0"
+    "ws": "^8.21.0"
   },
   "overrides": {
-    "@types/react": "19.2.14",
+    "@types/react": "19.2.15",
     "@types/react-dom": "19.2.3"
   }
 }

@@ -4,6 +4,7 @@ import { IBM_Plex_Mono } from 'next/font/google';
 import { Suspense } from 'react';
 import './globals.css';
 import homeData from '@/data/metadata.json';
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const ibmPlexMono = IBM_Plex_Mono({
   weight: ['300', '400', '500', '600', '700'],
@@ -75,6 +76,7 @@ export default function RootLayout({
         </a>
         <Suspense>{children}</Suspense>
       </body>
+      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID || ''} />
     </html>
   );
 }
