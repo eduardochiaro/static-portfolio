@@ -15,8 +15,8 @@ export default function NavLink({ href, label, active = false, onClick, classNam
       onClick={onClick}
       className={`text-sm uppercase transition ${
         active
-          ? 'text-mono-text dark:text-dark-mono-text font-medium'
-          : 'text-mono-text-muted dark:text-dark-mono-text-muted hover:text-mono-text dark:hover:text-dark-mono-text'
+          ? 'text-accent dark:text-dark-accent font-medium'
+          : 'text-mono-text-muted dark:text-dark-mono-text-muted hover:text-accent dark:hover:text-dark-accent'
       } ${className}`}
     >
       {label}

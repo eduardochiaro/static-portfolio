@@ -21,7 +21,7 @@ export default function Footer({ text, links }: FooterProps) {
                 target="_blank"
                 prefetch={false}
                 rel="noopener noreferrer"
-                className="hover:text-mono-text dark:hover:text-dark-mono-text transition"
+                className="hover:text-accent dark:hover:text-dark-accent transition"
               >
                 {link.text}
               </Link>

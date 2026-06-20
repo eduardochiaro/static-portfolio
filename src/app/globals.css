@@ -3,25 +3,70 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
-  --color-mono-bg: #fafafa;
-  --color-mono-card: #f0f0f0;
-  --color-mono-text: #1a1a1a;
-  --color-mono-text-muted: #666666;
-  --color-mono-border: #e0e0e0;
+  --color-mono-bg: #faf9f7;
+  --color-mono-card: #f1efec;
+  --color-mono-text: #1a1714;
+  --color-mono-text-muted: #6b655d;
+  --color-mono-border: #e3ddd5;
   --color-mono-accent: #0a0a0a;
 
-  --color-dark-mono-bg: #141414;
-  --color-dark-mono-card: #202020;
-  --color-dark-mono-text: #e8e8e8;
-  --color-dark-mono-text-muted: #888888;
-  --color-dark-mono-border: #292929;
-  --color-dark-mono-accent: #f0f0f0;
+  --color-dark-mono-bg: #0f0d0b;
+  --color-dark-mono-card: #1a1613;
+  --color-dark-mono-text: #ece7e1;
+  --color-dark-mono-text-muted: #8c847a;
+  --color-dark-mono-border: #2a2420;
+  --color-dark-mono-accent: #f0ece6;
+
+  /* Amber accent — the "pop" color */
+  --color-accent: #c2630a;
+  --color-accent-soft: #d97706;
+  --color-dark-accent: #f59e0b;
+  --color-dark-accent-soft: #fbbf24;
 
   --font-mono: var(--font-ibmplex-mono), monospace;
 }
 
 body {
   @apply bg-mono-bg dark:bg-dark-mono-bg text-mono-text dark:text-dark-mono-text font-mono antialiased;
+  background-image: radial-gradient(circle at 1px 1px, var(--color-mono-border) 1px, transparent 0);
+  background-size: 28px 28px;
+  background-attachment: fixed;
+}
+
+.dark body {
+  background-image: radial-gradient(circle at 1px 1px, var(--color-dark-mono-border) 1px, transparent 0);
+}
+
+/* Amber glow helpers */
+.glow-accent {
+  box-shadow: 0 0 12px -2px color-mix(in srgb, var(--color-accent) 50%, transparent);
+}
+.dark .glow-accent {
+  box-shadow: 0 0 16px -2px color-mix(in srgb, var(--color-dark-accent) 55%, transparent);
+}
+
+/* Blinking terminal cursor */
+.cursor-blink {
+  @apply bg-accent dark:bg-dark-accent inline-block align-middle;
+  width: 0.6ch;
+  height: 1em;
+  animation: blink 1.1s step-end infinite;
+}
+
+/* Solid cursor while text is actively typing */
+.cursor-steady {
+  animation: none;
+  opacity: 1;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
 }
 
 .fade-in {

@@ -9,7 +9,7 @@ type ButtonLinkProps = {
 };
 
 const BASE_CLASSES =
-  'border-mono-border dark:border-dark-mono-border text-mono-text-muted dark:text-dark-mono-text-muted bg-mono-bg dark:bg-dark-mono-bg hover:bg-mono-card dark:hover:bg-dark-mono-card hover:text-mono-text dark:hover:text-dark-mono-text rounded border px-6 py-2 text-sm transition';
+  'border-mono-border dark:border-dark-mono-border text-mono-text-muted dark:text-dark-mono-text-muted bg-mono-bg dark:bg-dark-mono-bg hover:border-accent dark:hover:border-dark-accent hover:text-accent dark:hover:text-dark-accent inline-flex items-center gap-2 rounded border px-6 py-2 text-sm transition';
 
 export default function ButtonLink({ href, children, className, target }: ButtonLinkProps) {
   const rel = target === '_blank' ? 'noopener noreferrer' : undefined;

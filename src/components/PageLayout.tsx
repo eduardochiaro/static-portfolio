@@ -15,7 +15,7 @@ export default function PageLayout({ section, children }: PageLayoutProps) {
   const { header, footer } = metaData;
 
   return (
-    <ClickSpark sparkColor="#e83a63" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
+    <ClickSpark sparkColor="#f59e0b" sparkSize={10} sparkRadius={15} sparkCount={8} duration={400}>
       <div className="min-h-screen">
         <Header name={header.title} pages={header.pages} section={section} />
         <main id="main">{children}</main>

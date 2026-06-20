@@ -1,3 +1,5 @@
+import SectionHeading from './SectionHeading';
+
 export type SkillType = {
   name: string;
   level: string;
@@ -19,7 +21,10 @@ function SkillBar({ skill }: { skill: SkillType }) {
         aria-valuemax={100}
         aria-label={`${skill.name}: ${skill.level}`}
       >
-        <div className="bg-mono-text dark:bg-dark-mono-text h-full rounded-full" style={{ width: `${skill.percentage}%` }}></div>
+        <div
+          className="bg-accent dark:bg-dark-accent shadow-accent/60 dark:shadow-dark-accent/60 h-full rounded-full shadow-[0_0_8px_-1px]"
+          style={{ width: `${skill.percentage}%` }}
+        ></div>
       </div>
     </div>
   );
@@ -36,7 +41,7 @@ export default function Skills({ skills }: { skills: readonly SkillType[] }) {
 
   return (
     <section className="mx-auto max-w-5xl px-6 py-16">
-      <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">Technical Expertise</h2>
+      <SectionHeading className="mb-8">Technical Expertise</SectionHeading>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
         <div className="space-y-6">
           {leftColumn.map((skill) => (

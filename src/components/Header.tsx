@@ -44,11 +44,11 @@ export default function Header({ name, pages, section }: HeaderProps) {
   return (
     <header className="max-2xl:bg-mono-bg/50 max-2xl:dark:bg-dark-mono-bg/50 max-md:bg-mono-bg max-md:dark:bg-dark-mono-bg fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs">
       <div className="mx-auto flex items-center justify-between p-8">
-        <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide">
+        <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide uppercase">
           <Link href="/">{name}</Link>
           {section && (
             <>
-              <div className="opacity-60 max-sm:hidden">/</div>
+              <div className="text-accent dark:text-dark-accent max-sm:hidden">/</div>
               <div className="max-sm:hidden">{section}</div>
             </>
           )}

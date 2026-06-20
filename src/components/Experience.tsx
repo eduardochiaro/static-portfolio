@@ -1,3 +1,4 @@
+import SectionHeading from '@/components/SectionHeading';
 import Tag from '@/components/Tag';
 import { formatMonthYear } from '@/lib/date';
 
@@ -15,7 +16,7 @@ export type ExperienceType = {
 export default function Experience({ experience }: { experience: readonly ExperienceType[] }) {
   return (
     <section className="mb-16">
-      <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">Experience</h2>
+      <SectionHeading className="mb-8">Experience</SectionHeading>
       <div>
         {experience.map((exp) => (
           <div key={`${exp.company}-${exp.startDate}`} className="group flex gap-x-3">
@@ -25,7 +26,7 @@ export default function Experience({ experience }: { experience: readonly Experi
             </div>
             <div className="after:border-line-2 relative after:absolute after:start-3.5 after:top-7 after:bottom-0 after:-translate-x-[0.5px] after:border-s group-last:after:hidden">
               <div className="relative z-10 flex size-7 items-center justify-center">
-                <div className="bg-mono-text dark:bg-dark-mono-text/50 size-2"></div>
+                <div className="bg-accent dark:bg-dark-accent size-2"></div>
               </div>
             </div>
             <div className="mb-20 flex-1">
