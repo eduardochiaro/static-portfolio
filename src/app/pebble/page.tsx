@@ -26,7 +26,7 @@ export default function Pebble() {
       <section className="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
         <div className="fade-in">
           <h1 className="mb-6 flex flex-col text-6xl leading-tight font-semibold tracking-tight">
-            <Typewriter text={hero.title} />
+            <Typewriter text={hero.title} useTextColor />
           </h1>
           <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{hero.description}</p>
         </div>
