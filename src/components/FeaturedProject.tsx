@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 import ButtonLink from './ButtonLink';
+import SectionHeading from './SectionHeading';
 
 type FeaturedProjectProps = {
   title: string;
@@ -13,10 +14,17 @@ type FeaturedProjectProps = {
 export default function FeaturedProject({ title, imageUrl, description, url, urlText }: FeaturedProjectProps) {
   return (
     <section className="mx-auto max-w-5xl px-6 py-16">
-      <h2 className="mb-8 text-lg font-medium tracking-widest uppercase">{title}</h2>
+      <SectionHeading className="mb-8">{title}</SectionHeading>
       {imageUrl && (
         <div className="mb-8">
-          <Image src={imageUrl} alt={title} width={600} height={450} loading="eager" className="mx-auto h-auto object-cover md:w-1/2" />
+          <Image
+            src={imageUrl}
+            alt={title}
+            width={600}
+            height={450}
+            loading="eager"
+            className="border-mono-border dark:border-dark-mono-border mx-auto h-auto rounded-lg border object-cover md:w-1/2"
+          />
         </div>
       )}
       <div className="text-mono-text-muted dark:text-dark-mono-text-muted space-y-4 text-base leading-relaxed">

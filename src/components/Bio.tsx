@@ -1,9 +1,10 @@
 import ButtonLink from './ButtonLink';
+import SectionHeading from './SectionHeading';
 
 export default function Bio({ bio }: { bio: readonly string[] }) {
   return (
     <section className="mx-auto max-w-5xl px-6 py-16">
-      <h2 className="mb-6 text-lg font-medium tracking-widest uppercase">About Me</h2>
+      <SectionHeading className="mb-6">About Me</SectionHeading>
       <div className="text-mono-text-muted dark:text-dark-mono-text-muted space-y-4 text-base leading-relaxed">
         {bio.map((paragraph, index) => (
           <p key={index}>{paragraph}</p>

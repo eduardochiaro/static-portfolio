@@ -3,6 +3,8 @@
 import ButtonLink from '@/components/ButtonLink';
 import Divider from '@/components/Divider';
 import PageLayout from '@/components/PageLayout';
+import SectionHeading from '@/components/SectionHeading';
+import Typewriter from '@/components/Typewriter';
 import pebbleData from '@/data/pebble.json';
 import { ExternalLink as ExternalLinkIcon } from '@react-zero-ui/icon-sprite';
 import Image from 'next/image';
@@ -23,24 +25,26 @@ export default function Pebble() {
     <PageLayout section="Pebble">
       <section className="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
         <div className="fade-in">
-          <h1 className="mb-6 flex flex-col text-6xl leading-tight font-semibold tracking-tight">{hero.title}</h1>
+          <h1 className="mb-6 flex flex-col text-6xl leading-tight font-semibold tracking-tight">
+            <Typewriter text={hero.title} />
+          </h1>
           <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{hero.description}</p>
         </div>
       </section>
 
-      <menu className="flex justify-end mx-auto max-w-5xl px-6 py-4 flex-wrap gap-4">
-          {sections.map((section) => (
-            <ButtonLink key={section.title} href={`#${section.title.toLowerCase()}`} className="text-sm">
-              {section.title}
-            </ButtonLink>
-          ))}
+      <menu className="mx-auto flex max-w-5xl flex-wrap justify-end gap-4 px-6 py-4">
+        {sections.map((section) => (
+          <ButtonLink key={section.title} href={`#${section.title.toLowerCase()}`} className="text-sm">
+            {section.title}
+          </ButtonLink>
+        ))}
       </menu>
 
       <Divider />
 
       {sections.map((section) => (
         <section className="mx-auto max-w-5xl px-6 py-16" key={section.title} id={section.title.toLowerCase()}>
-          <h2 className="mb-6 text-lg font-medium tracking-widest uppercase">{section.title}</h2>
+          <SectionHeading className="mb-6">{section.title}</SectionHeading>
           <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{section.content}</p>
           <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3">
             {section.watchfaces?.map((watchface) => {
