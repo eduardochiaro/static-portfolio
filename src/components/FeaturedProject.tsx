@@ -23,7 +23,7 @@ export default function FeaturedProject({ title, imageUrl, description, url, url
             width={600}
             height={450}
             loading="eager"
-            className="border-mono-border dark:border-dark-mono-border mx-auto h-auto rounded-lg border object-cover md:w-1/2"
+            className=" mx-auto h-auto rounded-lg border object-cover md:w-1/2"
           />
         </div>
       )}
