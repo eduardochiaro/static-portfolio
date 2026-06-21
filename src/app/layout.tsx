@@ -12,6 +12,7 @@ const ibmPlexMono = IBM_Plex_Mono({
   display: 'swap',
   variable: '--font-ibmplex-mono',
   subsets: ['latin'],
+  preload: false,
 });
 
 export const metadata: Metadata = {
