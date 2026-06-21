@@ -11,6 +11,7 @@ import SectionHeading from '@/components/SectionHeading';
 import Typewriter from '@/components/Typewriter';
 import { Mail as MailIcon, MapPinHouse as MapPinHouseIcon } from '@react-zero-ui/icon-sprite';
 import resumeData from '@/data/resume.json';
+import Hero from '@/components/Hero';
 
 export default function Resume() {
   const { personalInfo, skills, summary, experience, languages, awards } = resumeData;
@@ -21,34 +22,24 @@ export default function Resume() {
 
   return (
     <PageLayout section="Resume">
-      <section className="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
-        <div className="fade-in">
-          <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 flex items-center gap-2 text-sm tracking-widest uppercase">
-            <span className="text-accent dark:text-dark-accent">$</span>
-            {personalInfo.role}
+      <Hero name={personalInfo.name} title={personalInfo.role}>
+        <div className="flex flex-col gap-4 md:flex-row md:gap-8">
+          <p className="flex items-center gap-2">
+            <MailIcon className="inline-block h-4 w-4" />
+            <a href={`mailto:${personalInfo.email}`} className="hover:text-accent dark:hover:text-dark-accent transition">
+              {personalInfo.email}
+            </a>
           </p>
-          <h1 className="mb-6 flex flex-col text-6xl leading-tight font-semibold tracking-tight">
-            {firstName && <span>{firstName}</span>}
-            {lastName && <Typewriter text={lastName} className="text-accent dark:text-dark-accent" />}
-          </h1>
-          <div className="text-mono-text-muted dark:text-dark-mono-text-muted flex flex-col gap-4 text-sm md:flex-row md:gap-8">
-            <p className="flex items-center gap-2">
-              <MailIcon className="inline-block h-4 w-4" />
-              <a href={`mailto:${personalInfo.email}`} className="hover:text-accent dark:hover:text-dark-accent transition">
-                {personalInfo.email}
-              </a>
-            </p>
-            <p className="flex items-center gap-2">
-              <MapPinHouseIcon className="inline-block h-4 w-4" />
-              {personalInfo.location}
-            </p>
-            <p className="flex items-center gap-2">
-              <GithubIcon className="inline-block h-4 w-4" />
-              {personalInfo.github}
-            </p>
-          </div>
+          <p className="flex items-center gap-2">
+            <MapPinHouseIcon className="inline-block h-4 w-4" />
+            {personalInfo.location}
+          </p>
+          <p className="flex items-center gap-2">
+            <GithubIcon className="inline-block h-4 w-4" />
+            {personalInfo.github}
+          </p>
         </div>
-      </section>
+      </Hero>
 
       <Divider />
 

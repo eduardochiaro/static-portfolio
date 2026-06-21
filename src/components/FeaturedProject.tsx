@@ -17,14 +17,7 @@ export default function FeaturedProject({ title, imageUrl, description, url, url
       <SectionHeading className="mb-8">{title}</SectionHeading>
       {imageUrl && (
         <div className="mb-8">
-          <Image
-            src={imageUrl}
-            alt={title}
-            width={600}
-            height={450}
-            loading="eager"
-            className=" mx-auto h-auto rounded-lg border object-cover md:w-1/2"
-          />
+          <Image src={imageUrl} alt={title} width={600} height={450} loading="eager" className="mx-auto h-auto rounded-lg border object-cover md:w-1/2" />
         </div>
       )}
       <div className="text-mono-text-muted dark:text-dark-mono-text-muted space-y-4 text-base leading-relaxed">

@@ -16,7 +16,9 @@ export default function Home() {
 
   return (
     <PageLayout>
-      <Hero title={hero.title} name={hero.name} slogan={hero.slogan} />
+      <Hero title={hero.title} name={hero.name}>
+        <p>{hero.slogan}</p>
+      </Hero>
       <Divider />
       <Bio bio={bio} />
       <Skills skills={skills} />
