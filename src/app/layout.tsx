@@ -1,7 +1,6 @@
 import { bodyAttributes } from '@zero-ui/attributes';
 import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Mono } from 'next/font/google';
-import { Suspense } from 'react';
 import './globals.css';
 import homeData from '@/data/metadata.json';
 import { GoogleAnalytics } from '@next/third-parties/google';
@@ -75,7 +74,7 @@ export default function RootLayout({
         >
           Skip to main content
         </a>
-        <Suspense>{children}</Suspense>
+        {children}
       </body>
       <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID || ''} />
     </html>

@@ -8,17 +8,12 @@ import Languages from '@/components/resume/Languages';
 import PageLayout from '@/components/PageLayout';
 import SkillsSidebar from '@/components/resume/SkillsSidebar';
 import SectionHeading from '@/components/SectionHeading';
-import Typewriter from '@/components/Typewriter';
 import { Mail as MailIcon, MapPinHouse as MapPinHouseIcon } from '@react-zero-ui/icon-sprite';
 import resumeData from '@/data/resume.json';
 import Hero from '@/components/Hero';
 
 export default function Resume() {
   const { personalInfo, skills, summary, experience, languages, awards } = resumeData;
-
-  const nameParts = personalInfo.name.trim().split(' ');
-  const lastName = nameParts.length > 1 ? nameParts.pop()! : '';
-  const firstName = nameParts.join(' ');
 
   return (
     <PageLayout section="Resume">
