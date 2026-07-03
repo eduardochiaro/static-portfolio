@@ -1,7 +1,7 @@
 'use client';
 
 import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-import { Check as CheckIcon, Moon as MoonIcon, Sun as SunIcon } from '@react-zero-ui/icon-sprite';
+import { Check as CheckIcon, Moon as MoonIcon, Sun as SunIcon } from 'lucide-react';
 
 type ThemeValue = 'light' | 'dark' | 'system';
 

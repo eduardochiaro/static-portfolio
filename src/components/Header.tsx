@@ -1,6 +1,6 @@
 'use client';
 
-import { Menu as MenuIcon, X as XIcon } from '@react-zero-ui/icon-sprite';
+import { Menu as MenuIcon, X as XIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import NavLink from '@/components/NavLink';
@@ -30,16 +30,6 @@ export default function Header({ name, pages, section }: HeaderProps) {
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
   }, [mobileMenuOpen, closeMobileMenu]);
-
-  // Close mobile menu when viewport crosses sm breakpoint
-  useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 640px)');
-    const handler = (e: MediaQueryListEvent) => {
-      if (e.matches) closeMobileMenu();
-    };
-    mediaQuery.addEventListener('change', handler);
-    return () => mediaQuery.removeEventListener('change', handler);
-  }, [closeMobileMenu]);
 
   return (
     <header className="max-2xl:bg-mono-bg/50 max-2xl:dark:bg-dark-mono-bg/50 max-md:bg-mono-bg max-md:dark:bg-dark-mono-bg fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs">

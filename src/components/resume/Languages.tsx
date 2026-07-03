@@ -1,3 +1,5 @@
+import SectionHeading from '../SectionHeading';
+
 export type LanguageType = {
   name: string;
   level: string;
@@ -6,12 +8,9 @@ export type LanguageType = {
 export default function Languages({ languages }: { languages: readonly LanguageType[] }) {
   return (
     <section className="mb-12">
-      <h3 className="mb-4 flex items-center gap-2 text-base font-medium tracking-widest uppercase">
-        <span className="text-accent dark:text-dark-accent" aria-hidden="true">
-          {'//'}
-        </span>
+      <SectionHeading as="h3" size="base" className="mb-4">
         Languages
-      </h3>
+      </SectionHeading>
       <ul className="space-y-2 text-sm">
         {languages.map((language, index) => (
           <li key={index} className="flex justify-between">

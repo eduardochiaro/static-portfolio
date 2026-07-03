@@ -8,7 +8,7 @@ import Languages from '@/components/resume/Languages';
 import PageLayout from '@/components/PageLayout';
 import SkillsSidebar from '@/components/resume/SkillsSidebar';
 import SectionHeading from '@/components/SectionHeading';
-import { Mail as MailIcon, MapPinHouse as MapPinHouseIcon } from '@react-zero-ui/icon-sprite';
+import { Mail as MailIcon, MapPinHouse as MapPinHouseIcon } from 'lucide-react';
 import resumeData from '@/data/resume.json';
 import Hero from '@/components/Hero';
 

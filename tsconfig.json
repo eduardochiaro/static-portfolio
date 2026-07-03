@@ -25,9 +25,6 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "@zero-ui/attributes": [
-        "./.zero-ui/attributes.js"
       ]
     }
   },
@@ -36,7 +33,6 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    ".zero-ui/**/*.d.ts",
     ".next/**/*.d.ts",
     ".next/dev/types/**/*.ts"
   ],

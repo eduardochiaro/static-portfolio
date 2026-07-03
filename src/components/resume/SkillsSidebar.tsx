@@ -1,14 +1,12 @@
+import SectionHeading from '../SectionHeading';
 import { SkillType } from '../Skills';
 
 export default function SkillsSidebar({ skills }: { skills: readonly SkillType[] }) {
   return (
     <section className="mb-12">
-      <h3 className="mb-4 flex items-center gap-2 text-base font-medium tracking-widest uppercase">
-        <span className="text-accent dark:text-dark-accent" aria-hidden="true">
-          {'//'}
-        </span>
+      <SectionHeading as="h3" size="base" className="mb-4">
         Skills
-      </h3>
+      </SectionHeading>
       <ul className="space-y-2 text-sm">
         {skills.map((skill, index) => (
           <li key={index} className="flex justify-between">

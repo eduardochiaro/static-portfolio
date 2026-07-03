@@ -6,7 +6,7 @@ import PageLayout from '@/components/PageLayout';
 import SectionHeading from '@/components/SectionHeading';
 import Typewriter from '@/components/Typewriter';
 import pebbleData from '@/data/pebble.json';
-import { ExternalLink as ExternalLinkIcon } from '@react-zero-ui/icon-sprite';
+import { ExternalLink as ExternalLinkIcon } from 'lucide-react';
 import Image from 'next/image';
 
 const PEBBLE_IMAGE_SIZES: Record<string, { w: number; h: number }> = {

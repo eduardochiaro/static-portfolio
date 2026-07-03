@@ -1,19 +1,9 @@
-import { Download as DownloadIcon } from '@react-zero-ui/icon-sprite';
 import Image from 'next/image';
-import Link from 'next/link';
 import React from 'react';
+import ButtonLink from './ButtonLink';
 import SectionHeading from './SectionHeading';
 
-type ProjectCardProps = {
-  title: string;
-  description: string;
-  imageUrl: string;
-  buttonText: string | React.ReactNode;
-  buttonUrl: string;
-  isDownload?: boolean;
-};
-
-const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDownload }: ProjectCardProps) => {
+const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl }: ProjectType) => {
   return (
     <article className="group flex flex-col">
       <h3 className="group-hover:text-accent dark:group-hover:text-dark-accent mb-2 text-xl font-semibold transition">{title}</h3>
@@ -28,15 +18,9 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl, isDo
       </div>
       <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 flex-1 text-sm leading-relaxed">{description}</p>
       <div>
-        <Link
-          href={buttonUrl}
-          target={!isDownload ? '_blank' : undefined}
-          rel={!isDownload ? 'noopener noreferrer' : undefined}
-          className="border-mono-border dark:border-dark-mono-border text-mono-text-muted dark:text-dark-mono-text-muted bg-mono-bg dark:bg-dark-mono-bg hover:border-accent dark:hover:border-dark-accent hover:text-accent dark:hover:text-dark-accent inline-flex items-center gap-2 rounded border px-6 py-2 text-sm transition"
-        >
+        <ButtonLink href={buttonUrl} target="_blank">
           {buttonText}
-          {isDownload ? <DownloadIcon className="size-3" /> : null}
-        </Link>
+        </ButtonLink>
       </div>
     </article>
   );
@@ -48,7 +32,6 @@ export type ProjectType = {
   imageUrl: string;
   buttonText: React.ReactNode;
   buttonUrl: string;
-  isDownload: boolean;
 };
 
 export default function Projects({ projects }: { projects: readonly ProjectType[] }) {
@@ -57,15 +40,7 @@ export default function Projects({ projects }: { projects: readonly ProjectType[
       <SectionHeading className="mb-8">Projects</SectionHeading>
       <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
         {projects.map((project) => (
-          <ProjectCard
-            key={project.title}
-            title={project.title}
-            description={project.description}
-            imageUrl={project.imageUrl}
-            buttonText={project.buttonText}
-            buttonUrl={project.buttonUrl}
-            isDownload={project.isDownload}
-          />
+          <ProjectCard key={project.title} {...project} />
         ))}
       </div>
     </section>
