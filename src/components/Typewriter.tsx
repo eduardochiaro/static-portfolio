@@ -5,14 +5,14 @@ import { useEffect, useState } from 'react';
 type TypewriterProps = {
   readonly text: string;
   readonly className?: string;
-  /** Milliseconds between characters */
-  readonly speed?: number;
-  /** Delay before typing starts, in milliseconds */
-  readonly startDelay?: number;
   readonly useTextColor?: boolean;
 };
 
-export default function Typewriter({ text, className = '', speed = 110, startDelay = 350, useTextColor = false }: TypewriterProps) {
+// ponytail: fixed timing, no caller ever overrode it. Re-add props if a caller needs different values.
+const SPEED = 110;
+const START_DELAY = 350;
+
+export default function Typewriter({ text, className = '', useTextColor = false }: TypewriterProps) {
   const [count, setCount] = useState(0);
   const done = count >= text.length;
 
@@ -25,14 +25,14 @@ export default function Typewriter({ text, className = '', speed = 110, startDel
         i += 1;
         setCount(i);
         if (i >= text.length) clearInterval(intervalId);
-      }, speed);
-    }, startDelay);
+      }, SPEED);
+    }, START_DELAY);
 
     return () => {
       clearTimeout(startId);
       clearInterval(intervalId);
     };
-  }, [text, speed, startDelay]);
+  }, [text]);
 
   let cursorColorClass = 'bg-accent dark:bg-dark-accent';
   if (useTextColor) {

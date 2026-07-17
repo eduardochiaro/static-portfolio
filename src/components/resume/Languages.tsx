@@ -8,7 +8,7 @@ export type LanguageType = {
 export default function Languages({ languages }: { languages: readonly LanguageType[] }) {
   return (
     <section className="mb-12">
-      <SectionHeading as="h3" size="base" className="mb-4">
+      <SectionHeading small className="mb-4">
         Languages
       </SectionHeading>
       <ul className="space-y-2 text-sm">

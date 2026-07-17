@@ -2,12 +2,12 @@ import { ReactNode } from 'react';
 import Typewriter from './Typewriter';
 
 export type HeroProps = {
-  title?: string;
-  name?: string;
+  readonly title: string;
+  readonly name: string;
   readonly children: ReactNode;
 };
 
-export default function Hero({ title = '', name = '', children }: HeroProps) {
+export default function Hero({ title, name, children }: HeroProps) {
   const words = name.trim().split(' ');
   const lastName = words.length > 1 ? words.pop()! : '';
   const firstName = words.join(' ');

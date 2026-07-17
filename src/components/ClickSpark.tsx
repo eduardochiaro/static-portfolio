@@ -26,8 +26,6 @@ const ClickSpark: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     const parent = canvas.parentElement;
     if (!parent) return;
 
-    let resizeTimeout: NodeJS.Timeout;
-
     const resizeCanvas = () => {
       const { width, height } = parent.getBoundingClientRect();
       if (canvas.width !== width || canvas.height !== height) {
@@ -36,20 +34,12 @@ const ClickSpark: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
       }
     };
 
-    const handleResize = () => {
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(resizeCanvas, 100);
-    };
-
-    const ro = new ResizeObserver(handleResize);
+    const ro = new ResizeObserver(resizeCanvas);
     ro.observe(parent);
 
     resizeCanvas();
 
-    return () => {
-      ro.disconnect();
-      clearTimeout(resizeTimeout);
-    };
+    return () => ro.disconnect();
   }, []);
 
   // Start animation loop only when sparks exist, stop when empty

@@ -4,7 +4,7 @@ import { SkillType } from '../Skills';
 export default function SkillsSidebar({ skills }: { skills: readonly SkillType[] }) {
   return (
     <section className="mb-12">
-      <SectionHeading as="h3" size="base" className="mb-4">
+      <SectionHeading small className="mb-4">
         Skills
       </SectionHeading>
       <ul className="space-y-2 text-sm">

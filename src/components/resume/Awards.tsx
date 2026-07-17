@@ -9,7 +9,7 @@ export type AwardsType = {
 export default function Awards({ awards }: { awards: readonly AwardsType[] }) {
   return (
     <section className="mb-12">
-      <SectionHeading as="h3" size="base" className="mb-4">
+      <SectionHeading small className="mb-4">
         Awards
       </SectionHeading>
       <ul className="space-y-2 text-sm">

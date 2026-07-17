@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export type FooterProps = {
   text: string;
   links: readonly {
@@ -16,15 +14,9 @@ export default function Footer({ text, links }: FooterProps) {
         <div>
           {links.map((link, index) => (
             <p key={index} className="text-mono-text-muted dark:text-dark-mono-text-muted mb-2">
-              <Link
-                href={link.url}
-                target="_blank"
-                prefetch={false}
-                rel="noopener noreferrer"
-                className="hover:text-accent dark:hover:text-dark-accent transition"
-              >
+              <a href={link.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent dark:hover:text-dark-accent transition">
                 {link.text}
-              </Link>
+              </a>
             </p>
           ))}
         </div>
