@@ -83,6 +83,64 @@ body {
     transform: translateY(0);
   }
 }
+/* Rendered markdown for field notes */
+.note-body {
+  @apply text-mono-text dark:text-dark-mono-text text-base leading-relaxed;
+  h2 {
+    @apply mt-10 mb-4 text-2xl font-semibold tracking-tight;
+  }
+  h3 {
+    @apply mt-8 mb-3 text-xl font-semibold tracking-tight;
+  }
+  p {
+    @apply mb-5;
+  }
+  a {
+    @apply text-accent dark:text-dark-accent underline underline-offset-4;
+  }
+  ul,
+  ol {
+    @apply mb-5 list-outside pl-6;
+  }
+  ul {
+    @apply list-disc;
+  }
+  ol {
+    @apply list-decimal;
+  }
+  li {
+    @apply mb-2;
+  }
+  code {
+    @apply bg-mono-card dark:bg-dark-mono-card rounded px-1.5 py-0.5 text-sm;
+  }
+  pre {
+    @apply bg-mono-card dark:bg-dark-mono-card border-mono-border dark:border-dark-mono-border mb-5 overflow-x-auto rounded border p-4;
+    code {
+      @apply bg-transparent p-0;
+    }
+  }
+  blockquote {
+    @apply border-mono-border dark:border-dark-mono-border text-mono-text-muted dark:text-dark-mono-text-muted mb-5 border-l-2 pl-4;
+  }
+  hr {
+    @apply border-mono-border dark:border-dark-mono-border my-8;
+  }
+  img {
+    @apply max-w-full;
+  }
+  table {
+    @apply mb-5 w-full border-collapse text-sm;
+  }
+  th,
+  td {
+    @apply border-mono-border dark:border-dark-mono-border border px-3 py-2 text-left;
+  }
+  th {
+    @apply bg-mono-card dark:bg-dark-mono-card font-semibold;
+  }
+}
+
 .pebble {
   @apply relative flex items-center justify-center;
   &.basalt {

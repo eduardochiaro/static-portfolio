@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex" />
+    <title>You should not be here</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,400;0,600&display=swap" rel="stylesheet" />
+    <script>
+      // Same theme persistence as the main site (localStorage['theme']: light | dark | system)
+      try {
+        var theme = localStorage.getItem('theme');
+        var dark = theme === 'dark' || ((!theme || theme === 'system') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.add(dark ? 'dark' : 'light');
+      } catch (e) {}
+    </script>
+    <style>
+      :root {
+        --mono-bg: #faf9f7;
+        --mono-text: #1a1714;
+        --mono-text-muted: #6b655d;
+        --mono-border: #e3ddd5;
+        --accent: #c2630a;
+      }
+      .dark {
+        --mono-bg: #0f0d0b;
+        --mono-text: #ece7e1;
+        --mono-text-muted: #8c847a;
+        --mono-border: #2a2420;
+        --accent: #f59e0b;
+      }
+      * {
+        box-sizing: border-box;
+        margin: 0;
+      }
+      body {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1.5rem;
+        font-family: 'IBM Plex Mono', monospace;
+        background-color: var(--mono-bg);
+        background-image: radial-gradient(circle at 1px 1px, var(--mono-border) 1px, transparent 0);
+        background-size: 28px 28px;
+        background-attachment: fixed;
+        color: var(--mono-text);
+        -webkit-font-smoothing: antialiased;
+        text-align: center;
+      }
+      h1 {
+        margin-bottom: 1rem;
+        font-size: 3.75rem;
+        font-weight: 600;
+        letter-spacing: -0.025em;
+        line-height: 1;
+      }
+      p {
+        margin-bottom: 2rem;
+        font-size: 1rem;
+        color: var(--mono-text-muted);
+      }
+      .cursor {
+        display: inline-block;
+        width: 0.6ch;
+        height: 1em;
+        vertical-align: middle;
+        background-color: currentcolor;
+        animation: blink 1.1s step-end infinite;
+      }
+      @keyframes blink {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+      }
+      a {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.5rem 1.5rem;
+        border: 1px solid var(--mono-border);
+        border-radius: 0.25rem;
+        font-size: 0.875rem;
+        color: var(--mono-text-muted);
+        background-color: var(--mono-bg);
+        text-decoration: none;
+        transition:
+          color 0.15s,
+          border-color 0.15s;
+      }
+      a:hover {
+        color: var(--accent);
+        border-color: var(--accent);
+      }
+    </style>
+  </head>
+  <body>
+    <h1>403<span class="cursor"></span></h1>
+    <p>You should not be here.</p>
+    <a href="/">Go Home</a>
+  </body>
+</html>
