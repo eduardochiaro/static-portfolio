@@ -1,5 +1,6 @@
 'use client';
 
+import Typewriter from "@/components/Typewriter";
 import { useEffect } from 'react';
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
@@ -9,7 +10,9 @@ export default function Error({ error, reset }: { error: Error & { digest?: stri
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center px-6">
-      <h1 className="mb-4 text-6xl font-semibold tracking-tight">Error</h1>
+      <h1 className="mb-4 text-6xl font-semibold tracking-tight">
+        <Typewriter text={'Error'} className="text-accent dark:text-dark-accent" />
+      </h1>
       <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-8 text-base">Something went wrong.</p>
       <button
         onClick={reset}
