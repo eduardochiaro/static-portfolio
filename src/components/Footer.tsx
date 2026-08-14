@@ -1,3 +1,5 @@
+import LogoIcon from './icons/Logo';
+
 export type FooterProps = {
   text: string;
   links: readonly {
@@ -20,9 +22,12 @@ export default function Footer({ text, links }: FooterProps) {
             </p>
           ))}
         </div>
-        <div className="text-mono-text-muted dark:text-dark-mono-text-muted text-center md:text-right">
-          <p className="mb-2">{text}</p>
-          <p>&copy; {currentYear}</p>
+        <div className="flex items-center gap-4">
+          <div className="text-mono-text-muted dark:text-dark-mono-text-muted text-center md:text-right">
+            <p className="mb-2">{text}</p>
+            <p>&copy; {currentYear}</p>
+          </div>
+          <LogoIcon className="fill-accent dark:fill-mono-bg size-12" />
         </div>
       </div>
     </footer>

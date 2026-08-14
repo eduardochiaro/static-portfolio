@@ -1,6 +1,6 @@
 'use client';
 
-import Typewriter from "@/components/Typewriter";
+import Typewriter from '@/components/Typewriter';
 import { useEffect } from 'react';
 
 export default function Error({ error, reset }: { error: Error & { digest?: string }; reset: () => void }) {
