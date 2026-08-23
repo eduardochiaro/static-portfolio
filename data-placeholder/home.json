@@ -23,21 +23,7 @@
       "description": "Clean and professional resume template",
       "imageUrl": "https://picsum.photos/seed/resume/400/300",
       "buttonText": "Download PDF",
-      "buttonUrl": "/assets/resume-template.pdf",
-      "isDownload": true
+      "buttonUrl": "/assets/resume-template.pdf"
     }
-  ],
-  "footer": {
-    "text": "Made with ♥",
-    "links": [
-      {
-        "text": "me@alexcoder.com",
-        "url": "mailto:me@alexcoder.com"
-      },
-      {
-        "text": "github.com/alexcoder",
-        "url": "https://github.com/alexcoder"
-      }
-    ]
-  }
+  ]
 }

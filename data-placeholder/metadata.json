@@ -1,4 +1,30 @@
 {
+  "header": {
+    "title": "Alex Coder",
+    "pages": [
+      {
+        "name": "Page A",
+        "path": "/page-a"
+      },
+      {
+        "name": "Page B",
+        "path": "/page-b"
+      }
+    ]
+  },
+  "footer": {
+    "text": "Made with ♥",
+    "links": [
+      {
+        "text": "me@alexcoder.com",
+        "url": "mailto:me@alexcoder.com"
+      },
+      {
+        "text": "github.com/alexcoder",
+        "url": "https://github.com/alexcoder"
+      }
+    ]
+  },
   "home": {
     "title": "Alex Coder",
     "description": "Alex Coder - Software Engineer"
@@ -6,5 +32,13 @@
   "resume": {
     "title": "Alex Coder - Resume",
     "description": "Alex Coder - Software Engineer"
+  },
+  "pebble": {
+    "title": "Alex Coder - Pebble",
+    "description": "Custom watchface designs crafted for Pebble smartwatches."
+  },
+  "notes": {
+    "title": "Alex Coder - Field Notes",
+    "description": "Short notes and articles on software, tools, and things worth writing down."
   }
 }

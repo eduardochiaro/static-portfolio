@@ -121,7 +121,7 @@ body {
     }
   }
   blockquote {
-    @apply border-mono-border dark:border-dark-mono-border text-mono-text-muted dark:text-dark-mono-text-muted mb-5 border-l-2 pl-4;
+    @apply border-mono-border dark:border-dark-mono-border text-accent dark:text-dark-accent my-12 border-l-2 pl-4;
   }
   hr {
     @apply border-mono-border dark:border-dark-mono-border my-8;
