@@ -1,6 +1,10 @@
 {
+  "site": {
+    "url": "https://alexcoder.com"
+  },
   "header": {
     "title": "Alex Coder",
+    "logo": "alexcoder",
     "pages": [
       {
         "name": "Page A",
@@ -12,8 +16,13 @@
       }
     ]
   },
+  "author": {
+    "name": "Alex Coder",
+    "email": "me@alexcoder.com"
+  },
   "footer": {
     "text": "Made with ♥",
+    "authorLabel": "Author",
     "links": [
       {
         "text": "me@alexcoder.com",
@@ -25,20 +34,69 @@
       }
     ]
   },
+  "sections": {
+    "experience": "commits — experience",
+    "skills": "package.json — skills",
+    "projects": "merged pull requests",
+    "bio": "about.md",
+    "readme": "README.md",
+    "awards": "tags",
+    "languages": "locales"
+  },
   "home": {
     "title": "Alex Coder",
-    "description": "Alex Coder - Software Engineer"
+    "description": "Alex Coder - Software Engineer",
+    "branch": "main",
+    "heroTitle": "HEAD → main",
+    "experienceHeading": "git log --career",
+    "experienceLink": "git log --career · full history",
+    "notesHeading": "field notes — latest"
   },
   "resume": {
     "title": "Alex Coder - Resume",
-    "description": "Alex Coder - Software Engineer"
+    "description": "Alex Coder - Software Engineer",
+    "section": "Resume",
+    "branch": "resume",
+    "heroTitle": "git blame --since=",
+    "heroName": "Record of work"
   },
   "pebble": {
     "title": "Alex Coder - Pebble",
-    "description": "Custom watchface designs crafted for Pebble smartwatches."
+    "description": "Custom watchface designs crafted for Pebble smartwatches.",
+    "section": "Pebble",
+    "branch": "pebble",
+    "heroTitle": "git diff --pebble",
+    "storeLink": "pebble store"
   },
   "notes": {
     "title": "Alex Coder - Field Notes",
-    "description": "Short notes and articles on software, tools, and things worth writing down."
+    "description": "Short notes and articles on software, tools, and things worth writing down.",
+    "section": "Field Notes",
+    "branch": "field-notes",
+    "heroTitle": "git log --notes",
+    "heroName": "Field Notes",
+    "backLink": "← field notes",
+    "committedLabel": "committed",
+    "olderLabel": "← older",
+    "newerLabel": "newer →",
+    "olderEmpty": "root commit — nothing older",
+    "newerEmpty": "HEAD — nothing newer yet"
+  },
+  "errors": {
+    "forbidden": {
+      "code": "403",
+      "message": "You should not be here.",
+      "action": "Go Home"
+    },
+    "notFound": {
+      "code": "404",
+      "message": "The page you're looking for doesn't exist.",
+      "action": "Go Home"
+    },
+    "error": {
+      "code": "Error",
+      "message": "Something went wrong.",
+      "action": "Try Again"
+    }
   }
 }

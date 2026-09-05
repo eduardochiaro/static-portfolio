@@ -4,18 +4,18 @@ import { Menu as MenuIcon, X as XIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import NavLink from '@/components/NavLink';
-import ThemeMenu from '@/components/ThemeMenu';
-import useTheme from '@/hooks/useTheme';
 import LogoIcon from './icons/Logo';
 
 type HeaderProps = {
   readonly name?: string;
+  readonly logo?: string;
   readonly pages?: readonly { name: string; path: string }[];
   readonly section?: string;
+  readonly repo?: string;
+  readonly branch?: string;
 };
 
-export default function Header({ name, pages, section }: HeaderProps) {
-  const { theme, setTheme } = useTheme();
+export default function Header({ name, logo, pages, section, branch = 'main' }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
@@ -33,18 +33,18 @@ export default function Header({ name, pages, section }: HeaderProps) {
   }, [mobileMenuOpen, closeMobileMenu]);
 
   return (
-    <header className="max-2xl:bg-mono-bg/50 max-2xl:dark:bg-dark-mono-bg/50 max-md:bg-mono-bg max-md:dark:bg-dark-mono-bg fixed top-0 right-0 left-0 z-50 bg-transparent max-xl:backdrop-blur-xs">
-      <div className="mx-auto flex items-center justify-between p-8">
-        <div className="text-mono-accent dark:text-dark-mono-accent flex items-center gap-4 text-sm font-normal tracking-wide uppercase">
-          <Link href="/" className="flex items-center gap-4">
-            <LogoIcon className="fill-accent dark:fill-mono-bg size-6" />
-            {name}
+    <header className="border-mono-border bg-mono-card/85 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-sm">
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
+        <div className="flex items-center gap-3.5 text-sm">
+          <Link href="/" className="flex items-center gap-3.5" aria-label={name}>
+            <LogoIcon className="fill-mono-text size-5" />
+            <span className="text-mono-text-muted max-sm:hidden">{logo}</span>
           </Link>
-          {section && (
-            <>
-              <div className="text-accent dark:text-dark-accent max-sm:hidden">/</div>
-              <div className="max-sm:hidden">{section}</div>
-            </>
+          {branch && (
+            <span className="border-mono-border text-accent inline-flex items-center gap-2 rounded-full border px-3 py-0.5 text-xs max-sm:hidden">
+              <span className="bg-accent pulse-dot size-1.5 rounded-full" />
+              {branch}
+            </span>
           )}
         </div>
         <nav aria-label="Main navigation" className="flex items-center gap-6 text-sm">
@@ -62,14 +62,12 @@ export default function Header({ name, pages, section }: HeaderProps) {
           >
             {mobileMenuOpen ? <XIcon className="h-4 w-4" /> : <MenuIcon className="h-4 w-4" />}
           </button>
-
-          <ThemeMenu theme={theme} onThemeChange={setTheme} />
         </nav>
       </div>
 
       {/* Mobile navigation menu */}
       {mobileMenuOpen && (
-        <nav id="mobile-nav" aria-label="Mobile navigation" className="border-mono-border dark:border-dark-mono-border border-t sm:hidden">
+        <nav id="mobile-nav" aria-label="Mobile navigation" className="border-mono-border border-t sm:hidden">
           <div className="flex flex-col gap-2 p-6">
             {pages?.map((page) => (
               <NavLink

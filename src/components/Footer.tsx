@@ -1,4 +1,4 @@
-import LogoIcon from './icons/Logo';
+import metaData from '@/data/metadata.json';
 
 export type FooterProps = {
   text: string;
@@ -10,25 +10,29 @@ export type FooterProps = {
 
 export default function Footer({ text, links }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const { email, name } = metaData.author;
+  const { authorLabel } = metaData.footer;
+
   return (
-    <footer className="mt-24">
-      <div className="mx-auto flex max-w-5xl flex-col items-center justify-between gap-4 px-6 py-12 text-sm md:flex-row">
-        <div>
-          {links.map((link, index) => (
-            <p key={index} className="text-mono-text-muted dark:text-dark-mono-text-muted mb-2">
-              <a href={link.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent dark:hover:text-dark-accent transition">
-                {link.text}
-              </a>
-            </p>
+    <footer className="border-mono-border mt-24 border-t">
+      <div className="text-mono-text-muted mx-auto flex max-w-6xl flex-col gap-3 px-6 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
+        <span>
+          {`${authorLabel}: ${name} <`}
+          <a href={`mailto:${email}`} className="hover:text-accent transition">
+            {email}
+          </a>
+          {'>'}
+        </span>
+        <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
+          {links.map((link) => (
+            <a key={link.url} href={link.url} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">
+              {link.text}
+            </a>
           ))}
-        </div>
-        <div className="flex items-center gap-4">
-          <div className="text-mono-text-muted dark:text-dark-mono-text-muted text-center md:text-right">
-            <p className="mb-2">{text}</p>
-            <p>&copy; {currentYear}</p>
-          </div>
-          <LogoIcon className="fill-accent dark:fill-mono-bg size-12" />
-        </div>
+          <span>
+            &middot; {text} &middot; &copy; {currentYear}
+          </span>
+        </span>
       </div>
     </footer>
   );

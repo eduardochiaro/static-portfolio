@@ -13,11 +13,7 @@ export default function NavLink({ href, label, active = false, onClick, classNam
     <Link
       href={href}
       onClick={onClick}
-      className={`text-sm uppercase transition ${
-        active
-          ? 'text-accent dark:text-dark-accent font-medium'
-          : 'text-mono-text-muted dark:text-dark-mono-text-muted hover:text-accent dark:hover:text-dark-accent'
-      } ${className}`}
+      className={`text-sm lowercase transition ${active ? 'text-accent' : 'text-mono-text-muted hover:text-accent'} ${className}`}
     >
       {label}
     </Link>

@@ -1,48 +1,26 @@
 @import 'tailwindcss';
 
-@custom-variant dark (&:where(.dark, .dark *));
-
 @theme inline {
-  --color-mono-bg: #faf9f7;
-  --color-mono-card: #f1efec;
-  --color-mono-text: #1a1714;
-  --color-mono-text-muted: #6b655d;
-  --color-mono-border: #e3ddd5;
-  --color-mono-accent: #0a0a0a;
+  --color-mono-bg: #0e0d0c;
+  --color-mono-card: #100f0d;
+  --color-mono-text: #eae7e2;
+  --color-mono-text-muted: #bdb6ab;
+  --color-mono-border: #221f1c;
+  --color-mono-rule: #1b1916;
+  --color-mono-accent: #eae7e2;
 
-  --color-dark-mono-bg: #0f0d0b;
-  --color-dark-mono-card: #1a1613;
-  --color-dark-mono-text: #ece7e1;
-  --color-dark-mono-text-muted: #8c847a;
-  --color-dark-mono-border: #2a2420;
-  --color-dark-mono-accent: #f0ece6;
+  /* Diff green — the "pop" color */
+  --color-accent: #7ddb9f;
 
-  /* Amber accent — the "pop" color */
-  --color-accent: #c2630a;
-  --color-accent-soft: #d97706;
-  --color-dark-accent: #f59e0b;
-  --color-dark-accent-soft: #fbbf24;
+  /* Gold, reserved for commit shas on notes */
+  --color-sha: #c9a227;
 
-  --font-mono: var(--font-ibmplex-mono), monospace;
+  --font-mono: var(--font-jetbrains-mono), ui-monospace, monospace;
+  --font-sans: var(--font-ibmplex-sans), ui-sans-serif, system-ui, sans-serif;
 }
 
 body {
-  @apply bg-mono-bg dark:bg-dark-mono-bg text-mono-text dark:text-dark-mono-text font-mono antialiased;
-  background-image: radial-gradient(circle at 1px 1px, var(--color-mono-border) 1px, transparent 0);
-  background-size: 28px 28px;
-  background-attachment: fixed;
-}
-
-.dark body {
-  background-image: radial-gradient(circle at 1px 1px, var(--color-dark-mono-border) 1px, transparent 0);
-}
-
-/* Amber glow helpers */
-.glow-accent {
-  box-shadow: 0 0 12px -2px color-mix(in srgb, var(--color-accent) 50%, transparent);
-}
-.dark .glow-accent {
-  box-shadow: 0 0 16px -2px color-mix(in srgb, var(--color-dark-accent) 55%, transparent);
+  @apply bg-mono-bg text-mono-text font-mono antialiased;
 }
 
 /* Blinking terminal cursor */
@@ -69,6 +47,23 @@ body {
   }
 }
 
+/* Branch pill dot */
+.pulse-dot {
+  animation: pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.8);
+  }
+}
+
 .fade-in {
   animation: fadeIn 0.6s ease-in;
 }
@@ -83,24 +78,25 @@ body {
     transform: translateY(0);
   }
 }
-/* Rendered markdown for field notes */
+
+/* Rendered markdown for field notes — prose in the sans cut, chrome stays mono */
 .note-body {
-  @apply text-mono-text dark:text-dark-mono-text text-base leading-relaxed;
+  @apply text-mono-text font-sans text-lg leading-relaxed;
   h2 {
-    @apply mt-10 mb-4 text-2xl font-semibold tracking-tight;
+    @apply text-mono-text mt-11 mb-4 font-mono text-2xl font-semibold tracking-tight;
   }
   h3 {
-    @apply mt-8 mb-3 text-xl font-semibold tracking-tight;
+    @apply mt-8 mb-3 font-mono text-xl font-semibold tracking-tight;
   }
   p {
-    @apply mb-5;
+    @apply mb-6;
   }
   a {
-    @apply text-accent dark:text-dark-accent underline underline-offset-4;
+    @apply text-accent underline underline-offset-4;
   }
   ul,
   ol {
-    @apply mb-5 list-outside pl-6;
+    @apply mb-6 list-outside pl-6;
   }
   ul {
     @apply list-disc;
@@ -109,35 +105,38 @@ body {
     @apply list-decimal;
   }
   li {
-    @apply mb-2;
+    @apply mb-2.5;
   }
   code {
-    @apply bg-mono-card dark:bg-dark-mono-card rounded px-1.5 py-0.5 text-sm;
+    @apply bg-mono-card rounded-xs px-1.5 py-0.5 font-mono text-[0.85em];
   }
   pre {
-    @apply bg-mono-card dark:bg-dark-mono-card border-mono-border dark:border-dark-mono-border mb-5 overflow-x-auto rounded border p-4;
+    @apply bg-mono-card border-mono-border mb-6 overflow-x-auto rounded border p-4 font-mono text-sm leading-loose;
     code {
-      @apply bg-transparent p-0;
+      @apply bg-transparent p-0 text-sm;
     }
   }
   blockquote {
-    @apply border-mono-border dark:border-dark-mono-border text-accent dark:text-dark-accent my-12 border-l-2 pl-4;
+    @apply border-accent text-accent my-10 border-l-2 py-1 pl-5 font-mono text-lg leading-relaxed;
+    p {
+      @apply mb-0;
+    }
   }
   hr {
-    @apply border-mono-border dark:border-dark-mono-border my-8;
+    @apply border-mono-border my-8;
   }
   img {
-    @apply max-w-full;
+    @apply border-mono-border mb-6 max-w-full rounded border;
   }
   table {
-    @apply mb-5 w-full border-collapse text-sm;
+    @apply mb-6 w-full border-collapse font-mono text-sm;
   }
   th,
   td {
-    @apply border-mono-border dark:border-dark-mono-border border px-3 py-2 text-left;
+    @apply border-mono-border border px-3 py-2 text-left;
   }
   th {
-    @apply bg-mono-card dark:bg-dark-mono-card font-semibold;
+    @apply bg-mono-card font-semibold;
   }
 }
 

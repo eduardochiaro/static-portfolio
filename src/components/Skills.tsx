@@ -1,3 +1,4 @@
+import metaData from '@/data/metadata.json';
 import SectionHeading from './SectionHeading';
 
 export type SkillType = {
@@ -6,53 +7,43 @@ export type SkillType = {
   percentage?: number;
 };
 
-function SkillBar({ skill }: { skill: SkillType }) {
+const STRONG = /^(expert|advanced)$/i;
+
+function SkillRow({ skill }: { readonly skill: SkillType }) {
+  const strong = STRONG.test(skill.level);
   return (
-    <div>
-      <div className="mb-2 flex justify-between text-sm">
-        <span>{skill.name}</span>
-        <span className="text-mono-text-muted dark:text-dark-mono-text-muted">{skill.level}</span>
-      </div>
-      <div
-        className="border-mono-card dark:border-dark-mono-border bg-mono-card dark:bg-dark-mono-card h-1.5 w-full overflow-hidden rounded-full border"
-        role="progressbar"
-        aria-valuenow={skill.percentage ?? 0}
-        aria-valuemin={0}
-        aria-valuemax={100}
-        aria-label={`${skill.name}: ${skill.level}`}
-      >
-        <div
-          className="bg-accent dark:bg-dark-accent shadow-accent/60 dark:shadow-dark-accent/60 h-full rounded-full shadow-[0_0_8px_-1px]"
-          style={{ width: `${skill.percentage}%` }}
-        ></div>
-      </div>
+    <div className="flex justify-between gap-4">
+      <span>{skill.name.toLowerCase()}</span>
+      <span className={strong ? 'text-accent' : 'text-mono-text-muted'}>
+        {strong ? '^' : '~'}
+        {skill.level.toLowerCase()}
+      </span>
     </div>
   );
 }
 
-export default function Skills({ skills }: { skills: readonly SkillType[] }) {
-  if (!skills || skills.length === 0) {
-    return null;
-  }
+type SkillsProps = {
+  readonly skills: readonly SkillType[];
+  readonly small?: boolean;
+  readonly columns?: 1 | 2;
+};
 
-  const half = Math.ceil(skills.length / 2);
-  const leftColumn = skills.slice(0, half);
-  const rightColumn = skills.slice(half);
+export default function Skills({ skills, small = false, columns = 1 }: SkillsProps) {
+  if (!skills || skills.length === 0) return null;
 
   return (
-    <section className="mx-auto max-w-5xl px-6 py-16">
-      <SectionHeading className="mb-8">Technical Expertise</SectionHeading>
-      <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
-        <div className="space-y-6">
-          {leftColumn.map((skill) => (
-            <SkillBar key={skill.name} skill={skill} />
-          ))}
-        </div>
-        <div className="space-y-6">
-          {rightColumn.map((skill) => (
-            <SkillBar key={skill.name} skill={skill} />
-          ))}
-        </div>
+    <section className={small ? 'mb-10' : 'mx-auto max-w-6xl px-6 py-12'}>
+      <SectionHeading small={small} className="mb-4">
+        {metaData.sections.skills}
+      </SectionHeading>
+      <div
+        className={`border-mono-border bg-mono-card grid gap-x-10 gap-y-1 rounded border px-4 py-3.5 text-sm leading-loose ${
+          columns === 2 ? 'sm:grid-cols-2' : ''
+        }`}
+      >
+        {skills.map((skill) => (
+          <SkillRow key={skill.name} skill={skill} />
+        ))}
       </div>
     </section>
   );

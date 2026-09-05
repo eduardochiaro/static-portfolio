@@ -4,27 +4,24 @@ import Typewriter from './Typewriter';
 export type HeroProps = {
   readonly title: string;
   readonly name: string;
-  readonly children: ReactNode;
+  readonly children?: ReactNode;
+  /** Keep the heading on one line — for page titles that are not a person's name */
+  readonly oneLine?: boolean;
 };
 
-export default function Hero({ title, name, children }: HeroProps) {
+export default function Hero({ title, name, children, oneLine = false }: HeroProps) {
   const words = name.trim().split(' ');
-  const lastName = words.length > 1 ? words.pop()! : '';
+  const lastName = !oneLine && words.length > 1 ? words.pop()! : '';
   const firstName = words.join(' ');
 
   return (
-    <section className="mx-auto mt-20 max-w-5xl px-6 pt-16 pb-12">
-      <div className="fade-in">
-        <p className="text-mono-text-muted dark:text-dark-mono-text-muted mb-4 flex items-center gap-2 text-sm tracking-widest uppercase">
-          <span className="text-accent dark:text-dark-accent">&raquo;</span>
-          {title}
-        </p>
-        <h1 className="mb-6 flex flex-col text-6xl leading-tight font-semibold tracking-tight">
-          {firstName && <span>{firstName}</span>}
-          {lastName && <Typewriter text={lastName} className="text-accent dark:text-dark-accent" />}
-        </h1>
-        <div className="text-mono-text-muted dark:text-dark-mono-text-muted mb-6 max-w-2xl text-base leading-relaxed">{children}</div>
-      </div>
+    <section className="mx-auto mt-16 max-w-6xl px-6 pt-16 pb-10">
+      <p className="text-accent mb-5 text-xs tracking-[0.2em] uppercase">{title}</p>
+      <h1 className="mb-6 flex flex-col text-5xl leading-[1.06] font-semibold tracking-tighter sm:text-6xl lg:text-7xl">
+        {oneLine ? <Typewriter text={name} useTextColor /> : firstName && <span>{firstName}</span>}
+        {lastName && <Typewriter text={lastName} useTextColor />}
+      </h1>
+      {children && <div className="text-mono-text-muted max-w-2xl font-sans text-lg leading-relaxed">{children}</div>}
     </section>
   );
 }

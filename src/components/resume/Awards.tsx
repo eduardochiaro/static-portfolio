@@ -1,4 +1,4 @@
-import { formatMonthYear } from '@/lib/date';
+import metaData from '@/data/metadata.json';
 import SectionHeading from '../SectionHeading';
 
 export type AwardsType = {
@@ -8,15 +8,15 @@ export type AwardsType = {
 
 export default function Awards({ awards }: { awards: readonly AwardsType[] }) {
   return (
-    <section className="mb-12">
+    <section className="mb-10">
       <SectionHeading small className="mb-4">
-        Awards
+        {metaData.sections.awards}
       </SectionHeading>
-      <ul className="space-y-2 text-sm">
-        {awards.map((award, index) => (
-          <li key={index} className="flex flex-col justify-between gap-2">
-            <span>{award.title}</span>
-            <span className="text-mono-text-muted dark:text-dark-mono-text-muted text-nowrap">{formatMonthYear(award.date)}</span>
+      <ul className="space-y-3 text-sm">
+        {awards.map((award) => (
+          <li key={award.title} className="flex flex-col gap-1">
+            <span className="text-sha">v{award.date.slice(0, 7).replace('-', '.')}</span>
+            <span className="text-mono-text-muted">{award.title}</span>
           </li>
         ))}
       </ul>

@@ -1,57 +1,48 @@
-'use client';
-
-import Awards from '@/components/resume/Awards';
-import Divider from '@/components/Divider';
 import Experience from '@/components/Experience';
-import GithubIcon from '@/components/icons/Github';
-import Languages from '@/components/resume/Languages';
-import PageLayout from '@/components/PageLayout';
-import SkillsSidebar from '@/components/resume/SkillsSidebar';
-import SectionHeading from '@/components/SectionHeading';
-import { Mail as MailIcon, MapPinHouse as MapPinHouseIcon } from 'lucide-react';
-import resumeData from '@/data/resume.json';
 import Hero from '@/components/Hero';
+import PageLayout from '@/components/PageLayout';
+import Awards from '@/components/resume/Awards';
+import Languages from '@/components/resume/Languages';
+import Skills from '@/components/Skills';
+import metaData from '@/data/metadata.json';
+import resumeData from '@/data/resume.json';
 
 export default function Resume() {
   const { personalInfo, skills, summary, experience, languages, awards } = resumeData;
+  const page = metaData.resume;
+  const since = experience.reduce((min, exp) => (exp.startDate < min ? exp.startDate : min), experience[0]?.startDate ?? '').slice(0, 4);
 
   return (
-    <PageLayout section="Resume">
-      <Hero name={personalInfo.name} title={personalInfo.role}>
-        <div className="flex flex-col gap-4 md:flex-row md:gap-8">
-          <p className="flex items-center gap-2">
-            <MailIcon className="inline-block h-4 w-4" />
-            <a href={`mailto:${personalInfo.email}`} className="hover:text-accent dark:hover:text-dark-accent transition">
-              {personalInfo.email}
-            </a>
-          </p>
-          <p className="flex items-center gap-2">
-            <MapPinHouseIcon className="inline-block h-4 w-4" />
-            {personalInfo.location}
-          </p>
-          <p className="flex items-center gap-2">
-            <GithubIcon className="inline-block h-4 w-4" />
-            {personalInfo.github}
-          </p>
-        </div>
+    <PageLayout section={page.section} branch={page.branch}>
+      <Hero title={`${page.heroTitle}${since}`} name={page.heroName} oneLine>
+        <p className="text-mono-text mb-3">{personalInfo.role}</p>
+        <p>{summary}</p>
       </Hero>
 
-      <Divider />
+      <div className="mx-auto max-w-6xl px-6">
+        <div className="border-mono-border text-mono-text-muted flex flex-wrap gap-x-8 gap-y-2 border-t pt-5 text-sm">
+          <a href={`mailto:${personalInfo.email}`} className="hover:text-accent transition">
+            {personalInfo.email}
+          </a>
+          <span>{personalInfo.location}</span>
+          <a href={`https://${personalInfo.github}`} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">
+            {personalInfo.github}
+          </a>
+          <a href={`https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">
+            {personalInfo.linkedin}
+          </a>
+        </div>
+      </div>
 
-      <section className="mx-auto max-w-5xl px-6 py-16">
-        <SectionHeading className="mb-6">Summary</SectionHeading>
-        <p className="text-mono-text-muted dark:text-dark-mono-text-muted text-base leading-relaxed">{summary}</p>
-      </section>
-
-      <div className="mx-auto flex max-w-5xl flex-col gap-16 px-6 md:flex-row">
+      <div className="mx-auto mt-12 flex max-w-6xl flex-col gap-14 px-6 md:flex-row">
         <div className="md:w-2/3">
           <Experience experience={experience} />
         </div>
-        <div className="md:w-1/3">
-          <SkillsSidebar skills={skills} />
+        <aside className="md:w-1/3">
+          <Skills skills={skills} small />
           <Languages languages={languages} />
           <Awards awards={awards} />
-        </div>
+        </aside>
       </div>
     </PageLayout>
   );

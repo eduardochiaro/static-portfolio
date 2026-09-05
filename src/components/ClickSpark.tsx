@@ -8,7 +8,7 @@ interface Spark {
 }
 
 // ponytail: fixed to the one call site (PageLayout). Re-add props if a second caller needs different values.
-const SPARK_COLOR = '#f59e0b';
+const SPARK_COLOR = '#7ddb9f';
 const SPARK_SIZE = 10;
 const SPARK_RADIUS = 15;
 const SPARK_COUNT = 8;

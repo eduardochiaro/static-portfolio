@@ -34,9 +34,9 @@ export default function Typewriter({ text, className = '', useTextColor = false 
     };
   }, [text]);
 
-  let cursorColorClass = 'bg-accent dark:bg-dark-accent';
+  let cursorColorClass = 'bg-accent';
   if (useTextColor) {
-    cursorColorClass = ' bg-mono-text dark:bg-dark-mono-text';
+    cursorColorClass = ' bg-mono-text';
   }
 
   return (
