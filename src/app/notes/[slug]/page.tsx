@@ -48,7 +48,7 @@ export default async function Note({ params }: NotePageProps) {
           </span>
         </div>
 
-        <h1 className="fade-in mt-7 mb-8 text-4xl leading-tight font-semibold tracking-tighter">{note.title}</h1>
+        <h1 className="mt-7 mb-8 text-4xl leading-tight font-semibold tracking-tighter">{note.title}</h1>
         <div className="note-body" dangerouslySetInnerHTML={{ __html: html }} />
 
         <nav className="mt-14 grid gap-4 sm:grid-cols-2" aria-label="Note navigation">
