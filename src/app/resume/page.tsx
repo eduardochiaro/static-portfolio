@@ -2,14 +2,17 @@ import Experience from '@/components/Experience';
 import Hero from '@/components/Hero';
 import PageLayout from '@/components/PageLayout';
 import Awards from '@/components/resume/Awards';
+import Contributions from '@/components/resume/Contributions';
 import Languages from '@/components/resume/Languages';
 import Skills from '@/components/Skills';
 import metaData from '@/data/metadata.json';
 import resumeData from '@/data/resume.json';
+import { getContributions } from '@/lib/github';
 
-export default function Resume() {
+export default async function Resume() {
   const { personalInfo, skills, summary, experience, languages, awards } = resumeData;
   const page = metaData.resume;
+  const contributions = await getContributions(personalInfo.github.split('/').pop() ?? '');
   const since = experience.reduce((min, exp) => (exp.startDate < min ? exp.startDate : min), experience[0]?.startDate ?? '').slice(0, 4);
 
   return (
@@ -43,6 +46,7 @@ export default function Resume() {
           <Skills skills={skills} small />
           <Languages languages={languages} />
           <Awards awards={awards} />
+          <Contributions data={contributions} />
         </aside>
       </div>
     </PageLayout>
