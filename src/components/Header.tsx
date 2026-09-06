@@ -38,7 +38,7 @@ export default function Header({ name, logo, pages, section, branch = 'main' }: 
         <div className="flex items-center gap-3.5 text-sm">
           <Link href="/" className="flex items-center gap-3.5" aria-label={name}>
             <LogoIcon className="fill-mono-text size-5" />
-            <span className="text-mono-text-muted max-sm:hidden">{logo}</span>
+            <span className="text-mono-text-muted">{logo}</span>
           </Link>
           {branch && (
             <span className="border-mono-border text-accent inline-flex items-center gap-2 rounded-full border px-3 py-0.5 text-xs max-sm:hidden">

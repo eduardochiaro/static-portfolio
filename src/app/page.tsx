@@ -30,7 +30,7 @@ export default function Home() {
       </Hero>
 
       <section className="mx-auto max-w-6xl px-6 py-12">
-        <Experience experience={experience} compact heading={page.experienceHeading} limit={1} />
+        <Experience experience={experience} compact heading={page.experienceHeading} limit={1} noLine={true} />
         <div className="mt-6">
           <ButtonLink href="/resume">{page.experienceLink}</ButtonLink>
         </div>

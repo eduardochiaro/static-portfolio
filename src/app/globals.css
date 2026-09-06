@@ -1,12 +1,12 @@
 @import 'tailwindcss';
 
 @theme inline {
-  --color-mono-bg: #0e0d0c;
-  --color-mono-card: #100f0d;
+  --color-mono-bg: #17150f;
+  --color-mono-card: #201d17;
   --color-mono-text: #eae7e2;
   --color-mono-text-muted: #bdb6ab;
-  --color-mono-border: #221f1c;
-  --color-mono-rule: #1b1916;
+  --color-mono-border: #38332b;
+  --color-mono-rule: #2b2721;
   --color-mono-accent: #eae7e2;
 
   /* Diff green — the "pop" color */

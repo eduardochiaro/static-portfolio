@@ -49,14 +49,11 @@ export default function Pebble() {
               const size = PEBBLE_IMAGE_SIZES[watchface.type] ?? DEFAULT_IMAGE_SIZE;
               return (
                 <div key={watchface.title} className="border-mono-border bg-mono-card flex flex-col items-center rounded border p-6">
-                  <div className="text-mono-text-muted mb-4 flex w-full items-baseline justify-between gap-3 text-xs tracking-[0.16em] uppercase">
-                    <span className="truncate">{slug(watchface.title)}/</span>
-                    <span className="text-accent shrink-0">{watchface.type}</span>
-                  </div>
                   <div className={`pebble ${watchface.type}`}>
                     <Image src={watchface.image} alt={watchface.title} width={size.w} height={size.h} />
                   </div>
                   <p className="mt-4 text-center text-lg font-medium tracking-tight">{watchface.title}</p>
+                  <div className="flex-1"></div>
                   <p className="text-mono-text-muted mt-1.5 text-center font-sans text-base leading-relaxed">{watchface.content}</p>
                   <ButtonLink href={watchface.url} className="mt-4" target="_blank">
                     {page.storeLink} <ExternalLinkIcon className="size-3" />

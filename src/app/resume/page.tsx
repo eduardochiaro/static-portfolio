@@ -16,6 +16,7 @@ export default function Resume() {
     <PageLayout section={page.section} branch={page.branch}>
       <Hero title={`${page.heroTitle}${since}`} name={page.heroName} oneLine>
         <p className="text-mono-text mb-3">{personalInfo.role}</p>
+        <h2 className="mb-3 text-5xl font-bold text-white">{personalInfo.name}</h2>
         <p>{summary}</p>
       </Hero>
 
@@ -36,7 +37,7 @@ export default function Resume() {
 
       <div className="mx-auto mt-12 flex max-w-6xl flex-col gap-14 px-6 md:flex-row">
         <div className="md:w-2/3">
-          <Experience experience={experience} />
+          <Experience experience={experience} compact />
         </div>
         <aside className="md:w-1/3">
           <Skills skills={skills} small />

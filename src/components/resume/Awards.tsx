@@ -14,9 +14,9 @@ export default function Awards({ awards }: { awards: readonly AwardsType[] }) {
       </SectionHeading>
       <ul className="space-y-3 text-sm">
         {awards.map((award) => (
-          <li key={award.title} className="flex flex-col gap-1">
-            <span className="text-sha">v{award.date.slice(0, 7).replace('-', '.')}</span>
-            <span className="text-mono-text-muted">{award.title}</span>
+          <li key={award.title} className="flex justify-between gap-22">
+            <span className="text-sha">{award.date.slice(0, 7).replace('-', '.')}</span>
+            <span className="text-mono-text-muted text-right">{award.title}</span>
           </li>
         ))}
       </ul>
