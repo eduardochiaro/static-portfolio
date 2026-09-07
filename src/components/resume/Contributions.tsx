@@ -24,7 +24,7 @@ export default function Contributions({ data }: { readonly data: ContributionsTy
       <SectionHeading small className="mb-4">
         {metaData.sections.contributions}
       </SectionHeading>
-      <div className="grid grid-cols-14 gap-[3px]">
+      <div className="grid grid-cols-14 gap-0.75">
         {days.map((day) => (
           <span key={day.date} title={`${day.count} on ${day.date}`} className={`aspect-square rounded-xs ${LEVELS[level(day.count, max)]}`} />
         ))}
