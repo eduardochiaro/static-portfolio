@@ -8,18 +8,17 @@ import type { ReactNode } from 'react';
 
 type PageLayoutProps = {
   readonly section?: string;
-  readonly repo?: string;
   readonly branch?: string;
   readonly children: ReactNode;
 };
 
-export default function PageLayout({ section, repo, branch, children }: PageLayoutProps) {
+export default function PageLayout({ section, branch, children }: PageLayoutProps) {
   const { header, footer } = metaData;
 
   return (
     <ClickSpark>
       <div className="flex min-h-screen flex-col">
-        <Header name={header.title} logo={header.logo} pages={header.pages} section={section} repo={repo} branch={branch} />
+        <Header name={header.title} logo={header.logo} pages={header.pages} section={section} branch={branch} />
         <main id="main" className="flex-1">
           {children}
         </main>

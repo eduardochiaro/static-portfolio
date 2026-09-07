@@ -7,8 +7,6 @@ const nextConfig: NextConfig = {
   trailingSlash: true,
   // src/data is a symlink into ../eduardochiaro.com-data; widen root so Turbopack accepts it
   turbopack: { root: path.join(__dirname, '..') },
-  //basePath: '/portfolio',
-  /* config options here */
 };
 
 export default nextConfig;

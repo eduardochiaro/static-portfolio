@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <PageLayout branch={page.branch}>
-      <Hero title={`${page.heroTitle} · ${head}`} name={hero.name} oneLine>
+      <Hero title={`${page.heroTitle} · ${head}`} name={hero.name}>
         <p>{hero.slogan}</p>
       </Hero>
 

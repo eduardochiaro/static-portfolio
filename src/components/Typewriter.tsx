@@ -34,10 +34,7 @@ export default function Typewriter({ text, className = '', useTextColor = false 
     };
   }, [text]);
 
-  let cursorColorClass = 'bg-accent';
-  if (useTextColor) {
-    cursorColorClass = ' bg-mono-text';
-  }
+  const cursorColorClass = useTextColor ? 'bg-mono-text' : 'bg-accent';
 
   return (
     <span className={className} aria-label={text}>

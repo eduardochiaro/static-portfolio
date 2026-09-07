@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# static-portfolio
 
-## Getting Started
+Personal portfolio and field notes for [Eduardo Chiaro](https://eduardochiaro.com) — Senior Software Engineer.
 
-First, run the development server:
+Next.js App Router, exported as a fully static site (`output: 'export'`). No server, no API routes, no database. Every page is pre-rendered at build time.
+
+## Stack
+
+Next.js 16 · React 19 · TypeScript (strict) · Tailwind CSS v4 · `marked` for note rendering.
+
+## Content
+
+All content lives outside the app:
+
+- `src/data/` is a **symlink** into a separate content repo (`eduardochiaro.com-data`). It holds `metadata.json`, `home.json`, `resume.json`, `pebble.json`, and a `notes/` directory of Markdown files.
+- Note filenames are `YYYY-MM-DD-slug.md`; the date and slug come from the filename, the title from the first `#` heading.
+- `data-placeholder/` mirrors that structure for anyone cloning without the content repo — copy it to `src/data/`.
+
+## Routes
+
+| Route                     | Source                                                                |
+| ------------------------- | --------------------------------------------------------------------- |
+| `/`                       | `home.json` + `resume.json`                                           |
+| `/resume`                 | `resume.json`, plus a GitHub contribution graph fetched at build time |
+| `/notes`, `/notes/[slug]` | Markdown in `src/data/notes/`                                         |
+| `/pebble`                 | `pebble.json` — Pebble watchface gallery                              |
+
+## Commands
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run dev       # dev server
+npm run build     # static export to out/
+npm run lint      # eslint
+npm run cleanup   # prettier + eslint --fix
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+`.env.local`:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `GOOGLE_ANALYTICS_ID` — omit to skip the analytics script.
+- `GITHUB_TOKEN` — a classic PAT with no scopes. Omit and the resume's contribution graph is skipped.
 
-## Learn More
+## Design prototypes
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+`design/` holds standalone HTML explorations, independent of the Next.js build. Open them directly in a browser.

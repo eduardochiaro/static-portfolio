@@ -2,10 +2,16 @@ import ButtonLink from '@/components/ButtonLink';
 import Hero from '@/components/Hero';
 import PageLayout from '@/components/PageLayout';
 import SectionHeading from '@/components/SectionHeading';
+import { ExternalLinkIcon } from '@/components/icons/ui';
 import metaData from '@/data/metadata.json';
 import pebbleData from '@/data/pebble.json';
-import { ExternalLink as ExternalLinkIcon } from 'lucide-react';
+import type { Metadata } from 'next';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: metaData.pebble.title,
+  description: metaData.pebble.description,
+};
 
 const PEBBLE_IMAGE_SIZES: Record<string, { w: number; h: number }> = {
   basalt: { w: 144, h: 168 },
@@ -28,7 +34,7 @@ export default function Pebble() {
 
   return (
     <PageLayout section={page.section} branch={page.branch}>
-      <Hero title={page.heroTitle} name={hero.title} oneLine>
+      <Hero title={page.heroTitle} name={hero.title}>
         <p>{hero.description}</p>
       </Hero>
 
@@ -53,8 +59,8 @@ export default function Pebble() {
                     <Image src={watchface.image} alt={watchface.title} width={size.w} height={size.h} />
                   </div>
                   <p className="mt-4 text-center text-lg font-medium tracking-tight">{watchface.title}</p>
-                  <div className="flex-1"></div>
                   <p className="text-mono-text-muted mt-1.5 text-center font-sans text-base leading-relaxed">{watchface.content}</p>
+                  <div className="flex-1"></div>
                   <ButtonLink href={watchface.url} className="mt-4" target="_blank">
                     {page.storeLink} <ExternalLinkIcon className="size-3" />
                   </ButtonLink>

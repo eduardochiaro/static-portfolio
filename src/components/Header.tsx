@@ -1,17 +1,16 @@
 'use client';
 
-import { Menu as MenuIcon, X as XIcon } from 'lucide-react';
 import Link from 'next/link';
 import { useCallback, useEffect, useState } from 'react';
 import NavLink from '@/components/NavLink';
 import LogoIcon from './icons/Logo';
+import { MenuIcon, XIcon } from './icons/ui';
 
 type HeaderProps = {
   readonly name?: string;
   readonly logo?: string;
   readonly pages?: readonly { name: string; path: string }[];
   readonly section?: string;
-  readonly repo?: string;
   readonly branch?: string;
 };
 

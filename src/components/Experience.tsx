@@ -21,6 +21,7 @@ type ExperienceProps = {
   readonly compact?: boolean;
   readonly heading?: string;
   readonly limit?: number;
+  readonly noLine?: boolean;
 };
 
 function CommitDot({
@@ -44,13 +45,7 @@ function CommitDot({
   );
 }
 
-export default function Experience({
-  experience,
-  compact = false,
-  heading = metaData.sections.experience,
-  limit,
-  noLine = false,
-}: ExperienceProps & { noLine?: boolean }) {
+export default function Experience({ experience, compact = false, heading = metaData.sections.experience, limit, noLine = false }: ExperienceProps) {
   const items = limit ? experience.slice(0, limit) : experience;
 
   return (
@@ -64,7 +59,7 @@ export default function Experience({
           return (
             <div
               key={`${exp.company}-${exp.startDate}`}
-              className={`border-mono-rule grid items-start border-b py-5 last:border-b-0 ${compact ? 'grid-cols-[34px_1fr] sm:grid-cols-[34px_92px_1fr]' : 'grid-cols-[34px_1fr]'}`}
+              className={`border-mono-rule grid items-start py-5 ${compact ? 'grid-cols-[34px_1fr] sm:grid-cols-[34px_92px_1fr]' : 'grid-cols-[34px_1fr]'}`}
             >
               <CommitDot
                 current={current}

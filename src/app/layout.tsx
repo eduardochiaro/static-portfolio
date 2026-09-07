@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from 'next';
 import { IBM_Plex_Sans, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import homeData from '@/data/metadata.json';
-import { GoogleAnalytics } from '@next/third-parties/google';
+import Script from 'next/script';
 
 const jetBrainsMono = JetBrains_Mono({
   weight: ['300', '400', '500', '600', '700'],
@@ -41,6 +41,8 @@ export const metadata: Metadata = {
   },
 };
 
+const gaId = process.env.GOOGLE_ANALYTICS_ID;
+
 export const viewport: Viewport = {
   themeColor: '#17150f',
 };
@@ -63,8 +65,15 @@ export default function RootLayout({
           Skip to main content
         </a>
         {children}
+        {gaId && (
+          <>
+            <Script src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`} strategy="afterInteractive" />
+            <Script id="google-analytics" strategy="afterInteractive">
+              {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','${gaId}');`}
+            </Script>
+          </>
+        )}
       </body>
-      <GoogleAnalytics gaId={process.env.GOOGLE_ANALYTICS_ID || ''} />
     </html>
   );
 }

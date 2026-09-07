@@ -8,6 +8,12 @@ import Skills from '@/components/Skills';
 import metaData from '@/data/metadata.json';
 import resumeData from '@/data/resume.json';
 import { getContributions } from '@/lib/github';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: metaData.resume.title,
+  description: metaData.resume.description,
+};
 
 export default async function Resume() {
   const { personalInfo, skills, summary, experience, languages, awards } = resumeData;
@@ -17,7 +23,7 @@ export default async function Resume() {
 
   return (
     <PageLayout section={page.section} branch={page.branch}>
-      <Hero title={`${page.heroTitle}${since}`} name={page.heroName} oneLine>
+      <Hero title={`${page.heroTitle}${since}`} name={page.heroName}>
         <p className="text-mono-text mb-3">{personalInfo.role}</p>
         <h2 className="mb-3 text-5xl font-bold text-white">{personalInfo.name}</h2>
         <p>{summary}</p>

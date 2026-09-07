@@ -1,4 +1,4 @@
-export type ContributionDay = {
+type ContributionDay = {
   date: string;
   count: number;
 };

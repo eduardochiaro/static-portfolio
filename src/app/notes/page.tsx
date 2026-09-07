@@ -19,7 +19,7 @@ export default function Notes() {
 
   return (
     <PageLayout section={page.section} branch={page.branch}>
-      <Hero title={page.heroTitle} name={page.heroName} oneLine>
+      <Hero title={page.heroTitle} name={page.heroName}>
         <p>{page.description}</p>
       </Hero>
 
@@ -27,13 +27,13 @@ export default function Notes() {
         {years.map((year) => {
           const entries = notes.filter((note) => note.date.startsWith(year));
           return (
-            <div key={year} className="mb-10">
+            <div key={year} className="mb-14">
               <SectionHeading className="mb-1" meta={`${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`}>
                 {year}
               </SectionHeading>
               <ul>
                 {entries.map((note) => (
-                  <li key={note.slug} className="border-mono-rule border-b last:border-b-0">
+                  <li key={note.slug} className="border-mono-rule">
                     <Link href={`/notes/${note.slug}`} className="group flex flex-col gap-x-5 py-5 sm:flex-row sm:items-baseline">
                       <span className="text-sha shrink-0 text-sm sm:w-20">{shortSha(note.slug)}</span>
                       <span className="group-hover:text-accent flex-1 text-xl font-medium tracking-tight transition">{note.title}</span>
