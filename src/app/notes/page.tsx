@@ -35,7 +35,7 @@ export default function Notes() {
                 {entries.map((note) => (
                   <li key={note.slug} className="border-mono-rule">
                     <Link href={`/notes/${note.slug}`} className="group flex flex-col gap-x-5 py-5 sm:flex-row sm:items-baseline">
-                      <span className="text-sha shrink-0 text-sm sm:w-20">{shortSha(note.slug)}</span>
+                      <span className="text-sha shrink-0 text-sm max-sm:hidden sm:w-20">{shortSha(note.slug)}</span>
                       <span className="group-hover:text-accent flex-1 text-xl font-medium tracking-tight transition">{note.title}</span>
                       <time dateTime={note.date} className="text-mono-text-muted shrink-0 text-sm">
                         {note.date.slice(5)}

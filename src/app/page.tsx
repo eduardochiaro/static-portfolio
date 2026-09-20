@@ -10,6 +10,7 @@ import Skills from '@/components/Skills';
 import homeData from '@/data/home.json';
 import metaData from '@/data/metadata.json';
 import resumeData from '@/data/resume.json';
+import { NOTES_ENABLED } from '@/lib/flags';
 import { getNotes } from '@/lib/notes';
 import { shortSha } from '@/lib/sha';
 import Link from 'next/link';
@@ -41,24 +42,26 @@ export default function Home() {
       <FeaturedProject {...featuredProject} />
       <Projects projects={projects} />
 
-      <section className="mx-auto max-w-6xl px-6 py-12">
-        <SectionHeading className="mb-5" meta={`${notes.length} entries`}>
-          {page.notesHeading}
-        </SectionHeading>
-        <ul className="text-sm leading-loose">
-          {notes.slice(0, LATEST_NOTES).map((note) => (
-            <li key={note.slug}>
-              <Link href={`/notes/${note.slug}`} className="group flex flex-wrap items-baseline gap-x-4 py-1">
-                <span className="text-sha">{shortSha(note.slug)}</span>
-                <time dateTime={note.date} className="text-mono-text-muted">
-                  {note.date}
-                </time>
-                <span className="group-hover:text-accent transition">{note.title}</span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </section>
+      {NOTES_ENABLED && (
+        <section className="mx-auto max-w-6xl px-6 py-12">
+          <SectionHeading className="mb-5" meta={`${notes.length} entries`}>
+            {page.notesHeading}
+          </SectionHeading>
+          <ul className="text-sm leading-loose">
+            {notes.slice(0, LATEST_NOTES).map((note) => (
+              <li key={note.slug}>
+                <Link href={`/notes/${note.slug}`} className="group flex flex-wrap items-baseline gap-x-4 py-1">
+                  <span className="text-sha max-sm:hidden">{shortSha(note.slug)}</span>
+                  <time dateTime={note.date} className="text-mono-text-muted">
+                    {note.date}
+                  </time>
+                  <span className="group-hover:text-accent transition">{note.title}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
     </PageLayout>
   );
 }

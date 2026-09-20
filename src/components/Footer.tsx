@@ -17,11 +17,11 @@ export default function Footer({ text, links }: FooterProps) {
     <footer className="border-mono-border mt-24 border-t">
       <div className="text-mono-text-muted mx-auto flex max-w-6xl flex-col gap-3 px-6 py-6 text-xs sm:flex-row sm:items-center sm:justify-between">
         <span>
-          {`${authorLabel}: ${name} <`}
+          <span className="max-sm:hidden">{`${authorLabel}: ${name} <`}</span>
           <a href={`mailto:${email}`} className="hover:text-accent transition">
             {email}
           </a>
-          {'>'}
+          <span className="max-sm:hidden">{'>'}</span>
         </span>
         <span className="flex flex-wrap items-center gap-x-3 gap-y-1">
           {links.map((link) => (

@@ -34,7 +34,7 @@ export default async function Note({ params }: NotePageProps) {
 
   return (
     <PageLayout section={page.section} branch={`${page.branch} / ${sha}`}>
-      <article className="mx-auto mt-16 max-w-3xl px-6 pt-16 pb-16">
+      <article className="mx-auto mt-16 max-w-3xl px-6 pt-8 pb-16 sm:pt-16">
         <Link href="/notes" className="text-mono-text-muted hover:text-accent inline-flex items-center gap-2 text-sm transition-colors">
           {page.backLink}
         </Link>
