@@ -13,6 +13,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: metaData.resume.title,
   description: metaData.resume.description,
+  robots: { index: false, follow: true },
 };
 
 export default async function Resume() {

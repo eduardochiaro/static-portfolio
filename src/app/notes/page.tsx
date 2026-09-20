@@ -10,6 +10,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: metaData.notes.title,
   description: metaData.notes.description,
+  robots: { index: false, follow: true },
 };
 
 export default function Notes() {

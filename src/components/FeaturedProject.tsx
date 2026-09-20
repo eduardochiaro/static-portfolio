@@ -19,7 +19,7 @@ export default function FeaturedProject({ title, imageUrl, description, url, url
       <div className="border-mono-border bg-mono-card overflow-hidden rounded border">
         {imageUrl && (
           <div className="border-mono-border border-b p-2">
-            <Image src={imageUrl} alt={title} width={600} height={450} loading="eager" className="mx-auto h-auto rounded-xs object-cover md:w-1/2" />
+            <Image src={imageUrl} alt={title} width={800} height={450} className="mx-auto h-auto rounded-xs object-cover md:w-1/2" />
           </div>
         )}
         <div className="p-6">

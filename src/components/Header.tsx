@@ -7,14 +7,13 @@ import LogoIcon from './icons/Logo';
 import { MenuIcon, XIcon } from './icons/ui';
 
 type HeaderProps = {
-  readonly name?: string;
   readonly logo?: string;
   readonly pages?: readonly { name: string; path: string }[];
   readonly section?: string;
   readonly branch?: string;
 };
 
-export default function Header({ name, logo, pages, section, branch = 'main' }: HeaderProps) {
+export default function Header({ logo, pages, section, branch = 'main' }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
@@ -35,7 +34,7 @@ export default function Header({ name, logo, pages, section, branch = 'main' }: 
     <header className="border-mono-border bg-mono-card/85 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <div className="flex items-center gap-3.5 text-sm">
-          <Link href="/" className="flex items-center gap-3.5" aria-label={name}>
+          <Link href="/" className="flex items-center gap-3.5">
             <LogoIcon className="fill-mono-text size-5" />
             <span className="text-mono-text-muted">{logo}</span>
           </Link>

@@ -20,7 +20,7 @@ export default function PageLayout({ section, branch, children }: PageLayoutProp
   return (
     <ClickSpark>
       <div className="flex min-h-screen flex-col">
-        <Header name={header.title} logo={header.logo} pages={pages} section={section} branch={branch} />
+        <Header logo={header.logo} pages={pages} section={section} branch={branch} />
         <main id="main" className="flex-1">
           {children}
         </main>

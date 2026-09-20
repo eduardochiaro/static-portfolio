@@ -37,9 +37,14 @@ export default function Typewriter({ text, className = '', useTextColor = false 
   const cursorColorClass = useTextColor ? 'bg-mono-text' : 'bg-accent';
 
   return (
-    <span className={className} aria-label={text}>
+    <span className={className}>
+      <span className="sr-only">{text}</span>
       <span aria-hidden="true">{text.slice(0, count)}</span>
       <span aria-hidden="true" className={`cursor-blink ml-0.5 ${done ? '' : 'cursor-steady'} ${cursorColorClass}`} />
+      {/* Holds the final line-wrap height so typing doesn't shift everything below it (CLS). */}
+      <span aria-hidden="true" className="invisible">
+        {text.slice(count)}
+      </span>
     </span>
   );
 }

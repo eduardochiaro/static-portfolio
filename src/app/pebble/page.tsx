@@ -11,6 +11,7 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: metaData.pebble.title,
   description: metaData.pebble.description,
+  robots: { index: false, follow: true },
 };
 
 const PEBBLE_IMAGE_SIZES: Record<string, { w: number; h: number }> = {

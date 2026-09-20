@@ -18,7 +18,7 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: NotePageProps): Promise<Metadata> {
   const { slug } = await params;
   const note = getNote(slug);
-  return { title: note.title };
+  return { title: note.title, robots: { index: false, follow: true } };
 }
 
 export default async function Note({ params }: NotePageProps) {
