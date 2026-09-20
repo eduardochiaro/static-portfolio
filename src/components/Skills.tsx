@@ -6,15 +6,21 @@ export type SkillType = {
   level: string;
   percentage?: number;
 };
+const ADVANCED = /^(advanced)$/i;
+const STRONG = /^(expert)$/i;
 
-const STRONG = /^(expert|advanced)$/i;
+const getAccentColor = (level: string) => {
+  if (STRONG.test(level)) return 'text-sha';
+  if (ADVANCED.test(level)) return 'text-accent';
+  return 'text-mono-text-muted';
+};
 
 function SkillRow({ skill }: { readonly skill: SkillType }) {
   const strong = STRONG.test(skill.level);
   return (
     <div className="flex justify-between gap-4">
       <span>{skill.name.toLowerCase()}</span>
-      <span className={strong ? 'text-accent' : 'text-mono-text-muted'}>
+      <span className={getAccentColor(skill.level)}>
         {strong ? '^' : '~'}
         {skill.level.toLowerCase()}
       </span>
@@ -41,9 +47,11 @@ export default function Skills({ skills, small = false, columns = 1 }: SkillsPro
           columns === 2 ? 'sm:grid-cols-2' : ''
         }`}
       >
-        {skills.map((skill) => (
-          <SkillRow key={skill.name} skill={skill} />
-        ))}
+        {[...skills]
+          .sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: 'base' }))
+          .map((skill) => (
+            <SkillRow key={skill.name} skill={skill} />
+          ))}
       </div>
     </section>
   );
