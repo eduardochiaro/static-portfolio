@@ -1,34 +1,32 @@
 'use client';
 
 import Link from 'next/link';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import NavLink from '@/components/NavLink';
 import LogoIcon from './icons/Logo';
 import { MenuIcon, XIcon } from './icons/ui';
 
 type HeaderProps = {
-  readonly logo?: string;
-  readonly pages?: readonly { name: string; path: string }[];
+  readonly logo: string;
+  readonly pages: readonly { name: string; path: string }[];
   readonly section?: string;
   readonly branch?: string;
 };
 
-export default function Header({ logo, pages, section, branch = 'main' }: HeaderProps) {
+export default function Header({ logo, pages, section, branch }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  const closeMobileMenu = useCallback(() => setMobileMenuOpen(false), []);
 
   // Close mobile menu on Escape key
   useEffect(() => {
     if (!mobileMenuOpen) return;
 
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') closeMobileMenu();
+      if (e.key === 'Escape') setMobileMenuOpen(false);
     };
 
     document.addEventListener('keydown', handleKeyDown);
     return () => document.removeEventListener('keydown', handleKeyDown);
-  }, [mobileMenuOpen, closeMobileMenu]);
+  }, [mobileMenuOpen]);
 
   return (
     <header className="border-mono-border bg-mono-card/85 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-sm">
@@ -46,7 +44,7 @@ export default function Header({ logo, pages, section, branch = 'main' }: Header
           )}
         </div>
         <nav aria-label="Main navigation" className="flex items-center gap-6 text-sm">
-          {pages?.map((page) => (
+          {pages.map((page) => (
             <NavLink key={page.name} href={page.path} label={page.name} active={section?.toLowerCase() === page.name.toLowerCase()} className="max-sm:hidden" />
           ))}
 
@@ -67,13 +65,13 @@ export default function Header({ logo, pages, section, branch = 'main' }: Header
       {mobileMenuOpen && (
         <nav id="mobile-nav" aria-label="Mobile navigation" className="border-mono-border border-t sm:hidden">
           <div className="flex flex-col gap-2 p-6">
-            {pages?.map((page) => (
+            {pages.map((page) => (
               <NavLink
                 key={page.name}
                 href={page.path}
                 label={page.name}
                 active={section?.toLowerCase() === page.name.toLowerCase()}
-                onClick={closeMobileMenu}
+                onClick={() => setMobileMenuOpen(false)}
                 className="py-2"
               />
             ))}

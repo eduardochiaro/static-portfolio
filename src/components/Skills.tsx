@@ -4,25 +4,18 @@ import SectionHeading from './SectionHeading';
 export type SkillType = {
   name: string;
   level: string;
-  percentage?: number;
 };
-const ADVANCED = /^(advanced)$/i;
-const STRONG = /^(expert)$/i;
 
-const getAccentColor = (level: string) => {
-  if (STRONG.test(level)) return 'text-sha';
-  if (ADVANCED.test(level)) return 'text-accent';
-  return 'text-mono-text-muted';
-};
+const LEVEL_COLORS: Record<string, string> = { expert: 'text-sha', advanced: 'text-accent' };
 
 function SkillRow({ skill }: { readonly skill: SkillType }) {
-  const strong = STRONG.test(skill.level);
+  const level = skill.level.toLowerCase();
   return (
     <div className="flex justify-between gap-4">
       <span>{skill.name.toLowerCase()}</span>
-      <span className={getAccentColor(skill.level)}>
-        {strong ? '^' : '~'}
-        {skill.level.toLowerCase()}
+      <span className={LEVEL_COLORS[level] ?? 'text-mono-text-muted'}>
+        {level === 'expert' ? '^' : '~'}
+        {level}
       </span>
     </div>
   );

@@ -20,8 +20,6 @@ type ExperienceProps = {
   /** Home page variant: sha column, one line of prose, no bullets */
   readonly compact?: boolean;
   readonly heading?: string;
-  readonly limit?: number;
-  readonly noLine?: boolean;
 };
 
 function CommitDot({
@@ -45,14 +43,14 @@ function CommitDot({
   );
 }
 
-export default function Experience({ experience, compact = false, heading = metaData.sections.experience, limit, noLine = false }: ExperienceProps) {
-  const items = limit ? experience.slice(0, limit) : experience;
+export default function Experience({ experience, compact = false, heading = metaData.sections.experience }: ExperienceProps) {
+  const noLine = experience.length === 1;
 
   return (
     <section>
       <SectionHeading className="mb-2">{heading}</SectionHeading>
       <div>
-        {items.map((exp, index) => {
+        {experience.map((exp, index) => {
           const sha = shortSha(`${exp.company}${exp.position}${exp.startDate}`);
           const current = !exp.endDate;
 
@@ -64,7 +62,7 @@ export default function Experience({ experience, compact = false, heading = meta
               <CommitDot
                 current={current}
                 first={index === 0}
-                last={index === items.length - 1}
+                last={index === experience.length - 1}
                 noLine={noLine}
                 className={compact ? 'row-span-2 sm:row-span-1' : ''}
               />

@@ -1,17 +1,13 @@
 import ButtonLink from '@/components/ButtonLink';
-import Typewriter from '@/components/Typewriter';
+import ErrorScreen from '@/components/ErrorScreen';
 import metaData from '@/data/metadata.json';
 
 export default function NotFound() {
   const { code, message, action } = metaData.errors.notFound;
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center px-6">
-      <h1 className="mb-4 text-6xl font-semibold tracking-tight">
-        <Typewriter text={code} className="text-accent" />
-      </h1>
-      <p className="text-mono-text-muted mb-8 text-base">{message}</p>
+    <ErrorScreen code={code} message={message}>
       <ButtonLink href="/">{action}</ButtonLink>
-    </div>
+    </ErrorScreen>
   );
 }

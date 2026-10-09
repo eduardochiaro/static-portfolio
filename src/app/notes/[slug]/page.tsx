@@ -25,7 +25,7 @@ export default async function Note({ params }: NotePageProps) {
   const { slug } = await params;
   const notes = getNotes();
   const index = notes.findIndex((note) => note.slug === slug);
-  const note = getNote(slug);
+  const note = notes[index];
   const html = await marked.parse(note.content);
   const newer = notes[index - 1];
   const older = notes[index + 1];

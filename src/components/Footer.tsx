@@ -1,17 +1,9 @@
 import metaData from '@/data/metadata.json';
 
-export type FooterProps = {
-  text: string;
-  links: readonly {
-    readonly text: string;
-    readonly url: string;
-  }[];
-};
-
-export default function Footer({ text, links }: FooterProps) {
+export default function Footer() {
   const currentYear = new Date().getFullYear();
   const { email, name } = metaData.author;
-  const { authorLabel } = metaData.footer;
+  const { authorLabel, text, links } = metaData.footer;
 
   return (
     <footer className="border-mono-border mt-24 border-t">

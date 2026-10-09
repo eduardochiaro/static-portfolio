@@ -5,7 +5,7 @@ import homeData from '@/data/metadata.json';
 import Script from 'next/script';
 
 const jetBrainsMono = JetBrains_Mono({
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['400', '500', '600', '700'],
   style: ['normal', 'italic'],
   display: 'swap',
   variable: '--font-jetbrains-mono',
@@ -53,14 +53,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${jetBrainsMono.variable} ${ibmPlexSans.variable} antialiased`}>
+    <html lang="en" className={`${jetBrainsMono.variable} ${ibmPlexSans.variable}`}>
       <head>
         <meta name="apple-mobile-web-app-title" content={homeData.home.title} />
       </head>
       <body>
         <a
           href="#main"
-          className="focus:bg-mono-bg focus: sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded focus:px-4 focus:py-2 focus:text-sm"
+          className="focus:bg-mono-bg sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded focus:px-4 focus:py-2 focus:text-sm"
         >
           Skip to main content
         </a>

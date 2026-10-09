@@ -39,7 +39,10 @@ const ClickSpark: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
 
     resizeCanvas();
 
-    return () => ro.disconnect();
+    return () => {
+      ro.disconnect();
+      if (animationIdRef.current !== null) cancelAnimationFrame(animationIdRef.current);
+    };
   }, []);
 
   // Start animation loop only when sparks exist, stop when empty
@@ -91,15 +94,6 @@ const ClickSpark: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     };
 
     animationIdRef.current = requestAnimationFrame(draw);
-  }, []);
-
-  // Cleanup on unmount
-  useEffect(() => {
-    return () => {
-      if (animationIdRef.current !== null) {
-        cancelAnimationFrame(animationIdRef.current);
-      }
-    };
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {

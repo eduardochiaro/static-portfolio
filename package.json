@@ -7,7 +7,7 @@
     "build": "next build && rm -rf out/notes",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "prettier": "prettier --write \"src/**/*.{ts,tsx,js,json,graphql,css,html}\"",
+    "prettier": "prettier --write \"src/**/*.{ts,tsx,json,css}\"",
     "cleanup": "npm run prettier && npm run lint:fix"
   },
   "dependencies": {
@@ -17,7 +17,6 @@
     "react-dom": "19.2.8"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.7",
     "@tailwindcss/postcss": "^4.3.3",
     "@types/node": "^25",
     "@types/react": "19.2.18",
@@ -29,10 +28,6 @@
     "prettier-plugin-tailwindcss": "^0.8.1",
     "tailwindcss": "^4.3.3",
     "typescript": "^5.9.3"
-  },
-  "overrides": {
-    "@types/react": "19.2.18",
-    "@types/react-dom": "19.2.7"
   },
   "allowScripts": {
     "unrs-resolver@1.11.1": true

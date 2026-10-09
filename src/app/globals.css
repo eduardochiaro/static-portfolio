@@ -126,66 +126,47 @@ body {
 
 .pebble {
   @apply relative flex items-center justify-center;
+  width: var(--w);
+  height: 350px;
+  img {
+    @apply w-auto;
+  }
+  &::after {
+    @apply absolute top-0 size-full bg-no-repeat;
+    left: var(--x);
+    content: '';
+    background-image: var(--frame);
+    background-size: var(--size, auto);
+  }
   &.basalt {
-    width: 240px;
-    height: 350px;
-    img {
-      @apply w-auto;
-    }
-    &::after {
-      @apply absolute top-0 -left-0.5;
-      width: 240px;
-      height: 350px;
-      content: '';
-      background-image: url('/images/pebble/assets/time-white.png');
-      background-repeat: no-repeat;
-    }
+    --w: 240px;
+    --x: -0.125rem;
+    --frame: url('/images/pebble/assets/time-white.png');
   }
   &.chalk {
-    width: 251px;
-    height: 350px;
+    --w: 251px;
+    --x: 1px;
+    --frame: url('/images/pebble/assets/time-round-white.png');
     img {
-      @apply w-auto rounded-full;
-    }
-    &::after {
-      @apply absolute top-0 left-px;
-      width: 251px;
-      height: 350px;
-      content: '';
-      background-image: url('/images/pebble/assets/time-round-white.png');
-      background-repeat: no-repeat;
+      @apply rounded-full;
     }
   }
   &.emery {
-    width: 240px;
-    height: 350px;
+    --w: 240px;
+    --x: -1px;
+    --frame: url('/images/pebble/assets/time-2-white.png');
+    --size: 100% 100%;
     img {
-      @apply w-auto scale-[0.83];
-    }
-    &::after {
-      @apply absolute top-0 -left-px;
-      width: 240px;
-      height: 350px;
-      content: '';
-      background-image: url('/images/pebble/assets/time-2-white.png');
-      background-repeat: no-repeat;
-      background-size: 240px 350px;
+      @apply scale-[0.83];
     }
   }
   &.gabbro {
-    width: 247px;
-    height: 350px;
+    --w: 247px;
+    --x: -1px;
+    --frame: url('/images/pebble/assets/time-round-2-white.png');
+    --size: 100% 100%;
     img {
-      @apply -ml-0.5 w-auto scale-[0.80] rounded-full;
-    }
-    &::after {
-      @apply absolute top-0 -left-px;
-      width: 247px;
-      height: 350px;
-      content: '';
-      background-image: url('/images/pebble/assets/time-round-2-white.png');
-      background-repeat: no-repeat;
-      background-size: 247px 350px;
+      @apply -ml-0.5 scale-[0.80] rounded-full;
     }
   }
 }

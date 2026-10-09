@@ -14,7 +14,7 @@ type PageLayoutProps = {
 };
 
 export default function PageLayout({ section, branch, children }: PageLayoutProps) {
-  const { header, footer } = metaData;
+  const { header } = metaData;
   const pages = NOTES_ENABLED ? header.pages : header.pages.filter((page) => page.path !== '/notes');
 
   return (
@@ -24,7 +24,7 @@ export default function PageLayout({ section, branch, children }: PageLayoutProp
         <main id="main" className="flex-1">
           {children}
         </main>
-        <Footer text={footer.text} links={footer.links} />
+        <Footer />
       </div>
     </ClickSpark>
   );
