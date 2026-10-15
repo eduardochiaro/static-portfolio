@@ -35,7 +35,7 @@ export default async function Note({ params }: NotePageProps) {
   return (
     <PageLayout section={page.section} branch={`${page.branch} / ${sha}`}>
       <article className="mx-auto mt-16 max-w-3xl px-6 pt-8 pb-16 sm:pt-16">
-        <Link href="/notes" className="text-mono-text-muted hover:text-accent inline-flex items-center gap-2 text-sm transition-colors">
+        <Link href="/notes" className="text-mono-text-muted hover:text-accent tap-target inline-flex items-center gap-2 text-sm transition-colors">
           {page.backLink}
         </Link>
 
@@ -51,11 +51,11 @@ export default async function Note({ params }: NotePageProps) {
         <h1 className="mt-7 mb-8 text-4xl leading-tight font-semibold tracking-tighter">{note.title}</h1>
         <div className="note-body" dangerouslySetInnerHTML={{ __html: html }} />
 
-        <nav className="mt-14 grid gap-4 sm:grid-cols-2" aria-label="Note navigation">
+        <nav className="mt-14 grid gap-4 sm:grid-cols-2" aria-label={metaData.a11y.noteNav}>
           <div className="border-mono-border bg-mono-card rounded border px-5 py-4">
             <p className="text-mono-text-muted mb-2 text-xs tracking-[0.2em] uppercase">{page.olderLabel}</p>
             {older ? (
-              <Link href={`/notes/${older.slug}`} className="hover:text-accent font-medium tracking-tight transition">
+              <Link href={`/notes/${older.slug}`} className="hover:text-accent tap-target font-medium tracking-tight transition">
                 {older.title}
               </Link>
             ) : (
@@ -65,7 +65,7 @@ export default async function Note({ params }: NotePageProps) {
           <div className="border-mono-border bg-mono-card rounded border px-5 py-4 sm:text-right">
             <p className="text-mono-text-muted mb-2 text-xs tracking-[0.2em] uppercase">{page.newerLabel}</p>
             {newer ? (
-              <Link href={`/notes/${newer.slug}`} className="hover:text-accent font-medium tracking-tight transition">
+              <Link href={`/notes/${newer.slug}`} className="hover:text-accent tap-target font-medium tracking-tight transition">
                 {newer.title}
               </Link>
             ) : (

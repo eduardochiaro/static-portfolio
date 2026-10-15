@@ -2,7 +2,7 @@ import Hero from '@/components/Hero';
 import PageLayout from '@/components/PageLayout';
 import SectionHeading from '@/components/SectionHeading';
 import metaData from '@/data/metadata.json';
-import { getNotes } from '@/lib/notes';
+import { entryCount, getNotes } from '@/lib/notes';
 import { shortSha } from '@/lib/sha';
 import type { Metadata } from 'next';
 import Link from 'next/link';
@@ -29,7 +29,7 @@ export default function Notes() {
           const entries = notes.filter((note) => note.date.startsWith(year));
           return (
             <div key={year} className="mb-14">
-              <SectionHeading className="mb-1" meta={`${entries.length} ${entries.length === 1 ? 'entry' : 'entries'}`}>
+              <SectionHeading className="mb-1" meta={entryCount(entries.length)}>
                 {year}
               </SectionHeading>
               <ul>

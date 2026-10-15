@@ -32,9 +32,7 @@ export default function Skills({ skills, small = false, columns = 1 }: SkillsPro
 
   return (
     <section className={small ? 'mb-10' : 'mx-auto max-w-6xl px-6 py-12'}>
-      <SectionHeading small={small} className="mb-4">
-        {metaData.sections.skills}
-      </SectionHeading>
+      <SectionHeading className="mb-4">{metaData.sections.skills}</SectionHeading>
       <div
         className={`border-mono-border bg-mono-card grid gap-x-10 gap-y-1 rounded border px-4 py-3.5 text-sm leading-loose ${
           columns === 2 ? 'sm:grid-cols-2' : ''

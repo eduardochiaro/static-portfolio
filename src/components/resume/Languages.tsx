@@ -9,9 +9,7 @@ export type LanguageType = {
 export default function Languages({ languages }: { languages: readonly LanguageType[] }) {
   return (
     <section className="mb-10">
-      <SectionHeading small className="mb-4">
-        {metaData.sections.languages}
-      </SectionHeading>
+      <SectionHeading className="mb-4">{metaData.sections.languages}</SectionHeading>
       <ul className="space-y-1 text-sm leading-loose">
         {languages.map((language) => (
           <li key={language.name} className="flex justify-between gap-4">

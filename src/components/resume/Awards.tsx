@@ -9,9 +9,7 @@ export type AwardsType = {
 export default function Awards({ awards }: { awards: readonly AwardsType[] }) {
   return (
     <section className="mb-10">
-      <SectionHeading small className="mb-4">
-        {metaData.sections.awards}
-      </SectionHeading>
+      <SectionHeading className="mb-4">{metaData.sections.awards}</SectionHeading>
       <ul className="space-y-3 text-sm">
         {awards.map((award) => (
           <li key={award.title} className="flex justify-between gap-4">

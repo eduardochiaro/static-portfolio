@@ -41,9 +41,9 @@ export default function Pebble() {
 
       <menu className="mx-auto flex max-w-6xl flex-wrap gap-3 px-6 py-2">
         {sections.map((section) => (
-          <ButtonLink key={section.title} href={`#${slug(section.title)}`}>
-            {section.title.toLowerCase()}
-          </ButtonLink>
+          <li key={section.title}>
+            <ButtonLink href={`#${slug(section.title)}`}>{section.title.toLowerCase()}</ButtonLink>
+          </li>
         ))}
       </menu>
 
@@ -63,7 +63,9 @@ export default function Pebble() {
                   <p className="text-mono-text-muted mt-1.5 text-center font-sans text-base leading-relaxed">{watchface.content}</p>
                   <div className="flex-1"></div>
                   <ButtonLink href={watchface.url} className="mt-4" target="_blank">
-                    {page.storeLink} <ExternalLinkIcon className="size-3" />
+                    {page.storeLink}
+                    {/* 19 identical labels are indistinguishable in a screen reader's link list */}
+                    <span className="sr-only">: {watchface.title}</span> <ExternalLinkIcon className="size-3" />
                   </ButtonLink>
                 </div>
               );

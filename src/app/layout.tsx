@@ -4,13 +4,16 @@ import './globals.css';
 import homeData from '@/data/metadata.json';
 import Script from 'next/script';
 
+// The site's primary face: variable (one file per style) and preloaded so first paint is already mono.
+// A real monospace fallback, not next/font's metric-matched Arial, keeps a late load from flashing sans.
+// ponytail: no italic file; nothing sets mono in italic. The browser synthesizes it if a note ever does.
 const jetBrainsMono = JetBrains_Mono({
-  weight: ['400', '500', '600', '700'],
-  style: ['normal', 'italic'],
+  style: ['normal'],
   display: 'swap',
   variable: '--font-jetbrains-mono',
   subsets: ['latin'],
-  preload: false,
+  fallback: ['ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+  adjustFontFallback: false,
 });
 
 // Running prose only — headings and chrome stay in the mono cut.
@@ -62,7 +65,7 @@ export default function RootLayout({
           href="#main"
           className="focus:bg-mono-bg sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-100 focus:rounded focus:px-4 focus:py-2 focus:text-sm"
         >
-          Skip to main content
+          {homeData.a11y.skipLink}
         </a>
         {children}
         {gaId && (

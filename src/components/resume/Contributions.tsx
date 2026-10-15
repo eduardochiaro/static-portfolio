@@ -21,15 +21,16 @@ export default function Contributions({ data }: { readonly data: ContributionsTy
 
   return (
     <section className="mb-10">
-      <SectionHeading small className="mb-4">
-        {metaData.sections.contributions}
-      </SectionHeading>
-      <div className="grid grid-cols-14 gap-0.75">
+      <SectionHeading className="mb-4">{metaData.sections.contributions}</SectionHeading>
+      {/* Hover detail for mouse users; the total below carries the same information for everyone */}
+      <div className="grid grid-cols-14 gap-0.75" aria-hidden="true">
         {days.map((day) => (
-          <span key={day.date} title={`${day.count} on ${day.date}`} className={`aspect-square rounded-xs ${LEVELS[level(day.count, max)]}`} />
+          <span key={day.date} title={`${day.count} · ${day.date}`} className={`aspect-square rounded-xs ${LEVELS[level(day.count, max)]}`} />
         ))}
       </div>
-      <p className="text-mono-text-muted mt-3 text-sm">{data.total.toLocaleString()} commits in the last year</p>
+      <p className="text-mono-text-muted mt-3 text-sm">
+        {data.total.toLocaleString('en-US')} {metaData.labels.commitsLastYear}
+      </p>
     </section>
   );
 }

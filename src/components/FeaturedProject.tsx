@@ -15,7 +15,9 @@ type FeaturedProjectProps = {
 export default function FeaturedProject({ title, imageUrl, description, url, urlText }: FeaturedProjectProps) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-12">
-      <SectionHeading className="mb-7">branch: {title.toLowerCase()}</SectionHeading>
+      <SectionHeading className="mb-7">
+        {metaData.labels.branch} {title.toLowerCase()}
+      </SectionHeading>
       <div className="border-mono-border bg-mono-card overflow-hidden rounded border">
         {imageUrl && (
           <div className="border-mono-border border-b p-2">

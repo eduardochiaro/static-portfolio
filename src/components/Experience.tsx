@@ -71,14 +71,16 @@ export default function Experience({ experience, compact = false, heading = meta
                 <div className="mb-1.5 flex flex-wrap items-center gap-3">
                   {!compact && <span className="text-sha text-xs">{sha}</span>}
                   <h3 className="text-xl font-medium tracking-tight">{exp.position}</h3>
-                  {current && <span className="border-accent/40 bg-accent/8 text-accent rounded-full border px-2.5 py-0.5 text-[0.65rem]">current</span>}
+                  {current && (
+                    <span className="border-accent/40 bg-accent/8 text-accent rounded-full border px-2.5 py-0.5 text-[0.65rem]">{metaData.labels.current}</span>
+                  )}
                 </div>
                 <div className="text-mono-text-muted flex flex-wrap items-baseline justify-start gap-2 text-xs tracking-wide">
                   <span className="text-accent text-sm">{exp.company}</span>·<span>{exp.location}</span>·
                   <span className="flex gap-1">
                     <span className="text-nowrap">{formatMonthYear(exp.startDate)} </span>
                     <span> - </span>
-                    <span className="text-nowrap">{exp.endDate ? formatMonthYear(exp.endDate) : 'Now'} </span>
+                    <span className="text-nowrap">{exp.endDate ? formatMonthYear(exp.endDate) : metaData.labels.now} </span>
                   </span>
                 </div>
                 {exp.description && <p className="text-mono-text-muted mt-3 font-sans text-base leading-relaxed">{exp.description}</p>}

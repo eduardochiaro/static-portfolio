@@ -41,7 +41,8 @@
     "bio": "about.md",
     "readme": "README.md",
     "awards": "tags",
-    "languages": "locales"
+    "languages": "locales",
+    "contributions": "contributions"
   },
   "home": {
     "title": "Alex Coder",
@@ -85,18 +86,35 @@
   "errors": {
     "forbidden": {
       "code": "403",
-      "message": "You should not be here.",
-      "action": "Go Home"
+      "message": "This page isn't open to visitors.",
+      "action": "Back to home"
     },
     "notFound": {
       "code": "404",
-      "message": "The page you're looking for doesn't exist.",
-      "action": "Go Home"
+      "message": "Nothing lives at this address. The link may be old or mistyped.",
+      "action": "Back to home"
     },
     "error": {
       "code": "Error",
-      "message": "Something went wrong.",
-      "action": "Try Again"
+      "message": "This page hit an error while loading.",
+      "action": "Try again"
     }
+  },
+  "labels": {
+    "current": "current",
+    "now": "Now",
+    "branch": "branch:",
+    "commitsLastYear": "commits in the last year",
+    "entry": "entry",
+    "entries": "entries"
+  },
+  "a11y": {
+    "skipLink": "Skip to main content",
+    "mainNav": "Main navigation",
+    "mobileNav": "Mobile navigation",
+    "noteNav": "Note navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "newTab": "(opens in new tab)"
   }
 }

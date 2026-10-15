@@ -11,9 +11,10 @@ type HeaderProps = {
   readonly pages: readonly { name: string; path: string }[];
   readonly section?: string;
   readonly branch?: string;
+  readonly a11y: Record<'mainNav' | 'mobileNav' | 'openMenu' | 'closeMenu', string>;
 };
 
-export default function Header({ logo, pages, section, branch }: HeaderProps) {
+export default function Header({ logo, pages, section, branch, a11y }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Close mobile menu on Escape key
@@ -32,27 +33,34 @@ export default function Header({ logo, pages, section, branch }: HeaderProps) {
     <header className="border-mono-border bg-mono-card/85 fixed top-0 right-0 left-0 z-50 border-b backdrop-blur-sm">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <div className="flex items-center gap-3.5 text-sm">
-          <Link href="/" className="flex items-center gap-3.5">
+          <Link href="/" className="tap-target flex items-center gap-3.5">
             <LogoIcon className="fill-mono-text size-5" />
             <span className="text-mono-text-muted">{logo}</span>
           </Link>
           {branch && (
             <span className="border-mono-border text-accent inline-flex items-center gap-2 rounded-full border px-3 py-0.5 text-xs max-sm:hidden">
-              <span className="bg-accent pulse-dot size-1.5 rounded-full" />
+              {/* Keyed so the pulse replays on every branch switch, like a fresh checkout */}
+              <span key={branch} className="bg-accent pulse-dot size-1.5 rounded-full" />
               {branch}
             </span>
           )}
         </div>
-        <nav aria-label="Main navigation" className="flex items-center gap-6 text-sm">
+        <nav aria-label={a11y.mainNav} className="flex items-center gap-6 text-sm">
           {pages.map((page) => (
-            <NavLink key={page.name} href={page.path} label={page.name} active={section?.toLowerCase() === page.name.toLowerCase()} className="max-sm:hidden" />
+            <NavLink
+              key={page.name}
+              href={page.path}
+              label={page.name}
+              active={section?.toLowerCase() === page.name.toLowerCase()}
+              className="tap-target max-sm:hidden"
+            />
           ))}
 
           {/* Mobile menu toggle */}
           <button
-            className="flex h-8 w-8 items-center justify-center transition sm:hidden"
+            className="-my-1.5 -mr-1.5 flex size-11 items-center justify-center transition sm:hidden"
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={mobileMenuOpen ? a11y.closeMenu : a11y.openMenu}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-nav"
           >
@@ -63,8 +71,8 @@ export default function Header({ logo, pages, section, branch }: HeaderProps) {
 
       {/* Mobile navigation menu */}
       {mobileMenuOpen && (
-        <nav id="mobile-nav" aria-label="Mobile navigation" className="border-mono-border border-t sm:hidden">
-          <div className="flex flex-col gap-2 p-6">
+        <nav id="mobile-nav" aria-label={a11y.mobileNav} className="border-mono-border border-t sm:hidden">
+          <div className="flex flex-col px-6 py-5">
             {pages.map((page) => (
               <NavLink
                 key={page.name}
@@ -72,7 +80,7 @@ export default function Header({ logo, pages, section, branch }: HeaderProps) {
                 label={page.name}
                 active={section?.toLowerCase() === page.name.toLowerCase()}
                 onClick={() => setMobileMenuOpen(false)}
-                className="py-2"
+                className="py-3"
               />
             ))}
           </div>

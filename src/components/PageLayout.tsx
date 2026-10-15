@@ -1,5 +1,4 @@
-'use client';
-
+// Server component: only Header and ClickSpark hydrate, so Footer's build-time year can never mismatch.
 import ClickSpark from '@/components/ClickSpark';
 import Footer from '@/components/Footer';
 import Header from '@/components/Header';
@@ -14,13 +13,13 @@ type PageLayoutProps = {
 };
 
 export default function PageLayout({ section, branch, children }: PageLayoutProps) {
-  const { header } = metaData;
+  const { header, a11y } = metaData;
   const pages = NOTES_ENABLED ? header.pages : header.pages.filter((page) => page.path !== '/notes');
 
   return (
     <ClickSpark>
       <div className="flex min-h-screen flex-col">
-        <Header logo={header.logo} pages={pages} section={section} branch={branch} />
+        <Header logo={header.logo} pages={pages} section={section} branch={branch} a11y={a11y} />
         <main id="main" className="flex-1">
           {children}
         </main>

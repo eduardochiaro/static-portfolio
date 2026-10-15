@@ -26,21 +26,23 @@ export default async function Resume() {
     <PageLayout section={page.section} branch={page.branch}>
       <Hero title={`${page.heroTitle}${since}`} name={page.heroName}>
         <p className="text-mono-text mb-3">{personalInfo.role}</p>
-        <h2 className="mb-3 text-3xl font-bold text-white sm:text-5xl">{personalInfo.name}</h2>
+        <h2 className="text-mono-text mb-3 text-3xl font-bold sm:text-5xl">{personalInfo.name}</h2>
         <p>{summary}</p>
       </Hero>
 
       <div className="mx-auto max-w-6xl px-6">
-        <div className="border-mono-border text-mono-text-muted flex flex-wrap gap-x-8 gap-y-2 border-t pt-5 text-sm">
-          <a href={`mailto:${personalInfo.email}`} className="hover:text-accent transition">
+        <div className="border-mono-border text-mono-text-muted flex flex-wrap gap-x-8 gap-y-2 border-t pt-5 text-sm pointer-coarse:gap-y-6">
+          <a href={`mailto:${personalInfo.email}`} className="hover:text-accent tap-target transition">
             {personalInfo.email}
           </a>
           <span>{personalInfo.location}</span>
-          <a href={`https://${personalInfo.github}`} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">
+          <a href={`https://${personalInfo.github}`} target="_blank" rel="noopener noreferrer" className="hover:text-accent tap-target transition">
             {personalInfo.github}
+            <span className="sr-only"> {metaData.a11y.newTab}</span>
           </a>
-          <a href={`https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:text-accent transition">
+          <a href={`https://${personalInfo.linkedin}`} target="_blank" rel="noopener noreferrer" className="hover:text-accent tap-target transition">
             {personalInfo.linkedin}
+            <span className="sr-only"> {metaData.a11y.newTab}</span>
           </a>
         </div>
       </div>

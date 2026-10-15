@@ -1,49 +1,22 @@
-'use client';
-
-import { useEffect, useState } from 'react';
+import type { CSSProperties } from 'react';
 
 type TypewriterProps = {
   readonly text: string;
   readonly className?: string;
-  readonly useTextColor?: boolean;
 };
 
-// ponytail: fixed timing, no caller ever overrode it. Re-add props if a caller needs different values.
-const SPEED = 110;
-const START_DELAY = 350;
-
-export default function Typewriter({ text, className = '', useTextColor = false }: TypewriterProps) {
-  const [count, setCount] = useState(0);
-  const done = count >= text.length;
-
-  useEffect(() => {
-    let i = 0;
-    let intervalId: ReturnType<typeof setInterval>;
-
-    const startId = setTimeout(() => {
-      intervalId = setInterval(() => {
-        i += 1;
-        setCount(i);
-        if (i >= text.length) clearInterval(intervalId);
-      }, SPEED);
-    }, START_DELAY);
-
-    return () => {
-      clearTimeout(startId);
-      clearInterval(intervalId);
-    };
-  }, [text]);
-
-  const cursorColorClass = useTextColor ? 'bg-mono-text' : 'bg-accent';
-
+// Every character ships in the HTML and is visible by default; `.tw-char` in globals.css only
+// hides each one until its turn. No JS, no hydration wait, and reduced motion shows the text at once.
+export default function Typewriter({ text, className = '' }: TypewriterProps) {
   return (
     <span className={className}>
       <span className="sr-only">{text}</span>
-      <span aria-hidden="true">{text.slice(0, count)}</span>
-      <span aria-hidden="true" className={`cursor-blink ml-0.5 ${done ? '' : 'cursor-steady'} ${cursorColorClass}`} />
-      {/* Holds the final line-wrap height so typing doesn't shift everything below it (CLS). */}
-      <span aria-hidden="true" className="invisible">
-        {text.slice(count)}
+      <span aria-hidden="true">
+        {[...text].map((char, index) => (
+          <span key={index} className="tw-char" style={{ '--i': index } as CSSProperties}>
+            {char}
+          </span>
+        ))}
       </span>
     </span>
   );

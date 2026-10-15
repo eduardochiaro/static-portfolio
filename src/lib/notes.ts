@@ -1,3 +1,4 @@
+import metaData from '@/data/metadata.json';
 import fs from 'fs';
 import path from 'path';
 
@@ -34,3 +35,6 @@ export function getNote(slug: string): NoteType {
   if (!note) throw new Error(`Note not found: ${slug}`);
   return note;
 }
+
+/** "1 entry" / "3 entries", labels from metadata.json */
+export const entryCount = (count: number) => `${count} ${count === 1 ? metaData.labels.entry : metaData.labels.entries}`;

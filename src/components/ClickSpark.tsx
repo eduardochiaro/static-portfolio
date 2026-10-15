@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useRef, useEffect, useCallback } from 'react';
 
 interface Spark {
@@ -8,7 +10,7 @@ interface Spark {
 }
 
 // ponytail: fixed to the one call site (PageLayout). Re-add props if a second caller needs different values.
-const SPARK_COLOR = '#7ddb9f';
+const SPARK_COLOR = '#7ddb9f'; // mirrors --color-accent; @theme inline emits no CSS variable to read
 const SPARK_SIZE = 10;
 const SPARK_RADIUS = 15;
 const SPARK_COUNT = 8;
@@ -19,28 +21,23 @@ const ClickSpark: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   const sparksRef = useRef<Spark[]>([]);
   const animationIdRef = useRef<number | null>(null);
 
+  // Viewport-sized and DPR-scaled: a fixed overlay costs one screen of pixels, not the whole page
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const parent = canvas.parentElement;
-    if (!parent) return;
-
     const resizeCanvas = () => {
-      const { width, height } = parent.getBoundingClientRect();
-      if (canvas.width !== width || canvas.height !== height) {
-        canvas.width = width;
-        canvas.height = height;
-      }
+      const dpr = window.devicePixelRatio || 1;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.getContext('2d')?.setTransform(dpr, 0, 0, dpr, 0, 0);
     };
 
-    const ro = new ResizeObserver(resizeCanvas);
-    ro.observe(parent);
-
     resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
     return () => {
-      ro.disconnect();
+      window.removeEventListener('resize', resizeCanvas);
       if (animationIdRef.current !== null) cancelAnimationFrame(animationIdRef.current);
     };
   }, []);
@@ -97,16 +94,13 @@ const ClickSpark: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>): void => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    // Pure decoration: the click's real feedback is the link or button it hit
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const now = performance.now();
     const newSparks: Spark[] = Array.from({ length: SPARK_COUNT }, (_, i) => ({
-      x,
-      y,
+      x: e.clientX,
+      y: e.clientY,
       angle: (2 * Math.PI * i) / SPARK_COUNT,
       startTime: now,
     }));
@@ -116,8 +110,8 @@ const ClickSpark: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
   };
 
   return (
-    <div className="relative h-full w-full" onClick={handleClick}>
-      <canvas ref={canvasRef} className="pointer-events-none absolute inset-0" aria-hidden="true" />
+    <div className="h-full w-full" onClick={handleClick}>
+      <canvas ref={canvasRef} className="pointer-events-none fixed inset-0 z-60 size-full" aria-hidden="true" />
       {children}
     </div>
   );

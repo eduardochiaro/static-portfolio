@@ -13,7 +13,7 @@ const ProjectCard = ({ title, description, imageUrl, buttonText, buttonUrl }: Pr
           alt={title}
           width={800}
           height={450}
-          className="aspect-video w-full rounded-xs object-scale-down transition-transform duration-300 group-hover:scale-[1.03]"
+          className="aspect-video w-full rounded-xs object-scale-down transition-transform duration-300 motion-safe:group-hover:scale-[1.03]"
         />
       </div>
       <div className="flex flex-1 flex-col p-5">
